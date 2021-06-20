@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EraserController;
+use App\Http\Controllers\ContractController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,13 @@ use App\Http\Controllers\EraserController;
 */
 
 Route::get('/',[EraserController::class,'index']);
+
+
+
+Route::get('/perfil',[ContractController::class,'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
+});
 
 
 Auth::routes();
