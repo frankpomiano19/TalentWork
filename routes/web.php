@@ -26,3 +26,9 @@ Route::get('nuevo',function(){
 Route::get('template',function(){
     return view('template');
 });
+Route::get('registro',function(){
+    return view('registro');
+});
+Route::get('perfil',function(){
+    return view('perfil');
+});
