@@ -13,7 +13,7 @@ class use_tal extends Model
         return $this->belongsTo(User::class,'use_id');
     }
     public function IntermediateTal(){
-        return $this->belongsTo(ServiceOccupation::class,'ser_tal_id');
+        return $this->belongsTo(ServiceTalent::class,'ser_tal_id');
     }
 
 }

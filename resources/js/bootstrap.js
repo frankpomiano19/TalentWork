@@ -11,8 +11,6 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    window.animate = require('animate.css');
-    window.Swal= require('sweetalert2');
 } catch (e) {}
 
 /**

@@ -46,8 +46,8 @@
             <div class="collapse navbar-collapse" id="navbar20">
                 <ul class="navbar-nav mr-auto">
                     {{-- <li class="nav-item"> <a class="nav-link" href="#">Inicio</a> </li> --}}
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('ServiciosOfrecidos') }}">Oficio</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('ServiciosOfrecidos') }}">Talento</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
                 </ul>
                 <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b> </p>
                 <ul class="navbar-nav ml-auto">
@@ -126,8 +126,8 @@
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Tipos de servicios</h2>
                             <ul>
-                                <li><a href="">Oficios</a></li>
-                                <li><a href="">Talentos</a></li>
+                                <li><a href="{{ route('showOccupationService') }}">Oficios</a></li>
+                                <li><a href="{{ route('showTalentService') }}">Talentos</a></li>
                             </ul>                        
                         </div>
                     </div>

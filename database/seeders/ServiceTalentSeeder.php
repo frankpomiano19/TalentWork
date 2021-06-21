@@ -19,5 +19,17 @@ class ServiceTalentSeeder extends Seeder
         DB::table('service_talent')->insert([
             'ser_tal_name' => 'Abridor de cajas',
         ]);
+        DB::table('service_talent')->insert([
+            'ser_tal_name' => 'Narrador de Audiolibros',
+        ]);
+        DB::table('service_talent')->insert([
+            'ser_tal_name' => 'Contador de chistes',
+        ]);
+        DB::table('service_talent')->insert([
+            'ser_tal_name' => 'Probador de ropa',
+        ]);
+        DB::table('service_talent')->insert([
+            'ser_tal_name' => 'Creador de videos rapidos',
+        ]);
     }
 }

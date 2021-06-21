@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\use_occ;
+use App\Models\use_tal;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,6 +31,14 @@ class HomeController extends Controller
         return view('perfilservicio');
     }
 
+    public function showTalentService(){
+        $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
+        return view('profileServiceTalent',compact('allServices'));
+    }   
+    public function showOccupationService(){
+        $allServices = use_occ::orderBy('created_at','DESC')->paginate(20);
+        return view('profileServiceOccupation',compact('allServices'));
+    }
     public function nuevoRegistro(Request $request){
         $request->validate([
             'name'=>'required',

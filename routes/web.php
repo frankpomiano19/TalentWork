@@ -17,7 +17,8 @@ use App\Http\Controllers\ServiceController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('ServiciosOfrecidos');
-
+Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
+Route::get('/occupationSerice',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 
 
 Route::get('/perfilDos',[ContractController::class,'index']);
@@ -52,8 +53,9 @@ Route::get('registro',function(){
 Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
-
-// Route::get('registroServicio',[ServiceController::class, 'registro']);
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+});
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
