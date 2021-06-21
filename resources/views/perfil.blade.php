@@ -32,13 +32,24 @@
                                     {{ $user->name }}
                                     </h5>
                                     <h6>
+                                        @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
+                                            {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->use_id }}                                        
+                                        @else
+                                            @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
+                                                {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->use_id }}
+                                            @else
+                                                No registra ningun servicio
+                                            @endif
+                                        @endif
+
+                                    <br>
                                     @foreach($servOcu as $serv)
 
                                     {{ $serv->ser_occ_name }}
 
                                     @endforeach
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <p class="proile-rating">CALIFICACION : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos Personales</a>
@@ -204,11 +215,13 @@
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                @foreach(Auth::user()->UseOccIntermediate as $serviceUsers)
+                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a><br/>                                
+                                @endforeach
 
-                                <a href="">Servicio 1</a><br/>
-                                <a href="">Servicio 2</a><br/>
-                                <a href="">Servicio 3</a><br/>
-                                <a href="">Servicio 4</a><br/>
+                                @foreach(Auth::user()->UseTalIntermediate as $serviceTalUsers)
+                                    <a href="">{{ $serviceTalUsers->IntermediateTal->ser_occ_name }}</a><br/>                                
+                                @endforeach
 
                             </div>
                             <div class="tab-pane fade" id="historial" role="tabpane2" aria-labelledby="profile-tab">

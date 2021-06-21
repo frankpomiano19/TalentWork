@@ -16,9 +16,9 @@ class UserOccupationSeeder extends Seeder
      */
     public function run()
     {
-        /*DB::table('use_occs')->insert([
+        DB::table('use_occs')->insert([
             'use_id' => '1',
             'ser_occ_id' => '1',
-        ]);*/
+        ]);
     }
 }

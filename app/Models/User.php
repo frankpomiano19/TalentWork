@@ -44,4 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function UseOccIntermediate(){
+        return $this->hasMany(use_occ::class,'use_id');
+    }
+    public function UseTalIntermediate(){
+        return $this->hasMany(use_tal::class,'use_id');
+    }    
 }

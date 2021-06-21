@@ -25,8 +25,19 @@
         </div>
         <div class="col-md-9 register-right" style="background: rgba(252, 255, 255, 0.8);">
 
+
             <div class="tab-content" id="myTabContent" >
                 <div class="tab-pane fade show active"  style="background: transparent !important" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <h3 class="register-heading text-black" >TalentWork te espera el primer paso es registrarse</h3>
                     <form method="POST" action="/registrar">
                         @csrf
@@ -48,14 +59,19 @@
                                 <div class="form-group">
                                     <input type="number" minlength="10" maxlength="10" name="dni" class="form-control" placeholder="Escriba su DNI *" value="" required />
                                 </div>
+                                @error('dni')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror                                
                                 <div class="form-group">
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electronico *"  name="email" value="{{ old('email') }}" required autocomplete="email" />
 
-                                    @error('email')
+                                    @if($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong>{{ $errors->first('email') }}</strong>
                                         </span>
-                                    @enderror
+                                    @endif                                    
 
 
                                 </div>
@@ -65,7 +81,7 @@
 
                                 <div class="form-group">
                                     <input class="form-control"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
-                                    @error('cumple')
+                                    @error('birthdate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -78,9 +94,18 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
                                 </div>
                                 <div class="form-group">
                                     <input id="password-confirm" type="password" class="form-control"  placeholder="Confirme contraseña *" name="password_confirmation" required autocomplete="new-password" />
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+
+
                                 </div>
                                 <input type="submit" class="btnRegister"  value="Registrar"/>
                             </div>

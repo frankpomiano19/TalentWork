@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -29,22 +30,14 @@ class HomeController extends Controller
     }
 
     public function nuevoRegistro(Request $request){
-
-        /*$request->validate([
-            'nombre'=>'required',
-            'apellido'=>'required|string|max:100',
-            'dni'=>'required|string|min:9',
-            'edad'=>'required|string|max:4',
-            'sexo'=>'required',
-            'usuario'=>'required|string|max:25',
-            'contraseña'=>'required|string|min:6'
-        ]);*/
-        
-        //if($contraRepetida != $request->contra){
-        //    return back()->with('mensaje','Contraseñas no coinciden');
-        //}
-
-
+        $request->validate([
+            'name'=>'required',
+            'lastname'=>'required|string|max:100',
+            'dni'=>'required|string|unique:users,dni',
+            'email'=>'required|email|unique:users,email',
+            'birthdate'=>'required',
+            'password'=>'required|string|max:25|confirmed',
+        ]);
         $user = new User(array(
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),
@@ -52,7 +45,7 @@ class HomeController extends Controller
             'email' => $request->get('email'),
             'birthdate' => $request->get('birthdate'),
             'password' => bcrypt($request->get('password')),
-            'password_confirmation' => $request->get('password_confirmation')
+            'password_confirmation' => bcrypt($request->get('password_confirmation'))
         ));
 
         $user->save();

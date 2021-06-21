@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -16,16 +17,30 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        /*DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
+        date_default_timezone_get();
+        date_default_timezone_set('America/Lima');
+        date('Y-m-d H:i:s');  
+        $passwordNow = null;         
+        $passwordNow = Hash::make('password');
         DB::table('users')->insert([
             'name' => Str::random(10),
+            'lastname' => Str::random(10).'@gmail.com',
+            'DNI' => Str::random(10).'@gmail.com',
             'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);*/
+            'birthdate' => Carbon::now(),
+            'password' => $passwordNow,
+            'password_confirmation'=>$passwordNow
+        ]);
+        $passwordNow = Hash::make('password');
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'lastname' => Str::random(10).'@gmail.com',
+            'DNI' => Str::random(10).'@gmail.com',
+            'email' => Str::random(10).'@gmail.com',
+            'birthdate' => Carbon::now(),
+            'password' => $passwordNow,
+            'password_confirmation'=>$passwordNow
+        ]);
 
     }
 }
