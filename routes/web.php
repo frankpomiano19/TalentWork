@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ Route::get('/',[EraserController::class,'index']);
 Route::get('/perfilDos',[ContractController::class,'index']);
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
+    Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
+    Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
 });
 
 
@@ -44,3 +47,4 @@ Route::get('registro',function(){
 Route::get('perfil',function(){
     return view('perfil');
 });
+Route::get('registroServicio',[ServiceController::class, 'registro']);
