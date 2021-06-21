@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/',[EraserController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('ServiciosOfrecidos');
 
 
 
@@ -43,20 +44,21 @@ Route::get('template',function(){
 });
 Route::get('registro',function(){
     return view('registro');
-});
+})->name('registrouser');
 /*Route::get('perfil',function(){
     return view('perfil');
 });*/
 
-Route::get('/perfil', 'PerfilController@index')->name('perfil');
+Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
-Route::get('registroServicio',[ServiceController::class, 'registro']);
+
 
 Route::get('/welcome1',function(){
 return view( 'reg-serv-indep');
 });
+
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });

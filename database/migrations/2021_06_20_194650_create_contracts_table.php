@@ -20,7 +20,7 @@ class CreateContractsTable extends Migration
 
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->enum('con_day',range(0,31));
+            $table->dateTime('con_contract_date');
             $table->time('con_hour',4);
             $table->text('con_address')->require();
             $table->text('con_description')->require();

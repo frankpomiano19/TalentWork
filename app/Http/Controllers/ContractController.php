@@ -18,15 +18,15 @@ class ContractController extends Controller
     public function index(){
         return view('MPago.perfilBorrarNow');
     }
-    public function contractProcess(Request $request){
 
+    public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
         if($validationConfirm->fails()){
             $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }        
         $contractNow = Contract::create([
-            'con_day'=>$request->dayForm,
+            'con_contract_date'=>$request->dateForm,
             'con_hour'=>$request->hourForm,
             'con_address'=>$request->addressForm,
             'con_description'=>$request->descriptionForm,
@@ -36,7 +36,9 @@ class ContractController extends Controller
             'use_receive'=>auth()->user()->id,
             'ser_occ_id'=>$request->serviceOffer,
         ]);
-        return "Correcto";
+        $message = "Realizdo correctametne";
+        return back()->with('contractMessage',$message);
+
     }
 
 
@@ -46,7 +48,7 @@ class ContractController extends Controller
         $fieldCreate= [
             'userOffer'=>'required|integer|min:0',
             'priceOffer'=>'required|numeric|between:0,9999.99',
-            'dayForm'=>'required|integer|min:0',
+            'dateForm'=>'required|date',
             'hourForm'=>'required',
             'addressForm'=>'required|string',
             'descriptionForm'=>'required|string',

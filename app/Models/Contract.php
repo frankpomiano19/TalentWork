@@ -10,7 +10,7 @@ class Contract extends Model
     use HasFactory;
     protected $table = 'contracts';
     protected $fillable = [
-        'con_day',
+        'con_contract_date',
         'con_hour',
         'con_address',
         'con_description',
