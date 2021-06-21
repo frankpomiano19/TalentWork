@@ -25,3 +25,7 @@ Route::get('nuevo',function(){
 Route::get('template',function(){
     return view('template');
 });
+
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+});
