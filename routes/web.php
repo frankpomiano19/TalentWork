@@ -25,3 +25,9 @@ Route::get('nuevo',function(){
 Route::get('template',function(){
     return view('template');
 });
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+Route::get('/servicio',function(){
+    return view('servicio');
+});
