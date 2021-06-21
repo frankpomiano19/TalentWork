@@ -48,3 +48,9 @@ Route::get('perfil',function(){
     return view('perfil');
 });
 Route::get('registroServicio',[ServiceController::class, 'registro']);
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+Route::get('/servicio',function(){
+    return view('servicio');
+});
