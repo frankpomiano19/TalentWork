@@ -64,7 +64,7 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <input type="date" min="1990-01-01" max="2016-12-31" id="cumple" name="birthdate" class="form-control"/>
+                                    <input class="form-control"  type="text" name="nacimientotitular" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
                                     @error('cumple')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

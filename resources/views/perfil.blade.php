@@ -49,8 +49,89 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
+                        <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
+                        Editar Perfil
+                        </button>
+
+                        <!-- The Modal -->
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                    <h4 class="modal-title">Editar Perfil</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+
+                                        <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Nombre</label>
+                                            <input type="text" class="form-control" id="inputNombre" placeholder="Escriba su Nombre*" value="" required/>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+
+                                        @enderror
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Apellidos</label>
+                                            <input type="text" class="form-control" id="inputApellidos" placeholder="Escriba sus Apellidos*" value="" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Correo</label>
+                                            <input type="email" class="form-control" id="inputCorreo" placeholder="Escriba su Correo*" value="" required/>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Contraseña</label>
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Escriba su contraseña*" value="" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputNaci">Fecha de Nacimiento</label>
+                                                <input class="form-control"  type="text" name="nacimientotitular" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
+                                                @error('cumple')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputDNI">DNI</label>
+                                            <input type="number" minlength="10" maxlength="10" name="dni" class="form-control" placeholder="Escriba su DNI *" value="" required />
+                                            </div>
+                                        </div>
+
+
+
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-success">Guardar
+
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
