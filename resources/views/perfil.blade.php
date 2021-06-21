@@ -29,10 +29,14 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Leslie Arias Salinas
+                                    {{ $user->name }}
                                     </h5>
                                     <h6>
-                                        Narradora de Chistes
+                                    @foreach($servOcu as $serv)
+
+                                    {{ $serv->ser_occ_name }}
+
+                                    @endforeach
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -151,7 +155,7 @@
                                                 <label>Nombres</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Leslie</p>
+                                                <p>{{ $user->name }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -159,7 +163,7 @@
                                                 <label>Apellidos</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Arias Salinas</p>
+                                                <p>{{ $user->lastname }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -167,7 +171,7 @@
                                                 <label>Correo</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>LeslieAS@gmail.com</p>
+                                                <p>{{ $user->email }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -175,15 +179,19 @@
                                                 <label>DNI</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{ $user->DNI }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Ocuapación</label>
+                                                <label>Servicio</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Contadora de Chistes</p>
+
+                                            @foreach($servOcu as $serv)
+                                                <p>{{ $serv->ser_occ_name }}</p>
+                                            @endforeach
+                                            
                                             </div>
                                         </div>
                                         <div class="row">
@@ -191,7 +199,7 @@
                                                 <label>Nacimiento</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>01/01/2000</p>
+                                                <p>{{ $user->birthdate }}</p>
                                             </div>
                                         </div>
                             </div>

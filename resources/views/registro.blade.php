@@ -28,7 +28,7 @@
             <div class="tab-content" id="myTabContent" >
                 <div class="tab-pane fade show active"  style="background: transparent !important" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading text-black" >TalentWork te espera el primer paso es registrarse</h3>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/registrar">
                         @csrf
 
                         <div class="row register-form">
@@ -64,7 +64,7 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <input class="form-control"  type="text" name="nacimientotitular" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
+                                    <input class="form-control"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
                                     @error('cumple')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
