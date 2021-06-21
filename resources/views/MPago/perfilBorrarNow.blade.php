@@ -13,7 +13,6 @@
                 <li>{{ $errorRegister }}</li> 
             @endforeach
         </ul>
-
     </div>
 
 {{-- 
