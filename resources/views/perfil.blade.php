@@ -73,9 +73,11 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
-                        Editar Perfil
-                        </button>
+                        @if($user->id == auth()->user()->id)
+                            <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
+                            Editar Perfil
+                            </button>
+                        @endif
 
                         <!-- The Modal -->
                             <div class="modal fade" id="myModal">

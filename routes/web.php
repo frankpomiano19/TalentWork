@@ -16,7 +16,7 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('ServiciosOfrecidos');
 
 
 
@@ -44,12 +44,12 @@ Route::get('template',function(){
 });
 Route::get('registro',function(){
     return view('registro');
-});
+})->name('registrouser');
 /*Route::get('perfil',function(){
     return view('perfil');
 });*/
 
-Route::get('/perfil', 'PerfilController@index')->name('perfil');
+Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
