@@ -18,7 +18,7 @@ Route::get('/',[EraserController::class,'index']);
 
 
 
-Route::get('/perfil',[ContractController::class,'index']);
+Route::get('/perfilDos',[ContractController::class,'index']);
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
 });
