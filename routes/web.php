@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/',[EraserController::class,'index']);
+Route::get('/',[HomeController::class,'index']);
 
 
 
