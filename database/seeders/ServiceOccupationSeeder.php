@@ -19,5 +19,17 @@ class ServiceOccupationSeeder extends Seeder
         DB::table('service_occupations')->insert([
             'ser_occ_name' => 'Gasfitero de madrigueras',
         ]);
+        DB::table('service_occupations')->insert([
+            'ser_occ_name' => 'Reparador de computadoras',
+        ]);
+        DB::table('service_occupations')->insert([
+            'ser_occ_name' => 'Diseñador Gráfico',
+        ]);
+        DB::table('service_occupations')->insert([
+            'ser_occ_name' => 'Estampador de polos',
+        ]);
+        DB::table('service_occupations')->insert([
+            'ser_occ_name' => 'Confeccionador de ropas',
+        ]);
     }
 }

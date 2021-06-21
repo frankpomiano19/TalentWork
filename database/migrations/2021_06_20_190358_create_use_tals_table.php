@@ -19,6 +19,9 @@ class CreateUseTalsTable extends Migration
             $table->unsignedBigInteger('ser_tal_id');
             $table->foreign('use_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('ser_tal_id')->references('id')->on('service_talent')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('descripcion');
+            $table->decimal('precio', 6, 2);
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
