@@ -29,3 +29,9 @@ Route::get('template',function(){
 Route::get('/welcome1',function(){
 return view( 'reg-serv-indep');
 });
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+Route::get('/servicio',function(){
+    return view('servicio');
+});
