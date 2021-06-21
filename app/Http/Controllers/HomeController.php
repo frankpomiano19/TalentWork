@@ -35,10 +35,21 @@ class HomeController extends Controller
         $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
         return view('profileServiceTalent',compact('allServices'));
     }   
+
     public function showOccupationService(){
         $allServices = use_occ::orderBy('created_at','DESC')->paginate(20);
         return view('profileServiceOccupation',compact('allServices'));
     }
+
+    public function showProfileServiceTalent($id){
+        $serviceProfile = use_tal::where('id',$id)->first();
+        return view('servicio',compact('serviceProfile'));
+    }
+    public function showProfileServiceOccupation($id){
+        $serviceProfile = use_occ::where('id',$id)->first();
+        return view('servicio',compact('serviceProfile'));
+    }
+
     public function nuevoRegistro(Request $request){
         $request->validate([
             'name'=>'required',

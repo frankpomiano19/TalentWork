@@ -10,8 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" ></script>
     <script src="{{ asset('fortawesome/fontawesome-free/js/all.min.js') }}"></script>
+
 
     @yield('contenido_js')
 
@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }} ">
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
     <style>
     .body{
         background-color: #000000
@@ -67,6 +69,9 @@
                             </li>
                         @endif
                     @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('registerServiceAllNow') }}">Ofrecer Mi Servicio</a>
+                    </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -164,6 +169,7 @@
                 </div>
             </div>
         </div>
+
 
     @yield('contenido_abajo_js')
 

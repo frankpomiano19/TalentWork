@@ -19,6 +19,9 @@ use App\Http\Controllers\ServiceController;
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
+Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
+Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
@@ -53,10 +56,7 @@ Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 Route::get('/welcome1',function(){
 return view( 'reg-serv-indep');
-});
+})->name('registerServiceAllNow');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
-});
-Route::get('/servicio',function(){
-    return view('servicio');
 });
