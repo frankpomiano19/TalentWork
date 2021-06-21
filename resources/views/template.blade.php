@@ -2,11 +2,11 @@
 
 
 @section('contenido_js')
-    
+
 @endsection
 
 @section('contenido_cSS')
-    
+
 @endsection
 
 
@@ -15,16 +15,12 @@
 <br>
 <br>
 <br>
-dasds
-<a href=""></a>
-<i class="fa fa-home" aria-hidden="true"></i>
-<div class="animate__animated animate__rubberBand"> cascasd</div>
+<div id="example"></div>
 @endsection
+<script src="{{ asset('js/app.js') }}" defer></script>
 
 @section('contenido_abajo_js')
 <script>
-
-Swal.fire('Any fool can use a computer');
 </script>
-    
+
 @endsection

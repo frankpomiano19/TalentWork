@@ -12,6 +12,13 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+<<<<<<< HEAD
+    .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps();
+=======
     .react()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/perfilcss.scss', 'public/css')
+    .sass('resources/sass/registrocss.scss', 'public/css')
 mix.copy('node_modules/bootstrap-icons/font','public/fonts/bootstrap-icons');
+>>>>>>> d7ceea890afe0c0ff5979daa71cca43ccdd9b76b
