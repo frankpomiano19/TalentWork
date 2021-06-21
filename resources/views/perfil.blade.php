@@ -29,25 +29,25 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                    {{ $user->name }}
+                                    {{ Auth::user()->name }}
                                     </h5>
                                     <h6>
                                         @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
-                                            {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->use_id }}                                        
+                                            {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}                                        
                                         @else
                                             @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
-                                                {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->use_id }}
+                                                {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
                                             @else
                                                 No registra ningun servicio
                                             @endif
                                         @endif
 
                                     <br>
-                                    @foreach($servOcu as $serv)
+                                    {{-- @foreach($servOcu as $serv)
 
                                     {{ $serv->ser_occ_name }}
 
-                                    @endforeach
+                                    @endforeach --}}
                                     </h6>
                                     <p class="proile-rating">CALIFICACION : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -199,9 +199,15 @@
                                             </div>
                                             <div class="col-md-6">
 
-                                            @foreach($servOcu as $serv)
-                                                <p>{{ $serv->ser_occ_name }}</p>
-                                            @endforeach
+                                            @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
+                                                <p> {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>                                        
+                                            @else
+                                                @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
+                                                  <p>  {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
+                                                @else
+                                                    No registra ningun servicio
+                                                @endif
+                                            @endif                                            
                                             
                                             </div>
                                         </div>
@@ -216,11 +222,19 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 @foreach(Auth::user()->UseOccIntermediate as $serviceUsers)
-                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a><br/>                                
+                                <div class="d-flex justify-content-between">
+                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
+                                    <button class="btn-info">Contratar</button>
+                                    <br/>                                
+                                </div>
                                 @endforeach
 
                                 @foreach(Auth::user()->UseTalIntermediate as $serviceTalUsers)
-                                    <a href="">{{ $serviceTalUsers->IntermediateTal->ser_occ_name }}</a><br/>                                
+                                    <div class="d-flex justify-content-between">
+                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_occ_name }}</a>
+                                        <button class="btn-info">Contratar</button>
+                                        <br/>                                
+                                    </div>
                                 @endforeach
 
                             </div>
