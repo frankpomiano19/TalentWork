@@ -41,6 +41,16 @@ Route::get('/contrato', function () {
 Route::get('template',function(){
     return view('template');
 });
+
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+});
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+Route::get('/servicio',function(){
+    return view('servicio');
+});
 Route::get('registro',function(){
     return view('registro');
 });
@@ -54,9 +64,6 @@ Route::get('/perfilservicio',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
-<<<<<<< HEAD
 Route::get('/talento',function(){
     return view('talento');
 });
-=======
->>>>>>> 97fc7f4ade98a222eb56867ef13be5ac78407e20
