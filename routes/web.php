@@ -31,3 +31,6 @@ Route::get('/perfilservicio',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
+Route::get('/talento',function(){
+    return view('talento');
+});
