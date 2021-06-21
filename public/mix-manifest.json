@@ -1,4 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
+<<<<<<< HEAD
     "/css/app.css": "/css/app.css"
+=======
+    "/css/app.css": "/css/app.css",
+    "/css/registrocss.css": "/css/registrocss.css",
+    "/css/perfilcss.css": "/css/perfilcss.css",
+    "/fonts/bootstrap-icons/bootstrap-icons.css": "/fonts/bootstrap-icons/bootstrap-icons.css",
+    "/fonts/bootstrap-icons/bootstrap-icons.json": "/fonts/bootstrap-icons/bootstrap-icons.json",
+    "/fonts/bootstrap-icons/index.html": "/fonts/bootstrap-icons/index.html"
+>>>>>>> d7ceea890afe0c0ff5979daa71cca43ccdd9b76b
 }

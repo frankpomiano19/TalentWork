@@ -7,10 +7,10 @@ function Example() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">Ejemplo de componente</div>
+                        <div className="card-header">dsdasdasdas</div>
 
-                        <div className="card-body">Simplemente un componente, que mas :(</div>
-                        <div>Simplemente el componete que manejo</div>
+                        <div className="card-body">ayudaaaaaaafdfdsfdsfd</div>
+                        <div>Sgaaaaaaaaaa</div>
                     </div>
                 </div>
             </div>
