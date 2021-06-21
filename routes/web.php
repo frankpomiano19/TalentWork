@@ -53,7 +53,7 @@ Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
-Route::get('registroServicio',[ServiceController::class, 'registro']);
+// Route::get('registroServicio',[ServiceController::class, 'registro']);
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
