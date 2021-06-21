@@ -29,12 +29,27 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Leslie Arias Salinas
+                                    {{ Auth::user()->name }}
                                     </h5>
                                     <h6>
-                                        Narradora de Chistes
+                                        @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
+                                            {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}                                        
+                                        @else
+                                            @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
+                                                {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
+                                            @else
+                                                No registra ningun servicio
+                                            @endif
+                                        @endif
+
+                                    <br>
+                                    {{-- @foreach($servOcu as $serv)
+
+                                    {{ $serv->ser_occ_name }}
+
+                                    @endforeach --}}
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <p class="proile-rating">CALIFICACION : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos Personales</a>
@@ -49,8 +64,89 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
+                        <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
+                        Editar Perfil
+                        </button>
+
+                        <!-- The Modal -->
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                    <h4 class="modal-title">Editar Perfil</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+
+                                        <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Nombre</label>
+                                            <input type="text" class="form-control" id="inputNombre" placeholder="Escriba su Nombre*" value="" required/>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+
+                                        @enderror
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Apellidos</label>
+                                            <input type="text" class="form-control" id="inputApellidos" placeholder="Escriba sus Apellidos*" value="" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Correo</label>
+                                            <input type="email" class="form-control" id="inputCorreo" placeholder="Escriba su Correo*" value="" required/>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Contraseña</label>
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Escriba su contraseña*" value="" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputNaci">Fecha de Nacimiento</label>
+                                                <input class="form-control"  type="text" name="nacimientotitular" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
+                                                @error('cumple')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <label for="inputDNI">DNI</label>
+                                            <input type="number" minlength="10" maxlength="10" name="dni" class="form-control" placeholder="Escriba su DNI *" value="" required />
+                                            </div>
+                                        </div>
+
+
+
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-success">Guardar
+
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -70,7 +166,7 @@
                                                 <label>Nombres</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Leslie</p>
+                                                <p>{{ $user->name }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -78,7 +174,7 @@
                                                 <label>Apellidos</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Arias Salinas</p>
+                                                <p>{{ $user->lastname }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -86,7 +182,7 @@
                                                 <label>Correo</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>LeslieAS@gmail.com</p>
+                                                <p>{{ $user->email }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -94,15 +190,25 @@
                                                 <label>DNI</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{ $user->DNI }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Ocuapación</label>
+                                                <label>Servicio</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Contadora de Chistes</p>
+
+                                            @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
+                                                <p> {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>                                        
+                                            @else
+                                                @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
+                                                  <p>  {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
+                                                @else
+                                                    No registra ningun servicio
+                                                @endif
+                                            @endif                                            
+                                            
                                             </div>
                                         </div>
                                         <div class="row">
@@ -110,16 +216,26 @@
                                                 <label>Nacimiento</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>01/01/2000</p>
+                                                <p>{{ $user->birthdate }}</p>
                                             </div>
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                @foreach(Auth::user()->UseOccIntermediate as $serviceUsers)
+                                <div class="d-flex justify-content-between">
+                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
+                                    <button class="btn-info">Contratar</button>
+                                    <br/>                                
+                                </div>
+                                @endforeach
 
-                                <a href="">Servicio 1</a><br/>
-                                <a href="">Servicio 2</a><br/>
-                                <a href="">Servicio 3</a><br/>
-                                <a href="">Servicio 4</a><br/>
+                                @foreach(Auth::user()->UseTalIntermediate as $serviceTalUsers)
+                                    <div class="d-flex justify-content-between">
+                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_occ_name }}</a>
+                                        <button class="btn-info">Contratar</button>
+                                        <br/>                                
+                                    </div>
+                                @endforeach
 
                             </div>
                             <div class="tab-pane fade" id="historial" role="tabpane2" aria-labelledby="profile-tab">

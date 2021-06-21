@@ -41,6 +41,9 @@ Route::get('template',function(){
 Route::get('registro',function(){
     return view('registro');
 });
-Route::get('perfil',function(){
+/*Route::get('perfil',function(){
     return view('perfil');
-});
+});*/
+
+Route::get('/perfil', 'PerfilController@index')->name('perfil');
+Route::post('/registrar','HomeController@nuevoRegistro');
