@@ -53,6 +53,10 @@ Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
 Route::get('registroServicio',[ServiceController::class, 'registro']);
+
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+});
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
