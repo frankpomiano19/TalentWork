@@ -38,14 +38,14 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                    {{ Auth::user()->name }}
+                                    {{ $user->name }}
                                     </h5>
                                     <h6>
-                                        @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
-                                            {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}                                        
+                                        @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)                                        
+                                            {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}                                        
                                         @else
-                                            @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
-                                                {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
+                                            @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)                                        
+                                                {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
                                             @else
                                                 No registra ningun servicio
                                             @endif
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        @if($user->id == auth()->user()->id)
+                        @if($user->id == $user->id)
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
                             </button>
@@ -210,11 +210,11 @@
                                             </div>
                                             <div class="col-md-6">
 
-                                            @if(Auth::user()->UseOccIntermediate!=null && Auth::user()->UseOccIntermediate->count()>0)                                        
-                                                <p> {{ Auth::user()->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>                                        
+                                            @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)                                        
+                                                <p> {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>                                        
                                             @else
-                                                @if(Auth::user()->UseTalIntermediate!=null && Auth::user()->UseTalIntermediate->count()>0)                                        
-                                                  <p>  {{ Auth::user()->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
+                                                @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)                                        
+                                                  <p>  {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
                                                 @else
                                                     No registra ningun servicio
                                                 @endif
@@ -232,72 +232,31 @@
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @foreach(Auth::user()->UseOccIntermediate as $serviceUsers)
+                                @foreach($user->UseOccIntermediate as $serviceUsers)
                                 <div class="d-flex justify-content-between">
                                     <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
                                     <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Contratar
                                         </button>                                    
                                     <br/>                                
-                                    <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
-                                        @csrf
-                            
-                                        <input type="hidden" name="userOffer" value="1" required>
-                                        <input type="hidden" name="priceOffer" value="20.00" required>
-                                        <input type="hidden" name="serviceOffer" value="1" required>
-                                
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                    
-                                                    <div class="text-center">
-                                                        <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
-                                                    </div>
-                            
-                                                    <!-- Cuerpo modal -->
-                                                    <div class="modal-body">
-                                                        <div class="m-1" id="formulario">
-                                                            <label class="">Contratado por: Usuario nuevo</label><br>
-                                                            <label>Hora: </label><br>
-                                                            <input type="time" class="form-control" value="{{ old('hourForm') }}" name="hourForm">
-                                                            <label class="m-1">Fecha: </label>
-                                                            <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
-                            
-                                                            <label class="m-1" for="">Lugar</label>
-                                                            <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
-                                                    
-                            
-                                                            <label class="m-1">Descripcion</label><br>
-                                                            <input class="form-control" name="descriptionForm" value="{{ old('descriptionForm') }}" placeholder="Descripcion">
-                                                        </div>
-                                                    </div>
-                                    
-                                                    <!-- Botones pie -->
-                                                    <div class="form-group row justify-content-center">
-                                                        <div class="col-sm-3">
-                                                        <input type="submit" value="Siguiente" class="btn btn-primary"/>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                        <input type="submit" value="Cancelar" class="btn btn-danger" data-bs-dismiss="modal" />
-                                                        </div>
-                                                    </div>
-                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+
                                 </div>
-
-
                                 @endforeach
 
-                                @foreach(Auth::user()->UseTalIntermediate as $serviceTalUsers)
+
+
+                                @foreach($user->UseTalIntermediate as $serviceTalUsers)
                                     <div class="d-flex justify-content-between">
-                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_occ_name }}</a>
-                                        <button class="btn-info">Contratar</button>
+                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+
+                                        <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Contratar
+                                        </button>                                    
+    
                                         <br/>                                
                                     </div>
                                 @endforeach
+
 
                             </div>
                             <div class="tab-pane fade" id="historial" role="tabpane2" aria-labelledby="profile-tab">
@@ -346,7 +305,59 @@
         </div>
 
 
+
+
+
+        {{-- PopUp --}}
+
+        <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
+            @csrf
+
+            <input type="hidden" name="userOffer" value="{{ $user->id }}" required>
+            <input type="hidden" name="priceOffer" value="20.00" required>
+            <input type="hidden" name="serviceOffer" value="1" required>
+    
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
         
+                        <div class="text-center">
+                            <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
+                        </div>
+
+                        <!-- Cuerpo modal -->
+                        <div class="modal-body">
+                            <div class="m-1" id="formulario">
+                                <label class="">Contratado por: Usuario nuevo</label><br>
+                                <label>Hora: </label><br>
+                                <input type="time" class="form-control" value="{{ old('hourForm') }}" name="hourForm">
+                                <label class="m-1">Fecha: </label>
+                                <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
+
+                                <label class="m-1" for="">Lugar</label>
+                                <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
+                        
+
+                                <label class="m-1">Descripcion</label><br>
+                                <input class="form-control" name="descriptionForm" value="{{ old('descriptionForm') }}" placeholder="Descripcion">
+                            </div>
+                        </div>
+        
+                        <!-- Botones pie -->
+                        <div class="form-group row justify-content-center">
+                            <div class="col-sm-3">
+                            <input type="submit" value="Siguiente" class="btn btn-primary"/>
+                            </div>
+                            <div class="col-sm-3">
+                            <input type="submit" value="Cancelar" class="btn btn-danger" data-bs-dismiss="modal" />
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </form>        
+
 @endsection
 
 

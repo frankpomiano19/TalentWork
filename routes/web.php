@@ -16,12 +16,10 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('ServiciosOfrecidos');
+Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
-Route::get('/occupationSerice',[HomeController::class,'showOccupationService'])->name('showOccupationService');
+Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 
-
-Route::get('/perfilDos',[ContractController::class,'index']);
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');

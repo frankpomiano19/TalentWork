@@ -69,7 +69,7 @@
                             </div>
                             <h2><a href="">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
                             <div class="product-carousel-price">
-                                 <a href="">{{ $service->IntermediateUseTal->name }}</a> 
+                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
                             </div>  
                             <div class="product-carousel-price">
                                 {{ $service->descripcion }}

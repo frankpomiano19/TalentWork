@@ -56,7 +56,7 @@
                             </div>
                             <h2><a href="">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
                             <div class="product-carousel-price">
-                                 <a href="">{{ $service->IntermediateUseOcc->name }}</a> 
+                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                             </div>  
                             <div class="product-carousel-price">
                                 {{ $service->descripcion }}
