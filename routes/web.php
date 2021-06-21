@@ -30,6 +30,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('nuevo',function(){
     return view('nuevo');
 });
+
+Route::get('/contrato', function () {
+    return view('contratoPerfil');
+})->name("contratoPerfil");
+
 Route::get('template',function(){
     return view('template');
 });
