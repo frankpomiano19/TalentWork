@@ -10,7 +10,7 @@ use App\Models\ServiceOccupation;
 use App\Models\ServiceTalent;
 use App\Models\use_occ;
 use App\Models\use_tal;
-
+use JD\Cloudder\Facades\Cloudder;
 
 class ServiceController extends Controller
 {
@@ -32,7 +32,19 @@ class ServiceController extends Controller
         $datosServicio->ser_occ_id = $request->servicioTecn;
         $datosServicio->descripcion = $request->detallesTecn;
         $datosServicio->precio = $request->costoTecn;
-        $datosServicio->imagen = $request->imagenTecn;
+        $image = $request->file('imagenTecn');
+
+        $name = $request->file('imagenTecn')->getClientOriginalName();
+
+        $image_name = $request->file('imagenTecn')->getRealPath();
+
+        Cloudder::upload($image_name, null);
+        list($width, $height) = getimagesize($image_name);
+        $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+        $image->move(public_path("uploads"), $name);
+
+        $datosServicio->imagen = $image_url;
         $datosServicio->save();
         return back();
     }
