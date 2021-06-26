@@ -50,7 +50,7 @@
                     </div>
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="service" role="tabpanel" aria-labelledby="service-tab">
-                        <form action=" {{route('servicio.tecnico')}} " class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+                        <form action=" {{route('servicio.tecnico')}} " method="POST" enctype="multipart/form-data">
                           @csrf
                           <div class="form-group">
                             <label for="servicioTecn">Seleccione su servicio técnico perteneciente</label>
@@ -94,7 +94,7 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTecn">Ingrese una imagen referente de su servicio</label>
-                              <input type="file" class="form-control-file" id="imagenTecn" name="imagenTecn">
+                              <input type="file" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
@@ -134,9 +134,17 @@
                             <label for="costoTalen">Ingrese el costo de su talento</label>
                             <input type="number" class="form-control" id="costoTalen" name="costoTalen" required>
                           </div>
+                          @error('imagenTalen')
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <small>Solo se acepta imagen con formato JPEG,BMP,JPG o PNG (máx 6MB)</small>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          @enderror
                           <div class="form-group">
                               <label for="imagenTalen">Ingrese una imagen referente de su talento</label>
-                              <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen">
+                              <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar Talento</button>
                         </form>  

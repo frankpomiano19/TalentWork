@@ -24,7 +24,8 @@ class ServiceController extends Controller
         $request->validate([
             'servicioTecn' => 'required',
             'detallesTecn' => 'required',
-            'costoTecn' => 'required'
+            'costoTecn' => 'required',
+            'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
         $datosServicio = new use_occ;
@@ -53,7 +54,8 @@ class ServiceController extends Controller
         $request->validate([
             'servicioTalen' => 'required',
             'detallesTalen' => 'required',
-            'costoTalen' => 'required'
+            'costoTalen' => 'required',
+            'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
         $datosServicio = new use_tal;
@@ -61,7 +63,19 @@ class ServiceController extends Controller
         $datosServicio->ser_tal_id = $request->servicioTalen;
         $datosServicio->descripcion = $request->detallesTalen;
         $datosServicio->precio = $request->costoTalen;
-        $datosServicio->imagen = $request->imagenTalen;
+        $image = $request->file('imagenTalen');
+
+        $name = $request->file('imagenTalen')->getClientOriginalName();
+
+        $image_name = $request->file('imagenTalen')->getRealPath();
+
+        Cloudder::upload($image_name, null);
+        list($width, $height) = getimagesize($image_name);
+        $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+        $image->move(public_path("uploads"), $name);
+
+        $datosServicio->imagen = $image_url;
         $datosServicio->save();
         return back();
     }
