@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
+    Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
+    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    
 });
 
 
@@ -51,8 +54,6 @@ Route::get('registro',function(){
     return view('perfil');
 });*/
 
-Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
 //Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);

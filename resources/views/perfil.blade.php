@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        @if($user->id == $user->id)
+                        @if(auth()->user()->id == $user->id)
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
                             </button>
