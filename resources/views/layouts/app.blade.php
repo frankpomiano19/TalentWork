@@ -71,7 +71,7 @@
                         @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registerServiceAllNow') }}">Ofrecer Mi Servicio</a>
+                        <a class="nav-link" href="{{ route('offerMyService') }}">Ofrecer Mi Servicio</a>
                     </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -97,7 +97,7 @@
         </div>
     </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
 
