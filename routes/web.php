@@ -50,6 +50,12 @@ Route::get('registro',function(){
 /*Route::get('perfil',function(){
     return view('perfil');
 });*/
+Route::get('servicio',function(){
+    return view('servicio');
+});
+Route::get('serviciopremium',function(){
+    return view('serviciopremium');
+});
 
 Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::post('/registrar','HomeController@nuevoRegistro');
