@@ -276,7 +276,7 @@
                                     <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
                                     <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->ser_occ_id }}" required>    
                                     <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
-                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
+                                    <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
 
 
 
@@ -310,8 +310,7 @@
                                 </div>
                                 @endforeach
 
-
-
+                                
                                 @foreach($user->UseTalIntermediate as $serviceTalUsers)
                                     <div class="d-flex justify-content-between form-details-get">
                                         <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $user->id }}" required>
@@ -319,7 +318,7 @@
                                         <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->ser_tal_id }}" required>    
                                         <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
-                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+                                        <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
     
 
 
