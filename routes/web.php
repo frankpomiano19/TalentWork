@@ -68,3 +68,23 @@ return view( 'reg-serv-indep');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
+
+Route::get('/servicio',function(){
+    return view('servicio');
+});
+Route::get('registro',function(){
+    return view('registro');
+});
+Route::get('perfil',function(){
+    return view('perfil');
+});
+Route::get('registroServicio',[ServiceController::class, 'registro']);
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+Route::get('/servicio',function(){
+    return view('servicio');
+});
+Route::get('/talento',function(){
+    return view('talento');
+});
