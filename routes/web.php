@@ -53,33 +53,9 @@ Route::get('registro',function(){
 /*Route::get('perfil',function(){
     return view('perfil');
 });*/
-Route::get('servicio',function(){
-    return view('servicio');
-});
-Route::get('serviciopremium',function(){
-    return view('serviciopremium');
-});
 
 //Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
-
-Route::get('/welcome1',function(){
-return view( 'reg-serv-indep');
-})->name('registerServiceAllNow');
-Route::get('/perfilservicio',function(){
-    return view('perfilservicio');
-});
-
-Route::get('/servicio',function(){
-    return view('servicio');
-});
-Route::get('registro',function(){
-    return view('registro');
-});
-Route::get('perfil',function(){
-    return view('perfil');
-});
-
 
 
 
@@ -88,6 +64,9 @@ Route::get('registroServicio',[ServiceController::class, 'registro'])->name('off
 
 
 
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+})->name('registerServiceAllNow');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
