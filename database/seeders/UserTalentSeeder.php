@@ -21,12 +21,14 @@ class UserTalentSeeder extends Seeder
             'ser_tal_id' => '2',
             'descripcion' => 'Soy un buen narrador, cuento buenos chistes',
             'precio' => 100.00,
+            'imagen'=>'https://tec.com.pe/wp-content/uploads/2019/02/ElCuentacuentos.png'
         ]);
         DB::table('use_tals')->insert([
             'use_id' => '3',
             'ser_tal_id' => '1',
             'descripcion' => 'Grabo videos abriendo cajas',
             'precio' => 10.00,
+            'imagen'=>'https://media.istockphoto.com/photos/happy-girl-unpacking-clothes-after-online-shopping-picture-id1264257761?k=6&m=1264257761&s=612x612&w=0&h=dmb-RSs8JK4ur2Sf-2gF3zNUz0NXk2ykVaZU8b9efro='
         ]);
     }
 }

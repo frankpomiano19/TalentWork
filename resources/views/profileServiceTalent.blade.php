@@ -64,9 +64,17 @@
                 @foreach($allServices as $service)
                     <div class="col-md-3 col-sm-6">
                         <div class="single-shop-product">
-                            <div class="product-upper">
-                                <img src="img/product-6.jpg" alt="">
+                            <div class="product-upper" style="height: 150px !important">
+                                @if($service->imagen!=null)
+                                    
+                                    <img src="{{ $service->imagen }}" alt="" style="height: 150px !important">
+                                
+                                @else
+                                    <img src="img/product-6.jpg" alt="">
+                                @endif
                             </div>
+    
+                            
                             <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
                             <div class="product-carousel-price">
                                  <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
