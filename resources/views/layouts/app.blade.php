@@ -30,6 +30,7 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
     .body{
         background-color: #000000
@@ -172,9 +173,6 @@
 
 
     @yield('contenido_abajo_js')
-
-
-
 
 
 </body>

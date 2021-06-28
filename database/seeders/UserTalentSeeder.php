@@ -18,7 +18,7 @@ class UserTalentSeeder extends Seeder
     {
         DB::table('use_tals')->insert([
             'use_id' => '2',
-            'ser_tal_id' => '3',
+            'ser_tal_id' => '2',
             'descripcion' => 'Soy un buen narrador, cuento buenos chistes',
             'precio' => 100.00,
         ]);

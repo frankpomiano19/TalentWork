@@ -16,4 +16,9 @@ class use_tal extends Model
         return $this->belongsTo(ServiceTalent::class,'ser_tal_id');
     }
 
+    public function IntermetiateTalContract(){
+        return $this->hasMany(Contract::class,'use_tal_id');
+    }
+
+
 }

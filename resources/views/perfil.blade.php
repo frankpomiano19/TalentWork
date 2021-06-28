@@ -233,11 +233,36 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 @foreach($user->UseOccIntermediate as $serviceUsers)
-                                <div class="d-flex justify-content-between">
+
+                                <div class="d-flex justify-content-between form-details-get">
+                                    <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $user->id }}" required>
+                                    <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
+                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->ser_occ_id }}" required>    
+                                    <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
                                     <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
-                                    <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+
+                                    <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Contratar
-                                        </button>                                    
+                                    </button>                                    
+
+
+                                    @if(auth()->user()!=null)
+                                        {{-- Para ver si el contrato ya se realizo con el mismo usuario --}}
+                                        {{-- @foreach($serviceUsers->IntermediateOccContract as $contract)
+                                        {{ $contract }}
+                                            @if($contract->use_receive == auth()->user()->id)
+                                                <button type="button" class="btn btn-secondary p-3" disabled>
+                                                    Ya contratado
+                                                </button>                                    
+                                            @else
+                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Contratar
+                                                </button>                                    
+                                            @endif
+                                        @endforeach --}}
+                                    @else
+                                    @endif                              
                                     <br/>                                
 
                                 </div>
@@ -246,12 +271,33 @@
 
 
                                 @foreach($user->UseTalIntermediate as $serviceTalUsers)
-                                    <div class="d-flex justify-content-between">
-                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+                                    <div class="d-flex justify-content-between form-details-get">
+                                        <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $user->id }}" required>
+                                        <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceTalUsers->precio }}" required>
+                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->ser_tal_id }}" required>    
+                                        <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
-                                        <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+    
+                                        <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             Contratar
                                         </button>                                    
+
+                                        @if(auth()->user()!=null)
+                                        {{-- Para ver si el contrato ya se realizo con el mismo usuario --}}
+                                            {{-- @foreach($serviceTalUsers->IntermetiateTalContract as $contract)
+                                                @if($contract->use_receive == auth()->user()->id)
+                                                    <button type="button" class="btn btn-secondary p-3" disabled>
+                                                        Ya contratado
+                                                    </button>                                    
+                                                @else
+                                                    <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        Contratar
+                                                    </button>                                    
+                                                @endif
+                                            @endforeach --}}
+                                        @else    
+                                        @endif                              
     
                                         <br/>                                
                                     </div>
@@ -312,10 +358,12 @@
 
         <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
             @csrf
+            <input type="hidden" class="set-user-offer-input" name="userOffer" value="" required>
+            <input type="hidden" class="set-price-offer-input" name="priceOffer" value="" required>
+            <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="" required>    
+            <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="" required>
 
-            <input type="hidden" name="userOffer" value="{{ $user->id }}" required>
-            <input type="hidden" name="priceOffer" value="20.00" required>
-            <input type="hidden" name="serviceOffer" value="1" required>
+
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
@@ -362,6 +410,23 @@
 
 
 @section('contenido_abajo_js')    
+
+<script>
+    $(".btn-details-now-data").click(function(event){
+
+        $('.set-user-offer-input').val($(this).closest('.form-details-get').find('.get-user-offer-input').val());
+        $('.set-price-offer-input').val($(this).closest('.form-details-get').find('.get-price-offer-input').val());
+        $('.set-service-offer-input').val($(this).closest('.form-details-get').find('.get-service-offer-input').val());
+        $('.set-type-offer-input').val($(this).closest('.form-details-get').find('.get-type-offer-input').val());
+    });
+
+</script>
+
+
+
+
+
+
 
 @if (session('contractFailed'))
 <script>

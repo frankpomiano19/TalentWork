@@ -24,19 +24,42 @@ class ContractController extends Controller
         if($validationConfirm->fails()){
             $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
-        }        
-        $contractNow = Contract::create([
-            'con_contract_date'=>$request->dateForm,
-            'con_hour'=>$request->hourForm,
-            'con_address'=>$request->addressForm,
-            'con_description'=>$request->descriptionForm,
-            'con_price'=>$request->priceOffer,
-            'con_initial'=>Carbon::now(),
-            'use_offer'=>$request->userOffer,
-            'use_receive'=>auth()->user()->id,
-            'ser_occ_id'=>$request->serviceOffer,
-        ]);
-        $message = "Realizdo correctametne";
+        }     
+        //1 : Para oficios
+        //2 : Para talentos
+        switch($request->typeOfJob){
+            case 1:
+                $contractNow = Contract::create([
+                    'con_contract_date'=>$request->dateForm,
+                    'con_hour'=>$request->hourForm,
+                    'con_address'=>$request->addressForm,
+                    'con_description'=>$request->descriptionForm,
+                    'con_price'=>$request->priceOffer,
+                    'con_initial'=>Carbon::now(),
+                    'use_offer'=>$request->userOffer,
+                    'use_receive'=>auth()->user()->id,
+                    'use_occ_id'=>$request->serviceOffer,
+                ]);
+        
+                break;
+            case 2:
+                $contractNow = Contract::create([
+                    'con_contract_date'=>$request->dateForm,
+                    'con_hour'=>$request->hourForm,
+                    'con_address'=>$request->addressForm,
+                    'con_description'=>$request->descriptionForm,
+                    'con_price'=>$request->priceOffer,
+                    'con_initial'=>Carbon::now(),
+                    'use_offer'=>$request->userOffer,
+                    'use_receive'=>auth()->user()->id,
+                    'use_tal_id'=>$request->serviceOffer,
+                ]);
+
+                break;
+            default:
+                return "Valor no encontrado";
+        }
+        $message = "Realizado correctamente";
         return back()->with('contractMessage',$message);
 
     }

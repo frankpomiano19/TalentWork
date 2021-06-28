@@ -17,5 +17,8 @@ class use_occ extends Model
     public function IntermediateOcc(){
         return $this->belongsTo(ServiceOccupation::class,'ser_occ_id');
     }
+    public function IntermediateOccContract(){
+        return $this->hasMany(Contract::class,'use_occ_id');
+    }
 
 }
