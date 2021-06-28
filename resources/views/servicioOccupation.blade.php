@@ -62,6 +62,9 @@
                           <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                           <div class="d-flex">
                             {{-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" /> --}}
+                            @php
+                                $receivedServiceNow = false;
+                            @endphp
                             @if(auth()->user()!=null)
                                 @if(auth()->user()->id == $serviceProfile->IntermediateUseOcc->id)
                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
@@ -70,10 +73,30 @@
                                     </button>
 
                                 @else
-                                <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <i class="bi-cart-fill me-1"></i>
-                                    Contratar
-                                </button>
+                                    @foreach($serviceProfile->IntermediateOccContract as $contract)
+                                        @if($contract->use_receive == auth()->user()->id)
+                                            @php
+                                                $receivedServiceNow =true;
+                                            @endphp
+                                        @else                                                    
+                                        @endif
+                                        
+                                    @endforeach
+                                    @if($receivedServiceNow == true)
+                                        <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Ya lo contrataste
+                                        </button>
+                                        <br>
+                                        <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>                                
+                                    @else
+                                        <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Contratar
+                                        </button>
+
+
+                                    @endif
                                 @endif
                             @else
                                 <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">

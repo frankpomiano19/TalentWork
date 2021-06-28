@@ -50,23 +50,12 @@ Route::get('template',function(){
 Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
-/*Route::get('perfil',function(){
-    return view('perfil');
-});*/
-
-//Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
 
 
 
 Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
 
-
-
-
-Route::get('/welcome1',function(){
-return view( 'reg-serv-indep');
-})->name('registerServiceAllNow');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
