@@ -52,6 +52,8 @@ Route::get('registro',function(){
 });*/
 
 Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
+Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+//Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 Route::get('/welcome1',function(){
