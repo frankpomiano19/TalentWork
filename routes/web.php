@@ -70,3 +70,13 @@ return view( 'reg-serv-indep');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
+
+
+Route::get('/servicio',function(){
+    return view('servicio');
+});
+
+
+Route::get('/talento',function(){
+    return view('talento');
+});
