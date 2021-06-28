@@ -270,41 +270,64 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 @foreach($user->UseOccIntermediate as $serviceUsers)
-
                                 <div class="d-flex justify-content-between form-details-get">
-                                    <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $user->id }}" required>
+                                    <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceUsers->use_id }}" required>
                                     <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
-                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->ser_occ_id }}" required>    
+                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->id }}" required>    
                                     <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
                                     <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
 
 
 
-                                    @if(auth()->user()->id == $user->id)
-                                    @else
-                                    <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Contratar
-                                    </button>                                    
-
-                                    @endif
 
 
+
+
+
+
+                                    @php
+                                        $receivedServiceNow2 = false;
+                                    @endphp
                                     @if(auth()->user()!=null)
-                                        {{-- Para ver si el contrato ya se realizo con el mismo usuario --}}
-                                        {{-- @foreach($serviceUsers->IntermediateOccContract as $contract)
-                                        {{ $contract }}
-                                            @if($contract->use_receive == auth()->user()->id)
-                                                <button type="button" class="btn btn-secondary p-3" disabled>
-                                                    Ya contratado
-                                                </button>                                    
+                                        @if(auth()->user()->id == $serviceUsers->IntermediateUseOcc->id)
+                                            <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
+                                                <i class="bi-cart-fill me-1"></i>
+                                                Tu eres el del servicio
+                                            </button>
+        
+                                        @else
+                                            @foreach($serviceUsers->IntermediateOccContract as $contract)
+                                                @if($contract->use_receive == auth()->user()->id)
+                                                    @php
+                                                        $receivedServiceNow2 =true;
+                                                    @endphp
+                                                @else                                                    
+                                                @endif
+                                                
+                                            @endforeach
+                                            @if($receivedServiceNow2 == true)
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+
+                                            <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
+                                                Contratar
+                                            </button>                                        
+                                            <br>
                                             @else
                                                 <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                     Contratar
-                                                </button>                                    
+                                                </button>                                        
+            
+        
                                             @endif
-                                        @endforeach --}}
+                                        @endif
                                     @else
-                                    @endif                              
+                                        <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Contratar
+                                        </button>
+        
+                                    @endif
+                         
                                     <br/>                                
 
                                 </div>
@@ -313,38 +336,72 @@
                                 
                                 @foreach($user->UseTalIntermediate as $serviceTalUsers)
                                     <div class="d-flex justify-content-between form-details-get">
-                                        <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $user->id }}" required>
+                                        <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceTalUsers->use_id }}" required>
                                         <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceTalUsers->precio }}" required>
-                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->ser_tal_id }}" required>    
+                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->id }}" required>    
                                         <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
                                         <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
     
 
 
-                                        @if(auth()->user()->id == $user->id)
-                                        @else
-                                        <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Contratar
-                                        </button>                                        
-                                        @endif
-    
 
-                                        @if(auth()->user()!=null)
-                                        {{-- Para ver si el contrato ya se realizo con el mismo usuario --}}
-                                            {{-- @foreach($serviceTalUsers->IntermetiateTalContract as $contract)
+
+
+
+
+
+                                    @php
+                                        $receivedServiceNow = false;
+                                    @endphp
+                                    @if(auth()->user()!=null)
+                                        @if(auth()->user()->id == $serviceTalUsers->IntermediateUseTal->id)
+                                            <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
+                                                <i class="bi-cart-fill me-1"></i>
+                                                Tu eres el del servicio
+                                            </button>
+        
+                                        @else
+                                            @foreach($serviceTalUsers->IntermetiateTalContract as $contract)
                                                 @if($contract->use_receive == auth()->user()->id)
-                                                    <button type="button" class="btn btn-secondary p-3" disabled>
-                                                        Ya contratado
-                                                    </button>                                    
-                                                @else
-                                                    <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Contratar
-                                                    </button>                                    
+                                                    @php
+                                                        $receivedServiceNow =true;
+                                                    @endphp
+                                                @else                                                    
                                                 @endif
-                                            @endforeach --}}
-                                        @else    
-                                        @endif                              
+                                                
+                                            @endforeach
+                                            @if($receivedServiceNow == true)
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+
+                                            <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
+                                                Contratar
+                                            </button>                                        
+                                            <br>
+                                            @else
+                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Contratar
+                                                </button>                                        
+            
+        
+                                            @endif
+                                        @endif
+                                    @else
+                                        <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Contratar
+                                        </button>
+        
+                                    @endif
+
+
+
+
+
+
+
+
+                        
     
                                         <br/>                                
                                     </div>
