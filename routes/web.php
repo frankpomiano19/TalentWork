@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,13 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/',[EraserController::class,'index']);
+Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
+Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
+Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
+Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
+Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 
 
-
-Route::get('/perfilDos',[ContractController::class,'index']);
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
@@ -41,13 +44,31 @@ Route::get('/contrato', function () {
 Route::get('template',function(){
     return view('template');
 });
+Route::get('registro',function(){
+    return view('registro');
+})->name('registrouser');
+/*Route::get('perfil',function(){
+    return view('perfil');
+});*/
+Route::get('servicio',function(){
+    return view('servicio');
+});
+Route::get('serviciopremium',function(){
+    return view('serviciopremium');
+});
 
+Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
+Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+//Route::post('/actualizar','PerfilController@update');
+Route::post('/registrar','HomeController@nuevoRegistro');
+Route::get('registroServicio',[ServiceController::class, 'registro']);
 Route::get('/welcome1',function(){
 return view( 'reg-serv-indep');
-});
+})->name('registerServiceAllNow');
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
+
 Route::get('/servicio',function(){
     return view('servicio');
 });

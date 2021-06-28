@@ -26,10 +26,14 @@
                         <div class="card-header">
                           <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                              <a class="nav-link active" aria-current="true" href="{{ view('servicio') }}">Normal</a>
+
+                                <a class="nav-link" href="{{ view('servicio') }}">Normal</a>
+                               
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href=<{{ view('serviciopremium') }}">Premium</a>
+
+                                <a class="nav-link active" aria-current="true" href="{{ view('serviciopremium') }}">Premium</a>
+                            
                             </li>
                           </ul>
                         </div>

@@ -18,7 +18,19 @@ class UserOccupationSeeder extends Seeder
     {
         DB::table('use_occs')->insert([
             'use_id' => '1',
-            'ser_occ_id' => '1',
+            'ser_occ_id' => '2',
+            'descripcion' => 'Reparo todo tipo de computadoras, laptos, lo que deseas te lo reparo',
+            'precio' => 20.00,
+
+
         ]);
+        DB::table('use_occs')->insert([
+            'use_id' => '2',
+            'ser_occ_id' => '1',
+            'descripcion' => 'Hago cualquier tipo de diseño grafico 2D o 3D, tambien hagos buenos momos, echate un OjitO por aqui',
+            'precio' => 20.00,
+            
+        ]);
+
     }
 }

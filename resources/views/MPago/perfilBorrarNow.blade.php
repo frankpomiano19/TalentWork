@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('contenido_js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
 @endsection
 @section('contenido_cSS')
 @endsection
@@ -11,10 +13,9 @@
                 <li>{{ $errorRegister }}</li> 
             @endforeach
         </ul>
-
     </div>
 
-
+{{-- 
     <form action="{{ route('iPContract') }}" method="POST">
         @csrf
         <input type="hidden" name="userOffer" value="1" required>
@@ -59,9 +60,67 @@
 
 
         <button class="btn-info" type="submit">Contratar</button>
-    </form>
+    </form> --}}
 
 
+
+
+
+
+    <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Servicio 1
+        </button>
+      
+
+
+      <!-- Modal -->
+        <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
+            @csrf
+
+            <input type="hidden" name="userOffer" value="1" required>
+            <input type="hidden" name="priceOffer" value="20.00" required>
+            <input type="hidden" name="serviceOffer" value="1" required>
+    
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+        
+                        <div class="text-center">
+                            <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
+                        </div>
+
+                        <!-- Cuerpo modal -->
+                        <div class="modal-body">
+                            <div class="m-1" id="formulario">
+                                <label class="">Contratado por: Usuario nuevo</label><br>
+                                <label>Hora: </label><br>
+                                <input type="time" class="form-control" value="{{ old('hourForm') }}" name="hourForm">
+                                <label class="m-1">Fecha: </label>
+                                <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
+
+                                <label class="m-1" for="">Lugar</label>
+                                <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
+                        
+
+                                <label class="m-1">Descripcion</label><br>
+                                <input class="form-control" name="descriptionForm" value="{{ old('descriptionForm') }}" placeholder="Descripcion">
+                            </div>
+                        </div>
+        
+                        <!-- Botones pie -->
+                        <div class="form-group row justify-content-center">
+                            <div class="col-sm-3">
+                              <input type="submit" value="Siguiente" class="btn btn-primary"/>
+                            </div>
+                            <div class="col-sm-3">
+                              <input type="submit" value="Cancelar" class="btn btn-danger" data-bs-dismiss="modal" />
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </form>
 @endsection
 
 @section('contenido_abajo_js')    
@@ -84,6 +143,17 @@
         </script>
     @endif
 
+    @if (session('contractMessage'))
+        <script>
+            Swal.fire({
+                title: "Contrato correctamente",
+                html:  `
+                {{session('contractMessage')}}`,
+                icon: "success"
+            });
+        </script>
+    @endif    
+    
 
 
 @endsection
