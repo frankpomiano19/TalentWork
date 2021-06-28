@@ -279,9 +279,14 @@
                                     <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
 
 
+
+                                    @if(auth()->user()->id == $user->id)
+                                    @else
                                     <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Contratar
                                     </button>                                    
+
+                                    @endif
 
 
                                     @if(auth()->user()!=null)
@@ -316,9 +321,15 @@
 
                                         <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
     
+
+
+                                        @if(auth()->user()->id == $user->id)
+                                        @else
                                         <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             Contratar
-                                        </button>                                    
+                                        </button>                                        
+                                        @endif
+    
 
                                         @if(auth()->user()!=null)
                                         {{-- Para ver si el contrato ya se realizo con el mismo usuario --}}

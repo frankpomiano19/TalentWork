@@ -56,7 +56,14 @@ Route::get('registro',function(){
 
 //Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
-Route::get('registroServicio',[ServiceController::class, 'registro']);
+
+
+
+Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
+
+
+
+
 Route::get('/welcome1',function(){
 return view( 'reg-serv-indep');
 })->name('registerServiceAllNow');
