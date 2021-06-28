@@ -29,15 +29,7 @@
             <div class="tab-content" id="myTabContent" >
                 <div class="tab-pane fade show active"  style="background: transparent !important" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    
                     <h3 class="register-heading text-black" >TalentWork te espera el primer paso es registrarse</h3>
                     <form method="POST" action="/registrar">
                         @csrf
@@ -45,7 +37,7 @@
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nombres *" value="{{ old('name') }}" required autofocus autocomplete="" />
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nombres *" value="{{ old('name') }}"  autofocus autocomplete="" />
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -54,18 +46,27 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="lastname" placeholder="Apellidos *" value="" required />
+                                    <input type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" placeholder="Apellidos *" value="{{ old('lastname') }}"  />
+                                    @error('lastname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+
+                                    @enderror
                                 </div>
+                                    
+
                                 <div class="form-group">
-                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control" placeholder="Escriba su DNI *" value="" required />
+                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni') }}"  />
+                                    @if($errors->has('dni'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('dni') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                @error('dni')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror                                
+                                                               
                                 <div class="form-group">
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electronico *"  name="email" value="{{ old('email') }}" required autocomplete="email" />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electronico *"  name="email" value="{{ old('email') }}"  autocomplete="email" />
 
                                     @if($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -80,7 +81,7 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <input class="form-control"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
+                                    <input class="form-control @error('birthdate') is-invalid @enderror"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('birthdate') }}" />
                                     @error('birthdate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -88,7 +89,7 @@
                                 @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Contraseña *" name="password" required autocomplete="new-password" />
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Contraseña *" name="password"  autocomplete="new-password" value="{{ old('password') }}" />
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -97,7 +98,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-confirm" type="password" class="form-control"  placeholder="Confirme contraseña *" name="password_confirmation" required autocomplete="new-password" />
+                                    <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror"  placeholder="Confirme contraseña *" name="password_confirmation"  autocomplete="new-password" value="{{ old('password_confirmation') }}" />
                                     @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
