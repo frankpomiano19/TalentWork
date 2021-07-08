@@ -32,45 +32,49 @@
             </div>
         </div>
 
-        <!--Formulario de Login y registro-->
-        <div class="contenedor__login-register">
-            <!--Login-->
-            <div class="card-header">{{ __('Login') }}</div>
-            <form class="formulario__login" form method="POST" action="{{ route('login') }}">
+            <!--Formulario de Login y registro-->
+            <div class="contenedor__login-register">
+                <!--Login-->
+                <div class="card-header">{{ __('Login') }}</div>
+                <form class="formulario__login" form method="POST" action="{{ route('login') }}">
 
-                @csrf
+                    @csrf
 
-                <h2>Iniciar Sesión</h2>
+                    <h2>Iniciar Sesión</h2>
 
-                <input id="email" type="email" placeholder="Correo electrónico" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <input id="email" type="email" placeholder="Correo electrónico" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    @error('email')
+                        <br>
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                <input id="password" type="password" placeholder="Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" placeholder="Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Entrar') }}
-                </button>
+                    @error('password')
+                        <br>
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Entrar') }}
+                    </button>
+                    
 
-            </form>
+                </form>
 
-            <!--Register-->
-            <form action="" class="formulario__register">
-                <h2>Regístrarse</h2>
-                <input type="text" placeholder="Nombre completo">
-                <input type="text" placeholder="Correo Electronico">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-                <button>Regístrarse</button>
-            </form>
+                <!--Register-->
+                <form action="" class="formulario__register">
+                    <h2>Regístrarse</h2>
+                    <input type="text" placeholder="Nombre completo">
+                    <input type="text" placeholder="Correo Electronico">
+                    <input type="text" placeholder="Usuario">
+                    <input type="password" placeholder="Contraseña">
+                    <button>Regístrarse</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -95,7 +99,3 @@
 </script>
 <script src="../../../public/js/script.js"></script>
 @endsection
-
-
-
-

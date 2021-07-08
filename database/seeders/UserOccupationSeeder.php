@@ -21,6 +21,7 @@ class UserOccupationSeeder extends Seeder
             'ser_occ_id' => '2',
             'descripcion' => 'Reparo todo tipo de computadoras, laptos, lo que deseas te lo reparo',
             'precio' => 20.00,
+            'imagen'=> 'https://www.compudepot.net/data/files/instalacion-mantenimiento-y-reparacion-de-pc-y-redes_30871784_xxl.jpg'
 
 
         ]);
@@ -29,6 +30,7 @@ class UserOccupationSeeder extends Seeder
             'ser_occ_id' => '1',
             'descripcion' => 'Hago cualquier tipo de diseño grafico 2D o 3D, tambien hagos buenos momos, echate un OjitO por aqui',
             'precio' => 20.00,
+            'imagen'=>'https://cdn.euroinnova.edu.es/img/subidasEditor/dise%C3%B1o%20grafico-1598602026.jpg'
             
         ]);
 
