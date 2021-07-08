@@ -53,6 +53,9 @@ Route::get('registro',function(){
 Route::get('servicio',function(){
     return view('servicio');
 });
+Route::get('informa',function(){
+    return view('nada');
+});
 Route::get('serviciopremium',function(){
     return view('serviciopremium');
 });
@@ -72,9 +75,9 @@ Route::get('/perfilservicio',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
-Route::get('registro',function(){
-    return view('registro');
-});
+//Route::get('registro',function(){
+//    return view('registro');
+//});
 Route::get('perfil',function(){
     return view('perfil');
 });
