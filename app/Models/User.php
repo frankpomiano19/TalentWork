@@ -50,5 +50,9 @@ class User extends Authenticatable
     }
     public function UseTalIntermediate(){
         return $this->hasMany(use_tal::class,'use_id');
-    }    
+    }
+    
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 }
