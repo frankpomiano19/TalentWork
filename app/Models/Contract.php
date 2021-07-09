@@ -19,8 +19,8 @@ class Contract extends Model
         'con_end',
         'use_offer',
         'use_receive',
-        'ser_occ_id',
-        'ser_tal_id',
+        'use_occ_id',
+        'use_tal_id',
 
     ];
     protected $hidden = [];    

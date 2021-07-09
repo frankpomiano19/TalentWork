@@ -30,6 +30,7 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
     .body{
         background-color: #000000
@@ -107,7 +108,7 @@
                         @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registerServiceAllNow') }}">Ofrecer Mi Servicio</a>
+                        <a class="nav-link" href="{{ route('offerMyService') }}">Ofrecer Mi Servicio</a>
                     </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -133,7 +134,7 @@
         </div>
     </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
 
@@ -209,9 +210,6 @@
 
 
     @yield('contenido_abajo_js')
-
-
-
 
 
 </body>
