@@ -87,6 +87,11 @@ Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
 
+
+Route::get('/categorias',function(){
+    return view('categoria/filtroServicio');
+})->name('categorias');
+
 Route::get('/servicio',function(){
     return view('servicio');
 });

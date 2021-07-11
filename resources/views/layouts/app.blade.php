@@ -87,6 +87,8 @@
                     {{-- <li class="nav-item"> <a class="nav-link" href="#">Inicio</a> </li> --}}
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
+                    </li>
                    
                 </ul>
                 <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b> </p>
