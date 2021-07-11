@@ -69,3 +69,9 @@ Route::get('/servicio',function(){
 Route::get('/talento',function(){
     return view('talento');
 });
+
+
+Route::get('/estadoContrato',function(){
+    return view('estadoContrato');
+});
+
