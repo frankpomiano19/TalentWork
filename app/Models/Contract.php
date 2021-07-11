@@ -21,6 +21,7 @@ class Contract extends Model
         'use_receive',
         'use_occ_id',
         'use_tal_id',
+        'con_status',
 
     ];
     protected $hidden = [];    

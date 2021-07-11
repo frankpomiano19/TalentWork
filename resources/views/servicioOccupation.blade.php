@@ -128,7 +128,7 @@
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $serviceProfile->precio }}" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>    
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="1" required>
-
+            <input type="text" class="set-status-offer-input" name="statusInitial" value="{{1}}" required>
 
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
