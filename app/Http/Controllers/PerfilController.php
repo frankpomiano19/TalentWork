@@ -49,16 +49,18 @@ class PerfilController extends Controller
 
          
             //dd($request->file('documentos_upload')->store('public'));
-            if($request->name!=NULL){$usuarioLogeado->name=$request->name;}
-            if($request->lastname!=NULL){$usuarioLogeado->lastname=$request->lastname;}
-            if($request->dni!=NULL){$usuarioLogeado->DNI=$request->dni;}
-            if($request->email!=NULL){$usuarioLogeado->email=$request->email;}
-            if($request->birthdate!=NULL){$usuarioLogeado->birthdate=$request->birthdate;}
-            if($request->password!=NULL){$usuarioLogeado->password=bcrypt($request->password);
-                                         $usuarioLogeado->password_confirmation=bcrypt($request->password);}
+            $usuarioLogeado->name=$request->name;
+            $usuarioLogeado->lastname=$request->lastname;
+            $usuarioLogeado->DNI=$request->dni;
+            $usuarioLogeado->email=$request->email;
+            $usuarioLogeado->birthdate=$request->birthdate;
+            $usuarioLogeado->password=bcrypt($request->password);
+            $usuarioLogeado->password_confirmation=bcrypt($request->password);
 
         $usuarioLogeado->push();
+        $message = "Realizado correctamente";
         //$id=$usuarioLogeado->id;
-        return redirect()->route('perfil',Auth::user()->id);
+        return redirect()->route('perfil',Auth::user()->id)->with('contractMessage',$message);
+    
     }
 }

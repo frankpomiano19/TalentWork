@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
     Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::put('/perfil/{id}','PerfilController@update')->name('update.user');
     
 });
 
@@ -50,7 +50,7 @@ Route::get('template',function(){
 Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
-Route::post('/registrar','HomeController@nuevoRegistro');
+Route::post('/registrar','HomeController@nuevoRegistro')->name('registrarUsuario');
 
 
 

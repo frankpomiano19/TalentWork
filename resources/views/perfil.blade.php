@@ -95,7 +95,7 @@
                                     </div>
 
                                     <form action="{{route('update.user',\Auth::user())}}" method="POST" >
-                                    {{ csrf_field() }}  @method("PATCH")
+                                    {{ csrf_field() }}  @method("PUT")
                                     <!-- Modal body -->
                                     <div class="modal-body">
 
