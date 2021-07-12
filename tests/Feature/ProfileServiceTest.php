@@ -60,22 +60,16 @@ class ProfileServiceTest extends TestCase
         $response = $this->get('/profileServiceOccupation/'.$idService);
         $response->assertViewIs('servicioOccupation');
         $response->assertStatus(200);
-        // $response->assertSee($serviceProfile);
-        // Comprobamos que los datos se desplieguen
-        // $response->assertSee($serviceProfile);
     }      
 
 
-    public function getViewAllServiceProfileTalent(){
+     /** @test */          
+     public function getViewAllServiceProfileTalent(){
         $idService = 1;
         $serviceProfile = use_tal::where('id',$idService)->first();
-        // Comprobamos que la vista sea retornada
         $response = $this->get('/profileServiceTalent/'.$idService);
         $response->assertViewIs('servicioTalent');
         $response->assertStatus(200);
-        // $response->assertSee($serviceProfile);
-        // Comprobamos que los datos se desplieguen
-        // $response->assertSee($serviceProfile);
     }      
 
 }
