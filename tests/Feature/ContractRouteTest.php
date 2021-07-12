@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Controllers\Auth\LoginController;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
@@ -70,6 +71,11 @@ class ContractRouteTest extends TestCase
         // Crea una contrato con talentos
         // Para ContractController
         // Ataca el metodo contractCreate, el caso 2
+
+        // $responde = (new LoginController())->showLoginForm();
+        
+
+        // dd($responde->view());
 
         $contractCreate =  new ContractController();
         $credentials = [

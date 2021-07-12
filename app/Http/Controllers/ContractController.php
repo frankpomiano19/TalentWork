@@ -15,16 +15,12 @@ use App\Models\use_tal;
 class ContractController extends Controller
 {
 
-    public function index(){
-        return view('MPago.perfilBorrarNow');
-    }
     public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
         if($validationConfirm->fails()){
             $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }     
-
         //1 : Para oficios
         //2 : Para talentos
         $message = $this->contractCreate($request);
