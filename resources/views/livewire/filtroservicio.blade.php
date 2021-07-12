@@ -49,8 +49,10 @@
             @foreach($datos as $dato)
                 @if($talento)
                     <p>Encargado: {{ $dato->IntermediateUseTal->name}}</p>
-                @else
+                @elseif($ocupacion)
                     <p>Encargado: {{ $dato->IntermediateUseOcc->name}}</p>
+                @else
+                    <p>Encargado: </p>
                 @endif
                 <p>Descripcion: {{ $dato->descripcion}}</p>
                 <p>Precio: {{ $dato->precio}}</p>

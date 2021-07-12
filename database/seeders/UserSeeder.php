@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'name' => "Pato",
             'lastname' => "Parodi",
             'DNI' => '65474357',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'pato@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'name' => "Vizcarra Presidente",
             'lastname' => "2026",
             'DNI' => '23753421',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'vizcarra@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
@@ -46,14 +46,14 @@ class UserSeeder extends Seeder
             'name' => "Merino",
             'lastname' => "Lamas",
             'DNI' => '12345213',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'merino@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
         ]);
         $passwordNow = Hash::make('cienciano');
         DB::table('users')->insert([
-            'name' => "Presidente",
+            'name' => "Presidenste",
             'lastname' => "UNMSM",
             'DNI' => '65374567',
             'email' => Str::random(10).'@gmail.com',
@@ -61,17 +61,15 @@ class UserSeeder extends Seeder
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
         ]);        
-        $passwordNow = Hash::make('caminante');
         DB::table('users')->insert([
             'name' => "caminante no hay camino",
             'lastname' => "se hace camino al andar",
             'DNI' => '23463456',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'presidente@gmail.com',
             'birthdate' => Carbon::now(),
-            'password' => $passwordNow,
+            'password' => 'presidente',
             'password_confirmation'=>$passwordNow
         ]);
-
 
     }
 }

@@ -110,6 +110,9 @@
                         @endif
                     @else
                     <li class="nav-item">
+                        <a class="nav-link" href="">Mis mensajes</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('offerMyService') }}">Ofrecer Mi Servicio</a>
                     </li>
                         <li class="nav-item dropdown">
