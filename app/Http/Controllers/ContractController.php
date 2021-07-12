@@ -92,4 +92,20 @@ class ContractController extends Controller
 
         
     }
+
+    public function contractStateTalent($id){
+        $contr = Contract::findOrFail($id);
+        $userOff = User::findOrFail($contr->use_offer);
+        $dataTal = use_occ::findOrFail($contr->use_tal_id);
+        $servTalen = ServiceTalent::findOrFail($contr->use_tal_id);
+        return view('estadoContratoTal',compact('id','contr','servTalen','userOff','dataTal'));
+    }
+
+    public function contractStateOcupation($id){
+        $contr = Contract::findOrFail($id);
+        $userOff = User::findOrFail($contr->use_offer);
+        $dataOcup = use_occ::findOrFail($contr->use_occ_id);
+        $servOcupp = ServiceOccupation::findOrFail($contr->use_occ_id);
+        return view('estadoContratoOcu',compact('id','contr','servOcupp','userOff','dataOcup'));
+    }
 }
