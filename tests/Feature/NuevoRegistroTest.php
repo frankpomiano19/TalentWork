@@ -34,10 +34,10 @@ class NuevoRegistroTest extends TestCase
     public function test_errorValidation_data()
     {
         //$this->without_ExceptionHandling();
-        $name = 'frank';
+        $name = '';
         $lastname = '';
         $dni = '';
-        $email = 'frank_a.pardo_2017@hotmail.com';
+        $email = '';
         $birthdate = '';
         $password = '';
         $password_confirmation = '';
@@ -62,46 +62,49 @@ class NuevoRegistroTest extends TestCase
         $response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
     }
 
-    // public function test_errorValidation_passed()
-    // {
-    //     $this->withoutExceptionHandling();
-    //     $name = 'Frank';
-    //     $lastname = 'Alvarado Pardo';
-    //     $dni = '70900900';
-    //     $email = 'vladimir12.alvarado@unmsm.edu.pe';
-    //     $birthdate = '1997-08-20';
-    //     $password = '959146547';
-    //     $password_confirmation = '959146547';
+    public function test_errorValidation_passed()
+    {
+        $this->withoutExceptionHandling();
+        $name = 'Frank';
+        $lastname = 'Alvarado Pardo';
+        $dni = '32131231';
+        $email = 'mevarad@unmsm.edu.pe';
+        $birthdate = '2021-07-11 23:47:47';
+        $password = 'perrovaca';
+        $password_confirmation = 'perrovaca';
 
-    //     $response = $this->from('registrouser')->post(route('registrarUsuario'), ['name'=>$name, 
-    //                                                                               'lastname'=>$lastname, 
-    //                                                                               'dni'=>$dni, 
-    //                                                                               'email'=>$email, 
-    //                                                                               'birthdate'=>$birthdate, 
-    //                                                                               'password'=>$password, 
-    //                                                                               'password_confirmation'=>$password_confirmation]
-    //                             )->assertRedirect('login');
-    //     //$response = $this->json('POST', 'registrarUsuario', ['name'=>'', 'lastname'=>'1234567'],
-    //                                             //['Accept' => 'application/json']
-    //                             //)->assertRedirect('registrouser');
+        $response = $this->from('registrouser')->post(route('registrarUsuario'), ['name'=>$name, 
+                                                                                  'lastname'=>$lastname, 
+                                                                                  'dni'=>$dni, 
+                                                                                  'email'=>$email, 
+                                                                                  'birthdate'=>$birthdate, 
+                                                                                  'password'=>$password, 
+                                                                                  'password_confirmation'=>$password_confirmation]
+                                );
+                                $response->assertRedirect('login');
 
-    //     //$response->assertStatus(200);
-    //     $response->assertStatus(302);
-    //     //$response = $this->assertRedirect('login');
-    //     //$response->assertStatus(302);
+                                //$response = $this->json('POST', 'registrarUsuario', ['name'=>'', 'lastname'=>'1234567'],
+                                                //['Accept' => 'application/json']
+                                //)->assertRedirect('registrouser');
 
-    //     //$response->assertJsonValidationErrors(['name']);
-    //     //$response->assertSessionHasErrors('name|lastname|dni|email|birthdate|password|password_confirmation');
-    //     //$response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
-    // }
+        //$response->assertStatus(200);
+        // $response->assertStatus(302);
+        //$response = $this->assertRedirect('login');
+        //$response->assertStatus(302);
+
+        //$response->assertJsonValidationErrors(['name']);
+        //$response->assertSessionHasErrors('name|lastname|dni|email|birthdate|password|password_confirmation');
+        //$response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
+    }
 
     public function test_baseCreate_validation()
     {
         $name = 'Frank';
         $lastname = 'Alvarado Pardo';
-        $dni = '70900925';
-        $email = 'vladimir20.alvarado@unmsm.edu.pe';
-        $birthdate = '1997-08-20';
+        $dni = '32131231';
+        $email = 'mevarad@unmsm.edu.pe';
+        $birthdate = '2021-07-11 23:47:47';
+
         //$password = '959146547';
         //$password_confirmation = '959146547';
 

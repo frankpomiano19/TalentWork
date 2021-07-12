@@ -83,5 +83,17 @@ class UserSeeder extends Seeder
             'password_confirmation'=>$passwordNow
         ]);
 
+
+        $passwordNow = Hash::make('perrovaca');
+        DB::table('users')->insert([
+            'name' => "Frank",
+            'lastname' => "Alvarado Pardo",
+            'DNI' => '82731232',
+            'email' => 'alvarado4@unmsm.edu.pe',
+            'birthdate' => '2021-07-11 23:47:47',
+            'password' => $passwordNow,
+            'password_confirmation'=>$passwordNow
+        ]);        
+
     }
 }

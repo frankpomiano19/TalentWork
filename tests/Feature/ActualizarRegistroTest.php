@@ -74,7 +74,6 @@ class ActualizarRegistroTest extends TestCase
               
         $view->assertSessionDoesntHaveErrors(['dni']);
 
-        dd($view);
 
         //$view->assertSee('djhfdjf');
 
@@ -156,9 +155,9 @@ class ActualizarRegistroTest extends TestCase
 
     public function test_baseCreateUpdate_validation()
     {
-        $name = 'Frank3';
+        $name = 'Frank';
         $lastname = 'Alvarado Pardo';
-        $dni = '70900925';
+        $dni = '82731232';
         $email = 'alvarado4@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
         $password = 'perrovaca';
