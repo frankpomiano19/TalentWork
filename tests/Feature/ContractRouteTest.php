@@ -43,6 +43,8 @@ class ContractRouteTest extends TestCase
 
         $user = Auth::loginUsingId(1);
         $response = $this->actingAs($user)->post(route('iPContract'));
+
+
         $response->assertRedirect('/');
     }
 
