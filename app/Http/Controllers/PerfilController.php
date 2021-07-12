@@ -11,14 +11,9 @@ use App\Models\User;
 
 class PerfilController extends Controller
 {
-    public function __construct()
-    {
-    }
 
     public function index($id)
     {
-        // if($id == auth()->user()->id){
-        // }
         $servOcu=ServiceOccupation::all();
         $user = User::where('id',$id)->first();
         return view('perfil', compact( 'servOcu' , 'user' ));
@@ -48,7 +43,6 @@ class PerfilController extends Controller
         ]);
 
          
-            //dd($request->file('documentos_upload')->store('public'));
             if($request->name!=NULL){$usuarioLogeado->name=$request->name;}
             if($request->lastname!=NULL){$usuarioLogeado->lastname=$request->lastname;}
             if($request->dni!=NULL){$usuarioLogeado->DNI=$request->dni;}
@@ -58,7 +52,6 @@ class PerfilController extends Controller
                                          $usuarioLogeado->password_confirmation=bcrypt($request->password);}
 
         $usuarioLogeado->push();
-        //$id=$usuarioLogeado->id;
         return redirect()->route('perfil',Auth::user()->id);
     }
 }

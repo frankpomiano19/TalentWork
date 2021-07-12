@@ -60,13 +60,14 @@ class UserSeeder extends Seeder
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
-        ]);        
-        $passwordNow = Hash::make('caminante');
+        ]);     
+
+        $passwordNow = Hash::make('mandarin');
         DB::table('users')->insert([
             'name' => "caminante no hay camino",
             'lastname' => "se hace camino al andar",
             'DNI' => '23463456',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => 'mandarin@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
