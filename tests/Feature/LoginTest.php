@@ -1,25 +1,23 @@
 <?php
+
 namespace Tests\Feature;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\User;
 
-
-class ExampleTest extends TestCase
+class LoginTest extends TestCase
 {
-    //use DatabaseMigrations;
     /**
-     * A basic test example.
+     * A basic feature test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    
+    public function test_example()
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
-
     }
-
 }
