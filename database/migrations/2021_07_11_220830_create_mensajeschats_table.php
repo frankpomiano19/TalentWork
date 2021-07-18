@@ -16,8 +16,8 @@ class CreateMensajeschatsTable extends Migration
         Schema::create('mensajeschats', function (Blueprint $table) {
             $table->id();
             $table->text('mensaje');
-            $table->integer('de');
-            $table->integer('para');
+            $table->integer('cliente');
+            $table->integer('vendedor');
             $table->timestamps();
             $table->integer('id_servicio');
         });

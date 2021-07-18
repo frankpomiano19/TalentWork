@@ -45,6 +45,10 @@ Route::get('nuevo',function(){
     return view('nuevo');
 });
 
+Route::get('bandeja',function(){
+    return view('bandejamensajes');
+})->name('bandeja');
+
 Route::get('/contrato', function () {
     return view('contratoPerfil');
 })->name("contratoPerfil");

@@ -10,9 +10,13 @@ class Mensajechat extends Model
     use HasFactory;
     protected $table = 'mensajeschats';
     protected $fillable = [
-        'de',
-        'para',
+        'cliente',
+        'vendedor',
         'mensaje',
         'id_servicio'
     ];
+
+    public function IntermediateUser(){
+        return $this->belongsTo(User::class,'cliente');
+    }
 }
