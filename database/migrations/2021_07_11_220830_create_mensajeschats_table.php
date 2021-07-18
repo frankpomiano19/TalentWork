@@ -18,6 +18,7 @@ class CreateMensajeschatsTable extends Migration
             $table->text('mensaje');
             $table->integer('cliente');
             $table->integer('vendedor');
+            $table->integer('envia');
             $table->timestamps();
             $table->integer('id_servicio');
         });

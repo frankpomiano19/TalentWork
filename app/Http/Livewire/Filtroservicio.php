@@ -18,13 +18,13 @@ class Filtroservicio extends Component
     public $calificacion;
     public $talentoS = false;
     public $ocupacionS = false;
+    // public $ambos = false;
 
     public function talentoM()
     {
         $this->talentoS = true;
         $this->ocupacionS = false;
     }
-
     public function ocupacionM()
     {
         $this->talentoS = false;
@@ -33,10 +33,7 @@ class Filtroservicio extends Component
 
     public function render()
     {
-
-        //dd($saludoO);
-
-        if($this->talentoS){
+        if($this->talentoS == true){
             return view('livewire.filtroservicio',[
                 'datos' => use_tal::where("ser_tal_id","=", $this->talento)
                     ->where("precio","<=", $this->precioMin)
@@ -51,5 +48,9 @@ class Filtroservicio extends Component
                     //->orderBy('calificacion', $this->calificacion)
                     ->get()]);
         }
+        // else{
+        //     dd("Seleecionaste los dos");
+        //     return view('livewire.filtroservicio');
+        // }
     }
 }

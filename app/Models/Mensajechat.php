@@ -13,7 +13,8 @@ class Mensajechat extends Model
         'cliente',
         'vendedor',
         'mensaje',
-        'id_servicio'
+        'id_servicio',
+        'envia'
     ];
 
     public function IntermediateUser(){

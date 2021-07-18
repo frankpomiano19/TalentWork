@@ -17,7 +17,7 @@
 
 @section('content')
 
-    <livewire:chat-lista>
+    <livewire:chat-lista >
 
 @livewireScripts
 
