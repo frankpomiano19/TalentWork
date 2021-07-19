@@ -15,9 +15,7 @@ use App\Models\use_tal;
 class ContractController extends Controller
 {
 
-    public function index(){
-        return view('MPago.perfilBorrarNow');
-    }
+
     public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
         if($validationConfirm->fails()){
