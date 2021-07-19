@@ -18,17 +18,27 @@ class ContractController extends Controller
     public function index(){
         return view('MPago.perfilBorrarNow');
     }
-
     public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
         if($validationConfirm->fails()){
             $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }     
+
         //1 : Para oficios
         //2 : Para talentos
+        $message = $this->contractCreate($request);
+        return back()->with('contractMessage',$message);
+
+    }
+
+
+
+    public function contractCreate(Request $request){
+        $message='';
         switch($request->typeOfJob){
             case 1:
+                $message = "Contratado el oficio correctamente";
                 $contractNow = Contract::create([
                     'con_contract_date'=>$request->dateForm,
                     'con_hour'=>$request->hourForm,
@@ -43,6 +53,7 @@ class ContractController extends Controller
         
                 break;
             case 2:
+                $message = "Contratado el talento correctamente";
                 $contractNow = Contract::create([
                     'con_contract_date'=>$request->dateForm,
                     'con_hour'=>$request->hourForm,
@@ -57,15 +68,11 @@ class ContractController extends Controller
 
                 break;
             default:
-                return "Valor no encontrado";
+                $message = "Error no se pudo crear el contrato";
+                break;
         }
-        $message = "Realizado correctamente";
-        return back()->with('contractMessage',$message);
-
+        return $message;
     }
-
-
-
 
     public function validationRegisterContract(Request $request){
         $fieldCreate= [
