@@ -41,13 +41,16 @@ class ServiceController extends Controller
 
         Cloudder::upload($image_name, null);
         list($width, $height) = getimagesize($image_name);
-        $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+        $image_url= Cloudder::show(Cloudder::getPublicId(), 
+        ["width" => $width, "height"=>$height]);
 
         $image->move(public_path("uploads"), $name);
 
         $datosServicio->imagen = $image_url;
         $datosServicio->save();
-        return back();
+        $message = "Servicio de ocupación registrado exitosamente";
+
+        return back()->with('serviceMessage',$message);
     }
 
     public function registroTalento(Request $request){
@@ -71,7 +74,8 @@ class ServiceController extends Controller
 
         Cloudder::upload($image_name, null);
         list($width, $height) = getimagesize($image_name);
-        $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+        $image_url= Cloudder::show(Cloudder::getPublicId(),
+         ["width" => $width, "height"=>$height]);
 
         $image->move(public_path("uploads"), $name);
 
