@@ -43,11 +43,11 @@ class HomeController extends Controller
 
     public function showProfileServiceTalent($id){
         $serviceProfile = use_tal::where('id',$id)->first();
-        return view('servicio',compact('serviceProfile'));
+        return view('servicioTalent',compact('serviceProfile'));
     }
     public function showProfileServiceOccupation($id){
         $serviceProfile = use_occ::where('id',$id)->first();
-        return view('servicio',compact('serviceProfile'));
+        return view('servicioOccupation',compact('serviceProfile'));
     }
 
     public function nuevoRegistro(Request $request){

@@ -51,4 +51,12 @@ class User extends Authenticatable
     public function UseTalIntermediate(){
         return $this->hasMany(use_tal::class,'use_id');
     }    
+
+    public function UseContractReceive(){
+        return $this->hasMany(Contract::class,'use_receive');
+    }
+    public function UseContractOffer(){
+        return $this->hasMany(Contract::class,'use_offer');
+    }
+
 }
