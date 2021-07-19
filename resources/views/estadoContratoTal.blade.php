@@ -32,14 +32,30 @@
     </div>
 
 <div class="col-sm-3" style="text-align: center; margin-top: 4rem">
-    <h2>Detalles del contrato</h2>
-        <p>{{$contr->con_initial}}</p>
-        <p>{{$contr->con_initial}}</p>
-        <p>{{$contr->con_address}}</p>
-        <label>Estado: </label>
-        <label>En proceso</label>
-        <br> <br>
-        <button type="button" class="btn btn-primary btn-lg">Finalizar contrato</button>
+    @if (Auth::user()->id == $contr->use_receive)
+        <h2>Detalles del contrato</h2>
+            <p>{{$contr->con_initial}}</p>
+            <p>{{$contr->con_initial}}</p>
+            <p>{{$contr->con_address}}</p>
+            <label>Estado: </label>
+            @if ($contr->con_status == 1)
+                <label>Pendiente</label><br>
+            @endif
+            @if ($contr->con_status == 2)
+                <label>En ejecución</label><br>
+                <form action=" {{route('end.contract')}} " method="POST">
+                    @csrf
+                    <input type="hidden" name="contractId" value="{{ $id }}" required>
+                    <button type="submit" class="btn btn-primary btn-lg">Finalizar contrato</button>
+                </form>
+            @endif
+            @if ($contr->con_status == 3)
+                <label>Terminado</label><br>
+            @endif
+            <br> <br>
+            
+    @endif
+
 </div>
 </div>
 @endsection

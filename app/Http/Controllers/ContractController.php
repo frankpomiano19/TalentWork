@@ -108,4 +108,18 @@ class ContractController extends Controller
         $servOcupp = ServiceOccupation::findOrFail($contr->use_occ_id);
         return view('estadoContratoOcu',compact('id','contr','servOcupp','userOff','dataOcup'));
     }
+
+    public function finishContract(Request $request){
+        $request->validate([
+            'contractId' => 'required'
+        ]);
+        $contr = Contract::findOrFail($request->contractId);
+        $contr->con_status = 3;
+        $contr->save();
+        $message = "Su contrato ha sido finalizado";
+        return back()->with('serviceMessage',$message);
+
+    }
+
+
 }

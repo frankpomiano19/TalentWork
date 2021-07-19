@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
+    Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
     
 });
 
