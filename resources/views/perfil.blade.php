@@ -379,9 +379,11 @@
                                             </button>                                        
                                             <br>
                                             @else
-                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" onclick="window.location.href='{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">
-                                                    Contratar
-                                                </button>                                        
+
+                                            <button type="button" class="btn btn-secondary p-3" onclick="window.location.href='{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}'">
+                                                Contratar
+                                            </button>       
+                                 
             
         
                                             @endif
