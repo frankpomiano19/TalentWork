@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,9 @@ Route::get('/occupationService',[HomeController::class,'showOccupationService'])
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 
+
+Route::get('/paypal/pay', [PaymentController::class,'payWithPayPal']);
+Route::get('/paypal/status', [PaymentController::class,'payPalStatus']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
@@ -43,9 +46,9 @@ Route::get('nuevo',function(){
     return view('nuevo');
 });
 
-Route::get('/contrato', function () {
-    return view('contratoPerfil');
-})->name("contratoPerfil");
+// Route::get('/contrato', function () {
+//     return view('contratoPerfil');
+// })->name("contratoPerfil");
 
 Route::get('template',function(){
     return view('template');
@@ -54,24 +57,15 @@ Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
 Route::post('/registrar','HomeController@nuevoRegistro');
-
-
-
 Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
 
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
 });
-
-
-Route::get('/servicio',function(){
-    return view('servicio');
-});
-
-
 Route::get('/talento',function(){
     return view('talento');
 });
-
-
+Route::get('/pagoPrueba',function(){
+    return view('pagoPrueba');
+});
 
