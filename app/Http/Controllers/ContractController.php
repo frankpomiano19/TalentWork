@@ -168,30 +168,17 @@ class ContractController extends Controller
     }
 
 
+
     public function processPaymentServiceContract()
     {
-
+        
         $this->constructPayment();
         
         
         // Validacion de contrato
-        $algo = "Nada";        
-        foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
-            $algo = $itemD;
-            break;
-        }
-      
-        $requestItems = new Request([
-            'dateForm'=>$algo->attributes->dateForm,
-            'hourForm'=>$algo->attributes->hourForm,
-            'addressForm'=>$algo->attributes->addressForm,
-            'descriptionForm'=>$algo->attributes->descriptionForm,
-            'priceOffer'=>$algo->price,
-            'userOffer'=>$algo->attributes->userOffer,
-            'serviceOffer'=>$algo->id,
-            'typeOfJob'=>$algo->attributes->typeOfJob
-        ]);
-
+        $algo = "Nada";   
+        $algo = $this->getOneItemFromCart();     
+        $requestItems = $this->generateRequestFromArray($algo);       
         $validationConfirm = $this->validationRegisterContract($requestItems);
         if($validationConfirm->fails()){
             $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
@@ -266,26 +253,11 @@ class ContractController extends Controller
         $result = $payment->execute($execution, $this->apiContext);
         if ($result->getState() === 'approved') {
             $status = 'Gracias! El pago a través de PayPal se ha ralizado correctamente.';
-            // $status = 1;
-            // return $status;
 
             //  Se registra el contrato
-            $algo = "Nada";        
-            foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
-                $algo = $itemD;
-                break;
-            }
-          
-            $requestItems = new Request([
-                'dateForm'=>$algo->attributes->dateForm,
-                'hourForm'=>$algo->attributes->hourForm,
-                'addressForm'=>$algo->attributes->addressForm,
-                'descriptionForm'=>$algo->attributes->descriptionForm,
-                'priceOffer'=>$algo->price,
-                'userOffer'=>$algo->attributes->userOffer,
-                'serviceOffer'=>$algo->id,
-                'typeOfJob'=>$algo->attributes->typeOfJob
-            ]);
+            $algo = "Nada";   
+            $algo = $this->getOneItemFromCart();      
+            $requestItems = $this->generateRequestFromArray($algo);       
             $this->contractProcess($requestItems);
             $this->clearAllCart();
             // Fin de registro de contrato
@@ -311,4 +283,32 @@ class ContractController extends Controller
 
 
     }    
+
+
+    // Ayudantes
+    public function getOneItemFromCart(){
+        $itemOne="NoValue";
+        foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
+            $itemOne=$itemD;
+            break;
+        }
+        return $itemOne;
+        
+    }
+    public function generateRequestFromArray($arrayToRequest){
+
+        
+        $requestItems = new Request([
+            'dateForm'=>$arrayToRequest->attributes->dateForm,
+            'hourForm'=>$arrayToRequest->attributes->hourForm,
+            'addressForm'=>$arrayToRequest->attributes->addressForm,
+            'descriptionForm'=>$arrayToRequest->attributes->descriptionForm,
+            'priceOffer'=>$arrayToRequest->price,
+            'userOffer'=>$arrayToRequest->attributes->userOffer,
+            'serviceOffer'=>$arrayToRequest->id,
+            'typeOfJob'=>$arrayToRequest->attributes->typeOfJob
+        ]);
+        return $requestItems;
+
+    }
 }
