@@ -51,7 +51,7 @@
                             </ul>
                         </div>                        
                         <div class="card-body">
-                          <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
+                          <h5 class="card-title">$ {{ $serviceProfile->precio }}</h5>
                             <div class="d-flex small text-warning mb-2">
                                 <div class="bi-star-fill"></div>
                                 <div class="bi-star-fill"></div>
@@ -61,7 +61,6 @@
                             </div>
                           <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                           <div class="d-flex">
-                            {{-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" /> --}}
 
 
 
@@ -133,12 +132,13 @@
     
         {{-- PopUp --}}
 
-        <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
+        <form class="" action="{{ route('contractDetailsData') }}" method="POST" enctype="" novalidate>
             @csrf
             <input type="hidden" class="set-user-offer-input" name="userOffer" value="{{ $serviceProfile->use_id }}" required>
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $serviceProfile->precio }}" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>    
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="2" required>
+            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
 
 
     
@@ -217,4 +217,34 @@
     });
 </script>
 @endif
+
+
+
+
+
+@if (session('statusPaymentFailed'))
+<script>
+    Swal.fire({
+        title: "Error en el contrato",
+        html:  `
+        {{session('statusPaymentFailed')}}`,
+        icon: "error"
+    });
+</script>
+@endif
+
+@if (session('statusPaymentSuccess'))
+<script>
+    Swal.fire({
+        title: "Contrato correctamente",
+        html:  `
+        {{session('statusPaymentSuccess')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
+
+
+
 @endsection
