@@ -194,6 +194,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Preguntas Frecuentes</h5>
+                            <button type="button" class="btn btn-sm btn-primary" name="btnpregunta" data-toggle="modal" data-target="#Modalpregunta">Añadir Pregunta Frecuente</button>
                         </div>
                     </div>
                     <div class="card mt-4">
@@ -424,8 +425,7 @@
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <i class="fas fa-comment-alt"></i> 1 Comentario
                                             </a>
-                                        </li46
-                                        8915468.1054898>
+                                        </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
                                                 <i class="fas fa-share"></i> 1 Compartir
@@ -534,6 +534,59 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="Modalpregunta">
+            <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Añadir pregunta frecuente</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                        <label for="inputEmail4">Escribir Pregunta Frecuente</label>
+                        <input type="text" name="pregunta" class="form-control" id="inputPregunta" placeholder="Escriba la Pregunta Frecuente*" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                        <label for="inputEmail4">Responder Pregunta Frecuente</label>
+                        <input type="text" name="respuesta" class="form-control" id="inputRespuesta" placeholder="Responda la Pregunta Frecuente*" />
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-outline-success">Publicar Pregunta
+
+                </button>
+
+                <button id="cerrarBtn" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+
+                </div>
+
+                </form>
+            </div>
             </div>
         </div>
 
