@@ -271,8 +271,8 @@
                                     </a>
                                 </div>
                                 <div class="flex-grow-1 pl-2">
-                                    <a class="text-decoration-none" href="#">
-                                        <h2 class="text-capitalize h5 mb-0">{{ $coment->us_com }}</h2>
+                                    <a class="text-decoration-none" href="{{ route('perfil',$coment->PostCommentUser->id) }}">
+                                        <h2 class="text-capitalize h5 mb-0">{{ $coment->PostCommentUser->name }}</h2>
                                     </a>
                                     <!-- <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p> -->
                                 </div>

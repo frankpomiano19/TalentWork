@@ -15,4 +15,7 @@ class Post_comment extends Model
         'comentario', 'use_id', 'use_occ_id', 'use_tal_id'
     ];
 
+    public function PostCommentUser(){
+        return $this->belongsTo(User::class,'use_id');
+    }
 }
