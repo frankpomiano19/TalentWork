@@ -5,6 +5,7 @@ use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PostCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,8 @@ Route::get('/talentService',[HomeController::class,'showTalentService'])->name('
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
-
+Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
+Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
