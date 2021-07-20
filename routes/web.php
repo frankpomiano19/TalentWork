@@ -5,6 +5,7 @@ use App\Http\Controllers\EraserController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PostCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +22,17 @@ Route::get('/talentService',[HomeController::class,'showTalentService'])->name('
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
-
+Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
+Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
     Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-    Route::put('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
+    Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     
 });
 
@@ -69,3 +73,6 @@ Route::get('/servicio',function(){
 Route::get('/talento',function(){
     return view('talento');
 });
+
+
+

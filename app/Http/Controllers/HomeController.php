@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\use_occ;
 use App\Models\use_tal;
+use App\Models\Post_comment;
+use App\Models\Question;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,11 +45,20 @@ class HomeController extends Controller
 
     public function showProfileServiceTalent($id){
         $serviceProfile = use_tal::where('id',$id)->first();
-        return view('servicioTalent',compact('serviceProfile'));
+            //$usuarioBotica = User::where('id',$usuario->userFb->user_id)->first();
+        // $comment = Post_comment::orderBy('id', 'DESC')->where('etiqueta2',$id)->paginate(14);
+        $question = Question::orderBy('id', 'DESC')->where('etiqueta_2',$id)->paginate(14);
+        return view('servicioTalent',compact('serviceProfile','question'));
     }
+
+
+
     public function showProfileServiceOccupation($id){
         $serviceProfile = use_occ::where('id',$id)->first();
-        return view('servicioOccupation',compact('serviceProfile'));
+        $comment = Post_comment::orderBy('id', 'DESC')->where('etiqueta1',$id)->paginate(14);
+        $question = Question::orderBy('id', 'DESC')->where('etiqueta_1',$id)->paginate(14);
+        //$comment = Post_comment::where('etiqueta',$id);
+        return view('servicioOccupation',compact('serviceProfile','comment','question'));
     }
 
     public function nuevoRegistro(Request $request){

@@ -466,7 +466,7 @@
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="" required>    
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="" required>
-
+            <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
@@ -522,6 +522,7 @@
         $('.set-price-offer-input').val($(this).closest('.form-details-get').find('.get-price-offer-input').val());
         $('.set-service-offer-input').val($(this).closest('.form-details-get').find('.get-service-offer-input').val());
         $('.set-type-offer-input').val($(this).closest('.form-details-get').find('.get-type-offer-input').val());
+        $('.set-status-offer-input').val($(this).closest('.form-details-get').find('.get-status-offer-input').val());
     });
 
 </script>
