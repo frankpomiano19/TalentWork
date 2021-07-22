@@ -4,6 +4,9 @@
       @foreach ($datos as $mensaje)
 
         <div class="row" style="">
+            <div class="col-12">
+              <p>De tu servicio: {{ $mensaje->servicio }}</p>
+            </div>
             <div class="col-6 text-truncate pt-1">
               <b>{{ $mensaje->IntermediateUser->name}}:</b> {{ $mensaje->mensaje }}
             </div>
@@ -28,8 +31,18 @@
                 </div>
               @endif
             @endforeach
+
             @if($habilitarInput)
-              <input class="form-control form-control-lg m-1 inputChat" wire:keydown.enter="enviarRespuesta" type="text" placeholder="Escribir" wire:model="respuesta">
+              <div class="row justify-content-center" style="display: flex;
+              align-items: center;">
+                <div class="col-8 pr-1">
+                  <input class="form-control form-control my-1 pr-0 inputChat" wire:keydown.enter="enviarRespuesta" type="text" placeholder="Escribir" wire:model="respuesta">
+                </div>
+                <div class="col-4 pl-0" style="">
+                  <button class="btn btn-success btn-block" wire:click="enviarRespuesta">Enviar</button>
+                </div>
+              </div>
+            
             @else
               <input class="form-control form-control-lg m-1 inputChat" wire:keydown.enter="enviarRespuesta" type="text" placeholder="Escribir"  disabled>
             @endif

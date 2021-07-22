@@ -43,6 +43,7 @@ class ChatUsuario extends Component
         $nuevo->mensaje = $this->mensaje;
         $nuevo->envia = Auth::user()->id;
         $nuevo->fecha = now();
+        $nuevo->servicio = $this->serviceProfile->IntermediateOcc->ser_occ_name;
         $nuevo->id_servicio = $this->serviceProfile->ser_occ_id;
 
         $nuevo->save();

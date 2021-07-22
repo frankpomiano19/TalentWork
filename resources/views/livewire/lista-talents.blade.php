@@ -9,7 +9,7 @@
                 {{-- {{ $mensaje->IntermediateUser->id}} --}}
               </div>
               <div class="col-6">
-                <button class="btn btn-success btn-sm btn-block" wire:click="responderM({{ $mensaje->IntermediateUser->id}}, {{ $mensaje->id_servicio }})">Ver mensajes</button>
+                <button class="btn btn-success btn-sm btn-block" wire:click="responderM({{ $mensaje->IntermediateUser->id}}, {{ $mensaje->id_servicio }})">Ver menjes</button>
               </div>
             {{-- </div> --}}
           </div><hr>

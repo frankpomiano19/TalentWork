@@ -25,6 +25,7 @@ class ChatLista extends Component
         'respuesta' => 'required|min:1'
     ];
 
+
     public function responderM($usuario, $id_servicio){
 
         $this->habilitarInput = true;
@@ -63,6 +64,7 @@ class ChatLista extends Component
         $nuevo->mensaje = $this->respuesta;
         $nuevo->envia = Auth::user()->id;
         $nuevo->fecha = now();
+        // $nuevo->servicio = $this->servicio;
         $nuevo->id_servicio = $this->id_servicio;
         $nuevo->save();
 

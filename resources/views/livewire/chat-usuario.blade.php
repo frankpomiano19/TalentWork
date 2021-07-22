@@ -42,11 +42,15 @@
                         </div>
                     </div>
                 </div>     
-               
             </div>
             
-                <div class="form-group">              
-                     <input class="form-control form-control-lg inputChat" wire:keydown.enter="enviarMensaje" type="text" placeholder="Escribir mensaje..." wire:model="mensaje">
+                <div class="form-group row">
+                    <div class="col-8">
+                        <input class="form-control form-control-lg inputChat" wire:keydown.enter="enviarMensaje" type="text" placeholder="Escribir mensaje..." wire:model="mensaje">
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-block btn-success">Enviar</button>
+                    </div>
                 </div>
         </div>
     </div>

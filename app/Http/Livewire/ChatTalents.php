@@ -45,6 +45,7 @@ class ChatTalents extends Component
         $nuevo->mensaje = $this->mensaje;
         $nuevo->envia = Auth::user()->id;
         $nuevo->fecha = now();
+        $nuevo->servicio = $this->serviceProfile->IntermediateTal->ser_tal_name;
         $nuevo->id_servicio = $this->serviceProfile->ser_tal_id;
         $nuevo->save();
 

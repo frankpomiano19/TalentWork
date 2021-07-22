@@ -31,7 +31,7 @@
                                             <div class="container-fluid">
                                                 <div style="" class="row">
                                                     <div class="col-12">
-                                                        <p class="float-left my-auto align-middle" style="font-size:1.1rem;"><b>{{ $serviceProfile->IntermediateUseTal->name }}<small> - {{ $datom->fecha }}</small></b> {{ $datom->mensaje}}</p>
+                                                        <p class="float-left my-auto align-middle" style="font-size:1.1rem;"><b>{{ $serviceProfile->IntermediateUseTal->name }}<small> - {{ $datom->fecha }}</small></b><br>{{ $datom->mensaje}}</p>
                                                     </div>
                                                 </div>
                                             </div><hr>
@@ -46,8 +46,14 @@
                
             </div>
             
-                <div class="form-group">              
-                     <input class="form-control form-control-lg inputChat" wire:keydown.enter="enviarMensaje" type="text" placeholder="Escribir mensaje..." wire:model="mensaje">
+                <div class="form-group row justify-content-center" style="display: flex;
+                align-items: center;">              
+                    <div class="col-8 pr-1">
+                        <input class="form-control form-control-lg inputChat my-1 pr-0" wire:keydown.enter="enviarMensaje" type="text" placeholder="Escribir mensaje..." wire:model="mensaje">
+                    </div>
+                    <div class="col-4 pl-0">
+                        <button class="btn my-1 btn-block btn-success p-2" wire:click="enviarMensaje">Enviar</button>
+                    </div>
                 </div>
         </div>
     </div>
