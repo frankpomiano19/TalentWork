@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\use_occ;
 use App\Models\use_tal;
+use App\Models\Contract;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,12 +43,48 @@ class HomeController extends Controller
     }
 
     public function showProfileServiceTalent($id){
+        
         $serviceProfile = use_tal::where('id',$id)->first();
-        return view('servicioTalent',compact('serviceProfile'));
+
+        if(auth()->user()==null){
+            $chat = false;
+        }else{
+            $estadoContrato = Contract::where('use_tal_id',$id)
+                                ->where('use_receive',auth()->user()->id)            
+                                ->first();
+
+            if($estadoContrato){
+                $contratado = $estadoContrato->con_status;
+                if($contratado == "1"){
+                    $chat = true;
+                }
+            }else{
+                $chat = false;
+            }
+        }
+        return view('servicioTalent',compact('serviceProfile','chat'));
     }
     public function showProfileServiceOccupation($id){
+
         $serviceProfile = use_occ::where('id',$id)->first();
-        return view('servicioOccupation',compact('serviceProfile'));
+
+
+        if(auth()->user()==null){
+            $chat = false;
+        }else{
+            $estadoContrato = Contract::where('use_occ_id',$id)
+                                ->where('use_receive',auth()->user()->id)            
+                                ->first();
+            if($estadoContrato){
+                $contratado = $estadoContrato->con_status;
+                if($contratado == "1"){
+                    $chat = true;
+                }
+            }else{
+                $chat = false;
+            }
+        }
+        return view('servicioOccupation',compact('serviceProfile','chat'));
     }
 
     public function nuevoRegistro(Request $request){
