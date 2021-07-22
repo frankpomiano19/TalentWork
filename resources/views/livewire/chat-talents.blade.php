@@ -8,7 +8,7 @@
             <div class="portlet portlet-default">
                 <div class="portlet-heading">
                     <div class="portlet-title">
-                        <h4><i class="fa fa-circle text-green"></i>{{ $serviceProfile->IntermediateUseOcc->name }}</h4>
+                        <h4><i class="fa fa-circle text-green"></i>{{ $serviceProfile->IntermediateUseTal->name }}</h4>
                     </div>
                     <div class="portlet-widgets">
                         <a data-toggle="collapse" onclick="closeForm()" data-parent="#accordion" href="#chat"><i class="fa fa-chevron-down"></i></a>
@@ -26,15 +26,16 @@
                                             <div style="" class="rounded m-1">
                                                 <h5 class="text-right"><b><small>{{ $datom->fecha }}</small> - {{ auth()->user()->name }}</b></h5>
                                                 <p class="text-right" style="font-size:1.1rem;">{{ $datom->mensaje}}</p><hr>
-                                            </div>        
+                                            </div>
                                         @else
-                                            <div class="container">
+                                            <div class="container-fluid">
                                                 <div style="" class="row">
                                                     <div class="col-12">
-                                                        <p class="float-left my-auto align-middle"  style="font-size:1.1rem;"><b>{{ $serviceProfile->IntermediateUseOcc->name }}<small> - {{ $datom->fecha }}</small></b><br>{{ $datom->mensaje}}</p>
+                                                        <p class="float-left my-auto align-middle" style="font-size:1.1rem;"><b>{{ $serviceProfile->IntermediateUseTal->name }}<small> - {{ $datom->fecha }}</small></b> {{ $datom->mensaje}}</p>
                                                     </div>
                                                 </div>
                                             </div><hr>
+                                            
                                         @endif
                                     @endforeach
                                 </div>
@@ -53,28 +54,26 @@
     
 </div>
 
-
 <script>
-
+    
     Pusher.logToConsole = true;
     var pusher = new Pusher('0cceeee491b92f68de44', {
     cluster: 'mt1'
     });
-
-    var channel = pusher.subscribe('chat-channel');
-    var objDiv = document.getElementById("cuadroChat");
+    var channel = pusher.subscribe('chat-channel');    
     channel.bind('chat-event', function(data) {
         Livewire.emit('llegadaMensaje');
         app.messages.push(JSON.stringify(data));
         objDiv.scrollTop = objDiv.scrollHeight;
     });
-    
+
     var objDiv = document.getElementById("cuadroChat");
     objDiv.scrollTop = objDiv.scrollHeight;
 
-    $(document).ready(function() {
+    $( document ).ready(function() {
             window.livewire.on('enviado', function () {
-                objDiv.scrollTop = objDiv.scrollHeight;
+                var objDiv = document.getElementById("cuadroChat");
+                objDiv.scrollTop = objDiv.scrollHeight;                              
             });
     });
 

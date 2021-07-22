@@ -1853,6 +1853,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var messages_el = document.getElementById('messages');
 var username_input = document.getElementById("username");
 var message_input = document.getElementById("username");
+
 message_form.addEventListener("submit", function (e) {
   e.preventDefault();
   var has_errors = false;

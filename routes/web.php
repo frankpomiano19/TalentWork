@@ -47,7 +47,7 @@ Route::get('nuevo',function(){
 
 Route::get('bandeja',function(){
     return view('bandejamensajes');
-})->name('bandeja');
+})->middleware('auth')->name('bandeja');
 
 Route::get('/contrato', function () {
     return view('contratoPerfil');

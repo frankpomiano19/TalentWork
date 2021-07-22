@@ -5,9 +5,7 @@ use App\Models\Mensajechat;
 use App\Models\User;
 use Livewire\Component;
 
-use Auth;
-
-class ChatLista extends Component
+class ListaTalents extends Component
 {
     public $vendedor;
     public $para = "";
@@ -15,18 +13,14 @@ class ChatLista extends Component
     public $respuesta;
     public $id_servicio;
     public $rCliente;
-    public $vendedo;
     public $habilitarInput = false;
 
-    
-    protected $listeners = ['llegadaMensaje' => 'actualizaMensaje'];
+    // protected $rules = [
+    //     'respuesta' => 'required|min:1'
+    // ];
 
-    protected $rules = [
-        'respuesta' => 'required|min:1'
-    ];
 
     public function responderM($usuario, $id_servicio){
-
         $this->habilitarInput = true;
         $this->id_servicio = $id_servicio;
         $this->para = $usuario;
@@ -34,39 +28,20 @@ class ChatLista extends Component
         $this->mensajes = Mensajechat::where("vendedor","=",$this->vendedor)
                             ->where("cliente","=",$this->para)
                             ->get();
-
         $this->rCliente = Mensajechat::where("cliente","=",$this->para)
                             ->first();;
 
     }
 
-    public function actualizaMensaje(){
-
-        $this->client = $this->para;
-        $this->vendedor = Auth::user()->id;
-        $this->datos = Mensajechat::where("vendedor","=",$this->vendedo)
-        ->where("cliente","=",$this->client)
-        ->where("id_servicio","=",$this->id_servicio)
-        ->orderBy('id', 'desc')
-        ->get();
-        $this->mensajes = Mensajechat::where("vendedor","=",$this->vendedor)
-        ->where("cliente","=",$this->para)
-        ->get();
-    }
-
     public function enviarRespuesta(){
 
-        $validatedData = $this->validate();
         $nuevo = new Mensajechat;
         $nuevo->cliente = $this->para;
         $nuevo->vendedor = $this->vendedor;
         $nuevo->mensaje = $this->respuesta;
         $nuevo->envia = Auth::user()->id;
-        $nuevo->fecha = now();
         $nuevo->id_servicio = $this->id_servicio;
         $nuevo->save();
-
-        event(new \App\Events\MessageSent($this->vendedor,$this->respuesta));
 
         $this->reset('respuesta');
 
@@ -80,10 +55,9 @@ class ChatLista extends Component
     {
         $this->vendedor = auth()->user()->id;
 
-        return view('livewire.chat-lista',[
+        return view('livewire.lista-talents',[
             "datos" => Mensajechat::where("vendedor","=",$this->vendedor)
                 ->where("envia","<>",$this->vendedor)
-                ->orderBy('id', 'desc')
                 ->get()
         ]);
     }
