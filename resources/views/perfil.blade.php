@@ -73,73 +73,109 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        @if($user->id == $user->id)
+                        @if(auth()->user()->id == $user->id)
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
                             </button>
                         @endif
 
+                        @php
+                            $flag=$errors->any();
+                        @endphp
+
                         <!-- The Modal -->
                             <div class="modal fade" id="myModal">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
-
+                                            
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                     <h4 class="modal-title">Editar Perfil</h4>
                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                     </div>
 
+                                    <form action="{{route('update.user',\Auth::user())}}" method="POST" >
+                                    {{ csrf_field() }}  @method("PATCH")
                                     <!-- Modal body -->
                                     <div class="modal-body">
 
-                                        <form>
+                                    
                                         <div class="form-row">
+
                                             <div class="form-group col-md-6">
                                             <label for="inputEmail4">Nombre</label>
-                                            <input type="text" class="form-control" id="inputNombre" placeholder="Escriba su Nombre*" value="" required/>
+                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputNombre" placeholder="Escriba su Nombre*" value="{{ old('name',$user->name)}}" />
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-
-                                        @enderror
+                                            @enderror
                                             </div>
+
                                             <div class="form-group col-md-6">
                                             <label for="inputPassword4">Apellidos</label>
-                                            <input type="text" class="form-control" id="inputApellidos" placeholder="Escriba sus Apellidos*" value="" required/>
+                                            <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" id="inputApellidos" placeholder="Escriba sus Apellidos*" value="{{ old('lastname',$user->lastname)}}" />
+                                            @error('lastname')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                             </div>
+
                                         </div>
+
                                         <div class="form-row">
+
                                             <div class="form-group col-md-6">
                                             <label for="inputEmail4">Correo</label>
-                                            <input type="email" class="form-control" id="inputCorreo" placeholder="Escriba su Correo*" value="" required/>
+                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="inputCorreo" placeholder="Escriba su Correo*" value="{{ old('email',$user->email)}}"/>
+                                            @if($errors->has('email'))
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
                                             </div>
+
                                             <div class="form-group col-md-6">
                                             <label for="inputPassword4">Contraseña</label>
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Escriba su contraseña*" value="" required/>
+                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="inputPassword" placeholder="Escriba su contraseña*" value="{{ old('password') }}"/>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                             </div>
+
                                         </div>
+
                                         <div class="form-row">
+
                                             <div class="form-group col-md-6">
                                                 <label for="inputNaci">Fecha de Nacimiento</label>
-                                                <input class="form-control"  type="text" name="nacimientotitular" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="" required/>
-                                                @error('cumple')
+                                                <input class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" type="text" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('birthdate',$user->birthdate)}}" />
+                                                @error('birthdate')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror
+                                                @enderror
                                             </div>
+
                                             <div class="form-group col-md-6">
                                             <label for="inputDNI">DNI</label>
-                                            <input type="number" minlength="10" maxlength="10" name="dni" class="form-control" placeholder="Escriba su DNI *" value="" required />
+                                            <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni',$user->DNI)}}"  />
+                                            @error('dni')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                             </div>
+
                                         </div>
 
 
 
 
-                                        </form>
+                                    
                                     </div>
 
                                     <!-- Modal footer -->
@@ -148,10 +184,11 @@
 
                                     </button>
 
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                                    <button id="cerrarBtn" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
 
                                     </div>
 
+                                    </form>
                                 </div>
                                 </div>
                             </div>
@@ -233,25 +270,138 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 @foreach($user->UseOccIntermediate as $serviceUsers)
-                                <div class="d-flex justify-content-between">
-                                    <a href="">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
-                                    <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Contratar
-                                        </button>                                    
+                                <div class="d-flex justify-content-between form-details-get">
+                                    <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceUsers->use_id }}" required>
+                                    <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
+                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->id }}" required>    
+                                    <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
+                                    <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
+
+
+
+
+
+
+
+
+
+                                    @php
+                                        $receivedServiceNow2 = false;
+                                    @endphp
+                                    @if(auth()->user()!=null)
+                                        @if(auth()->user()->id == $serviceUsers->IntermediateUseOcc->id)
+                                            <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
+                                                <i class="bi-cart-fill me-1"></i>
+                                                Tu eres el del servicio
+                                            </button>
+        
+                                        @else
+                                            @foreach($serviceUsers->IntermediateOccContract as $contract)
+                                                @if($contract->use_receive == auth()->user()->id)
+                                                    @php
+                                                        $receivedServiceNow2 =true;
+                                                    @endphp
+                                                @else                                                    
+                                                @endif
+                                                
+                                            @endforeach
+                                            @if($receivedServiceNow2 == true)
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+
+                                            <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
+                                                Contratar
+                                            </button>                                        
+                                            <br>
+                                            @else
+                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Contratar
+                                                </button>                                        
+            
+        
+                                            @endif
+                                        @endif
+                                    @else
+                                        <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Contratar
+                                        </button>
+        
+                                    @endif
+                         
                                     <br/>                                
 
                                 </div>
                                 @endforeach
 
-
-
+                                
                                 @foreach($user->UseTalIntermediate as $serviceTalUsers)
-                                    <div class="d-flex justify-content-between">
-                                        <a href="">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+                                    <div class="d-flex justify-content-between form-details-get">
+                                        <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceTalUsers->use_id }}" required>
+                                        <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceTalUsers->precio }}" required>
+                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->id }}" required>    
+                                        <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
-                                        <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+    
+
+
+
+
+
+
+
+
+                                    @php
+                                        $receivedServiceNow = false;
+                                    @endphp
+                                    @if(auth()->user()!=null)
+                                        @if(auth()->user()->id == $serviceTalUsers->IntermediateUseTal->id)
+                                            <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
+                                                <i class="bi-cart-fill me-1"></i>
+                                                Tu eres el del servicio
+                                            </button>
+        
+                                        @else
+                                            @foreach($serviceTalUsers->IntermetiateTalContract as $contract)
+                                                @if($contract->use_receive == auth()->user()->id)
+                                                    @php
+                                                        $receivedServiceNow =true;
+                                                    @endphp
+                                                @else                                                    
+                                                @endif
+                                                
+                                            @endforeach
+                                            @if($receivedServiceNow == true)
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+
+                                            <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
+                                                Contratar
+                                            </button>                                        
+                                            <br>
+                                            @else
+                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Contratar
+                                                </button>                                        
+            
+        
+                                            @endif
+                                        @endif
+                                    @else
+                                        <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
+                                            <i class="bi-cart-fill me-1"></i>
                                             Contratar
-                                        </button>                                    
+                                        </button>
+        
+                                    @endif
+
+
+
+
+
+
+
+
+                        
     
                                         <br/>                                
                                     </div>
@@ -312,10 +462,12 @@
 
         <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
             @csrf
+            <input type="hidden" class="set-user-offer-input" name="userOffer" value="" required>
+            <input type="hidden" class="set-price-offer-input" name="priceOffer" value="" required>
+            <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="" required>    
+            <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="" required>
+            <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
-            <input type="hidden" name="userOffer" value="{{ $user->id }}" required>
-            <input type="hidden" name="priceOffer" value="20.00" required>
-            <input type="hidden" name="serviceOffer" value="1" required>
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
@@ -363,6 +515,24 @@
 
 @section('contenido_abajo_js')    
 
+<script>
+    $(".btn-details-now-data").click(function(event){
+
+        $('.set-user-offer-input').val($(this).closest('.form-details-get').find('.get-user-offer-input').val());
+        $('.set-price-offer-input').val($(this).closest('.form-details-get').find('.get-price-offer-input').val());
+        $('.set-service-offer-input').val($(this).closest('.form-details-get').find('.get-service-offer-input').val());
+        $('.set-type-offer-input').val($(this).closest('.form-details-get').find('.get-type-offer-input').val());
+        $('.set-status-offer-input').val($(this).closest('.form-details-get').find('.get-status-offer-input').val());
+    });
+
+</script>
+
+
+
+
+
+
+
 @if (session('contractFailed'))
 <script>
     Swal.fire({
@@ -389,6 +559,47 @@
         icon: "success"
     });
 </script>
-@endif   
+@endif
+
+<!-- @if ($flag==1)
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        $("#myModal").modal("show");
+    })
+</script> 
+        @php
+            $flag=0;
+        @endphp
+@endif
+
+<h3 class="h-light"> ERRORES {{$flag}} </h3> -->
+
+@if ($errors->any())
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        $("#myModal").modal("show");
+    })
+</script> 
+
+<script>
+    const cerrarBtn = document.getElementById('cerrarBtn');
+    console.log('BOTÓN CERRAR', cerrarBtn);
+    cerrarBtn.addEventListener('click', () => {
+        console.log('diste click')
+        $('#myModal').modal('hide')
+    })
+</script>
+
+<h3 class="h-light"> ERRORES {{$flag}} </h3>
+@endif
 
 @endsection
+
+<!-- @if ($errors->any())
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        $("#myModal").modal("show");
+    })
+</script> 
+<h3 class="h-light"> ERRORES {{$flag}} </h3>
+@endif -->

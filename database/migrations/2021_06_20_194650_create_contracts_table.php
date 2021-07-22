@@ -29,12 +29,13 @@ class CreateContractsTable extends Migration
             $table->dateTime('con_end')->nullable();
             $table->unsignedBigInteger('use_offer');
             $table->unsignedBigInteger('use_receive');
-            $table->unsignedBigInteger('ser_occ_id')->nullable();
-            $table->unsignedBigInteger('ser_tal_id')->nullable();
+            $table->unsignedBigInteger('use_occ_id')->nullable();
+            $table->unsignedBigInteger('use_tal_id')->nullable();
+            $table->string('con_status')->nullable();
             $table->foreign('use_offer')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_receive')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('ser_occ_id')->references('id')->on('service_occupations')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('ser_tal_id')->references('id')->on('service_talent')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('use_occ_id')->references('id')->on('use_occs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('use_tal_id')->references('id')->on('use_tals')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Pato",
             'lastname' => "Parodi",
-            'DNI' => '123123523121',
+            'DNI' => '65474357',
             'email' => Str::random(10).'@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Vizcarra Presidente",
             'lastname' => "2026",
-            'DNI' => '982381283182',
+            'DNI' => '23753421',
             'email' => Str::random(10).'@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Merino",
             'lastname' => "Lamas",
-            'DNI' => '941823812',
+            'DNI' => '12345213',
             'email' => Str::random(10).'@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
@@ -55,18 +55,19 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Presidente",
             'lastname' => "UNMSM",
-            'DNI' => '81237127321',
+            'DNI' => '65374567',
             'email' => Str::random(10).'@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow
-        ]);        
-        $passwordNow = Hash::make('caminante');
+        ]);     
+
+        $passwordNow = Hash::make('mandarin');
         DB::table('users')->insert([
             'name' => "caminante no hay camino",
             'lastname' => "se hace camino al andar",
-            'DNI' => '5345243575',
-            'email' => Str::random(10).'@gmail.com',
+            'DNI' => '23463456',
+            'email' => 'mandarin@gmail.com',
             'birthdate' => Carbon::now(),
             'password' => $passwordNow,
             'password_confirmation'=>$passwordNow

@@ -30,6 +30,7 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
     .body{
         background-color: #000000
@@ -70,7 +71,7 @@
                         @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registerServiceAllNow') }}">Ofrecer Mi Servicio</a>
+                        <a class="nav-link" href="{{ route('offerMyService') }}">Ofrecer Mi Servicio</a>
                     </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -96,7 +97,7 @@
         </div>
     </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
 
@@ -108,12 +109,6 @@
                         <div class="footer-about-us">
                             <h2>Talent<span>Work</span></h2>
                             <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio<</p>
-                            {{-- <div class="footer-social">
-                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            </div> --}}
                         </div>
                     </div>
                     
@@ -158,23 +153,12 @@
                         </div>
                     </div>
                     
-                    {{-- <div class="col-md-4">
-                        <div class="footer-card-icon">
-                            <i class="fa fa-cc-discover"></i>
-                            <i class="fa fa-cc-mastercard"></i>
-                            <i class="fa fa-cc-paypal"></i>
-                            <i class="fa fa-cc-visa"></i>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
 
 
     @yield('contenido_abajo_js')
-
-
-
 
 
 </body>

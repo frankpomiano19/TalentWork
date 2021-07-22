@@ -11,16 +11,47 @@ use App\Models\User;
 
 class PerfilController extends Controller
 {
-    public function __construct()
-    {
-    }
 
     public function index($id)
     {
-        // if($id == auth()->user()->id){
-        // }
         $servOcu=ServiceOccupation::all();
         $user = User::where('id',$id)->first();
         return view('perfil', compact( 'servOcu' , 'user' ));
+    }
+
+    public function update(Request $request){
+
+        $usuarioLogeado = \Auth::user();
+
+        if($usuarioLogeado->DNI!=$request->dni){
+            $request->validate([
+                'dni'=>'required|string|min:8|max:8|unique:users,dni',
+            ]);
+        }
+        
+        if($usuarioLogeado->email!=$request->email){
+            $request->validate([
+                'email'=>'required|email|unique:users,email',
+            ]);
+        }
+
+        $request->validate([
+            'name'=>'required',
+            'lastname'=>'required|string|max:100',
+            'birthdate'=>'required',
+            'password'=>'required|string|max:25',
+        ]);
+
+         
+            if($request->name!=NULL){$usuarioLogeado->name=$request->name;}
+            if($request->lastname!=NULL){$usuarioLogeado->lastname=$request->lastname;}
+            if($request->dni!=NULL){$usuarioLogeado->DNI=$request->dni;}
+            if($request->email!=NULL){$usuarioLogeado->email=$request->email;}
+            if($request->birthdate!=NULL){$usuarioLogeado->birthdate=$request->birthdate;}
+            if($request->password!=NULL){$usuarioLogeado->password=bcrypt($request->password);
+                                         $usuarioLogeado->password_confirmation=bcrypt($request->password);}
+
+        $usuarioLogeado->push();
+        return redirect()->route('perfil',Auth::user()->id);
     }
 }
