@@ -31,6 +31,7 @@ class CreateContractsTable extends Migration
             $table->unsignedBigInteger('use_receive');
             $table->unsignedBigInteger('use_occ_id')->nullable();
             $table->unsignedBigInteger('use_tal_id')->nullable();
+            $table->string('con_status')->nullable();
             $table->foreign('use_offer')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_receive')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_occ_id')->references('id')->on('use_occs')->onDelete('cascade')->onUpdate('cascade');

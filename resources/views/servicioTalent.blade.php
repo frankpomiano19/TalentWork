@@ -139,6 +139,7 @@
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>    
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="2" required>
             <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
+            <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
 
     

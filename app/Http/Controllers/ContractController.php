@@ -80,7 +80,8 @@ class ContractController extends Controller
                     'addressForm'=>$request->addressForm,
                     'descriptionForm'=>$request->descriptionForm,
                     'typeOfJob'=>$request->typeOfJob,
-                    'img1'=>$request->img1
+                    'img1'=>$request->img1,
+                    'statusInitial'=>$request->statusInitial
                 ),
             ));                     
             return redirect()->route('index.checkout');
@@ -120,6 +121,7 @@ class ContractController extends Controller
                     'use_offer'=>$request->userOffer,
                     'use_receive'=>auth()->user()->id,
                     'use_occ_id'=>$request->serviceOffer,
+                    'con_status'=>$request->statusInitial,
                 ]);
         
                 break;
@@ -135,6 +137,7 @@ class ContractController extends Controller
                     'use_offer'=>$request->userOffer,
                     'use_receive'=>auth()->user()->id,
                     'use_tal_id'=>$request->serviceOffer,
+                    'con_status'=>$request->statusInitial,
                 ]);
 
                 break;
@@ -306,9 +309,39 @@ class ContractController extends Controller
             'priceOffer'=>$arrayToRequest->price,
             'userOffer'=>$arrayToRequest->attributes->userOffer,
             'serviceOffer'=>$arrayToRequest->id,
-            'typeOfJob'=>$arrayToRequest->attributes->typeOfJob
+            'typeOfJob'=>$arrayToRequest->attributes->typeOfJob,
+            'statusInitial'=>$arrayToRequest->attributes->statusInitial
         ]);
         return $requestItems;
 
     }
+
+    public function contractStateTalent($id){
+        $contr = Contract::findOrFail($id);
+        $userOff = User::findOrFail($contr->use_offer);
+        $dataTal = use_occ::findOrFail($contr->use_tal_id);
+        $servTalen = ServiceTalent::findOrFail($contr->use_tal_id);
+        return view('estadoContratoTal',compact('id','contr','servTalen','userOff','dataTal'));
+    }
+
+    public function contractStateOcupation($id){
+        $contr = Contract::findOrFail($id);
+        $userOff = User::findOrFail($contr->use_offer);
+        $dataOcup = use_occ::findOrFail($contr->use_occ_id);
+        $servOcupp = ServiceOccupation::findOrFail($contr->use_occ_id);
+        return view('estadoContratoOcu',compact('id','contr','servOcupp','userOff','dataOcup'));
+    }
+
+    public function finishContract(Request $request){
+        $request->validate([
+            'contractId' => 'required'
+        ]);
+        $contr = Contract::findOrFail($request->contractId);
+        $contr->con_status = 3;
+        $contr->save();
+        $message = "Su contrato ha sido finalizado";
+        return back()->with('serviceMessage',$message);
+    }
+
+
 }

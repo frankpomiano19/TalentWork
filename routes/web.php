@@ -37,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
     Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
     Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
+    Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
+    Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
     
 });
 
@@ -66,3 +69,4 @@ Route::get('/talento',function(){
 Route::get('/pagoPrueba',function(){
     return view('pagoPrueba');
 });
+
