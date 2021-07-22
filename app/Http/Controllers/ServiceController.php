@@ -10,6 +10,7 @@ use App\Models\ServiceOccupation;
 use App\Models\ServiceTalent;
 use App\Models\use_occ;
 use App\Models\use_tal;
+use Illuminate\Http\UploadedFile;
 use JD\Cloudder\Facades\Cloudder;
 
 class ServiceController extends Controller
@@ -33,6 +34,7 @@ class ServiceController extends Controller
         $datosServicio->ser_occ_id = $request->servicioTecn;
         $datosServicio->descripcion = $request->detallesTecn;
         $datosServicio->precio = $request->costoTecn;
+        dd($request->file('imagenTecn'), new UploadedFile('D:\Ingenieria de Software\Ciclo 7\Metodos Formales\ProyectoDelCurso\Proyecto\Proyecto\Desarrollo\Proyecto\ProyectoBaseLaravel\iamgen2.jpeg','vacaciones'));
         $image = $request->file('imagenTecn');
 
         $name = $request->file('imagenTecn')->getClientOriginalName();

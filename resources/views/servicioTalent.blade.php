@@ -222,12 +222,13 @@
     
         {{-- PopUp --}}
 
-        <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
+        <form class="" action="{{ route('contractDetailsData') }}" method="POST" enctype="" novalidate>
             @csrf
             <input type="hidden" class="set-user-offer-input" name="userOffer" value="{{ $serviceProfile->use_id }}" required>
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $serviceProfile->precio }}" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>    
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="2" required>
+            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
             <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
 
@@ -307,4 +308,34 @@
     });
 </script>
 @endif
+
+
+
+
+
+@if (session('statusPaymentFailed'))
+<script>
+    Swal.fire({
+        title: "Error en el contrato",
+        html:  `
+        {{session('statusPaymentFailed')}}`,
+        icon: "error"
+    });
+</script>
+@endif
+
+@if (session('statusPaymentSuccess'))
+<script>
+    Swal.fire({
+        title: "Contrato correctamente",
+        html:  `
+        {{session('statusPaymentSuccess')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
+
+
+
 @endsection

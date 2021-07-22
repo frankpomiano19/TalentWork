@@ -27,11 +27,17 @@ Route::get('/occupationService',[HomeController::class,'showOccupationService'])
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 
-
-Route::get('/paypal/pay', [PaymentController::class,'payWithPayPal']);
-Route::get('/paypal/status', [PaymentController::class,'payPalStatus']);
-
 Route::middleware(['auth'])->group(function () {
+    // Carrito
+    Route::post('/checkout/serviceProccess',[ContractController::class,'validationFieldDescriptionContract'])->name('contractDetailsData');
+    Route::delete('/cart/destroy/{idUser}',[ContractController::class,'clearCart'])->name('cart.destroy');
+    Route::get('/checkout/service',[ContractController::class,'checkoutPaymentView'])->name('index.checkout');
+
+    // Pago con paypal
+    Route::post('/paypal/payService', [ContractController::class,'processPaymentServiceContract'])->name('continuePaymentPaypal');
+    Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
+    Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
+
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');

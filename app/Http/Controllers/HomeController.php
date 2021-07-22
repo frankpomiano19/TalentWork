@@ -27,10 +27,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('perfilservicio');
-    }
 
     public function showTalentService(){
         $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
