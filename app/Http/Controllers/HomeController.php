@@ -72,7 +72,9 @@ class HomeController extends Controller
 
         $user->save();
 
-        return redirect()->back();
+        //return redirect('user/login');
+
+        return redirect('/login');
         
 
     }

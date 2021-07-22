@@ -33,9 +33,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // window.Pusher = require('pusher-js');
 
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    forceTLS: true
+});
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     key: '0cceeee491b92f68de44',
+//     cluster: 'mt1',
+//     encrypted: true
 // });

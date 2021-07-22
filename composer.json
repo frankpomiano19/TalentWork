@@ -19,6 +19,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "paypal/rest-api-sdk-php": "^1.14",
+        "livewire/livewire": "^2.5",
+        "pusher/pusher-php-server": "^7.0",
         "twbs/bootstrap": "4.6.0"
     },
     "require-dev": {

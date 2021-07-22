@@ -23,8 +23,8 @@ class ServiceController extends Controller
     public function registroTecnico(Request $request){
         $request->validate([
             'servicioTecn' => 'required',
-            'detallesTecn' => 'required',
-            'costoTecn' => 'required',
+            'detallesTecn' => 'required|min:10',
+            'costoTecn' => 'required|between:1,10000',
             'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
@@ -56,8 +56,8 @@ class ServiceController extends Controller
     public function registroTalento(Request $request){
         $request->validate([
             'servicioTalen' => 'required',
-            'detallesTalen' => 'required',
-            'costoTalen' => 'required',
+            'detallesTalen' => 'required|min:10',
+            'costoTalen' => 'required|between:1,10000',
             'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 

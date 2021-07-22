@@ -35,6 +35,42 @@
     .body{
         background-color: #000000
     }
+    .chat {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chat li {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px dotted #B3A9A9;
+    }
+
+    .chat li .chat-body p {
+        margin: 0;
+        color: #777777;
+    }
+
+    .panel-body {
+        overflow-y: scroll;
+        height: 350px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+    }
     </style>
     @yield('contenido_cSS')
 
@@ -51,6 +87,9 @@
                     {{-- <li class="nav-item"> <a class="nav-link" href="#">Inicio</a> </li> --}}
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
+                    </li>
+                   
                 </ul>
                 <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b> </p>
                 <ul class="navbar-nav ml-auto">
@@ -60,7 +99,7 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             </li>
                         @endif
                         
@@ -71,7 +110,10 @@
                         @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('offerMyService') }}">Ofrecer Mi Servicio</a>
+                        <a class="nav-link" href="{{ route('bandeja') }}">Buzón clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('offerMyService') }}">Registrar servicio</a>
                     </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -169,11 +169,6 @@
                 "image management",
                 "sdk"
             ],
-            "support": {
-                "email": "info@cloudinary.com",
-                "issues": "https://github.com/cloudinary/cloudinary_php/issues",
-                "source": "https://github.com/cloudinary/cloudinary_php/tree/1.19.0"
-            },
             "time": "2020-10-29T04:01:07+00:00"
         },
         {
@@ -1098,10 +1093,6 @@
                 "laravel4",
                 "upload"
             ],
-            "support": {
-                "issues": "https://github.com/jrm2k6/cloudder/issues",
-                "source": "https://github.com/jrm2k6/cloudder/tree/0.7.0"
-            },
             "abandoned": true,
             "time": "2021-02-04T04:53:27+00:00"
         },
@@ -1173,16 +1164,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.49.2",
+            "version": "v8.50.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d9b43ee080b4d51344b2e578aa667f85040471a2"
+                "reference": "d892dbacbe3859cf9303ccda98ac8d782141d5ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d9b43ee080b4d51344b2e578aa667f85040471a2",
-                "reference": "d9b43ee080b4d51344b2e578aa667f85040471a2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d892dbacbe3859cf9303ccda98ac8d782141d5ae",
+                "reference": "d892dbacbe3859cf9303ccda98ac8d782141d5ae",
                 "shasum": ""
             },
             "require": {
@@ -1192,7 +1183,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "league/commonmark": "^1.3",
+                "league/commonmark": "^1.3|^2.0",
                 "league/flysystem": "^1.1",
                 "monolog/monolog": "^2.0",
                 "nesbot/carbon": "^2.31",
@@ -1467,16 +1458,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.6.5",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "44ffd8d3c4a9133e4bd0548622b09c55af39db5f"
+                "reference": "c4228d11e30d7493c6836d20872f9582d8ba6dcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/44ffd8d3c4a9133e4bd0548622b09c55af39db5f",
-                "reference": "44ffd8d3c4a9133e4bd0548622b09c55af39db5f",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c4228d11e30d7493c6836d20872f9582d8ba6dcf",
+                "reference": "c4228d11e30d7493c6836d20872f9582d8ba6dcf",
                 "shasum": ""
             },
             "require": {
@@ -1532,12 +1523,6 @@
                 "md",
                 "parser"
             ],
-            "support": {
-                "docs": "https://commonmark.thephpleague.com/",
-                "issues": "https://github.com/thephpleague/commonmark/issues",
-                "rss": "https://github.com/thephpleague/commonmark/releases.atom",
-                "source": "https://github.com/thephpleague/commonmark"
-            },
             "funding": [
                 {
                     "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
@@ -1564,7 +1549,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-26T11:57:13+00:00"
+            "time": "2021-07-17T17:13:23+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1648,10 +1633,6 @@
                 "sftp",
                 "storage"
             ],
-            "support": {
-                "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/1.1.4"
-            },
             "funding": [
                 {
                     "url": "https://offset.earth/frankdejonge",
@@ -1750,6 +1731,52 @@
             "autoload": {
                 "psr-0": {
                     "Mockery": "library/"
+            "name": "livewire/livewire",
+            "version": "v2.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "de192292d68276d831e5fd9824c80c3b78a21ddf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/de192292d68276d831e5fd9824c80c3b78a21ddf",
+                "reference": "de192292d68276d831e5fd9824c80c3b78a21ddf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
+                "illuminate/validation": "^7.0|^8.0",
+                "php": "^7.2.5|^8.0",
+                "symfony/http-kernel": "^5.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^7.0|^8.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0|^6.0",
+                "orchestra/testbench-dusk": "^5.2|^6.0",
+                "phpunit/phpunit": "^8.4|^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1800,6 +1827,35 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/Seldaek/monolog/zipball/df991fd88693ab703aa403413d83e15f688dae33",
                 "reference": "df991fd88693ab703aa403413d83e15f688dae33",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "funding": [
+                {
+                    "url": "https://github.com/calebporzio",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-13T05:03:28+00:00"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "9738e495f288eec0b187e310b7cdbbb285777dbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/9738e495f288eec0b187e310b7cdbbb285777dbe",
+                "reference": "9738e495f288eec0b187e310b7cdbbb285777dbe",
                 "shasum": ""
             },
             "require": {
@@ -2019,10 +2075,6 @@
                 "datetime",
                 "time"
             ],
-            "support": {
-                "issues": "https://github.com/briannesbitt/Carbon/issues",
-                "source": "https://github.com/briannesbitt/Carbon"
-            },
             "funding": [
                 {
                     "url": "https://opencollective.com/Carbon",
@@ -2159,6 +2211,135 @@
         {
             "name": "paypal/rest-api-sdk-php",
             "version": "1.14.0",
+            "name": "paragonie/random_compat",
+            "version": "v9.99.100",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v1.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "2e856afe80bfc968b47da1f4a7e1ea8f03d06b38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/2e856afe80bfc968b47da1f4a7e1ea8f03d06b38",
+                "reference": "2e856afe80bfc968b47da1f4a7e1ea8f03d06b38",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": ">=1",
+                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^3|^4|^5|^6|^7|^8|^9"
+            },
+            "suggest": {
+                "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
+                "ext-sodium": "PHP >= 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "time": "2021-05-25T12:58:14+00:00"
+        },
+        {
+            "name": "phpoption/phpoption",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
@@ -2377,6 +2558,60 @@
         {
             "name": "phpdocumentor/reflection-docblock",
             "version": "5.2.2",
+            "name": "psr/http-factory",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "psr",
+                "psr-17",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2019-04-30T12:38:16+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
@@ -2618,6 +2853,65 @@
         {
             "name": "phpunit/php-code-coverage",
             "version": "9.2.6",
+            "name": "pusher/pusher-php-server",
+            "version": "7.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "7757a09209d20ff95b077ae48dc25f49a6ad94a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/7757a09209d20ff95b077ae48dc25f49a6ad94a2",
+                "reference": "7757a09209d20ff95b077ae48dc25f49a6ad94a2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.2",
+                "paragonie/sodium_compat": "^1.6",
+                "php": "^7.3|^8.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "overtrue/phplint": "^2.3",
+                "phpunit/phpunit": "^8.5|^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pusher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "keywords": [
+                "events",
+                "messaging",
+                "php-pusher-server",
+                "publish",
+                "push",
+                "pusher",
+                "real time",
+                "real-time",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2021-05-26T11:22:28+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
@@ -3096,6 +3390,17 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+            "name": "symfony/error-handler",
+            "version": "v5.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/error-handler.git",
+                "reference": "43323e79c80719e8a4674e33484bca98270d223f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/43323e79c80719e8a4674e33484bca98270d223f",
+                "reference": "43323e79c80719e8a4674e33484bca98270d223f",
                 "shasum": ""
             },
             "require": {
@@ -3133,6 +3438,23 @@
                 "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
             },
             "time": "2019-01-08T18:20:26+00:00"
+            "description": "Provides tools to manage errors and ease debugging PHP code",
+            "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-06-24T08:13:00+00:00"
         },
         {
             "name": "psr/http-client",
@@ -5272,6 +5594,17 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
                 "reference": "0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
+            "name": "fakerphp/faker",
+            "version": "v1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FakerPHP/Faker.git",
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/89c6201c74db25fa759ff16e78a4d8f32547770e",
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e",
                 "shasum": ""
             },
             "require": {
@@ -5333,6 +5666,26 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/7e82f6084d7cae521a75ef2cb5c9457bbda785f4",
                 "reference": "7e82f6084d7cae521a75ef2cb5c9457bbda785f4",
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2021-07-06T20:39:40+00:00"
+        },
+        {
+            "name": "filp/whoops",
+            "version": "2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/fdf92f03e150ed84d5967a833ae93abffac0315b",
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b",
                 "shasum": ""
             },
             "require": {
@@ -5424,6 +5777,47 @@
                 "symfony/cache": "^4.4|^5.0",
                 "symfony/expression-language": "^4.4|^5.0",
                 "symfony/mime": "^4.4|^5.0"
+                "phpunit/php-file-iterator": "^1.4 || ^2.0",
+                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.5 || ^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "support": {
+                "issues": "https://github.com/hamcrest/hamcrest-php/issues",
+                "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
+            },
+            "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/sail",
+            "version": "v1.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "51ecfe0f048f8f8e6c5617e02a1f67ca22817c98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/51ecfe0f048f8f8e6c5617e02a1f67ca22817c98",
+                "reference": "51ecfe0f048f8f8e6c5617e02a1f67ca22817c98",
+                "shasum": ""
             },
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
@@ -5471,6 +5865,12 @@
                 }
             ],
             "time": "2021-06-27T09:19:40+00:00"
+            "description": "Docker files for running a basic Laravel application.",
+            "keywords": [
+                "docker",
+                "laravel"
+            ],
+            "time": "2021-07-15T07:35:41+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -7838,5 +8238,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
