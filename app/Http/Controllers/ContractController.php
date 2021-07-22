@@ -47,7 +47,7 @@ class ContractController extends Controller
                     'use_offer'=>$request->userOffer,
                     'use_receive'=>auth()->user()->id,
                     'use_occ_id'=>$request->serviceOffer,
-                    'con_status'=>$request->statusInitial,
+                    'con_status'=>1,
                 ]);
         
                 break;
@@ -63,7 +63,7 @@ class ContractController extends Controller
                     'use_offer'=>$request->userOffer,
                     'use_receive'=>auth()->user()->id,
                     'use_tal_id'=>$request->serviceOffer,
-                    'con_status'=>$request->statusInitial,
+                    'con_status'=>1,
                 ]);
 
                 break;
