@@ -252,7 +252,7 @@ class ContractController extends Controller
         /** Ejecutar pago **/
         $result = $payment->execute($execution, $this->apiContext);
         if ($result->getState() === 'approved') {
-            $status = 'Gracias! El pago a través de PayPal se ha ralizado correctamente.';
+            $status = 'El pago fue ejecutado correctamente, y el contrato se realizo de manera satisfactoria';
 
             //  Se registra el contrato
             $algo = "Nada";   
