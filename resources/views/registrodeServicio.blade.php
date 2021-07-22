@@ -145,7 +145,7 @@
                               <label for="imagenTalen">Ingrese una imagen referente de su talento</label>
                               <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
                             </div>
-                          <button type="submit" class="btn btn-primary">Guardar Talento</button>
+                          <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>  
                       </div>
                     </div>

@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'id',
         'name',
         'lastname',
         'DNI',
@@ -50,7 +51,11 @@ class User extends Authenticatable
     }
     public function UseTalIntermediate(){
         return $this->hasMany(use_tal::class,'use_id');
-    }    
+    }
+    
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 
     public function UseContractReceive(){
         return $this->hasMany(Contract::class,'use_receive');

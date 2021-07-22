@@ -71,7 +71,7 @@
         <label for="imagenTalen">Ingrese una imagen referente de su talento</label>
         <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen">
       </div>
-    <button type="submit" class="btn btn-primary">Guardar Talento</button>
+    <button type="submit" class="btn btn-primary">Guardar servicio</button>
   </form>
 @endsection
 <script src="{{ asset('js/app.js') }}" defer></script>
