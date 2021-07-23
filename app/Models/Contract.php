@@ -22,6 +22,7 @@ class Contract extends Model
         'use_occ_id',
         'use_tal_id',
         'con_status',
+        'servicio'
 
     ];
     protected $hidden = [];

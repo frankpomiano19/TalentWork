@@ -330,7 +330,7 @@
                                             </button>                                        
                                             <br>
                                             @else
-                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" onclick="window.location.href='{{ route('showProfileServiceOccupation',$serviceUsers->id) }}'">
                                                     Contratar
                                                 </button>                                        
             
@@ -396,9 +396,11 @@
                                             </button>                                        
                                             <br>
                                             @else
-                                                <button type="button" class="btn btn-secondary p-3 btn-details-now-data" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Contratar
-                                                </button>                                        
+
+                                            <button type="button" class="btn btn-secondary p-3" onclick="window.location.href='{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}'">
+                                                Contratar
+                                            </button>       
+                                 
             
         
                                             @endif
@@ -470,113 +472,13 @@
                 </div>
             {{-- </form> --}}
         </div>
-
-
-
-
-
-        {{-- PopUp --}}
-
-        <form class="" action="{{ route('iPContract') }}" method="POST" enctype="" novalidate>
-            @csrf
-            <input type="hidden" class="set-user-offer-input" name="userOffer" value="" required>
-            <input type="hidden" class="set-price-offer-input" name="priceOffer" value="" required>
-            <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="" required>    
-            <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="" required>
-            <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
-
     
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-        
-                        <div class="text-center">
-                            <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
-                        </div>
-
-                        <!-- Cuerpo modal -->
-                        <div class="modal-body">
-                            <div class="m-1" id="formulario">
-                                <label class="">Contratado por: Usuario nuevo</label><br>
-                                <label>Hora: </label><br>
-                                <input type="time" class="form-control" value="{{ old('hourForm') }}" name="hourForm">
-                                <label class="m-1">Fecha: </label>
-                                <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
-
-                                <label class="m-1" for="">Lugar</label>
-                                <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
-                        
-
-                                <label class="m-1">Descripcion</label><br>
-                                <input class="form-control" name="descriptionForm" value="{{ old('descriptionForm') }}" placeholder="Descripcion">
-                            </div>
-                        </div>
-        
-                        <!-- Botones pie -->
-                        <div class="form-group row justify-content-center">
-                            <div class="col-sm-3">
-                            <input type="submit" value="Siguiente" class="btn btn-primary"/>
-                            </div>
-                            <div class="col-sm-3">
-                            <input type="submit" value="Cancelar" class="btn btn-danger" data-bs-dismiss="modal" />
-                            </div>
-                        </div>
-        
-                    </div>
-                </div>
-            </div>
-        </form>        
 
 @endsection
 
 
 @section('contenido_abajo_js')    
 
-<script>
-    $(".btn-details-now-data").click(function(event){
-
-        $('.set-user-offer-input').val($(this).closest('.form-details-get').find('.get-user-offer-input').val());
-        $('.set-price-offer-input').val($(this).closest('.form-details-get').find('.get-price-offer-input').val());
-        $('.set-service-offer-input').val($(this).closest('.form-details-get').find('.get-service-offer-input').val());
-        $('.set-type-offer-input').val($(this).closest('.form-details-get').find('.get-type-offer-input').val());
-        $('.set-status-offer-input').val($(this).closest('.form-details-get').find('.get-status-offer-input').val());
-    });
-
-</script>
-
-
-
-
-
-
-
-@if (session('contractFailed'))
-<script>
-    Swal.fire({
-        title: "Error en el contrato",
-        html:  `
-        {{session('contractFailed')}}
-        <br>
-        <ul>
-            @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                <li>{{ $errorRegister }}</li>
-            @endforeach               
-        </ul>`,
-        icon: "error"
-    });
-</script>
-@endif
-
-@if (session('contractMessage'))
-<script>
-    Swal.fire({
-        title: "Contrato correctamente",
-        html:  `
-        {{session('contractMessage')}}`,
-        icon: "success"
-    });
-</script>
-@endif
 
 <!-- @if ($flag==1)
 <script>

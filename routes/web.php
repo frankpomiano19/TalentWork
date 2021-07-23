@@ -5,6 +5,11 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PaymentController;
+
+use App\Events\Message;
+use App\Events\MessageSent;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,11 +27,17 @@ Route::get('/occupationService',[HomeController::class,'showOccupationService'])
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 
-
-Route::get('/paypal/pay', [PaymentController::class,'payWithPayPal']);
-Route::get('/paypal/status', [PaymentController::class,'payPalStatus']);
-
 Route::middleware(['auth'])->group(function () {
+    // Carrito
+    Route::post('/checkout/serviceProccess',[ContractController::class,'validationFieldDescriptionContract'])->name('contractDetailsData');
+    Route::delete('/cart/destroy/{idUser}',[ContractController::class,'clearCart'])->name('cart.destroy');
+    Route::get('/checkout/service',[ContractController::class,'checkoutPaymentView'])->name('index.checkout');
+
+    // Pago con paypal
+    Route::post('/paypal/payService', [ContractController::class,'processPaymentServiceContract'])->name('continuePaymentPaypal');
+    Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
+    Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
+
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
@@ -45,6 +56,10 @@ Route::get('nuevo',function(){
     return view('nuevo');
 });
 
+Route::get('bandeja',function(){
+    return view('bandejamensajes');
+})->middleware('auth')->name('bandeja');
+
 // Route::get('/contrato', function () {
 //     return view('contratoPerfil');
 // })->name("contratoPerfil");
@@ -52,10 +67,70 @@ Route::get('nuevo',function(){
 Route::get('template',function(){
     return view('template');
 });
+
+Route::get('login',function(){
+    return view('login');
+})->name('login');
+
+
 Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
+/*Route::get('perfil',function(){
+    return view('perfil');
+});*/
+Route::get('servicio',function(){
+    return view('servicio');
+});
+Route::get('informa',function(){
+    return view('nada');
+});
+Route::get('serviciopremium',function(){
+    return view('serviciopremium');
+});
+
+Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
+Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+//Route::post('/actualizar','PerfilController@update');
 Route::post('/registrar','HomeController@nuevoRegistro');
+Route::get('registroServicio',[ServiceController::class, 'registro']);
+Route::get('/welcome1',function(){
+return view( 'reg-serv-indep');
+})->name('registerServiceAllNow');
+
+Route::get('/perfilservicio',function(){
+    return view('perfilservicio');
+});
+
+
+Route::get('/categorias',function(){
+    return view('categoria/filtroServicio');
+})->name('categorias');
+
+Route::get('/servicio',function(){
+    return view('servicio');
+});
+//Route::get('registro',function(){
+//    return view('registro');
+//});
+Route::get('perfil',function(){
+    return view('perfil');
+});
+Route::get('registroServicio',[ServiceController::class, 'registro']);
+Route::post('/registrar','HomeController@nuevoRegistro');
+
+Route::get('/servicio',function(){
+    return view('servicio');
+});
+//Route::get('registro',function(){
+//    return view('registro');
+//});
+Route::get('perfil',function(){
+    return view('perfil');
+});
+Route::get('registroServicio',[ServiceController::class, 'registro']);
+
+
 Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
 
 Route::get('/perfilservicio',function(){
@@ -71,4 +146,26 @@ Route::get('/estadoContrato',function(){
 
 Route::get('/pagoPrueba',function(){
     return view('pagoPrueba');
+});
+
+
+Route::get('/chatNuevo',function(){
+    return view('chatNuevo');
+});
+
+Route::post('/send-message',function(Request $request){
+    event(
+        new Message(
+            $request->input('username'),
+            $request->input('message')));
+    
+    return ["success"=>true];
+});
+
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
+
+Broadcast::channel('chat', function ($user) {
+    return Auth::check();
 });
