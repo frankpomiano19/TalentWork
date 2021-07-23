@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('nuevo',function(){
     return view('nuevo');
 });
@@ -140,6 +139,11 @@ Route::get('/perfilservicio',function(){
 Route::get('/talento',function(){
     return view('talento');
 });
+
+Route::get('/estadoContrato',function(){
+    return view('estadoContrato');
+});
+
 Route::get('/pagoPrueba',function(){
     return view('pagoPrueba');
 });

@@ -200,10 +200,27 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Trabajos Asignados</p>
-                            <a href="">Mis contratos</a><br/>
+                            @foreach ($user->UseContractReceive as $Contract)
+                                @if ($Contract->con_status != 3)
+                                    @if ($Contract->use_tal_id !== null)
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/> 
+                                    @endif
+                                    @if ($Contract->use_occ_id !== null)
+                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateOcc->ser_occ_name}}</a><br/>
+                                    @endif 
+                                @endif
+                            @endforeach
                             <p>Trabajos Pasados</p>
-                            <a>Servicio 1(cumplido)</a><br/>
-                            <a>Servicio 2(cumplido)</a><br/>
+                            @foreach ($user->UseContractReceive as $Contract)
+                                @if ($Contract->con_status == 3)
+                                    @if ($Contract->use_tal_id !== null)
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/> 
+                                    @endif
+                                    @if ($Contract->use_occ_id !== null)
+                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateOcc->ser_occ_name}}</a><br/>
+                                    @endif 
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-8">

@@ -8,6 +8,9 @@ use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+class ChatsController extends Controller{
+
+
 public function __construct()
 {
   $this->middleware('auth');
@@ -50,4 +53,5 @@ public function sendMessage(Request $request)
   broadcast(new MessageSent($user, $message))->toOthers();
 
   return ['status' => 'Message Sent!'];
+}
 }
