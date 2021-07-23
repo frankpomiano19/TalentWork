@@ -25,5 +25,13 @@ class Contract extends Model
         'servicio'
 
     ];
-    protected $hidden = [];    
+    protected $hidden = [];
+
+    public function IntermediateTal(){
+        return $this->belongsTo(ServiceTalent::class,'use_tal_id');
+    }
+    
+    public function IntermediateOcc(){
+        return $this->belongsTo(ServiceOccupation::class,'use_occ_id');
+    }
 }
