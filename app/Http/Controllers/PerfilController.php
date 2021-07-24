@@ -60,7 +60,7 @@ class PerfilController extends Controller
         $usuarioLogeado->push();
         $message = "Realizado correctamente";
         //$id=$usuarioLogeado->id;
-        return redirect()->route('perfil',Auth::user()->id)->with('contractMessage',$message);
+        return redirect()->route('perfil',Auth::user()->id)->with('updateMessage',$message);
     
     }
 }

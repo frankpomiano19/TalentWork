@@ -95,7 +95,7 @@
                                     </div>
 
                                     <form action="{{route('update.user',\Auth::user())}}" method="POST" >
-                                    {{ csrf_field() }}  @method("PUT")
+                                    {{ csrf_field() }}  @method("PATCH")
                                     <!-- Modal body -->
                                     <div class="modal-body">
 
@@ -553,9 +553,20 @@
 @if (session('contractMessage'))
 <script>
     Swal.fire({
-        title: "Contrato correctamente",
+        title: "Registrado correctamente",
         html:  `
         {{session('contractMessage')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
+@if (session('updateMessage'))
+<script>
+    Swal.fire({
+        title: "Datos actualizados",
+        html:  `
+        {{session('updateMessage')}}`,
         icon: "success"
     });
 </script>
