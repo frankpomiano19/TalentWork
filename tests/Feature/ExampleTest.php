@@ -14,8 +14,18 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/home');
+        $this->get('/login')
+        ->assertSee('login')
+        ->assertStatus(200);
 
-        $response->assertStatus(200);
+        // $credentials = [
+        //     "email" => "vizcarra@gmail.com",
+        //     "password" => "vacassss"
+        // ];
+
+        // $response = $this->post('login', $credentials);
+        // $response->assertRedirect('/occupationService');
+        // $this->assertCredentials($credentials);
+        // $response->assertSee('/occupationService');
     }
 }

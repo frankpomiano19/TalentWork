@@ -65,13 +65,13 @@ class NuevoRegistroTest extends TestCase
     public function test_errorValidation_passed()
     {
         $this->withoutExceptionHandling();
-        $name = 'Frank';
-        $lastname = 'Alvarado Pardo';
+        $name = 'Anticaminante';
+        $lastname = 'Apellido1 Apellido2';
         $dni = '32131231';
-        $email = 'mevarad@unmsm.edu.pe';
+        $email = 'sincamino@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
-        $password = 'perrovaca';
-        $password_confirmation = 'perrovaca';
+        $password = 'contraseña';
+        $password_confirmation = 'contraseña';
 
         $response = $this->from('registrouser')->post(route('registrarUsuario'), ['name'=>$name, 
                                                                                   'lastname'=>$lastname, 
@@ -99,10 +99,10 @@ class NuevoRegistroTest extends TestCase
 
     public function test_baseCreate_validation()
     {
-        $name = 'Frank';
-        $lastname = 'Alvarado Pardo';
+        $name = 'Anticaminante';
+        $lastname = 'Apellido1 Apellido2';
         $dni = '32131231';
-        $email = 'mevarad@unmsm.edu.pe';
+        $email = 'sincamino@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
 
         //$password = '959146547';

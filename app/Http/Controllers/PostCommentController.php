@@ -19,9 +19,9 @@ class PostCommentController extends Controller
 
     public function newComment(Request $request){
 
-        $request->validate([
-            'comentario'=>'required|string|min:10|max:170',
-        ]);
+        // $request->validate([
+        //     'comentario'=>'required|string|min:10|max:170',
+        // ]);
         
         switch ($request->typeJobFromComment){
             case 1:
@@ -54,7 +54,7 @@ class PostCommentController extends Controller
 
         $request->validate([
             'pregunta'=>'required|string|min:10|max:170',
-            'respuesta'=>'required|string|min:10|max:170',
+            'respuesta'=>'required|string|min:10|max:350',
         ]);
         
         switch ($request->typeJobFromQuestion){
@@ -88,9 +88,9 @@ class PostCommentController extends Controller
 
     public function newAnswer(Request $request){
 
-        $request->validate([
-            'comentario'=>'required|string|min:10|max:170',
-        ]);
+        // $request->validate([
+        //     'comentario'=>'required|string|min:10|max:170',
+        // ]);
 
         $answer = new Answer(array(
             'comentario' => $request->get('comentario'),

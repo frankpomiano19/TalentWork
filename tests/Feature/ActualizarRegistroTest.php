@@ -46,7 +46,7 @@ class ActualizarRegistroTest extends TestCase
     public function test_errorValidationUpdate_DNIdiferent()
     {
         //$this->withoutExceptionHandling();
-        $name = 'djhfdjf';
+        $name = 'Frank';
         $lastname = 'Alvarado Pardo';
         $dni = '709009224';
         $email = 'alvarado4@unmsm.edu.pe';
@@ -61,14 +61,14 @@ class ActualizarRegistroTest extends TestCase
 
         $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
 
-        $response = $this->from('/perfil/6')->put(route('update.user',auth()->user()->id), ['name'=>$name, 
+        $response = $this->from('/perfil/7')->patch(route('update.user',auth()->user()->id), ['name'=>$name, 
                                                                                   'lastname'=>$lastname, 
                                                                                   'dni'=>$dni, 
                                                                                   'email'=>$email, 
                                                                                   'birthdate'=>$birthdate, 
                                                                                   'password'=>$password, 
                                                                                   'password_confirmation'=>$password]
-                                )->assertRedirect('/perfil/6');
+                                )->assertRedirect('/perfil/7');
 
         $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
               
@@ -93,71 +93,73 @@ class ActualizarRegistroTest extends TestCase
         // $this->assertContains(302,[$response->getStatusCode()]);
     }
 
-    // public function test_errorValidationUpdate_EMAILdiferent()
-    // {
-    //     //$this->withoutExceptionHandling();
-    //     $name = 'Frank';
-    //     $lastname = 'Alvarado Pardo';
-    //     $dni = '70900925';
-    //     $email = 'vladimir12.alvarado@unmsm.edu.pe';
-    //     $birthdate = '2021-07-11 23:47:47';
-    //     $password = 'perrovaca';
+    public function test_errorValidationUpdate_EMAILdiferent()
+    {
+        //$this->withoutExceptionHandling();
+        $name = 'Frank';
+        $lastname = 'Alvarado Pardo';
+        $dni = '70900925';
+        $email = 'mantecoso@gmail.com';
+        $birthdate = '2021-07-11 23:47:47';
+        $password = 'perrovaca';
 
-    //     $credentials = [
-    //         "email" => "alvarado4@unmsm.edu.pe",
-    //         "password" => "perrovaca",
-    //     ];
-    //     $this->post('login', $credentials);
+        $credentials = [
+            "email" => "alvarado4@unmsm.edu.pe",
+            "password" => "perrovaca",
+        ];
+        $this->post('login', $credentials);
 
-    //     $response = $this->from('perfil')->put(route('update.user',auth()->user()->id), ['name'=>$name, 
-    //                                                                               'lastname'=>$lastname, 
-    //                                                                               'dni'=>$dni, 
-    //                                                                               'email'=>$email, 
-    //                                                                               'birthdate'=>$birthdate, 
-    //                                                                               'password'=>$password, 
-    //                                                                               'password_confirmation'=>$password]
-    //                             )->assertRedirect('/perfil/6');
+        $response = $this->from('/perfil/7')->patch(route('update.user',auth()->user()->id), ['name'=>$name, 
+                                                                                  'lastname'=>$lastname, 
+                                                                                  'dni'=>$dni, 
+                                                                                  'email'=>$email, 
+                                                                                  'birthdate'=>$birthdate, 
+                                                                                  'password'=>$password, 
+                                                                                  'password_confirmation'=>$password]
+                                )->assertRedirect('/perfil/7');
+
+        $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
+              
+        $view->assertSessionDoesntHaveErrors(['email']);
         
-    //     $this->assertContains('Realizado correctamente',[$response->getSession()->get('contractMessage')]);
-    //     $this->assertContains(302,[$response->getStatusCode()]);
-    // }
+    }
 
 
-    // public function test_errorValidationUpdate_data()
-    // {
-    //     //$this->withoutExceptionHandling();
-    //     $name = 'Frank';
-    //     $lastname = 'Alvarado Pardo';
-    //     $dni = '70900925';
-    //     $email = 'alvarado4@unmsm.edu.pe';
-    //     $birthdate = '2021-07-11 23:47:47';
-    //     $password = 'perrovaca';
+    public function test_errorValidationUpdate_data()
+    {
+        //$this->withoutExceptionHandling();
+        $name = 'Frank';
+        $lastname = 'Alvarado Pardo';
+        $dni = '70900925';
+        $email = 'alvarado4@unmsm.edu.pe';
+        $birthdate = '2021-07-11 23:47:47';
+        $password = 'perrovaca';
 
-    //     $credentials = [
-    //         "email" => "alvarado4@unmsm.edu.pe",
-    //         "password" => "perrovaca",
-    //     ];
-    //     $this->post('login', $credentials);
+        $credentials = [
+            "email" => "alvarado4@unmsm.edu.pe",
+            "password" => "perrovaca",
+        ];
+        $this->post('login', $credentials);
 
-    //     $response = $this->from('perfil')->put(route('update.user',auth()->user()->id), ['name'=>$name, 
-    //                                                                               'lastname'=>$lastname, 
-    //                                                                               'dni'=>$dni, 
-    //                                                                               'email'=>$email, 
-    //                                                                               'birthdate'=>$birthdate, 
-    //                                                                               'password'=>$password, 
-    //                                                                               'password_confirmation'=>$password]
-    //                             )->assertRedirect('/perfil/6');
+        $response = $this->from('/perfil/7')->patch(route('update.user',auth()->user()->id), ['name'=>$name, 
+                                                                                  'lastname'=>$lastname, 
+                                                                                  'dni'=>$dni, 
+                                                                                  'email'=>$email, 
+                                                                                  'birthdate'=>$birthdate, 
+                                                                                  'password'=>$password, 
+                                                                                  'password_confirmation'=>$password]
+                                )->assertRedirect('/perfil/7');
         
-    //     $this->assertContains('Realizado correctamente',[$response->getSession()->get('contractMessage')]);
-    //     $this->assertContains(302,[$response->getStatusCode()]);
+        $this->assertContains('Realizado correctamente',[$response->getSession()->get('contractMessage')]);
+        $this->assertContains(302,[$response->getStatusCode()]);
  
-    // }
+    }
 
     public function test_baseCreateUpdate_validation()
     {
         $name = 'Frank';
         $lastname = 'Alvarado Pardo';
-        $dni = '82731232';
+        $dni = '70900925';
         $email = 'alvarado4@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
         $password = 'perrovaca';

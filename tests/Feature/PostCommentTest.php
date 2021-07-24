@@ -51,72 +51,72 @@ class PostCommentTest extends TestCase
         $view->assertSee('Dejen sus opiniones sobre mis cuentos, no olviden dejar sus ideas para incluirlas en mis proximas historias');
     }
 
-    public function test_errorValidation_postCommentFailed_OCC()
-    {
-        //$this->withoutExceptionHandling();
-        $comentario = 'ComFail';
-        $value = '1';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
+    // public function test_errorValidation_postCommentFailed_OCC()
+    // {
+    //     //$this->withoutExceptionHandling();
+    //     $comentario = 'ComFail';
+    //     $value = '1';
+    //     // $etiqueta1 = '';
+    //     // $etiqueta2 = '';
 
-        $credentials = [
-            "email" => "alvarado4@unmsm.edu.pe",
-            "password" => "perrovaca",
-        ];
-        $this->post('login', $credentials);
+    //     $credentials = [
+    //         "email" => "alvarado4@unmsm.edu.pe",
+    //         "password" => "perrovaca",
+    //     ];
+    //     $this->post('login', $credentials);
 
-        $id = '2';
-        $allServices = use_occ::where('id',$id)->first();
+    //     $id = '2';
+    //     $allServices = use_occ::where('id',$id)->first();
 
-        $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
+    //     $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComent'), [
-                                                                'comentario'=>$comentario, 
-                                                                'usCom'=>auth()->user()->id,
-                                                                'typeJobFromComment'=>$value, 
-                                                                'serviceId'=>$allServices->id]
-                                )->assertRedirect('/profileServiceOccupation/2');
+    //     $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComent'), [
+    //                                                             'comentario'=>$comentario, 
+    //                                                             'usCom'=>auth()->user()->id,
+    //                                                             'typeJobFromComment'=>$value, 
+    //                                                             'serviceId'=>$allServices->id]
+    //                             )->assertRedirect('/profileServiceOccupation/2');
 
-        $response = $this->assertDatabaseMissing('Post_comments', [
-                                    'comentario' => $comentario
-                                ]);
-                                //->assertRedirect('/profileServiceOccupation/3')
+    //     $response = $this->assertDatabaseMissing('Post_comments', [
+    //                                 'comentario' => $comentario
+    //                             ]);
+    //                             //->assertRedirect('/profileServiceOccupation/3')
         
-    }
+    // }
 
-    public function test_errorValidation_postCommentFailed_TAL()
-    {
-        //$this->withoutExceptionHandling();
-        $comentario = 'ComFail';
-        $value = '2';
-        // $usCom = 'Frank3';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
+    // public function test_errorValidation_postCommentFailed_TAL()
+    // {
+    //     //$this->withoutExceptionHandling();
+    //     $comentario = 'ComFail';
+    //     $value = '2';
+    //     // $usCom = 'Frank3';
+    //     // $etiqueta1 = '';
+    //     // $etiqueta2 = '';
 
-        $credentials = [
-            "email" => "alvarado4@unmsm.edu.pe",
-            "password" => "perrovaca",
-        ];
-        $this->post('login', $credentials);
+    //     $credentials = [
+    //         "email" => "alvarado4@unmsm.edu.pe",
+    //         "password" => "perrovaca",
+    //     ];
+    //     $this->post('login', $credentials);
 
-        $id = '1';
-        $allServices = use_tal::where('id',$id)->first();
+    //     $id = '1';
+    //     $allServices = use_tal::where('id',$id)->first();
 
-        $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
+    //     $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceTalent/1')->post(route('registrarComent'), [
-                                                                'comentario'=>$comentario, 
-                                                                'usCom'=>auth()->user()->id,
-                                                                'typeJobFromComment'=>$value, 
-                                                                'serviceId'=>$allServices->id]
-                                )->assertRedirect('/profileServiceTalent/1');
+    //     $response = $this->from('/profileServiceTalent/1')->post(route('registrarComent'), [
+    //                                                             'comentario'=>$comentario, 
+    //                                                             'usCom'=>auth()->user()->id,
+    //                                                             'typeJobFromComment'=>$value, 
+    //                                                             'serviceId'=>$allServices->id]
+    //                             )->assertRedirect('/profileServiceTalent/1');
 
-        $response = $this->assertDatabaseMissing('Post_comments', [
-                                    'comentario' => $comentario
-                                ]);
-                                //->assertRedirect('/profileServiceOccupation/3')
+    //     $response = $this->assertDatabaseMissing('Post_comments', [
+    //                                 'comentario' => $comentario
+    //                             ]);
+    //                             //->assertRedirect('/profileServiceOccupation/3')
         
-    }
+    // }
 
     public function test_errorValidation_postComment_OCC()
     {
@@ -137,11 +137,11 @@ class PostCommentTest extends TestCase
 
         $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComent'), [
-                                                                'comentario'=>$comentario, 
+        $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComent'), [ 
                                                                 'usCom'=>auth()->user()->id,
                                                                 'typeJobFromComment'=>$value, 
-                                                                'serviceId'=>$allServices->id]
+                                                                'serviceId'=>$allServices->id,
+                                                                'comentario'=>$comentario]
                                 )->assertRedirect('/profileServiceOccupation/2');
 
         // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
@@ -169,11 +169,11 @@ class PostCommentTest extends TestCase
 
         $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceTalent/1')->post(route('registrarComent'), [
-                                                                'comentario'=>$comentario, 
+        $response = $this->from('/profileServiceTalent/1')->post(route('registrarComent'), [ 
                                                                 'usCom'=>auth()->user()->id,
                                                                 'typeJobFromComment'=>$value, 
-                                                                'serviceId'=>$allServices->id]
+                                                                'serviceId'=>$allServices->id,
+                                                                'comentario'=>$comentario]
                                 )->assertRedirect('/profileServiceTalent/1');
 
         // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
