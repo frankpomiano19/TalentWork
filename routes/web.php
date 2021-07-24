@@ -24,6 +24,7 @@ Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServi
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
+Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');

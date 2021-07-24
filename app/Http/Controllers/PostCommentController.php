@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\use_occ;
 use App\Models\Post_comment;
 use App\Models\Question;
+use App\Models\Answer;
 
 class PostCommentController extends Controller
 {
@@ -40,7 +41,7 @@ class PostCommentController extends Controller
 
                 break;
             default :
-                dd("No se pudo procesaro");
+                dd("No se pudo procesar");
                 break;
         }
 
@@ -56,17 +57,48 @@ class PostCommentController extends Controller
             'respuesta'=>'required|string|min:10|max:170',
         ]);
         
-        $question = new Question(array(
-            'pregunta' => $request->get('pregunta'),
-            'respuesta' => $request->get('respuesta'),
-            'etiqueta_1' => $request->get('etiqueta_1'),
-            'etiqueta_2' => $request->get('etiqueta_2'),
-                //'pregunta' => $request->get('pregunta'),
-                //'respuesta' => $request->get('respuesta')
-            //'serpro_id' => $request->get('serpro_id'),
-        ));
+        switch ($request->typeJobFromQuestion){
+            case 1:
+                $question = new Question(array(
+                    'pregunta' => $request->get('pregunta'),
+                    'respuesta' => $request->get('respuesta'),
+                    // 'use_id' => auth()->user()->id,
+                    'use_occ_id' => $request->get('serviceId'),
+                ));
+        
+                break;
+            case 2:
+                $question = new Question(array(
+                    'pregunta' => $request->get('pregunta'),
+                    'respuesta' => $request->get('respuesta'),
+                    // 'use_id' => auth()->user()->id,
+                    'use_tal_id' => $request->get('serviceId'),
+                ));
+
+                break;
+            default :
+                dd("No se pudo procesar");
+                break;
+        }
 
         $question->save();
+
+        return redirect()->back();
+    }
+
+    public function newAnswer(Request $request){
+
+        $request->validate([
+            'comentario'=>'required|string|min:10|max:170',
+        ]);
+
+        $answer = new Answer(array(
+            'comentario' => $request->get('comentario'),
+            'use_id' => auth()->user()->id,
+            'use_com_id' => $request->get('ComId'),
+        ));
+
+        $answer->save();
 
         return redirect()->back();
     }

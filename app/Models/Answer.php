@@ -5,25 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post_comment extends Model
+class Answer extends Model
 {
     use HasFactory;
-    protected $table = 'Post_comments';
-
+    protected $table = 'answers';
+    
     protected $fillable = [
         //'comentario', 'us_com', 'serpro_id'
-        'comentario', 'use_id', 'use_occ_id', 'use_tal_id'
+        'comentario', 'use_id', 'use_com_id'
     ];
 
     public function PostCommentUser(){
         return $this->belongsTo(User::class,'use_id');
     }
 
-    public function UseComPostAnswer(){
-        return $this->hasMany(Answer::class,'use_com_id');
-    }
-
-    // public function UsePostAnswer(){
-    //     return $this->belongsTo(Answer::class,'answer_id');
+    // public function PostCommentOrigin(){
+    //     return $this->belongsTo(Post_comment::class,'use_com_id');
     // }
 }

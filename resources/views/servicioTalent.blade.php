@@ -207,7 +207,7 @@
                         </div>
                     </div>
 
-                    @foreach($question as $ques)
+                    @foreach($serviceProfile->UseTalPostQuestion as $ques)
 
                     <div class="card mt-4">
                         <div class="card-body p-3">
@@ -267,14 +267,18 @@
                             <div class="row m-0">
                                 <div class="">
                                     <a class="text-decoration-none" href="#">
+                                        @if($serviceProfile->use_id == $coment->use_id)
+                                        <img class="" src="https://i.postimg.cc/ryg6tyH9/operator-m.png" width="50" height="50" alt="...">
+                                        @else
                                         <img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
+                                        @endif
                                     </a>
                                 </div>
                                 <div class="flex-grow-1 pl-2">
                                     <a class="text-decoration-none" href="{{ route('perfil',$coment->PostCommentUser->id) }}">
                                         <h2 class="text-capitalize h5 mb-0">{{ $coment->PostCommentUser->name }}</h2>
                                     </a>
-                                    <!-- <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p> -->
+                                    <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p>
                                 </div>
 
                                 <div class="dropdown">
@@ -326,29 +330,42 @@
                                 <div class="collapse" id="id{{$coment->id}}">
                                     <div class="card border border-right-0 border-left-0 border-bottom-0 mt-1">
                                         <!-- new comment form -->
+                                        @auth
                                         <section class="mt-3">
-                                            <form action="">
+                                            <form action="{{ route('registrarComentR') }}" method="post">
                                                 <div class="input-group input-group">
-                                                    <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
+                                                <input type="hidden" name="ComId" value="{{ $coment->id }}">
+                                                    <input type="text" class="form-control" name="comentario" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button">Responder</a>
+                                                    <button type="submit" class="btn btn-primary">Responder</button>
+                                                        <!-- <a class="text-decoration-none text-white btn btn-primary" type="submit" role="button">Responder</a> -->
                                                     </div>
                                                 </div>
                                             </form>
                                         </section>
+                                        @endauth
                                         <!-- comment card bgins -->
                                         <section>
+                                            
+                                        @foreach( $coment->UseComPostAnswer as $comentR)
+                                            
                                             <div class="card p-2 mt-3">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
                                                     <div class="">
                                                         <a class="text-decoration-none" href="#">
+                                                        @if($serviceProfile->use_id == $comentR->use_id)
+                                                            <img class="profile-pic" src="https://i.postimg.cc/ryg6tyH9/operator-m.png" width="40" height="40" alt="...">
+                                                            @else
                                                             <img class="profile-pic" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="40" height="40" alt="...">
+                                                            @endif
                                                         </a>
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño</a>
-                                                        <!-- <p class="small m-0 text-muted">Hace 27 minutos</p> -->
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a>
+                                                        <p class="small m-0 text-muted">Posteado el {{ $comentR->created_at }}</p>
                                                     </div>
                                                     <div >
                                                         <div class="dropdown">
@@ -366,12 +383,14 @@
                                                 <!-- comment header -->
                                                 <!-- comment body -->
                                                 <div class="card-body p-0">
-                                                    <p class="card-text h7 mb-1">Concuerdo con usted</p>
+                                                    <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
                                                     <a class="card-link small" href="#">
                                                         <i class="far fa-thumbs-up"></i> 1 Me gusta
                                                     </a>
                                                 </div>
                                             </div>
+                                            
+                                        @endforeach
                                         </section>
                                         <!-- comment card ends -->
 
@@ -437,9 +456,10 @@
                 
                     <div class="modal-body">
 
-                        {{ csrf_field() }}
-                        <input type="hidden" name="etiqueta_1" value="">
-                        <input type="hidden" name="etiqueta_2" value="{{ $serviceProfile->id }}">
+                    {{ csrf_field() }}
+                    
+                    <input type="hidden" name="typeJobFromQuestion" value="2">
+                    <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
 
                         <div class="form-row">
 

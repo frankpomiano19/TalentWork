@@ -19,9 +19,11 @@ class CreatePostCommentTable extends Migration
             $table->unsignedBigInteger('use_id');
             $table->unsignedBigInteger('use_occ_id')->nullable();
             $table->unsignedBigInteger('use_tal_id')->nullable();
+                // $table->unsignedBigInteger('answer_id')->nullable();
             $table->foreign('use_tal_id')->references('id')->on('use_tals')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_occ_id')->references('id')->on('use_occs')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+                // $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

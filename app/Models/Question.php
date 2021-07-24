@@ -12,7 +12,11 @@ class Question extends Model
     
     protected $fillable = [
         //'comentario', 'us_com', 'serpro_id'
-        'pregunta', 'respuesta', 'etiqueta_1', 'etiqueta_2'
+        'pregunta', 'respuesta', 'use_occ_id', 'use_tal_id'
     ];
+
+    // public function PostQuestionUser(){
+    //     return $this->belongsTo(User::class,'use_id');
+    // }
 
 }
