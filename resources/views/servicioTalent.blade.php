@@ -231,7 +231,10 @@
             <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
             <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
-
+            {{-- Datos que no se procesan, solo para mejorar el estilo --}}
+            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateTal->ser_tal_name }}" required>
+            <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseTal->name.$serviceProfile->IntermediateUseTal->lastname}}" required>
+            {{-- Fin datos que no se procesas --}}
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
