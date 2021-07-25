@@ -51,73 +51,7 @@ class PostAnswerTest extends TestCase
         $view->assertSee('Tus historias son geniales, vale la pena cada centavo');
     }
 
-    // public function test_errorValidation_postAnswerFailed_OCC()
-    // {
-    //     //$this->withoutExceptionHandling();
-    //     $comentario = 'ComFail';
-    //     // $use_com_id = '4';
-    //     $ComId = '5';
-    //     // $etiqueta1 = '';
-    //     // $etiqueta2 = '';
 
-    //     $credentials = [
-    //         "email" => "alvarado4@unmsm.edu.pe",
-    //         "password" => "perrovaca",
-    //     ];
-    //     $this->post('login', $credentials);
-
-    //     $id = '2';
-    //     $allServices = use_occ::where('id',$id)->first();
-
-    //     $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-
-    //     $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComentR'), [
-    //                                                             'comentario'=>$comentario, 
-    //                                                             'usCom'=>auth()->user()->id,
-    //                                                             'ComId'=>$ComId 
-    //                                                             ]
-    //                             )->assertRedirect('/profileServiceOccupation/2');
-
-    //     $response = $this->assertDatabaseMissing('answers', [
-    //                                 'comentario'=>$comentario,
-    //                             ]);
-    //                             //->assertRedirect('/profileServiceOccupation/3')
-        
-    // }
-
-    // public function test_errorValidation_postAnswerFailed_TAL()
-    // {
-    //     //$this->withoutExceptionHandling();
-    //     $comentario = 'ComFail';
-    //     // $use_com_id = '4';
-    //     $ComId = '6';
-    //     // $etiqueta1 = '';
-    //     // $etiqueta2 = '';
-
-    //     $credentials = [
-    //         "email" => "alvarado4@unmsm.edu.pe",
-    //         "password" => "perrovaca",
-    //     ];
-    //     $this->post('login', $credentials);
-
-    //     $id = '1';
-    //     $allServices = use_tal::where('id',$id)->first();
-
-    //     $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
-
-    //     $response = $this->from('/profileServiceTalent/1')->post(route('registrarComentR'), [
-    //                                                             'comentario'=>$comentario, 
-    //                                                             'usCom'=>auth()->user()->id,
-    //                                                             'ComId'=>$ComId
-    //                                                             ]
-    //                             )->assertRedirect('/profileServiceTalent/1');
-
-    //     $response = $this->assertDatabaseMissing('answers', [
-    //                                 'comentario'=>$comentario,
-    //                             ]);
-    //                             //->assertRedirect('/profileServiceOccupation/3')
-        
-    // }
 
     public function test_errorValidation_postAnswer_OCCpassed()
     {

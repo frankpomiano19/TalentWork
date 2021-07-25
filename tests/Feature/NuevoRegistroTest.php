@@ -18,16 +18,8 @@ class NuevoRegistroTest extends TestCase
     public function test_errorValidation_null()
     {
         //$this->withoutExceptionHandling();
-
         $response = $this->from('registrouser')->post(route('registrarUsuario'), [])->assertRedirect('registrouser');
-        //$response = $this->json('POST', 'registrarUsuario', ['name'=>'', 'lastname'=>'1234567'],
-                                                //['Accept' => 'application/json']
-                                //)->assertRedirect('registrouser');
-
         $response->assertStatus(302);
-
-        //$response->assertJsonValidationErrors(['name']);
-        //$response->assertSessionHasErrors('name|lastname|dni|email|birthdate|password|password_confirmation');
         $response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
     }
 
@@ -50,15 +42,7 @@ class NuevoRegistroTest extends TestCase
                                                                                   'password'=>$password, 
                                                                                   'password_confirmation'=>$password_confirmation]
                                 )->assertRedirect('registrouser');
-        //$response = $this->json('POST', 'registrarUsuario', ['name'=>'', 'lastname'=>'1234567'],
-                                                //['Accept' => 'application/json']
-                                //)->assertRedirect('registrouser');
-
-        //$response->assertStatus(201);
         $response->assertStatus(302);
-
-        //$response->assertJsonValidationErrors(['name']);
-        //$response->assertSessionHasErrors('name|lastname|dni|email|birthdate|password|password_confirmation');
         $response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
     }
 
@@ -83,18 +67,6 @@ class NuevoRegistroTest extends TestCase
                                 );
                                 $response->assertRedirect('login');
 
-                                //$response = $this->json('POST', 'registrarUsuario', ['name'=>'', 'lastname'=>'1234567'],
-                                                //['Accept' => 'application/json']
-                                //)->assertRedirect('registrouser');
-
-        //$response->assertStatus(200);
-        // $response->assertStatus(302);
-        //$response = $this->assertRedirect('login');
-        //$response->assertStatus(302);
-
-        //$response->assertJsonValidationErrors(['name']);
-        //$response->assertSessionHasErrors('name|lastname|dni|email|birthdate|password|password_confirmation');
-        //$response->assertSessionHasErrors(['name','lastname','dni','email','birthdate','password','password_confirmation']);
     }
 
     public function test_baseCreate_validation()

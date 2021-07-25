@@ -23,7 +23,4 @@ class Post_comment extends Model
         return $this->hasMany(Answer::class,'use_com_id');
     }
 
-    // public function UsePostAnswer(){
-    //     return $this->belongsTo(Answer::class,'answer_id');
-    // }
 }

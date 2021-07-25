@@ -35,9 +35,6 @@ class PostQuestionTest extends TestCase
         $allServices = use_occ::where('id',$id)->first();
 
         $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-
-        //$view = $this->view('perfil', compaq(auth()->user()->id));
-
         $view->assertSee('Demora entre dos o tres días');
     }
 
@@ -47,9 +44,6 @@ class PostQuestionTest extends TestCase
         $allServices = use_tal::where('id',$id)->first();
 
         $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
-
-        //$view = $this->view('perfil', compaq(auth()->user()->id));
-
         $view->assertSee('No, por un tema de seguridad trabajamos de 8:00 am hasta las 6:00 pm');
     }
 
@@ -59,8 +53,6 @@ class PostQuestionTest extends TestCase
         $pregunta = 'PregFail';
         $respuesta = 'RespFail';
         $value = '1';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -85,7 +77,6 @@ class PostQuestionTest extends TestCase
                                     'pregunta' => $pregunta,
                                     'respuesta' => $respuesta
                                 ]);
-                                //->assertRedirect('/profileServiceOccupation/3')
         
     }
 
@@ -95,8 +86,6 @@ class PostQuestionTest extends TestCase
         $pregunta = 'PregFail';
         $respuesta = 'RespFail';
         $value = '2';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -121,7 +110,6 @@ class PostQuestionTest extends TestCase
                                     'pregunta' => $pregunta,
                                     'respuesta' => $respuesta
                                 ]);
-                                //->assertRedirect('/profileServiceOccupation/3')
         
     }
 
@@ -131,8 +119,6 @@ class PostQuestionTest extends TestCase
         $pregunta = 'Esta es mi primera pregunta, espero que se vea bien';
         $respuesta = 'Esta es mi primera respuesta, espero que se vea bien';
         $value = '1';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -152,10 +138,6 @@ class PostQuestionTest extends TestCase
                                                                         'serviceId'=>$allServices->id
                                                                         ]
                                 )->assertRedirect('/profileServiceOccupation/2');
-
-        // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-              
-        // $view->assertSessionDoesntHaveErrors(['comentario']);
         
     }
 
@@ -165,8 +147,6 @@ class PostQuestionTest extends TestCase
         $pregunta = 'Esta es mi segunda pregunta, la verdad sigo sin saber que escribir......';
         $respuesta = 'Esta es mi segunda respuesta, la verdad sigo sin saber que escribir......';
         $value = '2';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -186,10 +166,6 @@ class PostQuestionTest extends TestCase
                                                                         'serviceId'=>$allServices->id
                                                                         ]
                                 )->assertRedirect('/profileServiceTalent/1');
-
-        // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-              
-        // $view->assertSessionDoesntHaveErrors(['comentario']);
         
     }
 
@@ -198,9 +174,6 @@ class PostQuestionTest extends TestCase
         //$this->withoutExceptionHandling();
         $pregunta = 'Pregunta de prueba para ver que si funciona la ruta default';
         $respuesta = 'Respuesta de prueba para ver que si funciona la ruta default';
-        // $value = '2';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -219,11 +192,7 @@ class PostQuestionTest extends TestCase
                                                                         // 'typeJobFromQuestion'=>$value, 
                                                                         'serviceId'=>$allServices->id
                                                                         ]
-                                )->assertRedirect('/profileServiceTalent/1');
-
-        // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-              
-        // $view->assertSessionDoesntHaveErrors(['comentario']);
+                                );
         
     }
 
@@ -232,9 +201,6 @@ class PostQuestionTest extends TestCase
         //$this->withoutExceptionHandling();
         $pregunta = 'Pregunta de prueba para ver que si funciona la ruta default';
         $respuesta = 'Respuesta de prueba para ver que si funciona la ruta default';
-        // $value = '2';
-        // $etiqueta1 = '';
-        // $etiqueta2 = '';
 
         $credentials = [
             "email" => "alvarado4@unmsm.edu.pe",
@@ -253,11 +219,7 @@ class PostQuestionTest extends TestCase
                                                                         // 'typeJobFromQuestion'=>$value, 
                                                                         'serviceId'=>$allServices->id
                                                                         ]
-                                )->assertRedirect('/profileServiceTalent/2');
-
-        // $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-              
-        // $view->assertSessionDoesntHaveErrors(['comentario']);
+                                );
         
     }
 

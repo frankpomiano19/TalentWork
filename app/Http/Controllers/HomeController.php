@@ -46,20 +46,13 @@ class HomeController extends Controller
 
     public function showProfileServiceTalent($id){
         $serviceProfile = use_tal::where('id',$id)->first();
-        $comment = Post_comment::where('use_tal_id',$id)->first();
-            //$usuarioBotica = User::where('id',$usuario->userFb->user_id)->first();
-        // $comment = Post_comment::orderBy('id', 'DESC')->where('etiqueta2',$id)->paginate(14);
-        // $question = Question::orderBy('id', 'DESC')->where('etiqueta_2',$id)->paginate(14);
-        return view('servicioTalent',compact('serviceProfile', 'comment'));
+        return view('servicioTalent',compact('serviceProfile'));
     }
 
 
 
     public function showProfileServiceOccupation($id){
         $serviceProfile = use_occ::where('id',$id)->first();
-        // $comment = Post_comment::orderBy('id', 'DESC')->where('etiqueta1',$id)->paginate(14);
-        // $question = Question::orderBy('id', 'DESC')->where('etiqueta_1',$id)->paginate(14);
-        //$comment = Post_comment::where('etiqueta',$id);
         return view('servicioOccupation',compact('serviceProfile'));
     }
 

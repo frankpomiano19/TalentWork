@@ -19,7 +19,4 @@ class Answer extends Model
         return $this->belongsTo(User::class,'use_id');
     }
 
-    // public function PostCommentOrigin(){
-    //     return $this->belongsTo(Post_comment::class,'use_com_id');
-    // }
 }

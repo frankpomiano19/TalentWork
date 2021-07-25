@@ -19,9 +19,7 @@ class PostCommentController extends Controller
 
     public function newComment(Request $request){
 
-        // $request->validate([
-        //     'comentario'=>'required|string|min:10|max:170',
-        // ]);
+        
         
         switch ($request->typeJobFromComment){
             case 1:
@@ -41,7 +39,7 @@ class PostCommentController extends Controller
 
                 break;
             default :
-                dd("No se pudo procesar");
+                return ("No se pudo procesar");
                 break;
         }
 
@@ -77,7 +75,7 @@ class PostCommentController extends Controller
 
                 break;
             default :
-                dd("No se pudo procesar");
+                return ("No se pudo procesar");
                 break;
         }
 
@@ -88,9 +86,7 @@ class PostCommentController extends Controller
 
     public function newAnswer(Request $request){
 
-        // $request->validate([
-        //     'comentario'=>'required|string|min:10|max:170',
-        // ]);
+    
 
         $answer = new Answer(array(
             'comentario' => $request->get('comentario'),
