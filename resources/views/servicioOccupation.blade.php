@@ -9,6 +9,15 @@
 
 @section('contenido_cSS')
 
+    <style>
+        .container px-4 px-lg-5 my-5.col-3.h2.headertekst{
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+
 @endsection
 
 
@@ -173,8 +182,9 @@
         </form>
 
         {{-- comentario --}}
+    <div class="container px-4 px-lg-5 my-5">
         <div class="col-3">
-            <h1>Comentarios</h1>
+            <h2 class="headertekst">Comentarios</h2>
         </div>
 
         <div class="container-fluid my-5">
@@ -240,7 +250,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Comentar</button>
+                                <button type="buton" class="btn btn-sm btn-primary">Comentar</button>
                             </div>
                         </div>
                     </section>
@@ -346,6 +356,42 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- comment header -->
+                                                <!-- comment body -->
+                                                <div class="card-body p-0">
+                                                    <p class="card-text h7 mb-1">Concuerdo con usted</p>
+                                                    <a class="card-link small" href="#">
+                                                        <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card p-2 mt-3">
+                                                <!-- comment header -->
+                                                <div class="d-flex">
+                                                    <div class="">
+                                                        <a class="text-decoration-none" href="#">
+                                                            <img class="profile-pic" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="40" height="40" alt="...">
+                                                        </a>
+                                                    </div>
+                                                    <div class="flex-grow-1 pl-2">
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Carrillo</a>
+                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
+                                                    </div>
+                                                    <div >
+                                                        <div class="dropdown">
+                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-chevron-down"></i>
+                                                            </a>
+
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
+                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!-- comment header -->
                                                 <!-- comment body -->
                                                 <div class="card-body p-0">
@@ -414,8 +460,8 @@
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <i class="fas fa-comment-alt"></i> 1 Comentario
                                             </a>
-                                        </li46
-                                        8915468.1054898>
+                                        </li>
+
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
                                                 <i class="fas fa-share"></i> 1 Compartir
@@ -580,7 +626,7 @@
             </div>
             </div>
         </div>
-
+    </div>
 
 
 @endsection

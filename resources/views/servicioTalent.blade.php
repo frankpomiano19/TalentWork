@@ -251,7 +251,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Comentar</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Comentar</button>
                             </div>
                         </div>
                     </section>
