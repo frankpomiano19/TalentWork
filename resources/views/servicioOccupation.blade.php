@@ -232,7 +232,13 @@
 
             <input type="text" class="set-status-offer-input" name="statusInitial" value="{{1}}" required>
 
-    
+
+            {{-- Datos que no se procesan, solo para mejorar el estilo --}}
+            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateOcc->ser_occ_name }}" required>
+            <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseOcc->name.$serviceProfile->IntermediateUseOcc->lastname}}" required>
+            {{-- Fin datos que no se procesas --}}
+            
+            
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

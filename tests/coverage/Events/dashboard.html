@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for D:\Ingenieria de Software\Ciclo 7\Metodos Formales\ProyectoDelCurso\Proyecto\Proyecto\Desarrollo\Proyecto\ProyectoBaseLaravel\app\Http\Controllers\Auth</title>
+  <title>Dashboard for D:\Ingenieria de Software\Ciclo 7\Metodos Formales\ProyectoDelCurso\Proyecto\Proyecto\Desarrollo\Proyecto\ProyectoBaseLaravel\app\Events</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/style.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
  </head>
  <body>
   <header>
@@ -16,10 +16,8 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../../../index.html">D:\Ingenieria de Software\Ciclo 7\Metodos Formales\ProyectoDelCurso\Proyecto\Proyecto\Desarrollo\Proyecto\ProyectoBaseLaravel\app</a></li>
-         <li class="breadcrumb-item"><a href="../../index.html">Http</a></li>
-         <li class="breadcrumb-item"><a href="../index.html">Controllers</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Auth</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">D:\Ingenieria de Software\Ciclo 7\Metodos Formales\ProyectoDelCurso\Proyecto\Proyecto\Desarrollo\Proyecto\ProyectoBaseLaravel\app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Events</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -60,9 +58,8 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ConfirmPasswordController.php.html#9">App\Http\Controllers\Auth\ConfirmPasswordController</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="RegisterController.php.html#12">App\Http\Controllers\Auth\RegisterController</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="VerificationController.php.html#9">App\Http\Controllers\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#13">App\Events\Message</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MessageSent.php.html#15">App\Events\MessageSent</a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -116,11 +113,12 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ConfirmPasswordController.php.html#36"><abbr title="App\Http\Controllers\Auth\ConfirmPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="RegisterController.php.html#39"><abbr title="App\Http\Controllers\Auth\RegisterController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="RegisterController.php.html#50"><abbr title="App\Http\Controllers\Auth\RegisterController::validator">validator</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="RegisterController.php.html#65"><abbr title="App\Http\Controllers\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="VerificationController.php.html#36"><abbr title="App\Http\Controllers\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#24"><abbr title="App\Events\Message::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#36"><abbr title="App\Events\Message::broadcastOn">broadcastOn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Message.php.html#41"><abbr title="App\Events\Message::broadcastAs">broadcastAs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MessageSent.php.html#22"><abbr title="App\Events\MessageSent::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MessageSent.php.html#28"><abbr title="App\Events\MessageSent::broadcastOn">broadcastOn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MessageSent.php.html#33"><abbr title="App\Events\MessageSent::broadcastAs">broadcastAs</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -150,9 +148,9 @@
     </p>
    </footer>
   </div>
-  <script src="../../../_js/jquery.min.js" type="text/javascript"></script>
-  <script src="../../../_js/d3.min.js" type="text/javascript"></script>
-  <script src="../../../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script src="../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js" type="text/javascript"></script>
   <script type="text/javascript">
 $(document).ready(function() {
   nv.addGraph(function() {
@@ -165,7 +163,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([3,0,0,0,0,0,0,0,0,0,0,3], "Class Coverage"))
+      .datum(getCoverageDistributionData([2,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -183,7 +181,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([5,0,0,0,0,0,0,0,0,0,0,1], "Method Coverage"))
+      .datum(getCoverageDistributionData([6,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -233,7 +231,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"ConfirmPasswordController.php.html#9\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController<\/a>"],[100,0,"<a href=\"ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ForgotPasswordController<\/a>"],[100,1,"<a href=\"LoginController.php.html#9\">App\\Http\\Controllers\\Auth\\LoginController<\/a>"],[0,3,"<a href=\"RegisterController.php.html#12\">App\\Http\\Controllers\\Auth\\RegisterController<\/a>"],[100,0,"<a href=\"ResetPasswordController.php.html#9\">App\\Http\\Controllers\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"VerificationController.php.html#9\">App\\Http\\Controllers\\Auth\\VerificationController<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,3,"<a href=\"Message.php.html#13\">App\\Events\\Message<\/a>"],[0,3,"<a href=\"MessageSent.php.html#15\">App\\Events\\MessageSent<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -257,7 +255,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"ConfirmPasswordController.php.html#36\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController::__construct<\/a>"],[100,1,"<a href=\"LoginController.php.html#36\">App\\Http\\Controllers\\Auth\\LoginController::__construct<\/a>"],[0,1,"<a href=\"RegisterController.php.html#39\">App\\Http\\Controllers\\Auth\\RegisterController::__construct<\/a>"],[0,1,"<a href=\"RegisterController.php.html#50\">App\\Http\\Controllers\\Auth\\RegisterController::validator<\/a>"],[0,1,"<a href=\"RegisterController.php.html#65\">App\\Http\\Controllers\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"VerificationController.php.html#36\">App\\Http\\Controllers\\Auth\\VerificationController::__construct<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"Message.php.html#24\">App\\Events\\Message::__construct<\/a>"],[0,1,"<a href=\"Message.php.html#36\">App\\Events\\Message::broadcastOn<\/a>"],[0,1,"<a href=\"Message.php.html#41\">App\\Events\\Message::broadcastAs<\/a>"],[0,1,"<a href=\"MessageSent.php.html#22\">App\\Events\\MessageSent::__construct<\/a>"],[0,1,"<a href=\"MessageSent.php.html#28\">App\\Events\\MessageSent::broadcastOn<\/a>"],[0,1,"<a href=\"MessageSent.php.html#33\">App\\Events\\MessageSent::broadcastAs<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

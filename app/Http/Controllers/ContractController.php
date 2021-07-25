@@ -70,7 +70,7 @@ class ContractController extends Controller
             $this->clearAllCart();
             \Cart::session(auth()->user()->id)->add(array(
                 'id' => $request->serviceOffer, // inique row ID
-                'name' => 'No name',
+                'name' => $request->serviceName,
                 'price' =>$request->priceOffer,
                 'quantity' =>1,            
                 'attributes' => array(
@@ -81,7 +81,9 @@ class ContractController extends Controller
                     'descriptionForm'=>$request->descriptionForm,
                     'typeOfJob'=>$request->typeOfJob,
                     'img1'=>$request->img1,
-                    'statusInitial'=>$request->statusInitial
+                    'statusInitial'=>$request->statusInitial,
+                    'userNameProvider'=>$request->userNameProvider
+
                 ),
             ));                     
             return redirect()->route('index.checkout');
