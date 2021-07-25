@@ -23,5 +23,14 @@ class use_occ extends Model
     public function IntermediateOccContract(){
         return $this->hasMany(Contract::class,'use_occ_id');
     }
+    public function UseOccPostComment(){
+        return $this->hasMany(Post_comment::class,'use_occ_id');
+    }
+    public function UseOccPostQuestion(){
+        return $this->hasMany(Question::class,'use_occ_id');
+    }
+    // public function UseOccPostAnswer(){
+    //     return $this->hasMany(Answer::class,'use_occ_id');
+    // }
 
 }
