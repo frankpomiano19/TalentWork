@@ -199,18 +199,18 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>Trabajos Asignados</p>
+                            <p>Mis contratos realizados</p>
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status != 3)
                                     @if ($Contract->use_tal_id !== null)
-                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/> 
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}</a><br/> 
                                     @endif
                                     @if ($Contract->use_occ_id !== null)
-                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateOcc->ser_occ_name}}</a><br/>
+                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}</a><br/>
                                     @endif 
                                 @endif
                             @endforeach
-                            <p>Trabajos Pasados</p>
+                            <p>Contratos Pasados</p>
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status == 3)
                                     @if ($Contract->use_tal_id !== null)

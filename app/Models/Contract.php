@@ -27,11 +27,11 @@ class Contract extends Model
     ];
     protected $hidden = [];
 
-    public function IntermediateTal(){
-        return $this->belongsTo(ServiceTalent::class,'use_tal_id');
+    public function IntermediateUseTal(){
+        return $this->belongsTo(use_tal::class,'use_tal_id');
     }
     
-    public function IntermediateOcc(){
-        return $this->belongsTo(ServiceOccupation::class,'use_occ_id');
+    public function IntermediateUseOcc(){
+        return $this->belongsTo(use_occ::class,'use_occ_id');
     }
 }
