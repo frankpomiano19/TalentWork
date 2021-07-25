@@ -278,6 +278,7 @@
         </form>
 
          {{-- comentario --}}
+    <div class="px-4 px-lg-5 my-5">
          <div class="col-3">
             <h1>Comentarios</h1>
         </div>
@@ -339,11 +340,10 @@
 
                                     <textarea class="form-control" id="message" rows="3" placeholder="Escriba lo que piensa..." name="comentario"></textarea>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Comentar</button>
+                            <div class="text-right">
+                                <button type="submit" class="btn" style="background-color: rgba(10, 169, 190, 0.61)">Comentar</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -432,8 +432,7 @@
                                                 <input type="hidden" name="ComId" value="{{ $coment->id }}">
                                                     <input type="text" class="form-control" name="comentario" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-primary">Responder</button>
-                                                        <!-- <a class="text-decoration-none text-white btn btn-primary" type="submit" role="button">Responder</a> -->
+                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -444,7 +443,7 @@
                                             
                                         @foreach( $coment->UseComPostAnswer as $comentR)
                                             
-                                            <div class="card p-2 mt-3">
+                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
                                                     <div class="">
@@ -457,8 +456,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a>
-                                                        <p class="small m-0 text-muted">Posteado el {{ $comentR->created_at }}</p>
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
+                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
                                                     </div>
                                                     <div >
                                                         <div class="dropdown">
@@ -493,6 +492,130 @@
                             </footer>
                             <!-- post footer ends -->
                         </div>
+                        <!---pt2 del comentariooooooooooooooooooooo >
+                            <!-- Post Begins -->
+                    <section class="card mt-4">
+                        <div class="border p-2">
+                            <!-- post header -->
+                            <div class="row m-0">
+                                <div class="">
+                                    <a class="text-decoration-none" href="#">
+                                        <img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
+                                    </a>
+                                </div>
+                                <div class="flex-grow-1 pl-2">
+                                    <a class="text-decoration-none" href="#">
+                                        <h2 class="text-capitalize h5 mb-0">Gareca2</h2>
+                                    </a>
+                                    <p class="small text-secondary m-0 mt-1">Hace 1 día</p>
+                                </div>
+
+                                <div class="dropdown">
+                                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-chevron-down"></i>
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item text-primary" href="#">Editar</a>
+                                        <a class="dropdown-item text-primary" href="#">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- post body -->
+                            <div class="">
+                                <p class="my-2">
+                                    Que buen Talento
+                                </p>
+                            </div>
+                            <hr class="my-1">
+                            <!-- post footer begins -->
+                            <footer class="">
+                                <!-- post actions -->
+                                <div class="">
+                                    <ul class="list-group list-group-horizontal">
+                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
+                                            <a class="small text-decoration-none" href="#">
+                                                <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
+                                            <a class="small text-decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fas fa-comment-alt"></i> 1 Comentario
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
+                                            <a class="small text-decoration-none" href="#">
+                                                <i class="fas fa-share"></i> 1 Compartir
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <!-- collapsed comments begins -->
+                                <div class="collapse" id="collapseExample2">
+                                    <div class="card border border-right-0 border-left-0 border-bottom-0 mt-1">
+                                        <!-- new comment form -->
+                                        <section class="mt-3">
+                                            <form action="">
+                                                <div class="input-group input-group">
+                                                    <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </section>
+                                        <!-- comment card bgins -->
+                                        <section>
+                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
+                                                <!-- comment header -->
+                                                <div class="d-flex">
+                                                    <div class="">
+                                                        <a class="text-decoration-none" href="#">
+                                                            <img class="profile-pic" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="40" height="40" alt="...">
+                                                        </a>
+                                                    </div>
+                                                    <div class="flex-grow-1 pl-2">
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño2</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
+                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
+                                                    </div>
+                                                    <div >
+                                                        <div class="dropdown">
+                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-chevron-down"></i>
+                                                            </a>
+
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
+                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- comment header -->
+                                                <!-- comment body -->
+                                                <div class="card-body p-0">
+                                                    <p class="card-text h7 mb-1">Concuerdo con usted2</p>
+                                                    <a class="card-link small" href="#">
+                                                        <i class="far fa-thumbs-up"></i> 2 Me gusta
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- comment card ends -->
+
+                                    </div>
+                                </div>
+                                <!-- collapsed comments ends -->
+                            </footer>
+                            <!-- post footer ends -->
+                        </div>
+
+
+
+
+
 
                        
 
@@ -602,6 +725,7 @@
 
         @livewireScripts
 
+    </div>
 @endsection
 
 @section('contenido_abajo_js')
