@@ -184,6 +184,7 @@
         </form>
 
          {{-- comentario --}}
+    <div class="container px-4 px-lg-5 my-5">
          <div class="col-3">
             <h1>Comentarios</h1>
         </div>
@@ -251,7 +252,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-sm btn-primary">Comentar</button>
+                                <button type="submit" class="btn" style="background-color: rgba(10, 169, 190, 0.61)">Comentar</button>
                             </div>
                         </div>
                     </section>
@@ -269,7 +270,7 @@
                                 </div>
                                 <div class="flex-grow-1 pl-2">
                                     <a class="text-decoration-none" href="#">
-                                        <h2 class="text-capitalize h5 mb-0">Gareca</h2>
+                                        <h2 class="text-capitalize h3 mb-0">Gareca</h2>
                                     </a>
                                     <p class="small text-secondary m-0 mt-1">Hace 1 día</p>
                                 </div>
@@ -325,14 +326,14 @@
                                                 <div class="input-group input-group">
                                                     <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button">Responder</a>
+                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
                                                     </div>
                                                 </div>
                                             </form>
                                         </section>
                                         <!-- comment card bgins -->
                                         <section>
-                                            <div class="card p-2 mt-3">
+                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
                                                     <div class="">
@@ -341,7 +342,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño</a>
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
                                                         <p class="small m-0 text-muted">Hace 27 minutos</p>
                                                     </div>
                                                     <div >
@@ -444,14 +445,14 @@
                                                 <div class="input-group input-group">
                                                     <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button">Responder</a>
+                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
                                                     </div>
                                                 </div>
                                             </form>
                                         </section>
                                         <!-- comment card bgins -->
                                         <section>
-                                            <div class="card p-2 mt-3">
+                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
                                                     <div class="">
@@ -460,7 +461,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño2</a>
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño2</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
                                                         <p class="small m-0 text-muted">Hace 27 minutos</p>
                                                     </div>
                                                     <div >
@@ -592,7 +593,7 @@
 
 
 
-
+    </div>
 @endsection
 
 @section('contenido_abajo_js')
