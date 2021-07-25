@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\use_occ;
 use App\Models\use_tal;
 use App\Models\Contract;
+use App\Models\Post_comment;
+use App\Models\Question;
+use App\Models\Answer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -60,6 +63,9 @@ class HomeController extends Controller
         }
         return view('servicioTalent',compact('serviceProfile','chat'));
     }
+
+
+
     public function showProfileServiceOccupation($id){
 
         $serviceProfile = use_occ::where('id',$id)->first();
@@ -105,9 +111,8 @@ class HomeController extends Controller
 
         $user->save();
 
-        //return redirect('user/login');
-
-        return redirect('/login');
+        
+        return redirect()->route('login');
         
 
     }

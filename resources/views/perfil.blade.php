@@ -480,6 +480,17 @@
 @section('contenido_abajo_js')    
 
 
+@if (session('updateMessage'))
+<script>
+    Swal.fire({
+        title: "Datos actualizados",
+        html:  `
+        {{session('updateMessage')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
 <!-- @if ($flag==1)
 <script>
     document.addEventListener('DOMContentLoaded', () => {

@@ -22,5 +22,16 @@ class use_tal extends Model
         return $this->hasMany(Contract::class,'use_tal_id');
     }
 
+    public function UseTalPostComment(){
+        return $this->hasMany(Post_comment::class,'use_tal_id');
+    }
+
+    public function UseTalPostQuestion(){
+        return $this->hasMany(Question::class,'use_tal_id');
+    }
+
+    // public function UseTalPostAnswer(){
+    //     return $this->hasMany(Answer::class,'use_tal_id');
+    // }
 
 }
