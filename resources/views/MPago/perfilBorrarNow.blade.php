@@ -10,12 +10,12 @@
     <div class="col-12 col-sm-12 col-md-10 col-lg-10">
         <ul class="text-danger">
             @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                <li>{{ $errorRegister }}</li> 
+                <li>{{ $errorRegister }}</li>
             @endforeach
         </ul>
     </div>
 
-{{-- 
+{{--
     <form action="{{ route('iPContract') }}" method="POST">
         @csrf
         <input type="hidden" name="userOffer" value="1" required>
@@ -70,7 +70,7 @@
     <button type="button" class="btn btn-secondary p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Servicio 1
         </button>
-      
+
 
 
       <!-- Modal -->
@@ -80,17 +80,17 @@
             <input type="hidden" name="userOffer" value="1" required>
             <input type="hidden" name="priceOffer" value="20.00" required>
             <input type="hidden" name="serviceOffer" value="1" required>
-    
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-        
+
                         <div class="text-center">
                             <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
                         </div>
 
                         <!-- Cuerpo modal -->
-                        <div class="modal-body">
+                        <div class="modal-corpo">
                             <div class="m-1" id="formulario">
                                 <label class="">Contratado por: Usuario nuevo</label><br>
                                 <label>Hora: </label><br>
@@ -100,13 +100,13 @@
 
                                 <label class="m-1" for="">Lugar</label>
                                 <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
-                        
+
 
                                 <label class="m-1">Descripcion</label><br>
                                 <input class="form-control" name="descriptionForm" value="{{ old('descriptionForm') }}" placeholder="Descripcion">
                             </div>
                         </div>
-        
+
                         <!-- Botones pie -->
                         <div class="form-group row justify-content-center">
                             <div class="col-sm-3">
@@ -116,14 +116,14 @@
                               <input type="submit" value="Cancelar" class="btn btn-danger" data-bs-dismiss="modal" />
                             </div>
                         </div>
-        
+
                     </div>
                 </div>
             </div>
         </form>
 @endsection
 
-@section('contenido_abajo_js')    
+@section('contenido_abajo_js')
 
 
     @if (session('contractFailed'))
@@ -136,7 +136,7 @@
                 <ul>
                     @foreach ($errors->contractProccessForm->all() as $errorRegister)
                         <li>{{ $errorRegister }}</li>
-                    @endforeach               
+                    @endforeach
                 </ul>`,
                 icon: "error"
             });
@@ -152,8 +152,8 @@
                 icon: "success"
             });
         </script>
-    @endif    
-    
+    @endif
+
 
 
 @endsection
