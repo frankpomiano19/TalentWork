@@ -453,6 +453,12 @@
 </script>
 @endif
 
+<!-- @if ($flag==1)
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        $("#myModal").modal("show");
+    })
+</script>
         @php
             $flag=0;
         @endphp
