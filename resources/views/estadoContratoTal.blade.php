@@ -34,9 +34,9 @@
 <div class="col-sm-3" style="text-align: center; margin-top: 4rem">
     @if (Auth::user()->id == $contr->use_receive)
         <h2>Detalles del contrato</h2>
-            <p>{{$contr->con_initial}}</p>
-            <p>{{$contr->con_initial}}</p>
-            <p>{{$contr->con_address}}</p>
+        <p>{{"Fecha inicial del contrato: ". Carbon\Carbon::parse($contr->con_initial)->format('Y-m-d')}}</p>
+        <p>{{"Hora del contrato: ". Carbon\Carbon::parse($contr->con_initial)->format('H:i:s')}}</p>
+            <p>{{"Ubicación: ".$contr->con_address}}</p>
             <label>Estado: </label>
             @if ($contr->con_status == 1)
                 <label>Pendiente</label><br>
@@ -53,7 +53,26 @@
                 <label>Terminado</label><br>
             @endif
             <br> <br>
-            
+    @elseif(Auth::user()->id == $contr->use_offer)        
+        <h2>Detalles del contrato</h2>
+        <p>{{"Fecha inicial del contrato: ". Carbon\Carbon::parse($contr->con_initial)->format('Y-m-d')}}</p>
+        <p>{{"Hora del contrato: ". Carbon\Carbon::parse($contr->con_initial)->format('H:i:s')}}</p>
+        <p>{{"Ubicación: ".$contr->con_address}}</p>
+        <label>Estado: </label>
+        @if ($contr->con_status == 1)
+            <label>Pendiente</label><br>
+            <form action=" {{route('eject.contract')}} " method="POST">
+                @csrf
+                <input type="hidden" name="contractId" value="{{ $id }}" required>
+                <button type="submit" class="btn btn-primary btn-lg">Aceptar solicitud de contrato</button>
+            </form>
+        @endif
+        @if ($contr->con_status == 2)
+            <label>En ejecución</label><br>
+        @endif
+        @if ($contr->con_status == 3)
+            <label>Terminado</label><br>
+        @endif        
     @endif
 
 </div>

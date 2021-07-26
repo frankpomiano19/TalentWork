@@ -11,16 +11,16 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
 
-class StateContractTest extends TestCase
+class ejectContractTest extends TestCase
 {
     /**
-     * A basic unit test example.
+     * 
      *
      * @test
      */
-    public function FinishContratTest()
+    public function ejectContractTest()
     {
-        $contrat = Contract::first();
+        $contrat = Contract::findOrFail(2);;
         $ContrContract =  new ContractController();
         $credentials = [
             "email" => "pato@gmail.com",
@@ -28,13 +28,11 @@ class StateContractTest extends TestCase
         ];
         Storage::fake('avatars');
         $this->post('login', $credentials);
-        $requestService = new Request([
+        $requestServices = new Request([
             'contractId' => $contrat->id,
         ]);
-        $response = $ContrContract->finishContract($requestService);
-        $this->assertContains('Su contrato ha sido finalizado',
-        [$response->getSession()->get('serviceMessage')]);
+        $responses = $ContrContract->ejectContract($requestServices);
+        $this->assertContains('El contrato entró en ejecución',
+        [$responses->getSession()->get('serviceMessage')]);
     }
-
-    
 }
