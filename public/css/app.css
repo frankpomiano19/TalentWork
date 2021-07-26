@@ -2703,7 +2703,7 @@ fieldset:disabled a.btn {
 }
 
 
- 
+
 
 .portlet-green,
 .portlet-green>.portlet-heading {
@@ -2805,7 +2805,7 @@ height:40px;
 
 .text-red {
   color: #e74c3c;
-} 
+}
 
 
 
@@ -5751,7 +5751,7 @@ a.close.disabled {
 .modal-dialog-scrollable .modal-footer {
   flex-shrink: 0;
 }
-.modal-dialog-scrollable .modal-body {
+.modal-dialog-scrollable .modal-corpo {
   overflow-y: auto;
 }
 
@@ -5828,7 +5828,7 @@ a.close.disabled {
   line-height: 1.6;
 }
 
-.modal-body {
+.modal-corpo {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;

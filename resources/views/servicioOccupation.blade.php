@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     @livewireStyles
-    
+
 @endsection
 
 @section('contenido_cSS')
@@ -40,24 +40,24 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
-            
+
                                 <div class="card text-center">
                                     <div class="card-header">
                                     <ul class="nav nav-tabs card-header-tabs">
                                         <li class="nav-item">
-            
+
                                             <a class="nav-link active" aria-current="true" href="">Servicio Normal</a>
-                                        
+
                                         </li>
                                     </ul>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                                         <ul class="text-danger">
                                             @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                                                <li>{{ $errorRegister }}</li> 
+                                                <li>{{ $errorRegister }}</li>
                                             @endforeach
                                         </ul>
-                                    </div>                        
+                                    </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
                                         <div class="d-flex small text-warning mb-2">
@@ -78,16 +78,16 @@
                                                     <i class="bi-cart-fill me-1"></i>
                                                     Tu eres el del servicio
                                                 </button>
-            
+
                                             @else
                                                 @foreach($serviceProfile->IntermediateOccContract as $contract)
                                                     @if($contract->use_receive == auth()->user()->id)
                                                         @php
                                                             $receivedServiceNow =true;
                                                         @endphp
-                                                    @else                                                    
+                                                    @else
                                                     @endif
-                                                    
+
                                                 @endforeach
                                                 @if($receivedServiceNow == true)
                                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -95,16 +95,16 @@
                                                         Ya lo contrataste
                                                     </button>
                                                     <br>
-                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione chat: </div>   
-                                                
-                                                                    
+                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione chat: </div>
+
+
                                                 @else
                                                     <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <i class="bi-cart-fill me-1"></i>
                                                         Contratar
                                                     </button>
-            
-            
+
+
                                                 @endif
                                             @endif
                                         @else
@@ -112,15 +112,15 @@
                                                 <i class="bi-cart-fill me-1"></i>
                                                 Contratar
                                             </button>
-            
+
                                         @endif
-            
+
                                     </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>        
+                    </div>
                 </section>
             </div>
             <div class="col-4">
@@ -134,24 +134,24 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
-            
+
                                 <div class="card text-center">
                                     <div class="card-header">
                                     <ul class="nav nav-tabs card-header-tabs">
                                         <li class="nav-item">
-            
+
                                             <a class="nav-link active" aria-current="true" href="">Servicio Normal</a>
-                                        
+
                                         </li>
                                     </ul>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                                         <ul class="text-danger">
                                             @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                                                <li>{{ $errorRegister }}</li> 
+                                                <li>{{ $errorRegister }}</li>
                                             @endforeach
                                         </ul>
-                                    </div>                        
+                                    </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
                                         <div class="d-flex small text-warning mb-2">
@@ -172,16 +172,16 @@
                                                     <i class="bi-cart-fill me-1"></i>
                                                     Tu eres el del servicio
                                                 </button>
-            
+
                                             @else
                                                 @foreach($serviceProfile->IntermediateOccContract as $contract)
                                                     @if($contract->use_receive == auth()->user()->id)
                                                         @php
                                                             $receivedServiceNow =true;
                                                         @endphp
-                                                    @else                                                    
+                                                    @else
                                                     @endif
-                                                    
+
                                                 @endforeach
                                                 @if($receivedServiceNow == true)
                                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -189,16 +189,16 @@
                                                         Ya lo contrataste
                                                     </button>
                                                     <br>
-                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione chat: </div>   
-                                                
-                                                                    
+                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione chat: </div>
+
+
                                                 @else
                                                     <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <i class="bi-cart-fill me-1"></i>
                                                         Contratar
                                                     </button>
-            
-            
+
+
                                                 @endif
                                             @endif
                                         @else
@@ -206,15 +206,15 @@
                                                 <i class="bi-cart-fill me-1"></i>
                                                 Contratar
                                             </button>
-            
+
                                         @endif
-            
+
                                     </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>        
+                    </div>
                 </section>
             </div>
 
@@ -239,7 +239,7 @@
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $serviceProfile->precio }}" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="1" required>
-            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
+            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>
 
             <input type="hidden" class="set-status-offer-input" name="statusInitial" value="{{1}}" required>
 
@@ -248,8 +248,8 @@
             <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateOcc->ser_occ_name }}" required>
             <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseOcc->name.$serviceProfile->IntermediateUseOcc->lastname}}" required>
             {{-- Fin datos que no se procesas --}}
-            
-            
+
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -257,7 +257,7 @@
                             <h5 class="modal-title m-2" id="ventanaModal">Contratar servicio</h5>
                         </div>
                         <!-- Cuerpo modal -->
-                        <div class="modal-body">
+                        <div class="modal-corpo">
                             <div class="m-1" id="formulario">
                                 <label class="">Contratado por: Usuario nuevo</label><br>
                                 <label>Hora: </label><br>
@@ -309,7 +309,7 @@
 
                             @php
                                 $flag=$errors->any();
-                            @endphp   
+                            @endphp
                     </div>
                     </div>
 
@@ -321,7 +321,7 @@
                             <p class="card-text">{{$ques->respuesta}}</p>
                         </div>
                     </div>
-                    
+
                     @endforeach
 
                 </div>
@@ -329,7 +329,7 @@
 
                     <!--- Post Form Begins -->
             @auth
-                
+
             <section class="card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -360,7 +360,7 @@
                     </div>
                 </form>
                 </section>
-            
+
             @endauth
                     <!--- Post Form Ends -->
 
@@ -429,7 +429,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                
+
 
                                 <!-- collapsed comments begins -->
                                 <div class="collapse" id="id{{$coment->id}}">
@@ -453,7 +453,7 @@
                                         <!-- comment card bgins -->
                                         <section>
                                         @foreach( $coment->UseComPostAnswer as $comentR)
-                                            
+
                                             <div class="card p-2 mt-3" style="background-color: rgb(154, 231, 195)">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
@@ -528,7 +528,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            
+
                                         @endforeach
                                         </section>
                                         <!-- comment card ends -->
@@ -665,7 +665,7 @@
 
 
 
-                       
+
 
                         @endforeach
                     </section>
@@ -702,7 +702,7 @@
                     </div>
                 </div>
             </div>
-        </form>    
+        </form>
         {{-- Quitar form? --}}
     @livewireScripts
     {{-- Quitar div? --}}
@@ -722,8 +722,8 @@
                     </div>
 
                     <!-- Modal body -->
-                
-                    <div class="modal-body">
+
+                    <div class="modal-corpo">
 
                         {{ csrf_field() }}
                         <input type="hidden" name="typeJobFromQuestion" value="1">
@@ -761,7 +761,7 @@
 
 
                     </div>
-                
+
                     <!-- Modal footer -->
                     <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-success">Publicar Pregunta
@@ -846,7 +846,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         $("#Modalpregunta").modal("show");
     })
-</script> 
+</script>
 
 <script>
     const cerrarBtn = document.getElementById('cerrarBtn');
