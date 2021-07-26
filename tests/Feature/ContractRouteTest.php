@@ -20,10 +20,12 @@ class ContractRouteTest extends TestCase
      * @return void
      */
 
-
-
+    const email = "pato@gmail.com";
+    const password = "password" ;
+    
      /** @test */
     public function routeProcessContractPost(){
+  
         // Peticion post aceptada
         $response = $this->post(route('iPContract'));
         $response->assertStatus(302);        
@@ -50,22 +52,18 @@ class ContractRouteTest extends TestCase
 
     /** @test */    
     public function redirectionProcessContractSuccessCaseOne(){
-
         // Crea una contrato con oficios
         // Para ContractController
         // Ataca el metodo contractCreate, el caso 1
         $contractCreate =  new ContractController();
-        $credentials = [
-            "email" => "mandarin@gmail.com",
-            "password" => "mandarin",
-        ];
-        $this->post('login', $credentials);
-
+        $this->sessionAutenticacion(self::email,self::password);
 
         $requestContract =  $this->contractRequest(1,20.00);
-        $response = $contractCreate->contractProcess($requestContract);
-        $this->assertContains('Contratado el oficio correctamente',[$response->getSession()->get('contractMessage')]);
-        $this->assertContains(302,[$response->getStatusCode()]);
+        $response = $contractCreate->contractCreate($requestContract);
+        $this->assertContains('Contratado el oficio correctamente',[$response]);
+
+        // $this->assertContains('Contratado el oficio correctamente',[$response->getSession()->get('contractMessage')]);
+        // $this->assertContains(302,[$response->getStatusCode()]);
     }
 
     /** @test */        
@@ -73,24 +71,15 @@ class ContractRouteTest extends TestCase
         // Crea una contrato con talentos
         // Para ContractController
         // Ataca el metodo contractCreate, el caso 2
-
         // $responde = (new LoginController())->showLoginForm();
-        
-
         // dd($responde->view());
-
         $contractCreate =  new ContractController();
-        $credentials = [
-            "email" => "mandarin@gmail.com",
-            "password" => "mandarin",
-        ];
-        $this->post('login', $credentials);
-
-
+        $this->sessionAutenticacion(self::email,self::password);
         $requestContract =  $this->contractRequest(2,20.00);
-        $response = $contractCreate->contractProcess($requestContract);
-        $this->assertContains('Contratado el talento correctamente',[$response->getSession()->get('contractMessage')]);
-        $this->assertContains(302,[$response->getStatusCode()]);
+        $response = $contractCreate->contractCreate($requestContract);
+        $this->assertContains('Contratado el talento correctamente',[$response]);
+        // $this->assertContains('Contratado el talento correctamente',[$response->getSession()->get('contractMessage')]);
+        // $this->assertContains(302,[$response->getStatusCode()]);
 
 
 
@@ -103,27 +92,20 @@ class ContractRouteTest extends TestCase
         // Ataca el metodo contractCreate, el caso 3
 
         $contractCreate =  new ContractController();
-        $credentials = [
-            "email" => "mandarin@gmail.com",
-            "password" => "mandarin",
-        ];
-        $this->post('login', $credentials);
+        $this->sessionAutenticacion(self::email,self::password);
 
 
         $requestContract =  $this->contractRequest(10,20.00);
-        $response = $contractCreate->contractProcess($requestContract);
-        $this->assertContains('Error no se pudo crear el contrato',[$response->getSession()->get('contractMessage')]);
-        $this->assertContains(302,[$response->getStatusCode()]);        
+        $response = $contractCreate->contractCreate($requestContract);
+        $this->assertContains('Error no se pudo crear el contrato',[$response]);
+        // $this->assertContains('Error no se pudo crear el contrato',[$response->getSession()->get('contractMessage')]);
+        // $this->assertContains(302,[$response->getStatusCode()]);        
     
     }
     /** @test */        
     public function validationCreateContract(){
         $contractCreate =  new ContractController();
-        $credentials = [
-            "email" => "mandarin@gmail.com",
-            "password" => "mandarin",
-        ];
-        $this->post('login', $credentials);
+        $this->sessionAutenticacion(self::email,self::password);
 
         $requestContract =  $this->contractHttp(null);
         $response = $this->post(route('iPContract'),$requestContract)->assertSessionDoesntHaveErrors(['priceOffer']);
@@ -131,6 +113,27 @@ class ContractRouteTest extends TestCase
         // $response = $contractCreate->contractProcess($requestContract);   
         // dd($response->getSession()->error_reporting);
     }
+
+    /** @test */        
+    public function verifyRoutePaymentView(){
+        $viewCheckout = new ContractController();
+        $response= $this->get(route('index.checkout'));
+        $response->assertStatus(302);
+        $response = $viewCheckout->checkoutPaymentView();
+
+    }
+
+
+
+    /** @test */        
+    public function paymentProccessContract(){
+
+        $paymentInCreate =  new ContractController();
+        $this->sessionAutenticacion(self::email,self::password);
+        $paymentInCreate->processPaymentServiceContract();
+
+    }
+
 
     public function contractRequest($typeOfJobNow,$price){
         $requestReception = new Request([
@@ -158,5 +161,13 @@ class ContractRouteTest extends TestCase
             'typeOfJob'=>1
         ];        
         return $requestReception;         
+    }
+
+    public function sessionAutenticacion($email, $password){
+        $credentials = [
+            "email" => $email,
+            "password" => $password,
+        ];
+        $this->post('login', $credentials);
     }
 }

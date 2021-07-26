@@ -125,7 +125,6 @@ class ContractController extends Controller
                     'use_occ_id'=>$request->serviceOffer,
                     'con_status'=>1,
                 ]);
-        
                 break;
             case 2:
                 $message = "Contratado el talento correctamente";

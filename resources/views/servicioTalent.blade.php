@@ -68,7 +68,7 @@
                                         @if(auth()->user()!=null)
                                             @if(auth()->user()->id == $serviceProfile->IntermediateUseTal->id)
                                                 <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Tu eres el del servicio
                                                 </button>
             
@@ -84,14 +84,14 @@
                                                 @endforeach
                                                 @if($receivedServiceNow == true)
                                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="bi-cart-fill me-1"></i>
+                                                        <em class="bi-cart-fill me-1"></em>
                                                         Ya lo contrataste
                                                     </button>
                                                     <br>
                                                     <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>                                
                                                 @else
                                                     <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="bi-cart-fill me-1"></i>
+                                                        <em class="bi-cart-fill me-1"></em>
                                                         Contratar
                                                     </button>
             
@@ -100,7 +100,7 @@
                                             @endif
                                         @else
                                             <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Contratar
                                             </button>
             
@@ -161,7 +161,7 @@
                                     @if(auth()->user()!=null)
                                         @if(auth()->user()->id == $serviceProfile->IntermediateUseTal->id)
                                             <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Tu eres el del servicio
                                             </button>
         
@@ -177,14 +177,14 @@
                                             @endforeach
                                             @if($receivedServiceNow == true)
                                                 <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Ya lo contrataste
                                                 </button>
                                                 <br>
                                                 <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>                                
                                             @else
                                                 <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Contratar
                                                 </button>
         
@@ -193,7 +193,7 @@
                                         @endif
                                     @else
                                         <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                            <i class="bi-cart-fill me-1"></i>
+                                            <em class="bi-cart-fill me-1"></em>
                                             Contratar
                                         </button>
         
@@ -376,7 +376,7 @@
 
                                 <div class="dropdown">
                                     <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-chevron-down"></i>
+                                    <em class="fas fa-chevron-down"></em>
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -402,17 +402,17 @@
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
                                             <a class="small text-decoration-none" href="#">
-                                                <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                                <em class="far fa-thumbs-up"></em> 1 Me gusta
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-comment-alt"></i> 1 Comentario
+                                                <em class="fas fa-comment-alt"></em> 1 Comentario
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
-                                                <i class="fas fa-share"></i> 1 Compartir
+                                                <em class="fas fa-share"></em> 1 Compartir
                                             </a>
                                         </li>
                                     </ul>
@@ -462,7 +462,7 @@
                                                     <div >
                                                         <div class="dropdown">
                                                             <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-chevron-down"></i>
+                                                            <em class="fas fa-chevron-down"></em>
                                                             </a>
 
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -477,7 +477,7 @@
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
                                                     <a class="card-link small" href="#">
-                                                        <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                                        <em class="far fa-thumbs-up"></em> 1 Me gusta
                                                     </a>
                                                 </div>
                                             </div>
@@ -494,8 +494,8 @@
                         </div>
                         <!---pt2 del comentariooooooooooooooooooooo >
                             <!-- Post Begins -->
-                        @endforeach
                     <!-- Post Ends -->
+                    @endforeach
                 </div>
                 <div class="col-3">
                     <div class="card">
