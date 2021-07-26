@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
+    Route::post('/ejecutarContr',[ContractController::class,'ejectContract'])->name('eject.contract');
     
 });
 

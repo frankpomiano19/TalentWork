@@ -43,7 +43,7 @@ class ServiceRegisterTest extends TestCase
 
     function test_post_ServiceRegister_Ocupation(){
         $response = $this->post(route('login'), [
-            'email' => 'XSsNjAdV5a@gmail.com',
+            'email' => 'pato@gmail.com',
             'password' => 'password'
         ]);
 
@@ -71,7 +71,7 @@ class ServiceRegisterTest extends TestCase
 
     function test_post_ServiceRegister_Talent(){
         $response = $this->post(route('login'), [
-            'email' => 'XSsNjAdV5a@gmail.com',
+            'email' => 'pato@gmail.com',
             'password' => 'password'
         ]);
 
@@ -106,29 +106,6 @@ class ServiceRegisterTest extends TestCase
         ]);        
         return $requestReception;
     }
-    /*
-    public function test_post_ServiceRegister_Ocupation_complete(){
-        $servicioTec = use_occ::first();
-
-        $registroTecnico =  new ServiceController();
-        $credentials = [
-            "email" => "XSsNjAdV5a@gmail.com",
-            "password" => "password",
-        ];
-        Storage::fake('avatars');
-        $this->post('login', $credentials);
-        $requestService = new Request([
-            'servicioTecn' => $servicioTec->ser_occ_id,
-            'detallesTecn' => $servicioTec->precio,
-            'costoTecn' => 500.00,
-            'imagenTecn' => //new UploadedFile('C:\Users\Personal\Pictures\ligero descuento.jpg','a'), 
-            UploadedFile::fake()->image('avatar.jpg', 500,600)->size(1000),
-        ]);
-        //$requestService = $this->contractHttp();
-        
-        $response = $registroTecnico->registroTecnico($requestService);
-        //dd($response);
-        //$this->assertContains('Servicio de ocupación registrado exitosamente',[$response->getSession()->get('serviceMessage')]);
-    }*/
+    
 
 }

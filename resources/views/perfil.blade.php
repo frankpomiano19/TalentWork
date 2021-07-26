@@ -66,9 +66,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Servicios</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link" id="historial-tab" data-toggle="tab" href="#historial" role="tab" aria-controls="historial" aria-selected="false">Historial</a>
-                                </li> --}}
+                                @if (auth()->user()->id == $user->id)
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="solicitudes-tab" data-toggle="tab" href="#solicitudes" role="tab" aria-controls="solicitudes" aria-selected="false">Solicitudes de contratos</a>
+                                    </li>
+                                @endif
+                                
                             </ul>
                         </div>
                     </div>
@@ -428,6 +431,33 @@
 
 
                             </div>
+                            @if (auth()->user()->id == $user->id)
+                                <div class="tab-pane fade" id="solicitudes" role="tabpanel" aria-labelledby="solicitudes-tab">
+                                    @foreach ($user->UseContractOffer as $Contract)
+                                        @if ($Contract->con_status == 1)                                                                                
+                                            @if ($Contract->use_tal_id !== null)
+                                                <form action=" {{route('eject.contract')}} " method="POST">
+                                                    @csrf
+                                                    {{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}
+                                                    <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
+                                                    <button type="submit" class="btn btn-secondary p-3">Aceptar contrato</button>
+                                                </form>
+                                            @elseif($Contract->use_occ_id !== null)
+                                                <form action=" {{route('eject.contract')}} " method="POST">
+                                                    @csrf
+                                                    {{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}
+                                                    <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
+                                                    <button type="submit" class="btn btn-secondary p-3">Aceptar contrato</button>
+                                                </form>
+                                            @endif
+                                        @endif                                        
+                                    @endforeach
+                                    @if ($user->UseContractOffer->where('con_status',1)->count()== 0)
+                                        No hay solicitudes de contratos disponibles
+                                    @endif
+                                </div>    
+                            @endif
+                            
 
                         </div>
                     </div>

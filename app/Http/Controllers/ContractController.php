@@ -334,6 +334,17 @@ class ContractController extends Controller
         return view('estadoContratoOcu',compact('id','contr','servOcupp','userOff','dataOcup'));
     }
 
+    public function ejectContract(Request $request){
+        $request->validate([
+            'contractId' => 'required'
+        ]);
+        $contr = Contract::findOrFail($request->contractId);
+        $contr->con_status = 2;
+        $contr->save();
+        $messageCon = "El contrato entró en ejecución";
+        return back()->with('serviceMessage',$messageCon);
+    }
+
     public function finishContract(Request $request){
         $request->validate([
             'contractId' => 'required'
