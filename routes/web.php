@@ -10,6 +10,7 @@ use App\Events\Message;
 use App\Events\MessageSent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Controllers\PostCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +22,17 @@ use Illuminate\Http\Response;
 |
 */
 
+
+
+
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
+Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
+Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
+Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
 
 Route::middleware(['auth'])->group(function () {
     // Carrito
@@ -60,9 +67,6 @@ Route::get('bandeja',function(){
     return view('bandejamensajes');
 })->middleware('auth')->name('bandeja');
 
-// Route::get('/contrato', function () {
-//     return view('contratoPerfil');
-// })->name("contratoPerfil");
 
 Route::get('template',function(){
     return view('template');
@@ -76,9 +80,6 @@ Route::get('login',function(){
 Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
-/*Route::get('perfil',function(){
-    return view('perfil');
-});*/
 Route::get('servicio',function(){
     return view('servicio');
 });
@@ -89,14 +90,12 @@ Route::get('serviciopremium',function(){
     return view('serviciopremium');
 });
 
+
+Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
+
 Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
-//Route::post('/actualizar','PerfilController@update');
-Route::post('/registrar','HomeController@nuevoRegistro');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
-Route::get('/welcome1',function(){
-return view( 'reg-serv-indep');
-})->name('registerServiceAllNow');
 
 Route::get('/perfilservicio',function(){
     return view('perfilservicio');
@@ -110,21 +109,14 @@ Route::get('/categorias',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
-//Route::get('registro',function(){
-//    return view('registro');
-//});
 Route::get('perfil',function(){
     return view('perfil');
 });
 Route::get('registroServicio',[ServiceController::class, 'registro']);
-Route::post('/registrar','HomeController@nuevoRegistro');
 
 Route::get('/servicio',function(){
     return view('servicio');
 });
-//Route::get('registro',function(){
-//    return view('registro');
-//});
 Route::get('perfil',function(){
     return view('perfil');
 });

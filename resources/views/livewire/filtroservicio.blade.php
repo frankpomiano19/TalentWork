@@ -54,14 +54,14 @@
                     <p>Descripcion: {{ $dato->descripcion}}</p>
                     <p>Precio: {{ $dato->precio}}</p>
                     <div>
-                        <button class="btn btn-success m-2">Ir a servicio</button>
+                        <button class="btn btn-success m-2" href="{{ route('showProfileServiceTalent',$dato->id) }}">Ir a servicio</button>
                     </div>
                 @elseif($ocupacion)
                     <img style="height:200px; width:200px;" src="{{ $dato->imagen}}">
                     <p>Descripcion: {{ $dato->descripcion}}</p>
                     <p>Precio: {{ $dato->precio}}</p>
                     <div>
-                        <button class="btn btn-success m-2">Ir a servicio</button>
+                        <button class="btn btn-success m-2" href="{{ route('showProfileServiceOccupation',$dato->id) }}">Ir a servicio</button>
                     </div>
                 @endif
 

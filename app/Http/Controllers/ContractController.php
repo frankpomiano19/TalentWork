@@ -70,7 +70,7 @@ class ContractController extends Controller
             $this->clearAllCart();
             \Cart::session(auth()->user()->id)->add(array(
                 'id' => $request->serviceOffer, // inique row ID
-                'name' => 'No name',
+                'name' => $request->serviceName,
                 'price' =>$request->priceOffer,
                 'quantity' =>1,            
                 'attributes' => array(
@@ -81,7 +81,9 @@ class ContractController extends Controller
                     'descriptionForm'=>$request->descriptionForm,
                     'typeOfJob'=>$request->typeOfJob,
                     'img1'=>$request->img1,
-                    'statusInitial'=>$request->statusInitial
+                    'statusInitial'=>$request->statusInitial,
+                    'userNameProvider'=>$request->userNameProvider
+
                 ),
             ));                     
             return redirect()->route('index.checkout');
@@ -319,8 +321,8 @@ class ContractController extends Controller
     public function contractStateTalent($id){
         $contr = Contract::findOrFail($id);
         $userOff = User::findOrFail($contr->use_offer);
-        $dataTal = use_occ::findOrFail($contr->use_tal_id);
-        $servTalen = ServiceTalent::findOrFail($contr->use_tal_id);
+        $dataTal = use_tal::findOrFail($contr->use_tal_id);
+        $servTalen = ServiceTalent::findOrFail($dataTal->ser_tal_id);
         return view('estadoContratoTal',compact('id','contr','servTalen','userOff','dataTal'));
     }
 
@@ -328,7 +330,7 @@ class ContractController extends Controller
         $contr = Contract::findOrFail($id);
         $userOff = User::findOrFail($contr->use_offer);
         $dataOcup = use_occ::findOrFail($contr->use_occ_id);
-        $servOcupp = ServiceOccupation::findOrFail($contr->use_occ_id);
+        $servOcupp = ServiceOccupation::findOrFail($dataOcup->ser_occ_id);
         return view('estadoContratoOcu',compact('id','contr','servOcupp','userOff','dataOcup'));
     }
 

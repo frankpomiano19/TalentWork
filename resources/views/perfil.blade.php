@@ -199,18 +199,18 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>Trabajos Asignados</p>
+                            <p>Mis contratos realizados</p>
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status != 3)
                                     @if ($Contract->use_tal_id !== null)
-                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/> 
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}</a><br/> 
                                     @endif
                                     @if ($Contract->use_occ_id !== null)
-                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateOcc->ser_occ_name}}</a><br/>
+                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}</a><br/>
                                     @endif 
                                 @endif
                             @endforeach
-                            <p>Trabajos Pasados</p>
+                            <p>Contratos Pasados</p>
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status == 3)
                                     @if ($Contract->use_tal_id !== null)
@@ -428,45 +428,7 @@
 
 
                             </div>
-                            <div class="tab-pane fade" id="historial" role="tabpane2" aria-labelledby="profile-tab">
 
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <table class="table" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre del servicio</th>
-                                                    <th>Fecha de Inicio</th>
-                                                    <th>Fecha de Termino</th>
-                                                    <th>Estado</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="#">Servicio 1</a></td>
-                                                    <td>12/06/2021</td>
-                                                    <td>13/06/2021</td>
-                                                    <td> cumplido</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="#">Servicio 2</a></td>
-                                                    <td>10/06/2021</td>
-                                                    <td>11/06/2021</td>
-                                                    <td> cumplido </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="#">Servicio 3</a></td>
-                                                    <td>08/06/2021</td>
-                                                    <td>09/06/2021</td>
-                                                    <td>incumplido</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -480,6 +442,17 @@
 @section('contenido_abajo_js')    
 
 
+@if (session('updateMessage'))
+<script>
+    Swal.fire({
+        title: "Datos actualizados",
+        html:  `
+        {{session('updateMessage')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
 <!-- @if ($flag==1)
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -491,7 +464,6 @@
         @endphp
 @endif
 
-<h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 
 @if ($errors->any())
 <script>
@@ -514,11 +486,3 @@
 
 @endsection
 
-<!-- @if ($errors->any())
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        $("#myModal").modal("show");
-    })
-</script> 
-<h3 class="h-light"> ERRORES {{$flag}} </h3>
-@endif -->

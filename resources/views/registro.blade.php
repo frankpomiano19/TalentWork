@@ -31,7 +31,7 @@
 
                     
                     <h3 class="register-heading text-black" >TalentWork te espera el primer paso es registrarse</h3>
-                    <form method="POST" action="/registrar">
+                    <form method="POST" action="{{ route('registrarUsuario') }}">
                         @csrf
 
                         <div class="row register-form">
