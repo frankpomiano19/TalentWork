@@ -3,9 +3,9 @@
 
 @section('contenido_js')
     <!-- Core theme JS-->
+    @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    @livewireStyles
 
 @endsection
 
@@ -14,6 +14,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/estiloChat.css') }}" />
+<style>
+    .container px-4 px-lg-5 my-5.col-3.h2.headertekst{
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+</style>
 @endsection
 
 
