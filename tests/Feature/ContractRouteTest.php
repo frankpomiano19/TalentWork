@@ -116,10 +116,24 @@ class ContractRouteTest extends TestCase
 
     /** @test */        
     public function verifyRoutePaymentView(){
-        $viewCheckout = new ContractController();
         $response= $this->get(route('index.checkout'));
         $response->assertStatus(302);
-        $response = $viewCheckout->checkoutPaymentView();
+    }
+
+
+    /** @test */        
+    public function getOneItemFromCartToTest(){
+        $controllerContract = new ContractController();
+        $this->sessionAutenticacion(self::email,self::password);
+        $controllerContract->clearAllCart();
+        $requestContract = $this->contractRequest(1,20.00);
+        // Crea un elemento en el carrito
+        $redirect = $controllerContract->validationFieldDescriptionContract($requestContract);
+        $this->assertContains(302,[$redirect->getStatusCode()]);
+        // Obtiene un elemento
+        $elementCart = $controllerContract->getOneItemFromCart();
+        $this->assertContains(2,[$elementCart->id]);
+        
 
     }
 
@@ -130,22 +144,61 @@ class ContractRouteTest extends TestCase
 
         $paymentInCreate =  new ContractController();
         $this->sessionAutenticacion(self::email,self::password);
-        $paymentInCreate->processPaymentServiceContract();
+        $requestContract = $this->contractRequest(1,20.00);
+        $response = $paymentInCreate->validationFieldDescriptionContract($requestContract);
+        $this->assertContains(302,[$response->getStatusCode()]);
 
+        $response = $paymentInCreate->processPaymentServiceContract();
+        $this->assertContains(302,[$response->getStatusCode()]);
     }
 
+    /** @test */        
+    public function clearOneElementoFromCart(){
+        $instanceOfContract =  new ContractController();
+        $this->sessionAutenticacion(self::email,self::password);        
+        $requestContract = $this->contractRequest(1,20.00);
+        $instanceOfContract->validationFieldDescriptionContract($requestContract);
+        $response = $instanceOfContract->clearCart(2);
+        $this->assertContains(302,[$response->getStatusCode()]);
+    }
 
     public function contractRequest($typeOfJobNow,$price){
-        $requestReception = new Request([
-            'dateForm'=>'2021-06-07 00:00:00',
-            'hourForm'=>'12:47:00.0000',
-            'addressForm'=>'Avenida siempre viva 123',
-            'descriptionForm'=>'En 5 horas llegas a casa',
-            'priceOffer'=>$price,
-            'userOffer'=>2,
-            'serviceOffer'=>2,
-            'typeOfJob'=>$typeOfJobNow
-        ]);        
+        if($typeOfJobNow==1){
+            $requestReception = new Request([
+                'dateForm'=>'2021-06-07 00:00:00',
+                'hourForm'=>'12:47:00.0000',
+                'addressForm'=>'Avenida siempre viva 123',
+                'descriptionForm'=>'En 5 horas llegas a casa',
+                'priceOffer'=>$price,
+                'userOffer'=>2, 
+                'serviceOffer'=>2,
+                'typeOfJob'=>$typeOfJobNow,
+                'serviceName'=>'Reparador de computadoras',
+                'img1'=>'https://www.compudepot.net/data/files/instalacion-mantenimiento-y-reparacion-de-pc-y-redes_30871784_xxl.jpg',
+                'statusInitial'=>1,
+                'userNameProvider'=>'Vizcarra Presidente'
+
+    
+            ]);        
+    
+        }else{
+            $requestReception = new Request([
+                'dateForm'=>'2021-06-07 00:00:00',
+                'hourForm'=>'12:47:00.0000',
+                'addressForm'=>'Avenida siempre viva 123',
+                'descriptionForm'=>'En 5 horas llegas a casa',
+                'priceOffer'=>$price,
+                'userOffer'=>2, 
+                'serviceOffer'=>2,
+                'typeOfJob'=>$typeOfJobNow,
+                'serviceName'=>'Bailarin',
+                'img1'=>'https://www.compudepot.net/data/files/instalacion-mantenimiento-y-reparacion-de-pc-y-redes_30871784_xxl.jpg',
+                'statusInitial'=>1,
+                'userNameProvider'=>'Vizcarra Presidente'
+    
+            ]);        
+
+        }
         return $requestReception; 
     }
 

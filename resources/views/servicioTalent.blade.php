@@ -670,14 +670,7 @@
         $('#Modalpregunta').modal('hide')
     })
 </script>
-<!-- <h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 @endif
-
-<!-- <script language="javascript" type="text/javascript">
-var scrt_var = $var;
-// var id = scrt_var ;
-// document.getElementById('mod').innerHTML= id;
-</script> -->
 
 @endsection
 
