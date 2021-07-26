@@ -432,7 +432,7 @@
                                                 <input type="hidden" name="ComId" value="{{ $coment->id }}">
                                                     <input type="text" class="form-control" name="comentario" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
+                                                        <button class="text-decoration-none text-white btn btn-primary" style="background-color: rgb(0, 0, 0)">Responder</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -494,133 +494,7 @@
                         </div>
                         <!---pt2 del comentariooooooooooooooooooooo >
                             <!-- Post Begins -->
-                    <section class="card mt-4">
-                        <div class="border p-2">
-                            <!-- post header -->
-                            <div class="row m-0">
-                                <div class="">
-                                    <a class="text-decoration-none" href="#">
-                                        <img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
-                                    </a>
-                                </div>
-                                <div class="flex-grow-1 pl-2">
-                                    <a class="text-decoration-none" href="#">
-                                        <h2 class="text-capitalize h5 mb-0">Gareca2</h2>
-                                    </a>
-                                    <p class="small text-secondary m-0 mt-1">Hace 1 día</p>
-                                </div>
-
-                                <div class="dropdown">
-                                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-chevron-down"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item text-primary" href="#">Editar</a>
-                                        <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- post body -->
-                            <div class="">
-                                <p class="my-2">
-                                    Que buen Talento
-                                </p>
-                            </div>
-                            <hr class="my-1">
-                            <!-- post footer begins -->
-                            <footer class="">
-                                <!-- post actions -->
-                                <div class="">
-                                    <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
-                                            <a class="small text-decoration-none" href="#">
-                                                <i class="far fa-thumbs-up"></i> 1 Me gusta
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
-                                            <a class="small text-decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-comment-alt"></i> 1 Comentario
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
-                                            <a class="small text-decoration-none" href="#">
-                                                <i class="fas fa-share"></i> 1 Compartir
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                                <!-- collapsed comments begins -->
-                                <div class="collapse" id="collapseExample2">
-                                    <div class="card border border-right-0 border-left-0 border-bottom-0 mt-1">
-                                        <!-- new comment form -->
-                                        <section class="mt-3">
-                                            <form action="">
-                                                <div class="input-group input-group">
-                                                    <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                                    <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </section>
-                                        <!-- comment card bgins -->
-                                        <section>
-                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
-                                                <!-- comment header -->
-                                                <div class="d-flex">
-                                                    <div class="">
-                                                        <a class="text-decoration-none" href="#">
-                                                            <img class="profile-pic" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="40" height="40" alt="...">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño2</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
-                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
-                                                    </div>
-                                                    <div >
-                                                        <div class="dropdown">
-                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-chevron-down"></i>
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
-                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- comment header -->
-                                                <!-- comment body -->
-                                                <div class="card-body p-0">
-                                                    <p class="card-text h7 mb-1">Concuerdo con usted2</p>
-                                                    <a class="card-link small" href="#">
-                                                        <i class="far fa-thumbs-up"></i> 2 Me gusta
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <!-- comment card ends -->
-
-                                    </div>
-                                </div>
-                                <!-- collapsed comments ends -->
-                            </footer>
-                            <!-- post footer ends -->
-                        </div>
-
-
-
-
-
-
-                       
-
                         @endforeach
-                    </section>
                     <!-- Post Ends -->
                 </div>
                 <div class="col-3">
@@ -716,16 +590,12 @@
 
                     </div>
 
-                    </form>
-                </div>
-                </div>
+                </form>
             </div>
-        </form>
+
 
 
         @livewireScripts
-
-    </div>
 @endsection
 
 @section('contenido_abajo_js')
