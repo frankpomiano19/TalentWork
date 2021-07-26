@@ -3,10 +3,10 @@
 
 @section('contenido_js')
     <!-- Core theme JS-->
+    @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    @livewireStyles
-    
+
 @endsection
 
 @section('contenido_cSS')
@@ -14,11 +14,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/estiloChat.css') }}" />
+<style>
+    .container px-4 px-lg-5 my-5.col-3.h2.headertekst{
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+</style>
 @endsection
 
 
 @section('content')
-   
+
     <div class="row">
 
         {{-- @if($serviceProfile->use_id !== auth()->user()->id) --}}
@@ -32,24 +40,24 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
-            
+
                                 <div class="card text-center">
                                     <div class="card-header">
                                       <ul class="nav nav-tabs card-header-tabs">
                                         <li class="nav-item">
-            
+
                                             <a class="nav-link active" aria-current="true" href="">Servicio Normal</a>
-                                           
+
                                         </li>
                                       </ul>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                                         <ul class="text-danger">
                                             @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                                                <li>{{ $errorRegister }}</li> 
+                                                <li>{{ $errorRegister }}</li>
                                             @endforeach
                                         </ul>
-                                    </div>                        
+                                    </div>
                                     <div class="card-body">
                                       <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
                                         <div class="d-flex small text-warning mb-2">
@@ -61,57 +69,57 @@
                                         </div>
                                       <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                       <div class="d-flex">
-            
+
                                         @php
                                             $receivedServiceNow = false;
                                         @endphp
                                         @if(auth()->user()!=null)
                                             @if(auth()->user()->id == $serviceProfile->IntermediateUseTal->id)
                                                 <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Tu eres el del servicio
                                                 </button>
-            
+
                                             @else
                                                 @foreach($serviceProfile->IntermetiateTalContract as $contract)
                                                     @if($contract->use_receive == auth()->user()->id)
                                                         @php
                                                             $receivedServiceNow =true;
                                                         @endphp
-                                                    @else                                                    
+                                                    @else
                                                     @endif
-                                                    
+
                                                 @endforeach
                                                 @if($receivedServiceNow == true)
                                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="bi-cart-fill me-1"></i>
+                                                        <em class="bi-cart-fill me-1"></em>
                                                         Ya lo contrataste
                                                     </button>
                                                     <br>
-                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>                                
+                                                    <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>
                                                 @else
                                                     <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="bi-cart-fill me-1"></i>
+                                                        <em class="bi-cart-fill me-1"></em>
                                                         Contratar
                                                     </button>
-            
-            
+
+
                                                 @endif
                                             @endif
                                         @else
                                             <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Contratar
                                             </button>
-            
+
                                         @endif
-            
+
                                     </div>
                                     </div>
                                   </div>
                             </div>
                         </div>
-                    </div>        
+                    </div>
                 </section>
             </div>
             <div class="col-4">
@@ -125,24 +133,24 @@
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                         <div class="col-md-6">
                             <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
-        
+
                             <div class="card text-center">
                                 <div class="card-header">
                                   <ul class="nav nav-tabs card-header-tabs">
                                     <li class="nav-item">
-        
+
                                         <a class="nav-link active" aria-current="true" href="">Servicio Normal</a>
-                                       
+
                                     </li>
                                   </ul>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                                     <ul class="text-danger">
                                         @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                                            <li>{{ $errorRegister }}</li> 
+                                            <li>{{ $errorRegister }}</li>
                                         @endforeach
                                     </ul>
-                                </div>                        
+                                </div>
                                 <div class="card-body">
                                   <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
                                     <div class="d-flex small text-warning mb-2">
@@ -154,62 +162,62 @@
                                     </div>
                                   <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                   <div class="d-flex">
-        
+
                                     @php
                                         $receivedServiceNow = false;
                                     @endphp
                                     @if(auth()->user()!=null)
                                         @if(auth()->user()->id == $serviceProfile->IntermediateUseTal->id)
                                             <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Tu eres el del servicio
                                             </button>
-        
+
                                         @else
                                             @foreach($serviceProfile->IntermetiateTalContract as $contract)
                                                 @if($contract->use_receive == auth()->user()->id)
                                                     @php
                                                         $receivedServiceNow =true;
                                                     @endphp
-                                                @else                                                    
+                                                @else
                                                 @endif
-                                                
+
                                             @endforeach
                                             @if($receivedServiceNow == true)
                                                 <button class="btn btn-outline-dark flex-shrink-0" disabled type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Ya lo contrataste
                                                 </button>
                                                 <br>
-                                                <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>                                
+                                                <div class="text-danger">* Para comunicarte con el que ofrece el servicio, presione <a href="">AQUI</a> </div>
                                             @else
                                                 <button class="btn btn-outline-dark flex-shrink-0 btn-details-now-data" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="bi-cart-fill me-1"></i>
+                                                    <em class="bi-cart-fill me-1"></em>
                                                     Contratar
                                                 </button>
-        
-        
+
+
                                             @endif
                                         @endif
                                     @else
                                         <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                            <i class="bi-cart-fill me-1"></i>
+                                            <em class="bi-cart-fill me-1"></em>
                                             Contratar
                                         </button>
-        
+
                                     @endif
-        
+
                                 </div>
                                 </div>
                               </div>
                         </div>
                     </div>
-                </div>        
+                </div>
             </section>
         </div>
         @endif
 
-        
+
     </div>
 
     <div class="row">
@@ -217,9 +225,9 @@
     </div>
 
     <!-- Product section-->
-    
-    
-    
+
+
+
         {{-- PopUp --}}
 
         <form class="" action="{{ route('contractDetailsData') }}" method="POST" enctype="" novalidate>
@@ -228,14 +236,14 @@
             <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $serviceProfile->precio }}" required>
             <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $serviceProfile->id }}" required>
             <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="2" required>
-            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>    
+            <input type="hidden" class="set-service-offer-input" name="img1" value="{{ $serviceProfile->imagen }}" required>
             <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
             {{-- Datos que no se procesan, solo para mejorar el estilo --}}
             <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateTal->ser_tal_name }}" required>
             <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseTal->name.$serviceProfile->IntermediateUseTal->lastname}}" required>
             {{-- Fin datos que no se procesas --}}
-    
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ventanaModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -245,7 +253,7 @@
                         </div>
 
                         <!-- Cuerpo modal -->
-                        <div class="modal-body">
+                        <div class="modal-corpo">
                             <div class="m-1" id="formulario">
                                 <label class="">Contratado por: Usuario nuevo</label><br>
                                 <label>Hora: </label><br>
@@ -309,7 +317,7 @@
                             <p class="card-text">{{$ques->respuesta}}</p>
                         </div>
                     </div>
-                    
+
                     @endforeach
 
                 </div>
@@ -317,7 +325,7 @@
 
                     <!--- Post Form Begins -->
             @auth
-                
+
                 <section class="card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -348,7 +356,7 @@
                     </div>
                 </form>
                 </section>
-            
+
             @endauth
                     <!--- Post Form Ends -->
 
@@ -376,7 +384,7 @@
 
                                 <div class="dropdown">
                                     <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-chevron-down"></i>
+                                    <em class="fas fa-chevron-down"></em>
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -402,22 +410,22 @@
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
                                             <a class="small text-decoration-none" href="#">
-                                                <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                                <em class="far fa-thumbs-up"></em> 1 Me gusta
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-comment-alt"></i> 1 Comentario
+                                                <em class="fas fa-comment-alt"></em> 1 Comentario
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
-                                                <i class="fas fa-share"></i> 1 Compartir
+                                                <em class="fas fa-share"></em> 1 Compartir
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-                                
+
 
                                 <!-- collapsed comments begins -->
                                 <div class="collapse" id="id{{$coment->id}}">
@@ -432,7 +440,7 @@
                                                 <input type="hidden" name="ComId" value="{{ $coment->id }}">
                                                     <input type="text" class="form-control" name="comentario" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
+                                                        <button class="text-decoration-none text-white btn btn-primary" style="background-color: rgb(0, 0, 0)">Responder</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -440,9 +448,9 @@
                                         @endauth
                                         <!-- comment card bgins -->
                                         <section>
-                                            
+
                                         @foreach( $coment->UseComPostAnswer as $comentR)
-                                            
+
                                             <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
                                                 <!-- comment header -->
                                                 <div class="d-flex">
@@ -462,7 +470,7 @@
                                                     <div >
                                                         <div class="dropdown">
                                                             <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-chevron-down"></i>
+                                                            <em class="fas fa-chevron-down"></em>
                                                             </a>
 
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -477,11 +485,11 @@
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
                                                     <a class="card-link small" href="#">
-                                                        <i class="far fa-thumbs-up"></i> 1 Me gusta
+                                                        <em class="far fa-thumbs-up"></em> 1 Me gusta
                                                     </a>
                                                 </div>
                                             </div>
-                                            
+
                                         @endforeach
                                         </section>
                                         <!-- comment card ends -->
@@ -494,134 +502,8 @@
                         </div>
                         <!---pt2 del comentariooooooooooooooooooooo >
                             <!-- Post Begins -->
-                    <section class="card mt-4">
-                        <div class="border p-2">
-                            <!-- post header -->
-                            <div class="row m-0">
-                                <div class="">
-                                    <a class="text-decoration-none" href="#">
-                                        <img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
-                                    </a>
-                                </div>
-                                <div class="flex-grow-1 pl-2">
-                                    <a class="text-decoration-none" href="#">
-                                        <h2 class="text-capitalize h5 mb-0">Gareca2</h2>
-                                    </a>
-                                    <p class="small text-secondary m-0 mt-1">Hace 1 día</p>
-                                </div>
-
-                                <div class="dropdown">
-                                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-chevron-down"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item text-primary" href="#">Editar</a>
-                                        <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- post body -->
-                            <div class="">
-                                <p class="my-2">
-                                    Que buen Talento
-                                </p>
-                            </div>
-                            <hr class="my-1">
-                            <!-- post footer begins -->
-                            <footer class="">
-                                <!-- post actions -->
-                                <div class="">
-                                    <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
-                                            <a class="small text-decoration-none" href="#">
-                                                <i class="far fa-thumbs-up"></i> 1 Me gusta
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
-                                            <a class="small text-decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-comment-alt"></i> 1 Comentario
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
-                                            <a class="small text-decoration-none" href="#">
-                                                <i class="fas fa-share"></i> 1 Compartir
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                                <!-- collapsed comments begins -->
-                                <div class="collapse" id="collapseExample2">
-                                    <div class="card border border-right-0 border-left-0 border-bottom-0 mt-1">
-                                        <!-- new comment form -->
-                                        <section class="mt-3">
-                                            <form action="">
-                                                <div class="input-group input-group">
-                                                    <input type="text" class="form-control" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                                    <div class="input-group-append">
-                                                        <a class="text-decoration-none text-white btn btn-primary" href="#" role="button" style="background-color: rgb(0, 0, 0)">Responder</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </section>
-                                        <!-- comment card bgins -->
-                                        <section>
-                                            <div class="card p-2 mt-3" style="background-color: rgb(159, 230, 224)">
-                                                <!-- comment header -->
-                                                <div class="d-flex">
-                                                    <div class="">
-                                                        <a class="text-decoration-none" href="#">
-                                                            <img class="profile-pic" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="40" height="40" alt="...">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">Ormeño2</a><label class="text-muted small"> &nbsp; Respondiendo a Gareca</label>
-                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
-                                                    </div>
-                                                    <div >
-                                                        <div class="dropdown">
-                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-chevron-down"></i>
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
-                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- comment header -->
-                                                <!-- comment body -->
-                                                <div class="card-body p-0">
-                                                    <p class="card-text h7 mb-1">Concuerdo con usted2</p>
-                                                    <a class="card-link small" href="#">
-                                                        <i class="far fa-thumbs-up"></i> 2 Me gusta
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <!-- comment card ends -->
-
-                                    </div>
-                                </div>
-                                <!-- collapsed comments ends -->
-                            </footer>
-                            <!-- post footer ends -->
-                        </div>
-
-
-
-
-
-
-                       
-
-                        @endforeach
-                    </section>
                     <!-- Post Ends -->
+                    @endforeach
                 </div>
                 <div class="col-3">
                     <div class="card">
@@ -669,11 +551,11 @@
                     </div>
 
                     <!-- Modal body -->
-                
-                    <div class="modal-body">
+
+                    <div class="modal-corpo">
 
                     {{ csrf_field() }}
-                    
+
                     <input type="hidden" name="typeJobFromQuestion" value="2">
                     <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
 
@@ -705,7 +587,7 @@
 
 
                     </div>
-                
+
                     <!-- Modal footer -->
                     <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-success">Publicar Pregunta
@@ -716,16 +598,12 @@
 
                     </div>
 
-                    </form>
-                </div>
-                </div>
+                </form>
             </div>
-        </form>
+
 
 
         @livewireScripts
-
-    </div>
 @endsection
 
 @section('contenido_abajo_js')
@@ -790,7 +668,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         $("#Modalpregunta").modal("show");
     })
-</script> 
+</script>
 
 <script>
     const cerrarBtn = document.getElementById('cerrarBtn');
@@ -800,14 +678,7 @@
         $('#Modalpregunta').modal('hide')
     })
 </script>
-<!-- <h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 @endif
-
-<!-- <script language="javascript" type="text/javascript">
-var scrt_var = $var;
-// var id = scrt_var ;
-// document.getElementById('mod').innerHTML= id; 
-</script> -->
 
 @endsection
 

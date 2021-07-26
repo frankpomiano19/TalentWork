@@ -30,8 +30,4 @@ class use_tal extends Model
         return $this->hasMany(Question::class,'use_tal_id');
     }
 
-    // public function UseTalPostAnswer(){
-    //     return $this->hasMany(Answer::class,'use_tal_id');
-    // }
-
 }

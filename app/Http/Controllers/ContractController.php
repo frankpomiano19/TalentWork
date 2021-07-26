@@ -92,7 +92,6 @@ class ContractController extends Controller
     }
 
     public function checkoutPaymentView(){
-        // dd(\Cart::session(auth()->user()->id)->getContent());
         return view('checkoutPayment');
     }
 
@@ -125,7 +124,6 @@ class ContractController extends Controller
                     'use_occ_id'=>$request->serviceOffer,
                     'con_status'=>1,
                 ]);
-        
                 break;
             case 2:
                 $message = "Contratado el talento correctamente";
@@ -190,7 +188,6 @@ class ContractController extends Controller
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }
         // Fin de validacion de contrato
-
         $payer = new Payer(); //Usuario que paga
         $payer->setPaymentMethod('paypal');
 
@@ -217,7 +214,6 @@ class ContractController extends Controller
         //Aca se procesa el pago
         try {
             $payment->create($this->apiContext);
-            echo $payment;
             return redirect()->away($payment->getApprovalLink());
         } catch (PayPalConnectionException $ex) {
             echo $ex->getData();
@@ -230,11 +226,6 @@ class ContractController extends Controller
         $this->constructPayment();
 
         // Validacion de datos
-
-        foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
-            
-        }
-
         $requestItems = new Request([
 
         ]);
@@ -292,7 +283,7 @@ class ContractController extends Controller
 
     // Ayudantes
     public function getOneItemFromCart(){
-        $itemOne="NoValue";
+        $itemOne="";
         foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
             $itemOne=$itemD;
             break;

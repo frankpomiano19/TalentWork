@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('birthdate',50)->required();
             $table->string('password',120)->required();
             $table->string('password_confirmation')->required();
+            $table->integer('sesion')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

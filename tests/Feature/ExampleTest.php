@@ -8,7 +8,7 @@ use App\Models\User;
 
 class ExampleTest extends TestCase
 {
-    //use DatabaseMigrations;
+    use DatabaseMigrations;
     /**
      * A basic test example.
      *
@@ -20,15 +20,15 @@ class ExampleTest extends TestCase
         ->assertSee('login')
         ->assertStatus(200);
 
-        // $credentials = [
-        //     "email" => "vizcarra@gmail.com",
-        //     "password" => "vacassss"
-        // ];
+        $credentials = [
+            "email" => "vizcarra@gmail.com",
+            "password" => "vacassss"
+        ];
 
-        // $response = $this->post('login', $credentials);
-        // $response->assertRedirect('/occupationService');
-        // $this->assertCredentials($credentials);
-        // $response->assertSee('/occupationService');
+        $response = $this->post('login', $credentials);
+        $response->assertRedirect('/occupationService');
+        $this->assertCredentials($credentials);
+        $response->assertSee('/occupationService');
     }
 
 }

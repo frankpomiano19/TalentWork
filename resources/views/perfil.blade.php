@@ -21,7 +21,7 @@
                 <div class="col-12 col-sm-12 col-md-10 col-lg-10">
                     <ul class="text-danger">
                         @foreach ($errors->contractProccessForm->all() as $errorRegister)
-                            <li>{{ $errorRegister }}</li> 
+                            <li>{{ $errorRegister }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -41,10 +41,10 @@
                                     {{ $user->name }}
                                     </h5>
                                     <h6>
-                                        @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)                                        
-                                            {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}                                        
+                                        @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)
+                                            {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}
                                         @else
-                                            @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)                                        
+                                            @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)
                                                 {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
                                             @else
                                                 No registra ningun servicio
@@ -90,7 +90,7 @@
                             <div class="modal fade" id="myModal">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
-                                            
+
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                     <h4 class="modal-title">Editar Perfil</h4>
@@ -100,9 +100,9 @@
                                     <form action="{{route('update.user',\Auth::user())}}" method="POST" >
                                     {{ csrf_field() }}  @method("PATCH")
                                     <!-- Modal body -->
-                                    <div class="modal-body">
+                                    <div class="modal-corpo">
 
-                                    
+
                                         <div class="form-row">
 
                                             <div class="form-group col-md-6">
@@ -178,7 +178,7 @@
 
 
 
-                                    
+
                                     </div>
 
                                     <!-- Modal footer -->
@@ -206,22 +206,22 @@
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status != 3)
                                     @if ($Contract->use_tal_id !== null)
-                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}</a><br/> 
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}</a><br/>
                                     @endif
                                     @if ($Contract->use_occ_id !== null)
                                         <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}</a><br/>
-                                    @endif 
+                                    @endif
                                 @endif
                             @endforeach
                             <p>Contratos Pasados</p>
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status == 3)
                                     @if ($Contract->use_tal_id !== null)
-                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/> 
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateTal->ser_tal_name}}</a><br/>
                                     @endif
                                     @if ($Contract->use_occ_id !== null)
                                         <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateOcc->ser_occ_name}}</a><br/>
-                                    @endif 
+                                    @endif
                                 @endif
                             @endforeach
                         </div>
@@ -267,16 +267,16 @@
                                             </div>
                                             <div class="col-md-6">
 
-                                            @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)                                        
-                                                <p> {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>                                        
+                                            @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)
+                                                <p> {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>
                                             @else
-                                                @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)                                        
+                                                @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)
                                                   <p>  {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
                                                 @else
                                                     No registra ningun servicio
                                                 @endif
-                                            @endif                                            
-                                            
+                                            @endif
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -293,7 +293,7 @@
                                 <div class="d-flex justify-content-between form-details-get">
                                     <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceUsers->use_id }}" required>
                                     <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
-                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->id }}" required>    
+                                    <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->id }}" required>
                                     <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
                                     <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
 
@@ -314,30 +314,30 @@
                                                 <i class="bi-cart-fill me-1"></i>
                                                 Tu eres el del servicio
                                             </button>
-        
+
                                         @else
                                             @foreach($serviceUsers->IntermediateOccContract as $contract)
                                                 @if($contract->use_receive == auth()->user()->id)
                                                     @php
                                                         $receivedServiceNow2 =true;
                                                     @endphp
-                                                @else                                                    
+                                                @else
                                                 @endif
-                                                
+
                                             @endforeach
                                             @if($receivedServiceNow2 == true)
-                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>
 
                                             <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
                                                 Contratar
-                                            </button>                                        
+                                            </button>
                                             <br>
                                             @else
                                                 <button type="button" class="btn btn-secondary p-3 btn-details-now-data" onclick="window.location.href='{{ route('showProfileServiceOccupation',$serviceUsers->id) }}'">
                                                     Contratar
-                                                </button>                                        
-            
-        
+                                                </button>
+
+
                                             @endif
                                         @endif
                                     @else
@@ -345,24 +345,24 @@
                                             <i class="bi-cart-fill me-1"></i>
                                             Contratar
                                         </button>
-        
+
                                     @endif
-                         
-                                    <br/>                                
+
+                                    <br/>
 
                                 </div>
                                 @endforeach
 
-                                
+
                                 @foreach($user->UseTalIntermediate as $serviceTalUsers)
                                     <div class="d-flex justify-content-between form-details-get">
                                         <input type="hidden" class="get-user-offer-input" name="userOffer" value="{{ $serviceTalUsers->use_id }}" required>
                                         <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceTalUsers->precio }}" required>
-                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->id }}" required>    
+                                        <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->id }}" required>
                                         <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
                                         <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
-    
+
 
 
 
@@ -380,32 +380,32 @@
                                                 <i class="bi-cart-fill me-1"></i>
                                                 Tu eres el del servicio
                                             </button>
-        
+
                                         @else
                                             @foreach($serviceTalUsers->IntermetiateTalContract as $contract)
                                                 @if($contract->use_receive == auth()->user()->id)
                                                     @php
                                                         $receivedServiceNow =true;
                                                     @endphp
-                                                @else                                                    
+                                                @else
                                                 @endif
-                                                
+
                                             @endforeach
                                             @if($receivedServiceNow == true)
-                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>                                
+                                            <div class="text-danger">* Para comunicarte <br> con el que<br> ofrece el servicio<br>, presione <a href="">AQUI</a> </div>
 
                                             <button type="button" class="btn btn-secondary p-3 btn-details-now-data" disabled>
                                                 Contratar
-                                            </button>                                        
+                                            </button>
                                             <br>
                                             @else
 
                                             <button type="button" class="btn btn-secondary p-3" onclick="window.location.href='{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}'">
                                                 Contratar
-                                            </button>       
-                                 
-            
-        
+                                            </button>
+
+
+
                                             @endif
                                         @endif
                                     @else
@@ -413,7 +413,7 @@
                                             <i class="bi-cart-fill me-1"></i>
                                             Contratar
                                         </button>
-        
+
                                     @endif
 
 
@@ -423,9 +423,9 @@
 
 
 
-                        
-    
-                                        <br/>                                
+
+
+                                        <br/>
                                     </div>
                                 @endforeach
 
@@ -464,12 +464,12 @@
                 </div>
             {{-- </form> --}}
         </div>
-    
+
 
 @endsection
 
 
-@section('contenido_abajo_js')    
+@section('contenido_abajo_js')
 
 
 @if (session('updateMessage'))
@@ -488,7 +488,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         $("#myModal").modal("show");
     })
-</script> 
+</script>
         @php
             $flag=0;
         @endphp
@@ -500,7 +500,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         $("#myModal").modal("show");
     })
-</script> 
+</script>
 
 <script>
     const cerrarBtn = document.getElementById('cerrarBtn');

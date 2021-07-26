@@ -21,8 +21,7 @@ use App\Http\Controllers\PostCommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
+define('routePerfil', '/perfil/{id}');
 
 
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
@@ -48,8 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
-    Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::get(routePerfil, 'PerfilController@index')->name('perfil');
+    Route::patch(routePerfil,'PerfilController@update')->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
@@ -94,8 +93,6 @@ Route::get('serviciopremium',function(){
 
 Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
 
-Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
 Route::get('/perfilservicio',function(){
@@ -159,6 +156,6 @@ Route::get('/chat', 'ChatsController@index');
 Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('messages', 'ChatsController@sendMessage');
 
-Broadcast::channel('chat', function ($user) {
+Broadcast::channel('chat', function () {
     return Auth::check();
 });

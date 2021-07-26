@@ -29,8 +29,5 @@ class use_occ extends Model
     public function UseOccPostQuestion(){
         return $this->hasMany(Question::class,'use_occ_id');
     }
-    // public function UseOccPostAnswer(){
-    //     return $this->hasMany(Answer::class,'use_occ_id');
-    // }
 
 }
