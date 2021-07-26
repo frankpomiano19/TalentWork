@@ -37,7 +37,7 @@ class ChatLista extends Component
                             ->get();
 
         $this->rCliente = Mensajechat::where("cliente","=",$this->para)
-                            ->first();;
+                            ->first();
 
     }
 
@@ -64,7 +64,6 @@ class ChatLista extends Component
         $nuevo->mensaje = $this->respuesta;
         $nuevo->envia = Auth::user()->id;
         $nuevo->fecha = now();
-        // $nuevo->servicio = $this->servicio;
         $nuevo->id_servicio = $this->id_servicio;
         $nuevo->save();
 

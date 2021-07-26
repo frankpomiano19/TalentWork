@@ -46,7 +46,6 @@ class ProcessContract extends Command
         if ($contracts->count() > 0) {
             foreach ($contracts as $cont) {
                 $hoy = Carbon::now();
-                //$fecha = Carbon::parse($con->con_initial);
                 if ($cont->con_status == 1 && $hoy->diffInHours($cont->con_initial,false) < -24) {
                     $cont->con_status = 2;
                     $cont->save();

@@ -24,6 +24,9 @@ use PayPal\Exception\PayPalConnectionException;
 class ContractController extends Controller
 {
 
+    const ERRORREASON = "No se pudo ejecutar el contrato por las siguientes razones : ";
+
+
     private $apiContext;
     public function constructPayment(){
         $payPalConfig = Config::get('paypal');
@@ -46,7 +49,6 @@ class ContractController extends Controller
             \Cart::session(auth()->user()->id)->clearItemConditions($itemD->id);
         }
         \Cart::session(auth()->user()->id)->clear();
-        // \Cart::clear();
         \Cart::session(auth()->user()->id)->clearCartConditions();
         return back();
     }    
@@ -64,7 +66,7 @@ class ContractController extends Controller
         $validationConfirm = $this->validationRegisterContract($request);
 
         if($validationConfirm->fails()){
-            $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
+            $errorRegisterFailed = self::ERRORREASON; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }else{
             $this->clearAllCart();
@@ -98,13 +100,12 @@ class ContractController extends Controller
     public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
         if($validationConfirm->fails()){
-            $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
+            $errorRegisterFailed = self::ERRORREASON; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }
         // 1 : Para oficios
         // 2 : Para talentos
-        $message = $this->contractCreate($request);
-        // return back()->with('contractMessage',$message);
+        $this->contractCreate($request);
     }
 
     public function contractCreate(Request $request){
@@ -112,7 +113,7 @@ class ContractController extends Controller
         switch($request->typeOfJob){
             case 1:
                 $message = "Contratado el oficio correctamente";
-                $contractNow = Contract::create([
+                Contract::create([
                     'con_contract_date'=>$request->dateForm,
                     'con_hour'=>$request->hourForm,
                     'con_address'=>$request->addressForm,
@@ -127,7 +128,7 @@ class ContractController extends Controller
                 break;
             case 2:
                 $message = "Contratado el talento correctamente";
-                $contractNow = Contract::create([
+                Contract::create([
                     'con_contract_date'=>$request->dateForm,
                     'con_hour'=>$request->hourForm,
                     'con_address'=>$request->addressForm,
@@ -179,12 +180,12 @@ class ContractController extends Controller
         
         
         // Validacion de contrato
-        $algo = "Nada";   
+        $algo = "";   
         $algo = $this->getOneItemFromCart();     
         $requestItems = $this->generateRequestFromArray($algo);       
         $validationConfirm = $this->validationRegisterContract($requestItems);
         if($validationConfirm->fails()){
-            $errorRegisterFailed = "No se pudo ejecutar el contrato por las siguientes razones : "; 
+            $errorRegisterFailed = self::ERRORREASON; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
         }
         // Fin de validacion de contrato
@@ -251,7 +252,7 @@ class ContractController extends Controller
             $status = 'El pago fue ejecutado correctamente, y el contrato se realizo de manera satisfactoria';
 
             //  Se registra el contrato
-            $algo = "Nada";   
+            $algo = "";   
             $algo = $this->getOneItemFromCart();      
             $requestItems = $this->generateRequestFromArray($algo);       
             $this->contractProcess($requestItems);
@@ -263,7 +264,6 @@ class ContractController extends Controller
             if($requestItems->typeOfJob == 2){
                 return redirect(route('showProfileServiceTalent',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
 
-                // return redirect('/profileServiceTalent/1')->with('statusPaymentSuccess',$status);
             }
 
         }

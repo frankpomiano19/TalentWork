@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 
 
-if (!defined('hostNumberNow')) define('hostNumberNow', '127.0.0.1');
+if (!defined('HOSTNUMBERNOW')) define('HOSTNUMBERNOW', '127.0.0.1');
 
 
 return [
@@ -50,7 +50,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', hostNumberNow),
+            'host' => env('DB_HOST', HOSTNUMBERNOW),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
@@ -70,7 +70,7 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', hostNumberNow),
+            'host' => env('DB_HOST', HOSTNUMBERNOW),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
@@ -144,7 +144,7 @@ return [
 
         'default' => [
             'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', hostNumberNow),
+            'host' => env('REDIS_HOST', HOSTNUMBERNOW),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
@@ -152,7 +152,7 @@ return [
 
         'cache' => [
             'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', hostNumberNow),
+            'host' => env('REDIS_HOST', HOSTNUMBERNOW),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),

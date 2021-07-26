@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }} ">
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-dL4prZgo2Ux+uabu7kV5AEOXCe4hTXG7gZgJ7dhxbrlYQSVfRe8+U7Vio/4K8N/n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
+
     .body{
         background-color: #000000
     }
@@ -80,7 +80,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
-                <p class="navbar-brand text-white mb-0"> <i class="fa d-inline fa-lg fa-stop-circle"></i> TalentWork</p>
+                <p class="navbar-brand text-white mb-0"> <em class="fa d-inline fa-lg fa-stop-circle"></em> TalentWork</p>
             </button>
             <div class="collapse navbar-collapse" id="navbar20">
                 <ul class="navbar-nav mr-auto">
@@ -91,9 +91,8 @@
                     </li>
                    
                 </ul>
-                <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b> </p>
+                <p class="d-none d-md-block lead mb-0 text-white"> <em class="fa d-inline fa-lg fa-stop-circle"></em> <strong> TalentWork</strong> </p>
                 <ul class="navbar-nav ml-auto">
-                    {{-- <li class="nav-item mx-1"> <a class="nav-link" href="#"> <i class="fa fa-github fa-fw fa-lg"></i> </a> </li> --}}
 
 
                     @guest

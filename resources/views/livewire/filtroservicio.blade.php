@@ -15,22 +15,22 @@
             </div>
             <p>Ocupacion</p>
             <div class="" id="" wire:model="ocupacion" wire:click="ocupacionM">
-                <select style="" class="desplegable">
-                    <option value="1" style="">Gasfitero de madrigueras</option>
-                    <option value="2" style="">Reparador de computadoras</option>
-                    <option value="3" style="">Diseñador grafico</option>
-                    <option value="4" style="">Estampador de polos</option>
-                    <option value="5" style="">Confeccionador de ropa</option>
+                <select class="desplegable">
+                    <option value="1" >Gasfitero de madrigueras</option>
+                    <option value="2" >Reparador de computadoras</option>
+                    <option value="3" >Diseñador grafico</option>
+                    <option value="4" >Estampador de polos</option>
+                    <option value="5" >Confeccionador de ropa</option>
                 </select>
             </div>
             <p>talento</p>
             <div class="" id="" wire:model="talento" wire:click="talentoM">
-                <select style="" class="desplegable">
-                    <option value="1" style="">Abridor de cajas</option>
-                    <option value="2" style="">Narrador de audiolibros</option>
-                    <option value="3" style="">Contador de chistes</option>
-                    <option value="4" style="">Probador de ropa</option>
-                    <option value="5" style="">Creador de videos rapidos</option>
+                <select class="desplegable">
+                    <option value="1" >Abridor de cajas</option>
+                    <option value="2" >Narrador de audiolibros</option>
+                    <option value="3" >Contador de chistes</option>
+                    <option value="4" >Probador de ropa</option>
+                    <option value="5" >Creador de videos rapidos</option>
                 </select>
             </div>
     
@@ -49,15 +49,14 @@
         @if($datos->count())
             @foreach($datos as $dato)
                 @if($talento)
-                    {{-- <p>Encargado: {{ $dato->IntermediateUseTal->name}}</p> --}}
-                    <img style="height:200px; width:200px;" src="{{ $dato->imagen}}">
+                    <img alt="Imagen de servicio" style="height:200px; width:200px;" src="{{ $dato->imagen}}">
                     <p>Descripcion: {{ $dato->descripcion}}</p>
                     <p>Precio: {{ $dato->precio}}</p>
                     <div>
                         <a class="btn btn-success m-2" href="{{ route('showProfileServiceTalent',$dato->id) }}">Ir a servicio</a>
                     </div>
                 @elseif($ocupacion)
-                    <img style="height:200px; width:200px;" src="{{ $dato->imagen}}">
+                    <img alt="Imagen de servicio" style="height:200px; width:200px;" src="{{ $dato->imagen}}">
                     <p>Descripcion: {{ $dato->descripcion}}</p>
                     <p>Precio: {{ $dato->precio}}</p>
                     <div>
@@ -67,7 +66,6 @@
 
             @endforeach
         @else
-        {{-- <img class="img-fluid my-3 animate__animated  animate__flash" src="{{ asset('img/undraw_Taken_re_yn20.svg') }}" style="width: 30%; heigth: 30%;" alt="insertar SVG con la etiqueta image"> --}}
         @endif
     </div>
 </div>

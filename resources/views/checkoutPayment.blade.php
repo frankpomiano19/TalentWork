@@ -59,14 +59,12 @@
 <div class="row" style="width: 100% !important">
     <div class="col-md-9 col-xs-12 pr-4 pt-1 px-4 rounded" >
         {{-- la tabla en sí  --}}
-
-        <table id="tabla" class="rounded table border border-2 table table-bordered table table-borderless" border="5px" >
-
+        <table id="tabla" aria-describedby="descriptionNow" class="rounded table border border-2 table table-bordered table table-borderless" border="5px" >
                     {{-- primer div grande con 6 partes  --}}
 
                 <tr>
 
-                    <th scope="hola"><h1 class="carrito summary text-center"> Carrito </h1></th>
+                    <th scope="hola"><h1 id="descriptionNow" class="carrito summary text-center"> Carrito </h1></th>
                     <td class="rounded align-text-bottom">
                         <div class="rounded align-text-bottom">
                             {{-- <h5 class="align-bottom text-right small allign-text-left ">Precio</h5> --}}
@@ -120,8 +118,8 @@
                                 @csrf
 
                                     <button class="btn btn-white border-secondary bg-dark btn-md mb-2 d-flex align-items-center" type="submit">
-                                        <i class="fa fa-trash">
-                                        </i>
+                                        <em class="fa fa-trash">
+                                        </em>
                                     </button>
                             </form>
                             </div>

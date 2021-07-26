@@ -23,12 +23,6 @@
 
 
 @section('content')
-<head>
-    
-
-
-  </head>
-  <body>
     
     <div class="product-big-title-area">
         <div class="container">
@@ -80,7 +74,6 @@
         </div>
     </div>
 
-  </body>
 @endsection
 
 @section('contenido_abajo_js')

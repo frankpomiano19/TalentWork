@@ -308,7 +308,7 @@
                                     @if(auth()->user()!=null)
                                         @if(auth()->user()->id == $serviceUsers->IntermediateUseOcc->id)
                                             <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Tu eres el del servicio
                                             </button>
 
@@ -339,7 +339,7 @@
                                         @endif
                                     @else
                                         <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                            <i class="bi-cart-fill me-1"></i>
+                                            <em class="bi-cart-fill me-1"></em>
                                             Contratar
                                         </button>
 
@@ -374,7 +374,7 @@
                                     @if(auth()->user()!=null)
                                         @if(auth()->user()->id == $serviceTalUsers->IntermediateUseTal->id)
                                             <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
-                                                <i class="bi-cart-fill me-1"></i>
+                                                <em class="bi-cart-fill me-1"></em>
                                                 Tu eres el del servicio
                                             </button>
 
@@ -407,7 +407,7 @@
                                         @endif
                                     @else
                                         <button class="btn btn-outline-dark flex-shrink-0" onclick="window.location.href='{{ route('registrouser') }}'" type="button">
-                                            <i class="bi-cart-fill me-1"></i>
+                                            <em class="bi-cart-fill me-1"></em>
                                             Contratar
                                         </button>
 
@@ -453,12 +453,6 @@
 </script>
 @endif
 
-<!-- @if ($flag==1)
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        $("#myModal").modal("show");
-    })
-</script>
         @php
             $flag=0;
         @endphp

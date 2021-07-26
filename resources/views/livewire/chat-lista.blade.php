@@ -3,12 +3,12 @@
     <div class="col-6 overflow-scroll" style="height: 100%;"><br>
       @foreach ($datos as $mensaje)
 
-        <div class="row" style="">
+        <div class="row">
             <div class="col-12">
               <p>De tu servicio: {{ $mensaje->servicio }}</p>
             </div>
             <div class="col-6 text-truncate pt-1">
-              <b>{{ $mensaje->IntermediateUser->name}}:</b> {{ $mensaje->mensaje }}
+              <strong>{{ $mensaje->IntermediateUser->name}}:</strong> {{ $mensaje->mensaje }}
             </div>
             <div class="col-6">
               <button class="btn btn-success btn-sm btn-block" wire:click="responderM({{ $mensaje->IntermediateUser->id}}, {{ $mensaje->id_servicio }})">Ver mensajes</button>
@@ -27,7 +27,7 @@
                 </div>
               @else
                 <div style="border:1px solid black; word-wrap: break-word; background-color:#F3F9A7;" class="rounded m-1">
-                  <p class="text-left p-1 m-1" style="font-size: 1rem;"><b>{{ $rCliente->IntermediateUser->name }}</b>: {{ $hist->mensaje}}</p>
+                  <p class="text-left p-1 m-1" style="font-size: 1rem;"><strong>{{ $rCliente->IntermediateUser->name }}</strong>: {{ $hist->mensaje}}</p>
                 </div>
               @endif
             @endforeach
@@ -38,7 +38,7 @@
                 <div class="col-8 pr-1">
                   <input class="form-control form-control my-1 pr-0 inputChat" wire:keydown.enter="enviarRespuesta" type="text" placeholder="Escribir" wire:model="respuesta">
                 </div>
-                <div class="col-4 pl-0" style="">
+                <div class="col-4 pl-0" >
                   <button class="btn btn-success btn-block" wire:click="enviarRespuesta">Enviar</button>
                 </div>
               </div>

@@ -1,17 +1,16 @@
 <div>
     <button class="open-button" onclick="openForm()" id="botonChat" style="display:block;">
-        <font class="ventChat" style="vertical-align: inherit; font-size:1.2rem;">Mensajes privados</font>
-        </font>
+        <label class="ventChat" style="vertical-align: inherit; font-size:1.2rem;">Mensajes privados</label>
     </button>
     <div class="chat-popup" id="myForm" style="display: block; width:30%; height:450px;">
         <div action="" class="form-container">
             <div class="portlet portlet-default">
                 <div class="portlet-heading">
                     <div class="portlet-title">
-                        <h4><i class="fa fa-circle text-green"></i>{{ $serviceProfile->IntermediateUseOcc->name }}</h4>
+                        <h4><em class="fa fa-circle text-green"></em>{{ $serviceProfile->IntermediateUseOcc->name }}</h4>
                     </div>
                     <div class="portlet-widgets">
-                        <a data-toggle="collapse" onclick="closeForm()" data-parent="#accordion" href="#chat"><i class="fa fa-chevron-down"></i></a>
+                        <a data-toggle="collapse" onclick="closeForm()" data-parent="#accordion" href="#chat"><em class="fa fa-chevron-down"></em></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -23,15 +22,15 @@
                                 <div class="media-body">
                                     @foreach ($datos as $datom)
                                         @if($datom->envia == auth()->user()->id)
-                                            <div style="" class="rounded m-1">
-                                                <h5 class="text-right"><b><small>{{ $datom->fecha }}</small> - {{ auth()->user()->name }}</b></h5>
+                                            <div class="rounded m-1">
+                                                <h5 class="text-right"><strong><small>{{ $datom->fecha }}</small> - {{ auth()->user()->name }}</strong></h5>
                                                 <p class="text-right" style="font-size:1.1rem;">{{ $datom->mensaje}}</p><hr>
                                             </div>        
                                         @else
                                             <div class="container">
-                                                <div style="" class="row">
+                                                <div class="row">
                                                     <div class="col-12">
-                                                        <p class="float-left my-auto align-middle"  style="font-size:1.1rem;"><b>{{ $serviceProfile->IntermediateUseOcc->name }}<small> - {{ $datom->fecha }}</small></b><br>{{ $datom->mensaje}}</p>
+                                                        <p class="float-left my-auto align-middle"  style="font-size:1.1rem;"><strong>{{ $serviceProfile->IntermediateUseOcc->name }}<small> - {{ $datom->fecha }}</small></strong><br>{{ $datom->mensaje}}</p>
                                                     </div>
                                                 </div>
                                             </div><hr>
