@@ -51,6 +51,7 @@
                           <div class="form-group">
                             <label for="servicioTecn">Seleccione su servicio técnico perteneciente</label>
                             <select class="form-control" id="servicioTecn" name="servicioTecn" required>
+                                  <option value= "">Seleccione su servicio correspondiente</option> 
                               @foreach ($serviciosTec as $item)
                                   <option value= {{$item->id}}>{{$item->ser_occ_name}}</option> 
                               @endforeach
@@ -58,7 +59,7 @@
                           </div>
                           @error('detallesTecn')
                             <div class="alert alert-danger" role="alert">
-                              <strong>Atención.</strong> La descripción del servicio es necesaria.
+                              <strong>Atención.</strong> La descripción del servicio debe tener un mínimo de 10 letras.
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -101,6 +102,7 @@
                           <div class="form-group">
                             <label for="servicioTalen">Seleccione su talento perteneciente</label>
                             <select class="form-control" id="servicioTalen" name ="servicioTalen" required>
+                              <option value= "">Seleccione su servicio correspondiente</option>
                               @foreach ($serviciosTal as $item)
                                   <option value={{$item->id}}>{{$item->ser_tal_name}}</option>
                               @endforeach
@@ -108,7 +110,7 @@
                           </div>
                           @error('detallesTalen')
                           <div class="alert alert-danger" role="alert">
-                            <strong>Atención.</strong> La descripción de su talento es necesaria.
+                            <strong>Atención.</strong> La descripción de su talento debe tener un mínimo de 10 letras.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
