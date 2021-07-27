@@ -40,6 +40,14 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
+                                <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
+                                <br>
+                                <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->email }} <label></label>
+                                <br>
+                                <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->birthdate }} <label></label>
+    
+
+
 
                                 <div class="card text-center">
                                     <div class="card-header">
@@ -134,6 +142,12 @@
                         <div class="col-md-6">
                             <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
 
+                            <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
+                            <br>
+                            <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->email }} <label></label>
+                            <br>
+                            <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->birthdate }} <label></label>
+                            <br>
                             <div class="card text-center">
                                 <div class="card-header">
                                   <ul class="nav nav-tabs card-header-tabs">
