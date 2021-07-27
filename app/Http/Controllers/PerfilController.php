@@ -48,8 +48,10 @@ class PerfilController extends Controller
             if($request->dni!=NULL){$usuarioLogeado->DNI=$request->dni;}
             if($request->email!=NULL){$usuarioLogeado->email=$request->email;}
             if($request->birthdate!=NULL){$usuarioLogeado->birthdate=$request->birthdate;}
-            if($request->password!=NULL){$usuarioLogeado->password=bcrypt($request->password);
-                                         $usuarioLogeado->password_confirmation=bcrypt($request->password);}
+            if($request->password!=NULL){
+                $usuarioLogeado->password=bcrypt($request->password);
+                $usuarioLogeado->password_confirmation=bcrypt($request->password);
+            }
 
             $usuarioLogeado->name=$request->name;
             $usuarioLogeado->lastname=$request->lastname;
@@ -61,7 +63,6 @@ class PerfilController extends Controller
 
         $usuarioLogeado->push();
         $message = "Realizado correctamente";
-        
         return redirect()->route('perfil',Auth::user()->id)->with('updateMessage',$message);
     
     }

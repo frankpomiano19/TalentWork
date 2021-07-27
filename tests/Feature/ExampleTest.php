@@ -8,7 +8,6 @@ use App\Models\User;
 
 class ExampleTest extends TestCase
 {
-    use DatabaseMigrations;
     /**
      * A basic test example.
      *

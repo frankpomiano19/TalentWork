@@ -18,8 +18,6 @@ class CreateAnswersTable extends Migration
             $table->text('comentario');
             $table->unsignedBigInteger('use_id');
             $table->unsignedBigInteger('use_com_id')->nullable();
-            // $table->unsignedBigInteger('use_tal_id')->nullable();
-            // $table->foreign('use_tal_id')->references('id')->on('use_tals')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_com_id')->references('id')->on('Post_comments')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('use_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

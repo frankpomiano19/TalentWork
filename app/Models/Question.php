@@ -15,8 +15,5 @@ class Question extends Model
         'pregunta', 'respuesta', 'use_occ_id', 'use_tal_id'
     ];
 
-    // public function PostQuestionUser(){
-    //     return $this->belongsTo(User::class,'use_id');
-    // }
 
 }

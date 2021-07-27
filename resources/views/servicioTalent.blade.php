@@ -5,8 +5,8 @@
     <!-- Core theme JS-->
     @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-
+    <script src="https://js.pusher.com/7.0/pusher.min.js" integrity="sha384-zvPTdTn0oNW7YuTZj1NueYOFJSJNDFJGdKwMMlWDtr3b4xarXd2ydDUajHfnszL7" crossorigin="anonymous"></script>
+    
 @endsection
 
 @section('contenido_cSS')
@@ -40,6 +40,14 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
+                                <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
+                                <br>
+                                <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->email }} <label></label>
+                                <br>
+                                <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->birthdate }} <label></label>
+    
+
+
 
                                 <div class="card text-center">
                                     <div class="card-header">
@@ -134,6 +142,12 @@
                         <div class="col-md-6">
                             <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
 
+                            <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
+                            <br>
+                            <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->email }} <label></label>
+                            <br>
+                            <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->birthdate }} <label></label>
+                            <br>
                             <div class="card text-center">
                                 <div class="card-header">
                                   <ul class="nav nav-tabs card-header-tabs">

@@ -58,7 +58,7 @@
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <i class="bi-cart-fill me-1"></i>
+                            <em class="bi-cart-fill me-1"></em>
                             Contratar
                         </button>
                     </div>
@@ -77,10 +77,10 @@
                         <h2>Talent<span>Work</span></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
                         <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><em class="fa fa-facebook"></em></a>
+                            <a href="#" target="_blank"><em class="fa fa-twitter"></em></a>
+                            <a href="#" target="_blank"><em class="fa fa-youtube"></em></a>
+                            <a href="#" target="_blank"><em class="fa fa-linkedin"></em></a>
                         </div>
                     </div>
                 </div>
@@ -128,10 +128,10 @@
                 
                 <div class="col-md-4">
                     <div class="footer-card-icon">
-                        <i class="fa fa-cc-discover"></i>
-                        <i class="fa fa-cc-mastercard"></i>
-                        <i class="fa fa-cc-paypal"></i>
-                        <i class="fa fa-cc-visa"></i>
+                        <em class="fa fa-cc-discover"></em>
+                        <em class="fa fa-cc-mastercard"></em>
+                        <em class="fa fa-cc-paypal"></em>
+                        <em class="fa fa-cc-visa"></em>
                     </div>
                 </div>
             </div>
@@ -139,7 +139,7 @@
     </div>
    
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 </body>

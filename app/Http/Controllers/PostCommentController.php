@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-//use App\Models\User;
 use App\Models\use_occ;
 use App\Models\Post_comment;
 use App\Models\Question;
@@ -20,27 +19,31 @@ class PostCommentController extends Controller
     public function newComment(Request $request){
 
         
-        
-        switch ($request->typeJobFromComment){
-            case 1:
-                $comment = new Post_comment(array(
-                    'comentario' => $request->get('comentario'),
-                    'use_id' => auth()->user()->id,
-                    'use_occ_id' => $request->get('serviceId'),
-                ));
-        
-                break;
-            case 2:
-                $comment = new Post_comment(array(
-                    'comentario' => $request->get('comentario'),
-                    'use_id' => auth()->user()->id,
-                    'use_tal_id' => $request->get('serviceId'),
-                ));
-
-                break;
-            default :
-                return ("No se pudo procesar");
-                break;
+        if($request->comentario != null){
+            switch ($request->typeJobFromComment){
+                case 1:
+                    $comment = new Post_comment(array(
+                        'comentario' => $request->get('comentario'),
+                        'use_id' => auth()->user()->id,
+                        'use_occ_id' => $request->get('serviceId'),
+                    ));
+            
+                    break;
+                case 2:
+                    $comment = new Post_comment(array(
+                        'comentario' => $request->get('comentario'),
+                        'use_id' => auth()->user()->id,
+                        'use_tal_id' => $request->get('serviceId'),
+                    ));
+    
+                    break;
+                default :
+                    return ("No se pudo procesar");
+                    break;
+            }
+        }
+        else{
+            return redirect()->back();
         }
 
         $comment->save();
@@ -87,12 +90,16 @@ class PostCommentController extends Controller
     public function newAnswer(Request $request){
 
     
-
-        $answer = new Answer(array(
-            'comentario' => $request->get('comentario'),
-            'use_id' => auth()->user()->id,
-            'use_com_id' => $request->get('ComId'),
-        ));
+        if($request->comentario){
+            $answer = new Answer(array(
+                'comentario' => $request->get('comentario'),
+                'use_id' => auth()->user()->id,
+                'use_com_id' => $request->get('ComId'),
+            ));
+        }
+        else{
+            return redirect()->back();
+        }
 
         $answer->save();
 

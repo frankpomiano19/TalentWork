@@ -21,8 +21,6 @@ use App\Http\Controllers\PostCommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-define('routePerfil', '/perfil/{id}');
-
 
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
@@ -47,8 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
-    Route::get(routePerfil, 'PerfilController@index')->name('perfil');
-    Route::patch(routePerfil,'PerfilController@update')->name('update.user');
+    Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
+    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
@@ -95,9 +93,6 @@ Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registr
 
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
-Route::get('/perfilservicio',function(){
-    return view('perfilservicio');
-});
 
 
 Route::get('/categorias',function(){
@@ -123,9 +118,6 @@ Route::get('registroServicio',[ServiceController::class, 'registro']);
 
 Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
 
-Route::get('/perfilservicio',function(){
-    return view('perfilservicio');
-});
 Route::get('/talento',function(){
     return view('talento');
 });

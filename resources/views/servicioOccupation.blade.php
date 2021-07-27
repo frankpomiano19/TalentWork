@@ -5,7 +5,7 @@
     <!-- Core theme JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js" integrity="sha384-zvPTdTn0oNW7YuTZj1NueYOFJSJNDFJGdKwMMlWDtr3b4xarXd2ydDUajHfnszL7" crossorigin="anonymous"></script>
     @livewireStyles
 
 @endsection
@@ -30,7 +30,6 @@
 
 @section('content')
     <div class="row">
-        {{-- @if($serviceProfile->use_id !== auth()->user()->id) --}}
 
         {{-- Si existe el contrato --}}
         @if($chat == 1)
@@ -41,6 +40,13 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
+
+                                <a href="{{ route('perfil',$serviceProfile->IntermediateUseOcc->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseOcc->name." ".$serviceProfile->IntermediateUseOcc->lastname }}</a>
+                                <br>
+                                <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseOcc->email }} <label></label>
+                                <br>
+                                <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseOcc->birthdate }} <label></label>
+
 
                                 <div class="card text-center">
                                     <div class="card-header">
@@ -135,6 +141,15 @@
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
+
+                                <a href="{{ route('perfil',$serviceProfile->IntermediateUseOcc->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseOcc->name." ".$serviceProfile->IntermediateUseOcc->lastname }}</a>
+                                <br>
+                                <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseOcc->email }} <label></label>
+                                <br>
+                                <label><strong>Año de nacimiento : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseOcc->birthdate }} <label></label>
+    
+
+
 
                                 <div class="card text-center">
                                     <div class="card-header">
