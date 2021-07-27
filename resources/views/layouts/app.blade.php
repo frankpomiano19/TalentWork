@@ -91,7 +91,7 @@
                     </li>
                    
                 </ul>
-                <p class="d-none d-md-block lead mb-0 text-white"> <em class="fa d-inline fa-lg fa-stop-circle"></em> <strong> TalentWork</strong> </p>
+                <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b></a> </p>
                 <ul class="navbar-nav ml-auto">
 
 
