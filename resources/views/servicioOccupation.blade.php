@@ -323,9 +323,6 @@
                                 @endif
                             @endauth
 
-                            @php
-                                $flag=$errors->any();
-                            @endphp
                     </div>
                     </div>
 
@@ -366,7 +363,12 @@
                                     <input type="hidden" name="typeJobFromComment" value="1">
                                     <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
 
-                                    <textarea class="form-control" id="message" rows="3" placeholder="Escriba lo que piensa..." name="comentario"></textarea>
+                                    <textarea class="form-control @error('comentario') is-invalid @enderror" id="message" rows="3" placeholder="Escriba lo que piensa..." name="comentario"></textarea>
+                                    @error('comentario')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="text-right">
@@ -435,7 +437,7 @@
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <em class="fas fa-comment-alt"></em> 1 Comentario
+                                                <em class="fas fa-comment-alt"></em> {{ $coment->UseComPostAnswer->count() }} Comentario
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
@@ -458,10 +460,15 @@
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
                                                 <input type="hidden" name="ComId" value="{{ $coment->id }}">
-                                                    <input type="text" class="form-control" name="comentario" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                <input type="text" class="form-control @error('comentarioRespuesta') is-invalid @enderror" name="comentarioRespuesta" placeholder="Escribir algo..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="text-decoration-none text-white btn btn-primary" style="background-color: rgb(0, 0, 0)">Responder</button>
+                                                        <button class="text-decoration-none text-white btn btn-primary" style="background-color: rgb(0, 0, 0)">Responder</button>
                                                     </div>
+                                                    @error('comentarioRespuesta')
+                                                        <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </form>
                                         </section>
@@ -483,8 +490,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
-                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a Lapadula</label>
-                                                        <p class="small m-0 text-muted">Hace 27 minutos</p>
+                                                        <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a {{ $coment->PostCommentUser->name }}</label>
+                                                        <p class="small m-0 text-muted">Posteado el $comentR->created_at</p>
                                                     </div>
                                                     <div >
                                                         <div class="dropdown">
@@ -697,7 +704,7 @@
 @endif
 
 
-@if ($errors->any())
+@if ($errors->has('pregunta') || $errors->has('respuesta'))
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         $("#Modalpregunta").modal("show");

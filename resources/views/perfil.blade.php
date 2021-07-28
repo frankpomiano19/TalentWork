@@ -492,7 +492,7 @@
         @php
             $flag=0;
         @endphp
-@endif
+@endif -->
 
 
 @if ($errors->any())
@@ -511,7 +511,7 @@
     })
 </script>
 
-<h3 class="h-light"> ERRORES {{$flag}} </h3>
+<!-- <h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 @endif
 
 @endsection
