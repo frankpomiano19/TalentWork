@@ -21,9 +21,6 @@ use App\Http\Controllers\PostCommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// define('ROUTEPERFILNOW', '/perfil/{id}');
-
-Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
 
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');

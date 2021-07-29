@@ -18,8 +18,10 @@ class PostCommentController extends Controller
 
     public function newComment(Request $request){
 
-        
-        if($request->comentario != null){
+        $validation = $request->validate([
+            'comentario'=>'required|string|max:400',
+        ]);
+
             switch ($request->typeJobFromComment){
                 case 1:
                     $comment = new Post_comment(array(
@@ -41,14 +43,12 @@ class PostCommentController extends Controller
                     return ("No se pudo procesar");
                     break;
             }
-        }
-        else{
-            return redirect()->back();
-        }
 
         $comment->save();
 
         return redirect()->back();
+
+        
     }
 
     public function newQuestion(Request $request){
@@ -89,18 +89,16 @@ class PostCommentController extends Controller
 
     public function newAnswer(Request $request){
 
+        $request->validate([
+            'comentarioRespuesta'=>'required|string|max:400',
+        ]);
     
-        if($request->comentario){
             $answer = new Answer(array(
-                'comentario' => $request->get('comentario'),
+                'comentario' => $request->get('comentarioRespuesta'),
                 'use_id' => auth()->user()->id,
                 'use_com_id' => $request->get('ComId'),
             ));
-        }
-        else{
-            return redirect()->back();
-        }
-
+            
         $answer->save();
 
         return redirect()->back();
