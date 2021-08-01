@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }} ">
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-dL4prZgo2Ux+uabu7kV5AEOXCe4hTXG7gZgJ7dhxbrlYQSVfRe8+U7Vio/4K8N/n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-Ez8o6svpzUMfW743iAiPxbc2kkCOZjmJ4GKEgNp39u/Nyb+XXBtP/4Mj4eeGMCSo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
 
     .body{
         background-color: #000000
