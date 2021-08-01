@@ -148,10 +148,6 @@ Route::get('/chat', 'ChatsController@index');
 Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('messages', 'ChatsController@sendMessage');
 
-Route::get('pagoPrueba', [PaymentStripeController::class,'index']);
-Route::post('stripeproccess', [PaymentStripeController::class,'paymentProcess'])->name('stripeProcessNow');
-
-
 Broadcast::channel('chat', function () {
     return Auth::check();
 });
