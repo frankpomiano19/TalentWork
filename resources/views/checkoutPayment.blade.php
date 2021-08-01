@@ -44,7 +44,7 @@
             font-weight: bold !important;
         }
 
-        
+
     </style>
 
 @endsection
@@ -187,22 +187,64 @@
                             <p class="font-weight-light text-muted summary__paragraph--style">* La unica forma habilitada es atravez de la plataforma paypal</p> 
                           </blockquote>              
                         <hr>
+                          {{-- Tabs para pagos --}}
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-paypal" role="tab" aria-controls="nav-home" aria-selected="true"><img style="width:40px;" src="{{ asset('img/Paypal.png') }}" alt=""></a>
+                              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-stripe" role="tab" aria-controls="nav-profile" aria-selected="false"><img style="width:40px;" src="{{ asset('img/stripe.png') }}" alt=""></a>
+                            </div>
+                          </nav>
+
             
                         @foreach (Cart::session(auth()->user()->id)->getContent()->sortByDesc('id') as $item)
 
-                            <form class="" action="{{ route('continuePaymentPaypal') }}" method="POST" enctype="" novalidate>
-                                @csrf
-                                <input type="hidden" class="set-user-offer-input" name="userOffer" value=" {{ $item->attributes->userOffer }}" required>
-                                <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $item->price }}" required>
-                                <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $item->id }}" required>
-                                <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="{{ $item->attributes->typeOfJob }}" required>
-                                <input type="hidden" class="form-control" value="{{ $item->attributes->hourForm }}" name="hourForm">
-                                <input type="hidden" class="form-control" value="{{ $item->attributes->dateForm }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
-                                <input type="hidden" class="form-control" name="addressForm" value="{{ $item->attributes->addressForm }}" placeholder="Lugar">
-                                <input type="hidden" class="form-control" name="descriptionForm" value="{{ $item->attributes->descriptionForm }}" placeholder="Descripcion">
-                                <input type="submit" class="form-control btn btn-primary" aria-disabled="true"  value="Proceder al pago" >
+                        
+                        <div class="tab-content" id="nav-tabContent">
+                            {{-- Pago para paypal --}}
+                            <div class="tab-pane fade show active" id="nav-paypal" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <br>
+                                <form class="" action="{{ route('continuePaymentPaypal') }}" method="POST" enctype="" novalidate>
+                                    @csrf
+                                    <input type="hidden" class="set-user-offer-input" name="userOffer" value=" {{ $item->attributes->userOffer }}" required>
+                                    <input type="hidden" class="set-price-offer-input" name="priceOffer" value="{{ $item->price }}" required>
+                                    <input type="hidden" class="set-service-offer-input" name="serviceOffer" value="{{ $item->id }}" required>
+                                    <input type="hidden" class="set-type-offer-input" name="typeOfJob" value="{{ $item->attributes->typeOfJob }}" required>
+                                    <input type="hidden" class="form-control" value="{{ $item->attributes->hourForm }}" name="hourForm">
+                                    <input type="hidden" class="form-control" value="{{ $item->attributes->dateForm }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
+                                    <input type="hidden" class="form-control" name="addressForm" value="{{ $item->attributes->addressForm }}" placeholder="Lugar">
+                                    <input type="hidden" class="form-control" name="descriptionForm" value="{{ $item->attributes->descriptionForm }}" placeholder="Descripcion">
+                                    <button type="submit" class="form-control btn btn-primary" style="color: rgb(250,251,253); background-color:rgb(0, 48, 135); font-weight:bold" aria-disabled="true">PAGAR CON PAYPAL</button>
+                                </form>
+                            </div>
+                            <h1>
+                                @php
+                                    $valorPrecioStripe = $item->price.'00';
+                                @endphp
+                            </h1>
+                            {{-- Pago para stripe --}}
+                            <div class="tab-pane fade" id="nav-stripe" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <br>
+                                <form action="{{ route('proccessPaymentStripe') }}" method="POST">
+                                    @csrf
+                                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="{{ config('services.stripe.key') }}"
+                                        data-amount="{{ $valorPrecioStripe }}"
+                                        data-name="{{ $item->name }}"
+                                        data-description="{{ $item->attributes->userNameProvider }}"
+                                        data-image="{{ asset('img/logo.png') }}"
+                                        data-locale="auto">
+                                    </script>
+                                    <script>
+                                        // Esconde el button por defecto
+                                        document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                                        
+                                    </script>
+                                    <button type="submit" class="form-control btn"  style="color: rgb(219,241,247); background-color:rgb(101, 177, 228); font-weight:bold" aria-disabled="true">PAGAR CON STRIPE</button>
 
-                            </form>
+                                </form>
+                            </div>
+                        </div>
+
 
                         @endforeach
 
