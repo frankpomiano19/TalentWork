@@ -18,6 +18,7 @@ class Filtroservicio extends Component
     public $calificacion;
     public $talentoS = false;
     public $ocupacionS = false;
+    public $tipo = "";
 
     public function talentoM()
     {
@@ -33,23 +34,21 @@ class Filtroservicio extends Component
     public function render()
     {
         if($this->talentoS){
+            $this->tipo = "Talentos";
             return view('livewire.filtroservicio',[
                 'datos' => use_tal::where("ser_tal_id","=", $this->talento)
                     ->where("precio","<=", $this->precioMin)
                     ->where("precio",">",0)
                     //->orderBy('calificacion', $this->calificacion)
-                    ->get()]);
+                    ->get()],['tipo' => $this->tipo]);
         }else{
+            $this->tipo = "Ocupaciones";
             return view('livewire.filtroservicio',[
                 'datos' => use_occ::where("ser_occ_id","=", $this->ocupacion)
                     ->where("precio",">",0)
                     ->where("precio","<=", $this->precioMin)
                     //->orderBy('calificacion', $this->calificacion)
-                    ->get()]);
+                    ->get()],['tipo' => $this->tipo]);
         }
-        // else{
-        //     dd("Seleecionaste los dos");
-        //     return view('livewire.filtroservicio');
-        // }
     }
 }
