@@ -231,7 +231,7 @@
                                         data-amount="{{ $valorPrecioStripe }}"
                                         data-name="{{ $item->name }}"
                                         data-description="{{ $item->attributes->userNameProvider }}"
-                                        data-image="{{ asset('img/logo.png') }}"
+                                        data-image="https://logos-world.net/wp-content/uploads/2021/03/Stripe-Symbol.png"
                                         data-locale="auto">
                                     </script>
                                     <script>
