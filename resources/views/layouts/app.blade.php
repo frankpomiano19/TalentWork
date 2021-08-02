@@ -79,8 +79,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
-                <p class="navbar-brand text-white mb-0"> <em class="fa d-inline fa-lg fa-stop-circle"></em> TalentWork</p>
+        <div class="container-fluid"> 
+            <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
+                <p class="navbar-brand text-white mb-0"><span class="navbar-toggler-icon"></span></p>
             </button>
             <div class="collapse navbar-collapse" id="navbar20">
                 <ul class="navbar-nav mr-auto">
@@ -143,13 +144,12 @@
         </main>
 
         <div class="footer-top-area">
-            <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-about-us">
                             <h2>Talent<span>Work</span></h2>
-                            <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio<</p>
+                            <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio</p>
                         </div>
                     </div>
                     

@@ -27,13 +27,13 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style="margin-right: 0px">
 
         {{-- @if($serviceProfile->use_id !== auth()->user()->id) --}}
 
             {{-- Si existe el contrato --}}
         @if ($chat == true)
-            <div class="col-8">
+            <div class="col-lg-8">
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 my-5">
                         <div class="row gx-4 gx-lg-5 align-items-center">
@@ -130,7 +130,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4">
                 <livewire:chat-talents :serviceProfile="$serviceProfile">
             </div>
         @else
@@ -235,7 +235,6 @@
     </div>
 
     <div class="row">
-        asd
     </div>
 
     <!-- Product section-->
@@ -307,7 +306,7 @@
 
         <div class="container-fluid my-5">
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="card">
                     <div class="card-body">
                             <h5 class="card-title">Preguntas Frecuentes</h5>
@@ -332,7 +331,7 @@
                     @endforeach
 
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
 
                     <!--- Post Form Begins -->
             @auth
@@ -526,7 +525,7 @@
                     <!-- Post Ends -->
                     @endforeach
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-body p-3">
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
