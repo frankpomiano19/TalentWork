@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }} ">
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-dL4prZgo2Ux+uabu7kV5AEOXCe4hTXG7gZgJ7dhxbrlYQSVfRe8+U7Vio/4K8N/n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-Ez8o6svpzUMfW743iAiPxbc2kkCOZjmJ4GKEgNp39u/Nyb+XXBtP/4Mj4eeGMCSo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
 
     .body{
         background-color: #000000
@@ -79,12 +79,12 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
-                <p class="navbar-brand text-white mb-0"> <em class="fa d-inline fa-lg fa-stop-circle"></em> TalentWork</p>
+        <div class="container-fluid"> 
+            <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
+                <p class="navbar-brand text-white mb-0"><span class="navbar-toggler-icon"></span></p>
             </button>
             <div class="collapse navbar-collapse" id="navbar20">
                 <ul class="navbar-nav mr-auto">
-                    {{-- <li class="nav-item"> <a class="nav-link" href="#">Inicio</a> </li> --}}
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
@@ -143,13 +143,12 @@
         </main>
 
         <div class="footer-top-area">
-            <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-about-us">
                             <h2>Talent<span>Work</span></h2>
-                            <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio<</p>
+                            <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio</p>
                         </div>
                     </div>
                     

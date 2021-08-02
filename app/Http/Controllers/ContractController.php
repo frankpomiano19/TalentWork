@@ -279,7 +279,24 @@ class ContractController extends Controller
 
 
     }    
+    // Pago con stripe
+    public function processPaymentStripe(Request $request){
+        //  Se registra el contrato
+        $algo = "";   
+        $algo = $this->getOneItemFromCart();      
+        $requestItems = $this->generateRequestFromArray($algo);       
+        $this->contractProcess($requestItems);
+        $this->clearAllCart();
+        $status = 'El pago fue ejecutado correctamente, y el contrato se realizo de manera satisfactoria';
+        // Fin de registro de contrato
+        if($requestItems->typeOfJob == 1){
+            return redirect(route('showProfileServiceOccupation',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
+        }
+        if($requestItems->typeOfJob == 2){
+            return redirect(route('showProfileServiceTalent',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
 
+        }
+    }
 
     // Ayudantes
     public function getOneItemFromCart(){

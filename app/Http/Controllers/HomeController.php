@@ -40,6 +40,8 @@ class HomeController extends Controller
     public function showProfileServiceTalent($id){
         
         $serviceProfile = use_tal::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
 
         if(auth()->user()==null){
             $chat = false;
@@ -57,7 +59,7 @@ class HomeController extends Controller
                 $chat = false;
             }
         }
-        return view('servicioTalent',compact('serviceProfile','chat'));
+        return view('servicioTalent',compact('serviceProfile','chat','SerTal','SerOcc'));
     }
 
 
@@ -65,7 +67,8 @@ class HomeController extends Controller
     public function showProfileServiceOccupation($id){
 
         $serviceProfile = use_occ::where('id',$id)->first();
-
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
 
         if(auth()->user()==null){
             $chat = false;
@@ -82,7 +85,7 @@ class HomeController extends Controller
                 $chat = false;
             }
         }
-        return view('servicioOccupation',compact('serviceProfile','chat'));
+        return view('servicioOccupation',compact('serviceProfile','chat','SerOcc','SerTal'));
     }
 
     public function nuevoRegistro(Request $request){
