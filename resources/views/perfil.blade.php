@@ -440,20 +440,20 @@
                                                     @csrf
                                                     {{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}
                                                     <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
-                                                    <button type="submit" class="btn btn-secondary p-3">Aceptar contrato</button>
+                                                    <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>
                                             @elseif($Contract->use_occ_id !== null)
                                                 <form action=" {{route('eject.contract')}} " method="POST">
                                                     @csrf
                                                     {{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}
                                                     <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
-                                                    <button type="submit" class="btn btn-secondary p-3">Aceptar contrato</button>
+                                                    <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>
                                             @endif
                                         @endif                                        
                                     @endforeach
                                     @if ($user->UseContractOffer->where('con_status',1)->count()== 0)
-                                        No hay solicitudes de contratos disponibles
+                                        No hay contratos pendientes disponibles
                                     @endif
                                 </div>    
                             @endif
