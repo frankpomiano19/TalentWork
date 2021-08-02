@@ -85,7 +85,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar20">
                 <ul class="navbar-nav mr-auto">
-                    {{-- <li class="nav-item"> <a class="nav-link" href="#">Inicio</a> </li> --}}
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
