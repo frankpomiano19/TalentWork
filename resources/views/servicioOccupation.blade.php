@@ -11,6 +11,7 @@
 @endsection
 
 @section('contenido_cSS')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             width: 100%;
             text-align: center;
         }
+        
     </style>
 
 @endsection
@@ -67,13 +69,7 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                        <div class="d-flex small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
+                                      
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -170,13 +166,7 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                        <div class="d-flex small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
+                                        
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -305,12 +295,27 @@
             </div>
         </form>
 
+        <div class="card" style="margin-left: 23rem; margin-right: 4rem">
+            <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
+            <div class="card-body">
+              <h5 class="card-title">Califica este servicio</h5>
+              <!-- Calificacion estrellas-->
+                <div class="ec-stars-wrapper">
+                    <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                    <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                    <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                    <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                    <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                </div>
+            </div>
+          </div>
+
         {{-- comentario --}}
     <div class="px-4 px-lg-5 my-5">
         <div class="col-3">
             <h2 class="headertekst">Comentarios</h2>
         </div>
-
+        
         <div class="container-fluid my-5">
             <div class="row">
                 <div class="col-md-3">
