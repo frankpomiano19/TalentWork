@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TalenWork</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    
 
     <!-- Scripts -->
     <script src="{{ asset('fortawesome/fontawesome-free/js/all.min.js') }}"></script>
@@ -89,9 +91,11 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                     </li>
-                   
+                    @auth
+                        <a class="nav-link bi bi-table" href="{{ route('tablonservicios') }}"> Tablón</a>
+                    @endauth
                 </ul>
-                <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b> TalentWork</b></a> </p>
+                <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <i class="fa d-inline fa-lg fa-stop-circle"></i><b> TalentWork</b></a> </p>
                 <ul class="navbar-nav ml-auto">
 
 

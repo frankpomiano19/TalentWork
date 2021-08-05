@@ -10,8 +10,14 @@ use App\Models\Contract;
 use App\Models\Post_comment;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Tablon;
+use App\Models\ServiceOccupation;
+use App\Models\ServiceTalent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\TablonRequest;
+
+use App;
 
 class HomeController extends Controller
 {
@@ -35,6 +41,31 @@ class HomeController extends Controller
     public function showOccupationService(){
         $allServices = use_occ::orderBy('created_at','DESC')->paginate(20);
         return view('profileServiceOccupation',compact('allServices'));
+    }
+
+    public function TablonServicios(){
+
+        $talentos = ServiceTalent::all();
+        $ocupaciones = ServiceOccupation::all();
+        $servicios = Tablon::all();
+        return view('tablonservicios',compact('talentos','ocupaciones','servicios'));
+    }
+
+    public function solicitarServicio(TablonRequest $request){
+
+        $servicioNuevo = new App\Models\Tablon;
+
+        $servicioNuevo->servicio = $request->nombre;
+        $servicioNuevo->descripcion = $request->descripcion;;
+        $servicioNuevo->precio = $request->precio;
+        $servicioNuevo->tipo = $request->tipo;
+        $servicioNuevo->use_id = auth()->id();
+
+        $servicioNuevo -> save();
+
+        return view('tablonservicios')->with('agregado', 1);
+
+        // return redirect()->back()->with('agregado', 1);
     }
 
     public function showProfileServiceTalent($id){
