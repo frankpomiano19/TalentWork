@@ -37,6 +37,7 @@ class ChatUsuario extends Component
     public function enviarMensaje(){
 
         $validatedData = $this->validate();
+        
         $nuevo = new Mensajechat;
         $nuevo->cliente = Auth::user()->id;
         $nuevo->vendedor = $this->serviceProfile->use_id;

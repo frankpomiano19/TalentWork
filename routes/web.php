@@ -55,7 +55,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
     Route::post('/ejecutarContr',[ContractController::class,'ejectContract'])->name('eject.contract');
-    Route::post('/tablonServicios',[HomeController::class,'solicitarServicio'])->name('tablon.servicio');
+    Route::post('/tablonServicio',[HomeController::class,'solicitarServicio'])->name('tablon.servicio');
+
+    Route::delete('/tablonServicios/{id}',[HomeController::class,'eliminarServicio'])->name('servicio.destroy');
 
     Route::get('/tablonServicios', [HomeController::class,'TablonServicios'])->name('tablonservicios');
     
@@ -64,12 +66,6 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-// Route::get('tablonServicios',function(){
-//     return view('tablonservicios');
-// })->middleware('auth')->name('tablonservicios');
-
-
-
 Route::get('nuevo',function(){
     return view('nuevo');
 });
@@ -77,10 +73,6 @@ Route::get('nuevo',function(){
 Route::get('bandeja',function(){
     return view('bandejamensajes');
 })->middleware('auth')->name('bandeja');
-
-
-
-
 
 Route::get('template',function(){
     return view('template');
@@ -94,6 +86,7 @@ Route::get('login',function(){
 Route::get('registro',function(){
     return view('registro');
 })->name('registrouser');
+
 Route::get('servicio',function(){
     return view('servicio');
 });
@@ -104,11 +97,9 @@ Route::get('serviciopremium',function(){
     return view('serviciopremium');
 });
 
-
 Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
 
 Route::get('registroServicio',[ServiceController::class, 'registro']);
-
 
 
 Route::get('/categorias',function(){

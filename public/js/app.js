@@ -1850,42 +1850,42 @@ module.exports = {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var messages_el = document.getElementById('messages');
-var username_input = document.getElementById("username");
-var message_input = document.getElementById("username");
+// var messages_el = document.getElementById('messages');
+// var username_input = document.getElementById("username");
+// var message_input = document.getElementById("username");
 
-message_form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  var has_errors = false;
+// message_form.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   var has_errors = false;
 
-  if (username_input.value == "") {
-    alert("please enter a username");
-    has_errors = true;
-  }
+//   if (username_input.value == "") {
+//     alert("please enter a username");
+//     has_errors = true;
+//   }
 
-  ;
+//   ;
 
-  if (message_input.value == "") {
-    alert("please enter a message");
-    has_errors = true;
-  }
+//   if (message_input.value == "") {
+//     alert("please enter a message");
+//     has_errors = true;
+//   }
 
-  ;
+//   ;
 
-  if (has_errors) {
-    return;
-  }
+//   if (has_errors) {
+//     return;
+//   }
 
-  var options = {
-    method: "post",
-    url: "/send-message",
-    data: {
-      username: username_input.value,
-      message: message_input.value
-    }
-  };
-  axios(options);
-});
+//   var options = {
+//     method: "post",
+//     url: "/send-message",
+//     data: {
+//       username: username_input.value,
+//       message: message_input.value
+//     }
+//   };
+//   axios(options);
+// });
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -1898,41 +1898,41 @@ __webpack_require__(/*! ./components/Registro.js */ "./resources/js/components/R
 //Vue.component('chat-form', require('./components/ChatForm.vue'));
 
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    messages: []
-  },
-  created: function created() {
-    var _this = this;
+// var app = new Vue({
+//   el: '#app',
+//   data: {
+//     messages: []
+//   },
+//   created: function created() {
+//     var _this = this;
 
-    this.fetchMessages();
-    Echo["private"]('chat').listen('MessageSent', function (e) {
-      _this.messages.push({
-        message: e.message.message,
-        user: e.user
-      });
-    });
-  },
-  methods: {
-    fetchMessages: function fetchMessages() {
-      var _this2 = this;
+//     this.fetchMessages();
+//     Echo["private"]('chat').listen('MessageSent', function (e) {
+//       _this.messages.push({
+//         message: e.message.message,
+//         user: e.user
+//       });
+//     });
+//   },
+//   methods: {
+//     fetchMessages: function fetchMessages() {
+//       var _this2 = this;
 
-      axios.get('/messages').then(function (response) {
-        _this2.messages = response.data;
-      });
-    },
-    addMessage: function addMessage(message) {
-      this.messages.push(message);
-      axios.post('/messages', message).then(function (response) {
-        console.log(response.data);
-      });
-    }
-  }
-});
-window.Echo.channel("chat").listen(".message", function (e) {
-  messages_el.innerHTML += '<div class="message"><strong>' + e.username + ':</strong>' + e.message + '</div>';
-});
+//       axios.get('/messages').then(function (response) {
+//         _this2.messages = response.data;
+//       });
+//     },
+//     addMessage: function addMessage(message) {
+//       this.messages.push(message);
+//       axios.post('/messages', message).then(function (response) {
+//         console.log(response.data);
+//       });
+//     }
+//   }
+// });
+// window.Echo.channel("chat").listen(".message", function (e) {
+//   messages_el.innerHTML += '<div class="message"><strong>' + e.username + ':</strong>' + e.message + '</div>';
+// });
 
 /***/ }),
 
