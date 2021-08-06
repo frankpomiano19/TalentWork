@@ -11,6 +11,7 @@
 @endsection
 
 @section('contenido_cSS')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             width: 100%;
             text-align: center;
         }
+        
     </style>
 
 @endsection
@@ -381,7 +383,7 @@
         <div class="col-3">
             <h2 class="headertekst">Comentarios</h2>
         </div>
-
+        
         <div class="container-fluid my-5">
             <div class="row">
                 <div class="col-md-3">
