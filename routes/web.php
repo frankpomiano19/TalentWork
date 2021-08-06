@@ -31,6 +31,7 @@ Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileS
 Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
+Route::post('/score','PostScoreController@newScore')->name('registrarScore');
 
 Route::middleware(['auth'])->group(function () {
     // Carrito
