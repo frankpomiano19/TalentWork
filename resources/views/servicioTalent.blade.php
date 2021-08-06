@@ -241,23 +241,6 @@
         </div>
         @endif
 
-
-    </div>
-    <div class="card" style="margin-left: 23rem; margin-right: 4rem">
-        <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
-        <div class="card-body">
-          <h5 class="card-title">Califica este servicio</h5>
-          <!-- Calificacion estrellas-->
-            <div class="ec-stars-wrapper">
-                <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-            </div>
-        </div>
-      </div>
-
     <div class="row">
     </div>
 
