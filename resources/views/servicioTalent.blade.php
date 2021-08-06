@@ -27,13 +27,13 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style="margin-right: 0px">
 
         {{-- @if($serviceProfile->use_id !== auth()->user()->id) --}}
 
             {{-- Si existe el contrato --}}
         @if ($chat == true)
-            <div class="col-8">
+            <div class="col-lg-8">
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 my-5">
                         <div class="row gx-4 gx-lg-5 align-items-center">
@@ -130,7 +130,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4">
                 <livewire:chat-talents :serviceProfile="$serviceProfile">
             </div>
         @else
@@ -235,7 +235,6 @@
     </div>
 
     <div class="row">
-        asd
     </div>
 
     <!-- Product section-->
@@ -307,7 +306,7 @@
 
         <div class="container-fluid my-5">
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="card">
                     <div class="card-body">
                             <h5 class="card-title">Preguntas Frecuentes</h5>
@@ -332,7 +331,7 @@
                     @endforeach
 
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
 
                     <!--- Post Form Begins -->
             @auth
@@ -398,16 +397,6 @@
                                     <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p>
                                 </div>
 
-                                <div class="dropdown">
-                                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <em class="fas fa-chevron-down"></em>
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item text-primary" href="#">Editar</a>
-                                        <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                    </div>
-                                </div>
                             </div>
                             <!-- post body -->
                             <div class="">
@@ -426,7 +415,7 @@
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
                                             <a class="small text-decoration-none" href="#">
-                                                <em class="far fa-thumbs-up"></em> 1 Me gusta
+                                                <em class="far fa-thumbs-up"></em>  Me gusta
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
@@ -436,7 +425,7 @@
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
-                                                <em class="fas fa-share"></em> 1 Compartir
+                                                <em class="fas fa-share"></em>  Compartir
                                             </a>
                                         </li>
                                     </ul>
@@ -486,27 +475,16 @@
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
                                                         <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a {{ $coment->PostCommentUser->name }}</label>
-                                                        <p class="small m-0 text-muted">Posteado el $comentR->created_at</p>
+                                                        <p class="small m-0 text-muted">Posteado el {{ $comentR->created_at }}</p>
                                                     </div>
-                                                    <div >
-                                                        <div class="dropdown">
-                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <em class="fas fa-chevron-down"></em>
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
-                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <!-- comment header -->
                                                 <!-- comment body -->
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
                                                     <a class="card-link small" href="#">
-                                                        <em class="far fa-thumbs-up"></em> 1 Me gusta
+                                                        <em class="far fa-thumbs-up"></em>  Me gusta
                                                     </a>
                                                 </div>
                                             </div>
@@ -526,18 +504,15 @@
                     <!-- Post Ends -->
                     @endforeach
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-body p-3">
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
                             <div class="list-group list-group-flush">
-                                <a href="#" class="list-group-item list-group-item-action text-primary">
-                                Electricista
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Gasfitero</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Carpintero</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Niñera</a>
-                                <a href="#" class="btn btn-sm btn-primary">Ver más</a>
+                                @foreach($SerOcc as $so)
+                                <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a>
+                                @endforeach
+                                <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -545,13 +520,10 @@
                         <div class="card-body p-3">
                             <h5 class="card-title m-0">Talentos</h5>
                             <div class="list-group list-group-flush">
-                                <a href="#" class="list-group-item list-group-item-action text-primary">
-                                Contar Chistes
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Relatar Cuentos</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Hacer Magia</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Tocar Instrumentos</a>
-                                <a href="#" class="btn btn-sm btn-primary">Ver más</a>
+                                @foreach($SerTal as $st)
+                                <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a>
+                                @endforeach
+                                <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a>
                             </div>
                         </div>
                     </div>

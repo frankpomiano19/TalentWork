@@ -86,7 +86,7 @@
             <form action=" {{route('eject.contract')}} " method="POST">
                 @csrf
                 <input type="hidden" name="contractId" value="{{ $id }}" required>
-                <button type="submit" class="btn btn-primary btn-lg">Aceptar solicitud de contrato</button>
+                <button type="submit" class="btn btn-primary btn-lg">Poner en marcha servicio técnico</button>
             </form>
         @endif
         @if ($contr->con_status == 2)

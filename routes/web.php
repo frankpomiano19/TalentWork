@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 
 use App\Events\Message;
 use App\Events\MessageSent;
+use App\Http\Controllers\PaymentStripeController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\PostCommentController;
@@ -42,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
     Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
 
+    // Pago con stripe 
+    Route::post('/stripe/process',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe');
+    
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
@@ -51,11 +55,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
     Route::post('/ejecutarContr',[ContractController::class,'ejectContract'])->name('eject.contract');
+    Route::post('/tablonServicios',[HomeController::class,'solicitarServicio'])->name('tablon.servicio');
+
+    Route::get('/tablonServicios', [HomeController::class,'TablonServicios'])->name('tablonservicios');
     
 });
 
 
 Auth::routes();
+
+// Route::get('tablonServicios',function(){
+//     return view('tablonservicios');
+// })->middleware('auth')->name('tablonservicios');
+
+
 
 Route::get('nuevo',function(){
     return view('nuevo');
@@ -64,6 +77,9 @@ Route::get('nuevo',function(){
 Route::get('bandeja',function(){
     return view('bandejamensajes');
 })->middleware('auth')->name('bandeja');
+
+
+
 
 
 Route::get('template',function(){
@@ -126,10 +142,6 @@ Route::get('/estadoContrato',function(){
     return view('estadoContrato');
 });
 
-Route::get('/pagoPrueba',function(){
-    return view('pagoPrueba');
-});
-
 
 Route::get('/chatNuevo',function(){
     return view('chatNuevo');
@@ -151,3 +163,6 @@ Route::post('messages', 'ChatsController@sendMessage');
 Broadcast::channel('chat', function () {
     return Auth::check();
 });
+
+
+

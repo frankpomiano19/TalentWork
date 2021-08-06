@@ -1,8 +1,15 @@
+
+<style>
+    .chat-popup{
+        width: 30%;
+        min-width: 400px;
+    }
+</style>
 <div>
-    <button class="open-button" onclick="openForm()" id="botonChat" style="display:block;">
+    <button class="open-button" onclick="openForm()" id="botonChat" style="display:block;z-index:1">
         <label class="ventChat" style="vertical-align: inherit; font-size:1.2rem;">Mensajes privados</label>
     </button>
-    <div class="chat-popup" id="myForm" style="display: block; width:30%; height:450px;">
+    <div class="chat-popup" id="myForm" style="display: block; height:450px; z-index:2;">
         <div action="" class="form-container">
             <div class="portlet portlet-default">
                 <div class="portlet-heading">
