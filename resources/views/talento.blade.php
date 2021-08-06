@@ -2,11 +2,11 @@
 
 
 @section('contenido_js')
-    
+
 @endsection
 
 @section('contenido_cSS')
-    
+
 @endsection
 
 
@@ -23,16 +23,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
        <!-- Bootstrap -->
        <link rel="stylesheet" href="css/bootstrap.min.css">
-    
+
        <!-- Font Awesome -->
        <link rel="stylesheet" href="css/font-awesome.min.css">
-       
+
        <!-- Custom CSS -->
        <link rel="stylesheet" href="css/owl.carousel.css">
        <link rel="stylesheet" href="css/style.css">
        <link rel="stylesheet" href="css/responsive.css">
-   
-   
+
+
 </head>
 <body>
     <!-- Product section-->
@@ -66,7 +66,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <div class="footer-top-area">
         <div class="container">
@@ -83,33 +83,33 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Navegación </h2>
                         <ul>
                             <li><a href="">Mi perfil</a></li>
                             <li><a href="">Mi historial</a></li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Categorias</h2>
                         <ul>
                             <li><a href="">Oficios</a></li>
                             <li><a href="">Talentos</a></li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
                         <h2 class="footer-wid-title">Premium</h2>
                         <p>Subscribete a nuestra versión premium para acceder a mayores beneficios!</p>
                         <div class="newsletter-form">
-                            <input type="submit" value="Subscribete">
+                            <input type="submit" onclick="window.location.href='{{route('premium')}}'" value="Subscribete">
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                        <p>&copy; 2021 TalentWork. Todos los derechos reservados. Grupo 5 - MPF - FISI - UNMSM </p>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="footer-card-icon">
                         <em class="fa fa-cc-discover"></em>
@@ -136,7 +136,7 @@
             </div>
         </div>
     </div>
-   
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Core theme JS-->
@@ -150,5 +150,5 @@
 
 Swal.fire('Any fool can use a computer');
 </script>
-    
+
 @endsection

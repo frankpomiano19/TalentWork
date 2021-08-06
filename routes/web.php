@@ -43,9 +43,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
     Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
 
-    // Pago con stripe 
+    // Pago con stripe
     Route::post('/stripe/process',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe');
-    
+
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
     Route::post('/ejecutarContr',[ContractController::class,'ejectContract'])->name('eject.contract');
-    
+
 });
 
 
@@ -89,9 +89,8 @@ Route::get('informa',function(){
     return view('nada');
 });
 Route::get('serviciopremium',function(){
-    return view('serviciopremium');
-});
-
+    return view('premium');
+})->name('premium');
 
 Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
 
@@ -140,7 +139,7 @@ Route::post('/send-message',function(Request $request){
         new Message(
             $request->input('username'),
             $request->input('message')));
-    
+
     return ["success"=>true];
 });
 
