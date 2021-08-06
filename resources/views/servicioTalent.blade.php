@@ -241,6 +241,9 @@
         </div>
         @endif
 
+
+    </div>
+
     <div class="row">
     </div>
 
