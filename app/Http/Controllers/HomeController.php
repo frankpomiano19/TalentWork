@@ -26,15 +26,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
+    // Perfiles de talento
     public function showTalentService(){
-        $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
+        $allServices = use_tal::orderBy('created_at','DESC')->where('use_tal_group_payment',false)->paginate(20);
         return view('profileServiceTalent',compact('allServices'));
     }   
-
+    // Perfiles de oficios
     public function showOccupationService(){
-        $allServices = use_occ::orderBy('created_at','DESC')->paginate(20);
+        $allServices = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',false)->paginate(20);
         return view('profileServiceOccupation',compact('allServices'));
+    }
+    // Muestra retos - Pagos grupales
+    public function changeAllShow(){
+        $changeAllOcc = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',true)->paginate(20);
+        $changeAllTal = use_tal::orderBy('created_at','DESC')->where('use_tal_group_payment',true)->paginate(20);
+
+        return view('profileServiceChange',compact('changeAllOcc','changeAllTal'));
+
     }
 
     public function showProfileServiceTalent($id){
