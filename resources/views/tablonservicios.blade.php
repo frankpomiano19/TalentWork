@@ -169,8 +169,7 @@
 
 
 @section('contenido_abajo_js')
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha256-5m8PEKx1fPywHlsheZsDTqNh+Hlm2D0/+uWH6lvwOwY=" crossorigin="anonymous"></script>
 
 @if (session('eliminado') == 'ok')
     <script>
