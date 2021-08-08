@@ -12,6 +12,8 @@ use App\Http\Controllers\PaymentStripeController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\VideoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,9 @@ Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR
 Route::post('/score','PostScoreController@newScore')->name('registrarScore');
 
 Route::middleware(['auth'])->group(function () {
+    // Ruta para video
+    Route::post('/uploadVideo',[VideoController::class,'videoUpload'])->name('upload.video.25.percentaje');
+
     // Carrito
     Route::post('/checkout/serviceProccess',[ContractController::class,'validationFieldDescriptionContract'])->name('contractDetailsData');
     Route::delete('/cart/destroy/{idUser}',[ContractController::class,'clearCart'])->name('cart.destroy');

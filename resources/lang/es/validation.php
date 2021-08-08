@@ -5,6 +5,8 @@ return [
     'lte' => [
         'numeric' => ':attribute debe ser menor o igual que :value.',
     ],
+    'url' => ':attribute formato no valido.',
+    'regex' => 'El :attribute tiene un formato invalido.',
 
     'max' => [
         'numeric' => ':attribute no debe ser mayor que :max.',

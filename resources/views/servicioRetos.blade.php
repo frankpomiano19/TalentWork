@@ -27,6 +27,43 @@
 
 
 @section('content')
+{{-- Modal insertar video --}}
+<div class="modal fade" id="modalInsertVideo" tabindex="-1" role="dialog"aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalInsertVideoTitle">Subir video</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('upload.video.25.percentaje') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+        <div class="modal-body container">
+            
+            <label for="">Insertar url del video de YOUTUBE : </label>
+                <input type="hidden" required class="form-control" name="idService" value="{{ $serviceProfile->id }}">
+
+                <input type="url" required class="form-control" name="urlVideo" max="255">
+                @error('urlVideo')
+                <div class="alert alert-danger" role="alert">
+                  <strong>Atención.</strong> {{ $message }}.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @enderror                
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> --}}
+          <button type="submit" class="btn btn-primary">Subir video</button>
+        </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
 
     <div class="row" style="margin-right: 0px">
 
@@ -38,7 +75,31 @@
             <section class="py-5">
                 <div class="container px-4 px-lg-5 my-5">
                     <div class="row gx-4 gx-lg-5 align-items-center">
-                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
+
+                        <div class="col-md-6">
+                            <img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." />
+
+
+                            @if($serviceProfile->IntermediateChange->cha_video!=null)
+
+                                {{-- Video --}}
+                                <h4>Video</h4>
+                                
+                                @php
+                                    $ytarray=explode("/", $serviceProfile->IntermediateChange->cha_video);
+                                    $ytendstring=end($ytarray);
+                                    $ytendarray=explode("?v=", $ytendstring);
+                                    $ytendstring=end($ytendarray);
+                                    $ytendarray=explode("&", $ytendstring);
+                                    $ytcode=$ytendarray[0];
+                                    echo "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
+                                @endphp                            
+                            @endif
+                            <br>
+                            <a href="{{ $serviceProfile->IntermediateChange->cha_video }}">Link del video</a>
+    
+
+                        </div>
                         <div class="col-md-6">
                             <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateChange->cha_name }}</h1>
 
@@ -106,11 +167,21 @@
                                             <div class="row">
                                                 <div class="col-md-12 d-flex justify-content-center">
                                                     <div class="alert alert-danger" role="alert">
-                                                        * Los pagos fueron INHABILITADOS hasta que subas un video, ve a tu perfil y en la 
-                                                        seccion de 'Reto' inserta un video 
+                                                        * Los pagos fueron INHABILITADOS hasta que subas un video 
                                                       </div>
         
                                                 </div>
+                                                {{-- Subir video o enlace --}}
+                                                <div class="col-md-12 d-flex justify-content-center" data-toggle="modal" data-target="#modalInsertVideo">
+                                                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                                        <em class="fa fa-upload"></em>
+                                                        Subir video
+                                                    </button>
+            
+                                                </div>
+
+
+
 
                                             </div>
                                             @endif
@@ -141,7 +212,7 @@
                                                     <div class="tab-pane fade show active" id="nav-stripe" role="tabpanel" aria-labelledby="nav-profile-tab">
                                                         <br>
                                                         @if($serviceProfile->precio <=$serviceProfile->precio_actual)
-                                                            <button disabled class="bttn bttn-primary theme--create bttn-large flex mb3 ">
+                                                            <button style="cursor: default !important" disabled class="bttn bttn-primary theme--create bttn-large flex mb3 ">
                                                                 !Alcanzo la meta¡
                                                             </button>                                                            
                                                         @else
@@ -196,16 +267,12 @@
 
 
 
-
-{{-- 
-                                            <button class="bttn bttn-primary theme--create bttn-large flex mb3 keyboard-focusable">
-                                                Patrocina este proyecto
-                                            </button> --}}
                                         @endif
                                     @else
-                                    <button class="bttn bttn-primary theme--create bttn-large flex mb3 keyboard-focusable">
-                                                Patrocina este proyecto
+                                    <button onclick="window.location.href='{{ route('login') }}'" class="bttn bttn-primary theme--create bttn-large flex mb3 keyboard-focusable">
+                                                Identificate
                                             </button>
+                                            <label for="" class="text-info">* Para poder donar, necesitas identificarte</label>
 
                                     @endif
 
@@ -592,10 +659,37 @@
 
 
 
+
+
+
+
+
+
+
+
+
         @livewireScripts
+
+
+            
+
+
 @endsection
 
 @section('contenido_abajo_js')
+
+@error('urlVideo')
+<script>
+    Swal.fire({
+        title: "Error al insertar url",
+        html:  `
+        {{ $message}}
+        <br>`,
+        icon: "error"
+    });
+</script>
+@enderror    
+
 
 @if (session('contractFailed'))
 <script>
