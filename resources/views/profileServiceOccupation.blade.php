@@ -61,14 +61,17 @@
                                 {{ $service->descripcion }}
                             </div>
                             <!-- Calificacion estrellas-->
-                            <div class="ec-stars-wrapper">
-                                <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                                <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                                <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                                <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                                <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                            </div>
-
+                            <h4> 
+                                <ul class="list-inline">
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                </ul>
+                            </h4>
+                       
+                    
                             <div class="product-carousel-price">
                                 <ins>${{ $service->precio }}</ins> 
                             </div>  

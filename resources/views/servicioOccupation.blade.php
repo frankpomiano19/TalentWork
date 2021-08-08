@@ -69,7 +69,18 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                      
+                                        <h5>Calificación por usuarios
+                                                    <h4> 
+                                                        <ul class="list-inline">
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                                        </ul>
+                                                    </h4>
+                                        </h5> 
+
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -166,7 +177,20 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                        
+
+
+                                        <h5>Calificación por usuarios
+                                            <h4> 
+                                                <ul class="list-inline">
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                                </ul>
+                                            </h4>
+                                        </h5>
+
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -295,20 +319,71 @@
             </div>
         </form>
 
+
+        @auth
+            @php
+                $receivedService =  false;
+                $unComment =  true;
+            @endphp
+
+            @foreach($serviceProfile->IntermediateOccContract as $contractScr)
+                @if($contractScr->use_receive == auth()->user()->id)
+                        @php
+                            $receivedService =  true;
+                        @endphp
+                @endif
+            @endforeach
+
+            @foreach($serviceProfile->UseOccPostScore as $ScrEtiq)
+                @if($ScrEtiq->use_id == auth()->user()->id){
+                    @if($ScrEtiq->etiqueta == 'comentado')
+                        @php
+                            $unComment =  false;
+                        @endphp
+                    @endif
+                }
+                @endif
+            @endforeach
+
+        @if($receivedService && $unComment)
+
+
         <div class="card" style="margin-left: 23rem; margin-right: 4rem">
             <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
             <div class="card-body">
               <h5 class="card-title">Califica este servicio</h5>
-              <!-- Calificacion estrellas-->
-                <div class="ec-stars-wrapper">
-                    <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                    <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                    <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                    <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                    <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                </div>
+              <p>Tambien puede calificar como 0 estrellas, sin dar click a ninguna</p>
+        
+
+                <form action="{{ route('registrarScore') }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
+                <input type="hidden" name="typeJobFromScore" value="1">
+                <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
+                    <div class="rating">
+                        <input id="star5" name="calificacion" type="radio" value="5" class="radio-btn hide" />
+                        <label for="star5">&#9733;</label>
+                        <input id="star4" name="calificacion" type="radio" value="4" class="radio-btn hide" />
+                        <label for="star4">&#9733;</label>
+                        <input id="star3" name="calificacion" type="radio" value="3" class="radio-btn hide" />
+                        <label for="star3">&#9733;</label>
+                        <input id="star2" name="calificacion" type="radio" value="2" class="radio-btn hide" />
+                        <label for="star2">&#9733;</label>
+                        <input id="star1" name="calificacion" type="radio" value="1" class="radio-btn hide" />
+                        <label for="star1">&#9733;</label>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn" style="background-color: rgba(10, 169, 190, 0.61)">Calificar</button>
+                    </div>
+                </form>
             </div>
           </div>
+
+        @endif
+
+        @endauth
+
 
         {{-- comentario --}}
     <div class="px-4 px-lg-5 my-5">
@@ -409,16 +484,6 @@
                                     <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p>
                                 </div>
 
-                                <div class="dropdown">
-                                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <em class="fas fa-chevron-down"></em>
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item text-primary" href="#">Editar</a>
-                                        <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                    </div>
-                                </div>
                             </div>
                             <!-- post body -->
                             <div class="">
@@ -437,7 +502,7 @@
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
                                             <a class="small text-decoration-none" href="#">
-                                                <em class="far fa-thumbs-up"></em> 1 Me gusta
+                                                <em class="far fa-thumbs-up"></em>  Me gusta
                                             </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
@@ -447,7 +512,7 @@
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
                                             <a class="small text-decoration-none" href="#">
-                                                <em class="fas fa-share"></em> 1 Compartir
+                                                <em class="fas fa-share"></em>  Compartir
                                             </a>
                                         </li>
                                     </ul>
@@ -496,20 +561,9 @@
                                                     </div>
                                                     <div class="flex-grow-1 pl-2">
                                                         <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a {{ $coment->PostCommentUser->name }}</label>
-                                                        <p class="small m-0 text-muted">Posteado el $comentR->created_at</p>
+                                                        <p class="small m-0 text-muted">Posteado el {{ $comentR->created_at }}</p>
                                                     </div>
-                                                    <div >
-                                                        <div class="dropdown">
-                                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <em class="fas fa-chevron-down"></em>
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-primary" href="#">Editar</a>
-                                                                <a class="dropdown-item text-primary" href="#">Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
 
                                                 <!-- comment header -->
@@ -517,7 +571,7 @@
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
                                                     <a class="card-link small" href="#">
-                                                        <em class="far fa-thumbs-up"></em> 1 Me gusta
+                                                        <em class="far fa-thumbs-up"></em>  Me gusta
                                                     </a>
                                                 </div>
                                             </div>
@@ -544,13 +598,10 @@
                         <div class="card-body p-3">
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
                             <div class="list-group list-group-flush">
-                                <a href="#" class="list-group-item list-group-item-action text-primary">
-                                Electricista
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Gasfitero</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Carpintero</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Niñera</a>
-                                <a href="#" class="btn btn-sm btn-primary">Ver más</a>
+                                @foreach($SerOcc as $so)
+                                <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a>
+                                @endforeach
+                                <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -558,13 +609,10 @@
                         <div class="card-body p-3">
                             <h5 class="card-title m-0">Talentos</h5>
                             <div class="list-group list-group-flush">
-                                <a href="#" class="list-group-item list-group-item-action text-primary">
-                                Contar Chistes
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Relatar Cuentos</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Hacer Magia</a>
-                                <a href="#" class="list-group-item list-group-item-action text-primary">Tocar Instrumentos</a>
-                                <a href="#" class="btn btn-sm btn-primary">Ver más</a>
+                                @foreach($SerTal as $st)
+                                <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a>
+                                @endforeach
+                                <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -725,6 +773,17 @@
     })
 </script>
 
+@endif
+
+@if (session('calificacionMessage'))
+<script>
+    Swal.fire({
+        title: "Calificación recibida",
+        html:  `
+        {{session('calificacionMessage')}}`,
+        icon: "success"
+    });
+</script>
 @endif
 
 @endsection

@@ -27,6 +27,11 @@
 .ec-stars-wrapper > a:hover ~ a {
 	color: #888;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cb6b8a5c36a562d79ff6703ea267e4232b932418
 .floatleft { float: left }
 .floatright { float: right }
 .alignleft {
@@ -1152,3 +1157,58 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 
 
+
+.yellow {
+    color:#ffed4a;
+  }
+
+.txt-center {
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+.clear {
+    float: none;
+    clear: both;
+}
+
+.rating {
+    width: 176px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    font-size: 32px;
+	font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+}
+
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    /* color: #FFD700; */
+    color: #1d68a7
+}
