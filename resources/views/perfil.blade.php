@@ -3,19 +3,20 @@
 @section('contenido_js')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="https://vjs.zencdn.net/7.2/video.min.js"></script>
+
 
 @endsection
 
 @section('contenido_cSS')
 <link href="{{ asset('css/perfilcss.css') }}" rel="stylesheet">
+<link href="https://vjs.zencdn.net/7.2/video-js.min.css" rel="stylesheet">
 
 @endsection
 
+
 @section('content')
 
-
-
-<!------ Include the above in your HEAD tag ---------->
 <div class="container emp-profile" >
             {{-- <form method="post"> --}}
                 <div class="col-12 col-sm-12 col-md-10 col-lg-10">
@@ -25,16 +26,18 @@
                         @endforeach
                     </ul>
                 </div>
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://r100consulting.com/wp-content/uploads/2019/05/TRABAJADORES-2-.png" alt=""/>
+                            <img src="https://www.emprendiendohistorias.com/wp-content/uploads/2020/05/trabajos-online-por-internet.jpg" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Cambiar foto
                                 <input type="file" name="file"/>
                             </div>
-                        </div>
                     </div>
+                </div>
+
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
@@ -66,12 +69,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Servicios</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="reto-tab" data-toggle="tab" href="#reto" role="tab" aria-controls="reto" aria-selected="false">Retos</a>
+                                </li>
                                 @if (auth()->user()->id == $user->id)
                                     <li class="nav-item">
                                         <a class="nav-link" id="solicitudes-tab" data-toggle="tab" href="#solicitudes" role="tab" aria-controls="solicitudes" aria-selected="false">Solicitudes de contratos</a>
                                     </li>
                                 @endif
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -415,26 +421,79 @@
                                         </button>
 
                                     @endif
-
-
-
-
-
-
-
-
-
-
                                         <br/>
                                     </div>
                                 @endforeach
 
 
                             </div>
+{{-- GAAAAAAAAAA  arriba--}}
+
+                            <div class="tab-pane fade" id="reto" role="tabpanel" aria-labelledby="reto-tab">
+                                    <div class="row col-sm-12">
+                                        <div class="col-md-6">
+                                            <label>Nombre del reto</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Aquí va el nombre del reto</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row col-sm-12">
+                                        <div class="col-md-6">
+                                            <label>Meta</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Aquí va la meta monetaria del reto</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-12 progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+                                            79%
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-12 contenedor">
+                                            <video class="fm-video video-js vjs-16-9 vjs-big-play-centered" data-setup="{}" controls id="fm-video">
+                                                <source src="https://dl8.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm">
+                                            </video>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="row col-sm-12">
+                                        <div class="col-md-12">
+                                            <label>Sobre el reto</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p>Aquí va la descripción del reto</p>
+                                        </div>
+                                    </div>
+
+
+
+                                    <script>
+                                        var reproductor = videojs('fm-video', {
+                                            fluid: true
+                                        });
+                                    </script>
+
+
+
+
+                            </div>
+
+{{-- GAAAAAAAA Aabajo --}}
+
                             @if (auth()->user()->id == $user->id)
                                 <div class="tab-pane fade" id="solicitudes" role="tabpanel" aria-labelledby="solicitudes-tab">
                                     @foreach ($user->UseContractOffer as $Contract)
-                                        @if ($Contract->con_status == 1)                                                                                
+                                        @if ($Contract->con_status == 1)
                                             @if ($Contract->use_tal_id !== null)
                                                 <form action=" {{route('eject.contract')}} " method="POST">
                                                     @csrf
@@ -450,14 +509,14 @@
                                                     <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>
                                             @endif
-                                        @endif                                        
+                                        @endif
                                     @endforeach
                                     @if ($user->UseContractOffer->where('con_status',1)->count()== 0)
                                         No hay contratos pendientes disponibles
                                     @endif
-                                </div>    
+                                </div>
                             @endif
-                            
+
 
                         </div>
                     </div>
@@ -510,7 +569,6 @@
         $('#myModal').modal('hide')
     })
 </script>
-
 <!-- <h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 @endif
 
