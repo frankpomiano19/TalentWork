@@ -1152,7 +1152,9 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   color: #5a88ca;
 }
 
-
+.premium-image {
+    display: inline-block;
+}
 
 .yellow {
     color:#ffed4a;

@@ -71,12 +71,17 @@
                                         <a class="nav-link" id="solicitudes-tab" data-toggle="tab" href="#solicitudes" role="tab" aria-controls="solicitudes" aria-selected="false">Solicitudes de contratos</a>
                                     </li>
                                 @endif
-                                
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
                         @if(auth()->user()->id == $user->id)
+                            @if (auth()->user()->premium == false)
+                                <button type="button" class="btn btn-success" name="btnAddMore" onclick="window.location.href='{{route('premium')}}'">
+                                    Hazte Premium
+                                </button>    
+                            @endif
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
                             </button>
@@ -434,7 +439,7 @@
                             @if (auth()->user()->id == $user->id)
                                 <div class="tab-pane fade" id="solicitudes" role="tabpanel" aria-labelledby="solicitudes-tab">
                                     @foreach ($user->UseContractOffer as $Contract)
-                                        @if ($Contract->con_status == 1)                                                                                
+                                        @if ($Contract->con_status == 1)
                                             @if ($Contract->use_tal_id !== null)
                                                 <form action=" {{route('eject.contract')}} " method="POST">
                                                     @csrf
@@ -450,14 +455,14 @@
                                                     <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>
                                             @endif
-                                        @endif                                        
+                                        @endif
                                     @endforeach
                                     @if ($user->UseContractOffer->where('con_status',1)->count()== 0)
                                         No hay contratos pendientes disponibles
                                     @endif
-                                </div>    
+                                </div>
                             @endif
-                            
+
 
                         </div>
                     </div>

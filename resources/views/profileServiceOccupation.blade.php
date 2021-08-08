@@ -2,7 +2,10 @@
 
 
 @section('contenido_js')
-    
+    <!-- Core theme JS-->
+    @livewireStyles
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js" integrity="sha384-zvPTdTn0oNW7YuTZj1NueYOFJSJNDFJGdKwMMlWDtr3b4xarXd2ydDUajHfnszL7" crossorigin="anonymous"></script>
 @endsection
 
 @section('contenido_cSS')
@@ -42,17 +45,73 @@
             <div class="row">
               
                 @foreach($allServices as $service)
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-shop-product">
-                            <div class="product-upper" style="height: 150px !important">
-                            @if($service->imagen!=null)
+                    @if ($service->IntermediateUseOcc->premium == true)
+                        <div class="col-md-3 col-sm-6">
+                            <div class="single-shop-product">
+                                <div class="product-upper" style="height: 150px !important">
+                                @if($service->imagen!=null)
+                                    
+                                <img src="{{ $service->imagen }}" alt="" style="height: 150px !important">
                                 
-                            <img src="{{ $service->imagen }}" alt="" style="height: 150px !important">
-                            
-                            @else
-                                <img src="img/product-0.jpg" alt="">
-                            @endif
+                                @else
+                                    <img src="img/product-0.jpg" alt="">
+                                @endif
+                                </div>
+                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
+                                <div class="product-carousel-price">
+                                    <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
+                                </div>
+                                 
+                                <div class="product-carousel-price">
+                                    {{ $service->descripcion }}
+                                </div>  
+                                <div class="product-carousel-price">
+                                    <ins>${{ $service->precio }}</ins> 
+                                </div>  
+                                
+                                <div class="product-option-shop">
+                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceOccupation',$service->id) }}">Ver más</a>
+                                    <div class="premium-image">
+                                        <img src="img/premium.png" width="50" height="50" alt="">
+                                    </div> 
+                                </div>
+                                
+                                
                             </div>
+                        </div>
+                    @endif
+                                    
+                @endforeach
+                @foreach($allServices as $service)
+                    @if ($service->IntermediateUseOcc->premium == false)
+                        <div class="col-md-3 col-sm-6">
+                            <div class="single-shop-product">
+                                <div class="product-upper" style="height: 150px !important">
+                                @if($service->imagen!=null)
+                                    
+                                <img src="{{ $service->imagen }}" alt="" style="height: 150px !important">
+                                
+                                @else
+                                    <img src="img/product-0.jpg" alt="">
+                                @endif
+                                </div>
+                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
+                                <div class="product-carousel-price">
+                                    <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
+                                </div>  
+                                <div class="product-carousel-price">
+                                    {{ $service->descripcion }}
+                                </div>  
+                                <div class="product-carousel-price">
+                                    <ins>${{ $service->precio }}</ins> 
+                                </div>  
+                                
+                                <div class="product-option-shop">
+                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceOccupation',$service->id) }}">Ver más</a>
+                                </div>                       
+                            </div>
+<<<<<<< HEAD
+=======
                             <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
                             <div class="product-carousel-price">
                                  <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
@@ -79,8 +138,10 @@
                             <div class="product-option-shop">
                                 <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceOccupation',$service->id) }}">Ver más</a>
                             </div>                       
+>>>>>>> origin/developer
                         </div>
-                    </div>                
+                    @endif
+                                    
                 @endforeach
         </div>
     </div>
@@ -88,8 +149,14 @@
 @endsection
 
 @section('contenido_abajo_js')
+@if (session('statusPaymentSuccess'))
 <script>
-
+    Swal.fire({
+        title: "Suscripcion premium correctamente",
+        html:  `
+        {{session('statusPaymentSuccess')}}`,
+        icon: "success"
+    });
 </script>
-    
+@endif
 @endsection
