@@ -59,7 +59,19 @@
                             </div>  
                             <div class="product-carousel-price">
                                 {{ $service->descripcion }}
-                            </div>  
+                            </div>
+                            <!-- Calificacion estrellas-->
+                            <h4> 
+                                <ul class="list-inline">
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                </ul>
+                            </h4>
+                       
+                    
                             <div class="product-carousel-price">
                                 <ins>${{ $service->precio }}</ins> 
                             </div>  

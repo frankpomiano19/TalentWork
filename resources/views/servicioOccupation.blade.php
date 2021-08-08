@@ -11,6 +11,7 @@
 @endsection
 
 @section('contenido_cSS')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             width: 100%;
             text-align: center;
         }
+        
     </style>
 
 @endsection
@@ -346,7 +348,9 @@
             <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
             <div class="card-body">
               <h5 class="card-title">Califica este servicio</h5>
-              <!-- Calificacion estrellas-->
+              <p>Tambien puede calificar como 0 estrellas, sin dar click a ninguna</p>
+        
+
                 <form action="{{ route('registrarScore') }}" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
@@ -381,7 +385,7 @@
         <div class="col-3">
             <h2 class="headertekst">Comentarios</h2>
         </div>
-
+        
         <div class="container-fluid my-5">
             <div class="row">
                 <div class="col-md-3">
@@ -764,6 +768,17 @@
     })
 </script>
 
+@endif
+
+@if (session('calificacionMessage'))
+<script>
+    Swal.fire({
+        title: "Calificación recibida",
+        html:  `
+        {{session('calificacionMessage')}}`,
+        icon: "success"
+    });
+</script>
 @endif
 
 @endsection
