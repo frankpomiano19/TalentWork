@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Events\Message;
 use App\Events\MessageSent;
 use App\Http\Controllers\PaymentStripeController;
+use App\Http\Controllers\PaymentPremiumController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\PostCommentController;
@@ -45,6 +46,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Pago con stripe
     Route::post('/stripe/process',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe');
+
+    //Pago stripe premium
+    Route::post('/stripe/premium',[PaymentPremiumController::class,'processPaymentPremiumStripe'])->name('proccessPaymentPremiumStripe');
 
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');

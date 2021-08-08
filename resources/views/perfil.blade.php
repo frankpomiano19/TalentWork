@@ -77,9 +77,11 @@
                     </div>
                     <div class="col-md-2">
                         @if(auth()->user()->id == $user->id)
-                            <button type="button" class="btn btn-success" name="btnAddMore" onclick="window.location.href='{{route('premium')}}'">
-                            Hazte Premium
-                            </button>
+                            @if (auth()->user()->premium == false)
+                                <button type="button" class="btn btn-success" name="btnAddMore" onclick="window.location.href='{{route('premium')}}'">
+                                    Hazte Premium
+                                </button>    
+                            @endif
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
                             </button>
