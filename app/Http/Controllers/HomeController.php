@@ -10,8 +10,14 @@ use App\Models\Contract;
 use App\Models\Post_comment;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Tablon;
+use App\Models\ServiceOccupation;
+use App\Models\ServiceTalent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\TablonRequest;
+
+use App;
 
 class HomeController extends Controller
 {
@@ -37,9 +43,49 @@ class HomeController extends Controller
         return view('profileServiceOccupation',compact('allServices'));
     }
 
+    public function  showRetoService(){
+        $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
+        return view('profileServiceRetos',compact('allServices'));
+    }
+    public function TablonServicios(){
+        $talentos = ServiceTalent::all();
+        $ocupaciones = ServiceOccupation::all();
+        $servicios = Tablon::all();
+        return view('tablonservicios')->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+
+    }
+
+    public function solicitarServicio(TablonRequest $request){
+
+        $talentos = ServiceTalent::all();
+        $ocupaciones = ServiceOccupation::all();
+
+        $servicioNuevo = new App\Models\Tablon;
+
+        $servicioNuevo->servicio = $request->nombre;
+        $servicioNuevo->descripcion = $request->descripcion;;
+        $servicioNuevo->precio = $request->precio;
+        $servicioNuevo->tipo = $request->tipo;
+        $servicioNuevo->use_id = auth()->id();
+        $servicioNuevo -> save();
+
+        $servicios = Tablon::all();
+        
+        return redirect()->route('tablonservicios')->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+    }
+
+    public function eliminarServicio($id)
+    {
+        $servicio = Tablon::find($id);
+        $servicio->delete();
+        return back()->with('eliminado','ok');
+    }
+
     public function showProfileServiceTalent($id){
         
         $serviceProfile = use_tal::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
 
         if(auth()->user()==null){
             $chat = false;
@@ -57,7 +103,7 @@ class HomeController extends Controller
                 $chat = false;
             }
         }
-        return view('servicioTalent',compact('serviceProfile','chat'));
+        return view('servicioTalent',compact('serviceProfile','chat','SerTal','SerOcc'));
     }
 
 
@@ -65,7 +111,8 @@ class HomeController extends Controller
     public function showProfileServiceOccupation($id){
 
         $serviceProfile = use_occ::where('id',$id)->first();
-
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
 
         if(auth()->user()==null){
             $chat = false;
@@ -82,7 +129,31 @@ class HomeController extends Controller
                 $chat = false;
             }
         }
-        return view('servicioOccupation',compact('serviceProfile','chat'));
+        return view('servicioOccupation',compact('serviceProfile','chat','SerOcc','SerTal'));
+    }
+    public function showProfileServiceRetos($id){
+
+        $serviceProfile = use_tal::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+
+        if(auth()->user()==null){
+            $chat = false;
+        }else{
+            $estadoContrato = Contract::where('use_tal_id',$id)
+                                ->where('use_receive',auth()->user()->id)            
+                                ->first();
+
+            if($estadoContrato){
+                $contratado = $estadoContrato->con_status;
+                if($contratado == "1"){
+                    $chat = true;
+                }
+            }else{
+                $chat = false;
+            }
+        }
+        return view('servicioRetos',compact('serviceProfile','chat','SerTal','SerOcc'));
     }
 
     public function nuevoRegistro(Request $request){
