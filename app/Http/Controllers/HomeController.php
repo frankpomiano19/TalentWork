@@ -10,8 +10,14 @@ use App\Models\Contract;
 use App\Models\Post_comment;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Tablon;
+use App\Models\ServiceOccupation;
+use App\Models\ServiceTalent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\TablonRequest;
+
+use App;
 
 class HomeController extends Controller
 {
@@ -41,6 +47,40 @@ class HomeController extends Controller
         $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
         return view('profileServiceRetos',compact('allServices'));
     }
+    public function TablonServicios(){
+        $talentos = ServiceTalent::all();
+        $ocupaciones = ServiceOccupation::all();
+        $servicios = Tablon::all();
+        return view('tablonservicios')->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+
+    }
+
+    public function solicitarServicio(TablonRequest $request){
+
+        $talentos = ServiceTalent::all();
+        $ocupaciones = ServiceOccupation::all();
+
+        $servicioNuevo = new App\Models\Tablon;
+
+        $servicioNuevo->servicio = $request->nombre;
+        $servicioNuevo->descripcion = $request->descripcion;;
+        $servicioNuevo->precio = $request->precio;
+        $servicioNuevo->tipo = $request->tipo;
+        $servicioNuevo->use_id = auth()->id();
+        $servicioNuevo -> save();
+
+        $servicios = Tablon::all();
+        
+        return redirect()->route('tablonservicios')->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+    }
+
+    public function eliminarServicio($id)
+    {
+        $servicio = Tablon::find($id);
+        $servicio->delete();
+        return back()->with('eliminado','ok');
+    }
+
     public function showProfileServiceTalent($id){
         
         $serviceProfile = use_tal::where('id',$id)->first();
