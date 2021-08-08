@@ -80,7 +80,6 @@
                                                         </ul>
                                                     </h4>
                                         </h5> 
-
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -177,7 +176,6 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-
 
                                         <h5>Calificación por usuarios
                                             <h4> 
@@ -319,7 +317,6 @@
             </div>
         </form>
 
-
         @auth
             @php
                 $receivedService =  false;
@@ -346,7 +343,6 @@
             @endforeach
 
         @if($receivedService && $unComment)
-
 
         <div class="card" style="margin-left: 23rem; margin-right: 4rem">
             <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
@@ -383,7 +379,6 @@
         @endif
 
         @endauth
-
 
         {{-- comentario --}}
     <div class="px-4 px-lg-5 my-5">
