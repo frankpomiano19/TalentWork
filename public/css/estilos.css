@@ -174,3 +174,15 @@ main{
         position: relative;
     }
 }
+
+
+.theme--create.bttn-primary, .theme--create .bttn-primary {
+    --bttn-bg: #028858;
+    --bttn-text: white;
+    --bttn-icon: white;
+    --bttn-border: #028858;
+    --bttn-hover-bg: #015738;
+    --bttn-hover-text: white;
+    --bttn-hover-icon: white;
+    --bttn-hover-border: #015738;
+}

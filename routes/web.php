@@ -26,8 +26,11 @@ use App\Http\Controllers\PostCommentController;
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
+Route::get('/retoService',[HomeController::class,'showRetoService'])->name('showRetoService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
+Route::get('/profileServiceRetos/{id}',[HomeController::class,'showProfileServiceRetos'])->name('showProfileServiceRetos');
+
 Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');

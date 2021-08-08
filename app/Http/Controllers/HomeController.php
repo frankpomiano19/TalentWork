@@ -37,6 +37,10 @@ class HomeController extends Controller
         return view('profileServiceOccupation',compact('allServices'));
     }
 
+    public function  showRetoService(){
+        $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
+        return view('profileServiceRetos',compact('allServices'));
+    }
     public function showProfileServiceTalent($id){
         
         $serviceProfile = use_tal::where('id',$id)->first();
@@ -86,6 +90,30 @@ class HomeController extends Controller
             }
         }
         return view('servicioOccupation',compact('serviceProfile','chat','SerOcc','SerTal'));
+    }
+    public function showProfileServiceRetos($id){
+
+        $serviceProfile = use_tal::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+
+        if(auth()->user()==null){
+            $chat = false;
+        }else{
+            $estadoContrato = Contract::where('use_tal_id',$id)
+                                ->where('use_receive',auth()->user()->id)            
+                                ->first();
+
+            if($estadoContrato){
+                $contratado = $estadoContrato->con_status;
+                if($contratado == "1"){
+                    $chat = true;
+                }
+            }else{
+                $chat = false;
+            }
+        }
+        return view('servicioRetos',compact('serviceProfile','chat','SerTal','SerOcc'));
     }
 
     public function nuevoRegistro(Request $request){
