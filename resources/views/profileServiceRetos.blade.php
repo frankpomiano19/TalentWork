@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
               
-                @foreach($allServices as $service)
+                @foreach($changeAllOcc as $service)
                     <div class="col-md-3 col-sm-6">
                         <div class="single-shop-product">
                             <div class="product-upper" style="height: 150px !important">
@@ -56,15 +56,15 @@
                             </div>
     
                             
-                            <h2><a href="{{ route('showProfileServiceRetos',$service->id) }}">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
+                            <h2><a href="{{ route('showProfileServiceRetos',$service->id) }}">{{ $service->IntermediateChange->cha_name }}</a></h2>
                             <div class="product-carousel-price">
-                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
+                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                             </div>  
                             <div class="product-carousel-price">
                                 {{ $service->descripcion }}
                             </div>  
                             <div class="product-carousel-price">
-                                <ins>${{ $service->precio }} contribuido</ins> 
+                                <ins>${{ $service->precio_actual }} de ${{ $service->precio }}  contribuido</ins> 
                             </div>  
                             
                             <div class="product-option-shop">

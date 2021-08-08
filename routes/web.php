@@ -27,6 +27,7 @@ Route::get('/',[HomeController::class,'showOccupationService'])->name('Servicios
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
 Route::get('/retoService',[HomeController::class,'showRetoService'])->name('showRetoService');
+Route::get('/changeService',[HomeController::class,'changeAllShow'])->name('showChangeService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
 Route::get('/profileServiceRetos/{id}',[HomeController::class,'showProfileServiceRetos'])->name('showProfileServiceRetos');
@@ -49,10 +50,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Pago con stripe 
     Route::post('/stripe/process',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe');
+    Route::post('/stripe/process2',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe2');
     
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
+    Route::post('/registroServReto',[ServiceController::class,'registroReto'])->name('servicio.reto');
     Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
     Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');

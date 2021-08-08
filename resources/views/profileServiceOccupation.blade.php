@@ -71,6 +71,12 @@
                     </div>                
                 @endforeach
         </div>
+
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                {{ $allServices->links() }}
+            </div>
+        </div>
     </div>
 
 @endsection
