@@ -21,6 +21,7 @@ class CreateChangesTable extends Migration
             $table->string('cha_video')->nullable();
             $table->integer('cha_count')->unsigned()->default(0);
             $table->boolean('cha_25_percent_active')->default(0);
+            $table->boolean('cha_active')->default(1);
             $table->timestamp('cha_upload_video_date')->nullable();
             $table->foreign('ser_occ_change')->references('id')->on('use_occs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

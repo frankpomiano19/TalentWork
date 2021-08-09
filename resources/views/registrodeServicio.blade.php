@@ -160,6 +160,7 @@
 
                         <form action="{{ route('servicio.reto') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <label for="" class="text-info">* Solo se puede tener un reto "activo" a la vez, si registras un reto entonces necesitas cumplir el reto para registrar otro</label>
                             <div class="form-group">
                               <label for="nombreReto">¿Qué reto desea asumir? (Nombre del reto)</label>
                               <textarea class="form-control" id="nombreReto" name="nombreReto" rows="1" required></textarea>
@@ -230,6 +231,22 @@
 
 @section('contenido_abajo_js')
   {{-- Registro fallo --}}
+
+  @if(session('failedChangeActive'))
+    <script>
+        Swal.fire({
+            title: "Error en el registro del reto",
+            html:  `
+            <br>
+            <br>
+            <p> {{ session('failedChangeActive') }}</p>
+            `,
+            icon: "error"
+        });
+    </script>
+  @endif
+
+
   @if ($errors->any())
   <script>
       Swal.fire({

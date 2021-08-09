@@ -36,12 +36,29 @@ class ServiceController extends Controller
         return $image_url;
     }
     public function registroReto(Request $request){
+        $existsActiveChange=false;
         $request->validate([
             'nombreReto' => 'required|max:100|min:5',
             'detallesReto' => 'required|max:2000|min:10',
             'costoReto' => 'required|between:100,10000|numeric',
-            'imagenReto'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000'
+            'imagenReto'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000',
         ]);
+        // Verificar si tiene activo algun reto
+        if(count(auth()->user()->UseOccIntermediate->where('use_occ_group_payment',true))>0){
+            foreach(auth()->user()->UseOccIntermediate as $changes){
+                if(isset($changes->IntermediateChange->cha_active)){
+                    if($changes->IntermediateChange->cha_active){
+                        $existsActiveChange = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if($existsActiveChange){
+            $message = "Hay un reto activo, el reto tiene que ser cumplido para registrar otro";
+            return back()->with('failedChangeActive',$message);
+
+        }
         $datosServicio = new use_occ;
         $datosServicio->use_id = auth()->id();
         $datosServicio->ser_occ_id = 1;

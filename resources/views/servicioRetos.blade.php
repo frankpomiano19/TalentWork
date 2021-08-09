@@ -94,9 +94,10 @@
                                     $ytcode=$ytendarray[0];
                                     echo "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
                                 @endphp                            
+                                <br>
+                                <a href="{{ $serviceProfile->IntermediateChange->cha_video }}">Link del video</a>
+
                             @endif
-                            <br>
-                            <a href="{{ $serviceProfile->IntermediateChange->cha_video }}">Link del video</a>
     
 
                         </div>

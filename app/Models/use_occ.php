@@ -22,9 +22,6 @@ class use_occ extends Model
     public function IntermediateChange(){
         return $this->hasOne(Change::class,'ser_occ_change');
     }
-    public function IntermediateChangeOne(){
-        return $this->hasOne(Change::class,'ser_occ_change');
-    }
 
 
     public function IntermediateOccContract(){

@@ -15,6 +15,7 @@ class Change extends Model
         'cha_video',
         'cha_count',
         'cha_upload_video_date',
-        'cha_25_percent_active'
+        'cha_25_percent_active',
+        'cha_active'
     ];    
 }

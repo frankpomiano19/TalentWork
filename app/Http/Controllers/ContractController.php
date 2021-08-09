@@ -304,9 +304,16 @@ class ContractController extends Controller
             DB::transaction(function () use($request) {
                 $change = use_occ::find($request->serviceOffer);
                 $change->increment('precio_actual',$request->cantidadDonacion);
-                $change->IntermediateChange()->increment('cha_count',1);    
+                $change->IntermediateChange()->increment('cha_count',1);
+                //  Desctiva en caso de que llegue al tope 
+                $change2 = use_occ::find($request->serviceOffer);
+                if($change2->precio<=$change2->precio_actual){
+                    $change2->IntermediateChange->update([
+                            'cha_active'=>false
+                    ]);    
+                }
+    
             });
-
         }else{
             //  Se registra el contrato
             $algo = $this->getOneItemFromCart();      
