@@ -64,7 +64,17 @@
                                  
                                 <div class="product-carousel-price">
                                     {{ $service->descripcion }}
-                                </div>  
+                                </div>
+                                <!-- Calificacion estrellas-->
+                            	<h4> 
+            	                    <ul class="list-inline">
+                	                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                        	        <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                	<li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+	                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+        	                        <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                	                </ul>
+                        	    </h4>  
                                 <div class="product-carousel-price">
                                     <ins>${{ $service->precio }}</ins> 
                                 </div>  
@@ -101,7 +111,17 @@
                                 </div>  
                                 <div class="product-carousel-price">
                                     {{ $service->descripcion }}
-                                </div>  
+                                </div>
+                                <!-- Calificacion estrellas-->
+                            	<h4> 
+            	                    <ul class="list-inline">
+                	                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                        	        <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                	<li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+	                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+        	                        <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                	                </ul>
+                        	    </h4>  
                                 <div class="product-carousel-price">
                                     <ins>${{ $service->precio }}</ins> 
                                 </div>  
@@ -110,35 +130,6 @@
                                     <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceOccupation',$service->id) }}">Ver más</a>
                                 </div>                       
                             </div>
-<<<<<<< HEAD
-=======
-                            <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
-                            <div class="product-carousel-price">
-                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
-                            </div>  
-                            <div class="product-carousel-price">
-                                {{ $service->descripcion }}
-                            </div>
-                            <!-- Calificacion estrellas-->
-                            <h4> 
-                                <ul class="list-inline">
-                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
-                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
-                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
-                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
-                                <li class="list-inline-item"><em class="fa fa-star {{$service->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
-                                </ul>
-                            </h4>
-                       
-                    
-                            <div class="product-carousel-price">
-                                <ins>${{ $service->precio }}</ins> 
-                            </div>  
-                            
-                            <div class="product-option-shop">
-                                <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceOccupation',$service->id) }}">Ver más</a>
-                            </div>                       
->>>>>>> origin/developer
                         </div>
                     @endif
                                     
