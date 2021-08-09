@@ -104,7 +104,7 @@ class PostQuestionTest extends TestCase
                                                                 'typeJobFromQuestion'=>$value, 
                                                                 'serviceId'=>$allServices->id
                                                                 ]
-                                )->assertRedirect('/profileServiceTalent/1');
+                                );
 
         $response = $this->assertDatabaseMissing('questions', [
                                     'pregunta' => $pregunta,
