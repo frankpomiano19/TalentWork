@@ -3,8 +3,7 @@
 @section('contenido_js')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-<script src="https://vjs.zencdn.net/7.2/video.min.js"></script>
-
+<script src="https://vjs.zencdn.net/7.2/video.min.js" integrity="sha384-XF5dKLDmkHsv5ravG7c53yK0eaLEQ4tTprSTHS6B8DTgMwppYU1BDHx7EfNeLs5j" crossorigin="anonymous"></script>
 
 @endsection
 
@@ -84,7 +83,7 @@
                             @if (auth()->user()->premium == false)
                                 <button type="button" class="btn btn-success" name="btnAddMore" onclick="window.location.href='{{route('premium')}}'">
                                     Hazte Premium
-                                </button>    
+                                </button>
                             @endif
                             <button type="button" class="profile-edit-btn" name="btnAddMore" data-toggle="modal" data-target="#myModal" >
                             Editar Perfil
@@ -302,11 +301,11 @@
                                     <input type="hidden" class="get-price-offer-input" name="priceOffer" value="{{ $serviceUsers->precio }}" required>
                                     <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceUsers->id }}" required>
                                     <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
-                                    @if($serviceUsers->use_occ_group_payment)                                            
+                                    @if($serviceUsers->use_occ_group_payment)
                                     @else
                                         <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
                                     @endif
-                                    
+
 
 
 
@@ -321,7 +320,7 @@
                                     @endphp
                                     @if(auth()->user()!=null)
                                         @if(auth()->user()->id == $serviceUsers->IntermediateUseOcc->id)
-                                                @if($serviceUsers->use_occ_group_payment)                                            
+                                                @if($serviceUsers->use_occ_group_payment)
                                                 @else
 
                                                     <button class="btn btn-outline-dark flex-shrink-0" disabled type="button">
@@ -330,7 +329,7 @@
                                                     </button>
 
                                                 @endif
-                                        
+
 
 
                                         @else
@@ -351,13 +350,13 @@
                                             </button>
                                             <br>
                                             @else
-                                                @if($serviceUsers->use_occ_group_payment)                                            
+                                                @if($serviceUsers->use_occ_group_payment)
                                                 @else
 
                                                     <button type="button" class="btn btn-secondary p-3 btn-details-now-data" onclick="window.location.href='{{ route('showProfileServiceOccupation',$serviceUsers->id) }}'">
                                                         Contratar
                                                     </button>
-                                                @endif                                            
+                                                @endif
 
 
 
@@ -461,7 +460,7 @@
                                     <div class="row col-sm-12">
                                         <div class="col-md-6">
                                             <label>Nombre del reto</label>
-                                            
+
                                         </div>
                                         <div class="col-md-6">
                                             <a href="{{ route('showProfileServiceRetos',$retoActivo->id) }}" class="badge badge-light text-dark"><p>{{ $retoActivo->IntermediateChange->cha_name }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
@@ -513,15 +512,15 @@
                                                     $ytendstring=end($ytendarray);
                                                     $ytendarray=explode("&", $ytendstring);
                                                     $ytcode=$ytendarray[0];
-                                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";                                
-                                                @endphp                            
+                                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";
+                                                @endphp
                                                 <br>
-                                                <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>                                                                                                
+                                                <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>
                                             @else
                                                 <h4>Aun no se subio ningun video</h4>
                                                 @if(auth()->user()->id == $user->id)
-                                                    <label for="" class="text-info">Se habilitara subir video cuando llegue por lo menos al 25% de las donaciones. 
-                                                        Se habilitara en el perfil del reto, de click <a href="{{ route('showProfileServiceRetos',$retoActivo->id) }}" >AQUI</a> 
+                                                    <label for="" class="text-info">Se habilitara subir video cuando llegue por lo menos al 25% de las donaciones.
+                                                        Se habilitara en el perfil del reto, de click <a href="{{ route('showProfileServiceRetos',$retoActivo->id) }}" >AQUI</a>
                                                     </label>
                                                 @endif
                                             @endif
@@ -550,7 +549,7 @@
                                         });
                                     </script>
 
-                                @endif                                
+                                @endif
 
 
 
@@ -643,7 +642,7 @@
                                             <br>
                                             <div class="row col-sm-12">
                                                 <div class="col-sm-12 contenedor">
-                                                    
+
                                                     @php
                                                         $ytarray=explode("/", $serviceUsers->IntermediateChange->cha_video);
                                                         $ytendstring=end($ytarray);
@@ -651,10 +650,10 @@
                                                         $ytendstring=end($ytendarray);
                                                         $ytendarray=explode("&", $ytendstring);
                                                         $ytcode=$ytendarray[0];
-                                                        echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";                                
-                                                    @endphp                            
+                                                        echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";
+                                                    @endphp
                                                     <br>
-                                                    <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>                                                    
+                                                    <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>
                                                 </div>
                                             </div>
 

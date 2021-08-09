@@ -184,8 +184,8 @@
                   @if (!Cart::session(auth()->user()->id)->isEmpty())
                         <p class="card-text"><div class="fs-6 text-center"> <label class="summary__tittle--size">Total :</label>  S/{{ $item->price }}</div></p>
                         <blockquote class="blockquote">
-                            <p class="font-weight-light text-muted summary__paragraph--style">* La unica forma habilitada es atravez de la plataforma paypal</p> 
-                          </blockquote>              
+                            <p class="font-weight-light text-muted summary__paragraph--style">* La unica forma habilitada es atravez de la plataforma paypal</p>
+                          </blockquote>
                         <hr>
                           {{-- Tabs para pagos --}}
                         <nav>
@@ -195,10 +195,10 @@
                             </div>
                           </nav>
 
-            
+
                         @foreach (Cart::session(auth()->user()->id)->getContent()->sortByDesc('id') as $item)
 
-                        
+
                         <div class="tab-content" id="nav-tabContent">
                             {{-- Pago para paypal --}}
                             <div class="tab-pane fade show active" id="nav-paypal" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -226,7 +226,7 @@
                                 <br>
                                 <form action="{{ route('proccessPaymentStripe') }}" method="POST">
                                     @csrf
-                                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    <script src="https://checkout.stripe.com/checkout.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" class="stripe-button"
                                         data-key="{{ config('services.stripe.key') }}"
                                         data-amount="{{ $valorPrecioStripe }}"
                                         data-name="{{ $item->name }}"
@@ -237,7 +237,7 @@
                                     <script>
                                         // Esconde el button por defecto
                                         document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                                        
+
                                     </script>
                                     <button type="submit" class="form-control btn"  style="color: rgb(219,241,247); background-color:rgb(101, 177, 228); font-weight:bold" aria-disabled="true">PAGAR CON STRIPE</button>
 

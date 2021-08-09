@@ -15,7 +15,7 @@ class PaymentPremiumTest extends TestCase
      *
      * @test
      */
-    public function test_example()
+    public function test_payment_premium()
     {
         $processPayment = new PaymentPremiumController();
         $credential = [

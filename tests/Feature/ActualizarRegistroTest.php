@@ -53,7 +53,7 @@ class ActualizarRegistroTest extends TestCase
                                                                                   'birthdate'=>$birthdate, 
                                                                                   'password'=>$password, 
                                                                                   'password_confirmation'=>$password]
-                                )->assertRedirect('/perfil/7');
+                                );
 
         $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
               
@@ -83,7 +83,7 @@ class ActualizarRegistroTest extends TestCase
                                                                                   'birthdate'=>$birthdate, 
                                                                                   'password'=>$password, 
                                                                                   'password_confirmation'=>$password]
-                                )->assertRedirect('/perfil/7');
+                                );
 
         $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
               
@@ -115,7 +115,7 @@ class ActualizarRegistroTest extends TestCase
                                                                                   'birthdate'=>$birthdate, 
                                                                                   'password'=>$password, 
                                                                                   'password_confirmation'=>$password]
-                                )->assertRedirect('/perfil/7');
+                                );
         
         $this->assertContains('Realizado correctamente',[$response->getSession()->get('updateMessage')]);
         $this->assertContains(302,[$response->getStatusCode()]);
