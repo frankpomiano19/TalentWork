@@ -2,9 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-//use App\Exceptions\Handler;
 use Tests\TestCase;
 
 class NuevoRegistroTest extends TestCase

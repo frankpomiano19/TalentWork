@@ -2,16 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaymentPremiumController;
-use App\Models\User;
+
 
 class PaymentPremiumTest extends TestCase
 {

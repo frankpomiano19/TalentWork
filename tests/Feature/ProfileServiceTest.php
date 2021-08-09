@@ -2,11 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\HomeController;
 use App\Models\use_occ;
 use App\Models\use_tal;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProfileServiceTest extends TestCase

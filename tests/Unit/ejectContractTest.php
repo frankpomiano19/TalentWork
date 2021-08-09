@@ -2,10 +2,7 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Route;
 use App\Models\Contract;
 use Tests\TestCase;
 use Illuminate\Http\Request;

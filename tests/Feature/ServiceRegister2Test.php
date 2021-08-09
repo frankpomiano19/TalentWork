@@ -1,18 +1,19 @@
 <?php
 
-namespace Tests\Unit;
-use Illuminate\Http\UploadedFile;
+namespace Tests\Feature;
+
 use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
 use App\Models\ServiceOccupation;
 use App\Models\ServiceTalent;
 use Illuminate\Http\Request;
 
-class ServiceRegisterTest extends TestCase
+class ServiceRegister2Test extends TestCase
 {
     /**
-     * A basic unit test example.
+     * A basic feature test example.
      *
-     * @test
+     * @return void
      */
     function test_view_ServiceRegister_page()
     {
@@ -97,5 +98,4 @@ class ServiceRegisterTest extends TestCase
         return $requestReception;
     }
     
-
 }

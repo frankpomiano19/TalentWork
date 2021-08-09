@@ -2,25 +2,10 @@
 
 namespace Tests\Feature;
 
-//use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Route;
-use App\Models\ServiceOccupation;
-use App\Models\ServiceTalent;
-use Illuminate\Http\Request;
-use Illuminate\Http\Controllers\PerfilController;
-use Illuminate\Http\Controllers\ServiceController;
 use Tests\TestCase;
 
 class ActualizarRegistroTest extends TestCase
 {
-    //use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -78,7 +63,6 @@ class ActualizarRegistroTest extends TestCase
 
     public function test_errorValidationUpdate_EMAILdiferent()
     {
-        //$this->withoutExceptionHandling();
         $name = 'Frank';
         $lastname = 'Alvarado Pardo';
         $dni = '70900925';

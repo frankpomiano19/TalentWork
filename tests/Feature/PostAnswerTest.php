@@ -2,23 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Route;
-use App\Models\ServiceOccupation;
-use App\Models\ServiceTalent;
 use App\Models\use_occ;
 use App\Models\use_tal;
-use Illuminate\Http\Request;
-use Illuminate\Http\Controllers\PerfilController;
-use Illuminate\Http\Controllers\ServiceController;
 
 class PostAnswerTest extends TestCase
 {

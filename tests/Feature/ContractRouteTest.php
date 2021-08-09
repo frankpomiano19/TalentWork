@@ -2,14 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\Auth\LoginController;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
-use App\Http\Controllers\PerfilController;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
-use Faker\Factory as FakerFactory;
 use Illuminate\Support\Facades\Auth;
 
 class ContractRouteTest extends TestCase

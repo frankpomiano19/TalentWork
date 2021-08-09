@@ -2,20 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Contract;
-use App\Models\use_occ;
 use Livewire\Livewire;
-use App\Http\Livewire\ChatUsuario;
-use App\Http\Livewire\ChatTalents;
 use App\Http\Livewire\Filtroservicio;
 use App\Http\Livewire\ChatLista;
-use App\Models\Mensajechat;
-use App\Http\Controllers\ContractController;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class VistaBandejaTest extends TestCase
 {
