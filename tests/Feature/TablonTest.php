@@ -57,7 +57,7 @@ class TablonTest extends TestCase
             'tipo' => 'Talento',
         ]);
 
-        $response->assertRedirect('/tablonServicios');
+        $response->assertRedirect('/');
     }
 
     public function test_solicitar_datos_invalidos(){
