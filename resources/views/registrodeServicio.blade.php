@@ -77,7 +77,7 @@
                           </div>
                           @error('costoTecn')
                           <div class="alert alert-danger" role="alert">
-                            <strong>Atención.</strong> Por favor ingrese el costo de su servicio.
+                            <strong>Atención.</strong> Por favor ingrese el costo de su servicio (entre 10 y 10000 soles).
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -85,7 +85,7 @@
                           @enderror
                           <div class="form-group">
                             <label for="costoTecn">Ingrese el costo de su servicio</label>
-                            <input type="number" class="form-control" id="costoTecn" name="costoTecn" required>
+                            <input type="number" class="form-control" id="costoTecn" name="costoTecn" min="10" max="10000" required>
                           </div>
                           @error('imagenTecn')
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -130,7 +130,7 @@
                           </div>
                           @error('costoTalen')
                           <div class="alert alert-danger" role="alert">
-                            <strong>Atención.</strong> Por favor ingrese el costo de su servicio.
+                            <strong>Atención.</strong> Por favor ingrese el costo de su servicio (entre 10 y 10000 soles).
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -138,7 +138,7 @@
                           @enderror
                           <div class="form-group">
                             <label for="costoTalen">Ingrese el costo de su talento</label>
-                            <input type="number" class="form-control" id="costoTalen" name="costoTalen" required>
+                            <input type="number" class="form-control" id="costoTalen" name="costoTalen" min="10" max="10000" required>
                           </div>
                           @error('imagenTalen')
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
