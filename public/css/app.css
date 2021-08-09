@@ -10318,6 +10318,77 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.bold {
+  font-weight: 700;
+}
+
+.inline-block {
+  display: inline-block;
+}
+.ksr-green-700 {
+  color: #037362;
+}
+.type-16, .job-listing, .job-listing ul li {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+.ksr-green-500 {
+  color: #009E74;
+}
+.theme--create.bttn-primary, .theme--create .bttn-primary {
+  --bttn-bg: #028858;
+  --bttn-text: white;
+  --bttn-icon: white;
+  --bttn-border: #028858;
+  --bttn-hover-bg: #015738;
+  --bttn-hover-text: white;
+  --bttn-hover-icon: white;
+  --bttn-hover-border: #015738;
+}
+.mb3 {
+  margin-bottom: 1.8rem;
+}
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.bttn-primary {
+  background-color: var(--bttn-bg);
+  color: var(--bttn-text);
+  border: 1px solid var(--bttn-border);
+}
+.bttn-large {
+  padding: 0.8rem 7.6rem;
+  font-size: 1.0rem;
+}
+.bttn {
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.25;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+
+.inline-block {
+  display: inline-block;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+.bg-ksr-green-500 {
+  background-color: #009E74;
+}
 /*!
 * animate.css - https://animate.style/
 * Version - 4.1.1

@@ -32,19 +32,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
+    // Perfiles de talento
     public function showTalentService(){
-        $allServices = use_tal::orderBy('created_at','DESC')->paginate(20);
+        $allServices = use_tal::orderBy('created_at','DESC')->where('use_tal_group_payment',false)->paginate(20);
         return view('profileServiceTalent',compact('allServices'));
     }   
-
+    // Perfiles de oficios
     public function showOccupationService(){
-        $allServices = use_occ::orderBy('created_at','DESC')->paginate(20);
+        $allServices = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',false)->paginate(20);
         return view('profileServiceOccupation',compact('allServices'));
+    }
+    // Muestra retos - Pagos grupales
+    public function  showRetoService(){
+        $changeAllOcc = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',true)->paginate(20);
+        return view('profileServiceRetos',compact('changeAllOcc'));
     }
 
     public function TablonServicios(){
-
         $talentos = ServiceTalent::all();
         $ocupaciones = ServiceOccupation::all();
         $servicios = Tablon::all();
@@ -67,6 +71,8 @@ class HomeController extends Controller
         $servicioNuevo -> save();
 
         $servicios = Tablon::all();
+
+        // return view('servicioTalent',compact('serviceProfile','chat','SerTal','SerOcc'));
         
         return back()->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios)->with('agregado','ok');
     }
@@ -127,6 +133,13 @@ class HomeController extends Controller
             }
         }
         return view('servicioOccupation',compact('serviceProfile','chat','SerOcc','SerTal'));
+    }
+    public function showProfileServiceRetos($id){
+
+        $serviceProfile = use_occ::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        return view('servicioRetos',compact('serviceProfile','SerTal','SerOcc'));
     }
 
     public function nuevoRegistro(Request $request){
