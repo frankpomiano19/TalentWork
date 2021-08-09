@@ -14,77 +14,41 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        //Seeders para occupation
-        DB::table('questions')->insert([
-            'pregunta' => "¿Cuanto tiempo demora el servicio?",
-            'respuesta' => "Demora entre dos o tres días",
-            // 'typeJobFromQuestion'=>'1',
-            'use_occ_id' => '2',
-        ]);
 
-        DB::table('questions')->insert([
-            'pregunta' => "¿Existe la posibilidad de obtener alguna rebaja?",
-            'respuesta' => "Todo se puede conversar, asi que no se descarta",
-            // 'typeJobFromQuestion'=>'1',
-            'use_occ_id' => '2',
-        ]);
+        $preguntas = array(0 => '¿Cuanto tiempo demora el servicio?',
+         1 => '¿Existe la posibilidad de obtener alguna rebaja?',
+         2 => '¿Que pasa si no arreglan mi problema?',
+         3 => '¿Atienden todos los días?',
+         4 => '¿Hacen turnos nocturnos?',
+         5 => '¿Cuanto tiempo demora el servicio?',
+         6 => '¿Existe la posibilidad de obtener alguna rebaja?',
+         7 => '¿Que pasa si no arreglan mi problema?',
+         8 => '¿Atienden todos los días?',
+         9 => '¿Hacen turnos nocturnos?');
 
-        DB::table('questions')->insert([
-            'pregunta' => "¿Que pasa si no arreglan mi problema?",
-            'respuesta' => "No se le cobraría al cliente",
-            // 'typeJobFromQuestion'=>'1',
-            'use_occ_id' => '2',
-        ]);
+         $respuestas = array(0 => 'Demora entre dos o tres días',
+         1 => 'Todo se puede conversar, asi que no se descarta',
+         2 => 'No se le cobraría al cliente',
+         3 => 'Atendemos de Lunes a Domingo excepto los feriados',
+         4 => 'No, por un tema de seguridad trabajamos de 8:00 am hasta las 6:00 pm',
+         5 => 'Demora entre dos o tres días',
+         6 => 'Todo se puede conversar, asi que no se descarta',
+         7 => 'No se le cobraría al cliente',
+         8 => 'Atendemos de Lunes a Domingo excepto los feriados',
+         9 => 'No, por un tema de seguridad trabajamos de 8:00 am hasta las 6:00 pm');
 
-        DB::table('questions')->insert([
-            'pregunta' => "¿Atienden todos los días?",
-            'respuesta' => "Atendemos de Lunes a Domingo excepto los feriados",
-            // 'typeJobFromQuestion'=>'1',
-            'use_occ_id' => '2',
-        ]);
+        $idSO = array(0 => '2', 1 => '2', 2 => '2', 3 => '2', 4 => '2', 5 => null, 6 => null, 7 => null, 8 => null, 9 => null);
 
-        DB::table('questions')->insert([
-            'pregunta' => "¿Hacen turnos nocturnos?",
-            'respuesta' => "No, por un tema de seguridad trabajamos de 8:00 am hasta las 6:00 pm",
-            // 'typeJobFromQuestion'=>'1',
-            'use_occ_id' => '2',
-        ]);
+        $idST = array(0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => '1', 6 => '1', 7 => '1', 8 => '1', 9 => '1');
 
+        for ($i=0; $i <10 ; $i++) { 
+            DB::table('questions')->insert([
+                'pregunta' => $preguntas[$i],
+                'respuesta' => $respuestas[$i],
+                'use_occ_id' => $idSO[$i],
+                'use_tal_id' => $idST[$i]
+            ]);
+        }
 
-        //Seeders para talent
-        DB::table('questions')->insert([
-            'pregunta' => "¿Cuanto tiempo demora el servicio?",
-            'respuesta' => "Demora entre dos o tres días",
-            // 'typeJobFromQuestion'=>'2',
-            'use_tal_id' => '1',
-        ]);
-
-        DB::table('questions')->insert([
-            'pregunta' => "¿Existe la posibilidad de obtener alguna rebaja?",
-            'respuesta' => "Todo se puede conversar, asi que no se descarta",
-            // 'typeJobFromQuestion'=>'2',
-            'use_tal_id' => '1',
-        ]);
-
-        DB::table('questions')->insert([
-            'pregunta' => "¿Que pasa si no arreglan mi problema?",
-            'respuesta' => "No se le cobraría al cliente",
-            // 'typeJobFromQuestion'=>'2',
-            'use_tal_id' => '1',
-        ]);
-
-        DB::table('questions')->insert([
-            'pregunta' => "¿Atienden todos los días?",
-            'respuesta' => "Atendemos de Lunes a Domingo excepto los feriados",
-            // 'typeJobFromQuestion'=>'2',
-            'use_tal_id' => '1',
-        ]);
-
-        DB::table('questions')->insert([
-            'pregunta' => "¿Hacen turnos nocturnos?",
-            'respuesta' => "No, por un tema de seguridad trabajamos de 8:00 am hasta las 6:00 pm",
-            // 'typeJobFromQuestion'=>'2',
-            'use_tal_id' => '1',
-        ]);
     }
 }

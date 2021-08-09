@@ -21,7 +21,59 @@
         width: 100%;
         text-align: center;
     }
+    .hero__pic {
+    margin-bottom: 50px;
+    margin-left:auto;
+    margin-top: auto;
+    margin-right: auto;
 
+   }
+  .hero__pic {
+  
+    height: 391px;
+    width:520px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align:center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+
+  
+  }
+  .set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    
+  }
+   *, ::after, ::before {
+    box-sizing: border-box;
+  }
+
+  .banner-text {
+    margin: 16.6em 0 6em;
+    }
+
+    .banner-text {
+    margin: 22em 0 10em;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.72);
+    display: inline-block;
+    padding: 4em;
+    }
+    .banner-text h1 {
+    font-size: 3.5em;
+    color: #fff;
+    font-family: 'Text Me One', sans-serif;
+    font-weight: 900;
+    margin: 0;
+    
+    }
 </style>
 @endsection
 
@@ -85,6 +137,8 @@
                                 {{-- Video --}}
                                 <h4>Video</h4>
                                 
+                                <div class="hero__pic set-bg"  data-setbg="img/hero/hero-video.png" style="background-image: url(&quot;https://img.freepik.com/vector-gratis/fondo-negro-foco-luz_1017-27230.jpg?size=626&ext=jpg&quot;);">
+
                                 @php
                                     $ytarray=explode("/", $serviceProfile->IntermediateChange->cha_video);
                                     $ytendstring=end($ytarray);
@@ -92,9 +146,11 @@
                                     $ytendstring=end($ytendarray);
                                     $ytendarray=explode("&", $ytendstring);
                                     $ytcode=$ytendarray[0];
-                                    echo "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
+                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
                                 @endphp                            
+                                </div>                                      
                                 <br>
+
                                 <a href="{{ $serviceProfile->IntermediateChange->cha_video }}">Link del video</a>
 
                             @endif

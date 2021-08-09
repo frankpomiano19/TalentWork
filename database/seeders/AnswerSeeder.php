@@ -16,25 +16,23 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('answers')->insert([
-            'comentario' => 'Estan chidos tus momos, eres un crack',
-            'use_id' => '7',
-            'use_com_id' => '1',
-        ]);
-        DB::table('answers')->insert([
-            'comentario' => 'Igual yo hermano, los mejores momos',
-            'use_id' => '4',
-            'use_com_id' => '2',
-        ]);
-        DB::table('answers')->insert([
-            'comentario' => 'Tus historias son geniales, vale la pena cada centavo',
-            'use_id' => '4',
-            'use_com_id' => '3',
-        ]);
-        DB::table('answers')->insert([
-            'comentario' => 'Muy linda historia y maravilloso final, me encanto a mi tambien',
-            'use_id' => '7',
-            'use_com_id' => '4',
-        ]);
+
+        $comentarios = array(0 => 'Estan chidos tus momos, eres un crack',
+         1 => 'Igual yo hermano, los mejores momos',
+         2 => 'Tus historias son geniales, vale la pena cada centavo',
+         3 => 'Muy linda historia y maravilloso final, me encanto a mi tambien');
+
+        $idUsuarios = array(0 => '7', 1 => '4', 2 => '4', 3 => '7');
+
+        $idComent = array(0 => '1', 1 => '2', 2 => '3', 3 => '4');
+
+        for ($i=0; $i <4 ; $i++) { 
+            DB::table('answers')->insert([
+                'comentario' => $comentarios[$i],
+                'use_id' => $idUsuarios[$i],
+                'use_com_id' => $idComent[$i]
+            ]);
+        }
+        
     }
 }

@@ -35,8 +35,9 @@ class PostScoreController extends Controller
                     $scr = Score::where('use_occ_id',$request->get('serviceId'))->get();
                     $suma = 0;
 
-                    foreach($scr as $s)
+                    foreach($scr as $s){
                     $suma = $suma + $s->calificacion;
+                    }
 
                         $serviceProfile = use_occ::where('id',$request->get('serviceId'))->first();
                         $scoreT = ($suma + $request->get('calificacion'))/($scr->count() + 1);
@@ -66,9 +67,10 @@ class PostScoreController extends Controller
                     $scr = Score::where('use_tal_id',$request->get('serviceId'))->get();
                     $suma = 0;
                     
-                    foreach($scr as $s)
+                    foreach($scr as $s){
                     $suma = $suma + $s->calificacion;
-
+                    }
+                    
                         $serviceProfile = use_tal::where('id',$request->get('serviceId'))->first();
                         $scoreT = ($suma + $request->get('calificacion'))/($scr->count() + 1);
                         $serviceProfile->calificacionT = $scoreT;

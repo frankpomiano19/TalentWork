@@ -55,14 +55,9 @@
                                         @endif
 
                                     <br>
-                                    {{-- @foreach($servOcu as $serv)
-
-                                    {{ $serv->ser_occ_name }}
-
-                                    @endforeach --}}
                                     </h6>
                                     <p class="proile-rating">CALIFICACION : <span>8/10</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos Personales</a>
                                 </li>
@@ -360,7 +355,7 @@
                                                 @else
 
                                                     <button type="button" class="btn btn-secondary p-3 btn-details-now-data" onclick="window.location.href='{{ route('showProfileServiceOccupation',$serviceUsers->id) }}'">
-                                                        Contratar 2
+                                                        Contratar
                                                     </button>
                                                 @endif                                            
 
@@ -518,7 +513,7 @@
                                                     $ytendstring=end($ytendarray);
                                                     $ytendarray=explode("&", $ytendstring);
                                                     $ytcode=$ytendarray[0];
-                                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
+                                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";                                
                                                 @endphp                            
                                                 <br>
                                                 <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>                                                                                                
@@ -656,7 +651,7 @@
                                                         $ytendstring=end($ytendarray);
                                                         $ytendarray=explode("&", $ytendstring);
                                                         $ytcode=$ytendarray[0];
-                                                        echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
+                                                        echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title='VideoYoutube' frameborder=\"0\" allowfullscreen></iframe>";                                
                                                     @endphp                            
                                                     <br>
                                                     <a href="{{ $serviceUsers->IntermediateChange->cha_video }}">Link del video</a>                                                    
@@ -742,16 +737,7 @@
 </script>
 @endif
 
-<!-- @if ($flag==1)
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        $("#myModal").modal("show");
-    })
-</script>
-        @php
-            $flag=0;
-        @endphp
-@endif -->
+
 
 
 @if ($errors->any())
@@ -769,7 +755,6 @@
         $('#myModal').modal('hide')
     })
 </script>
-<!-- <h3 class="h-light"> ERRORES {{$flag}} </h3> -->
 @endif
 
 @endsection
