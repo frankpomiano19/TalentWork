@@ -88,7 +88,7 @@ class ServiceController extends Controller
         $request->validate([
             'servicioTecn' => 'required',
             'detallesTecn' => 'required|min:10',
-            'costoTecn' => 'required|between:1,10000',
+            'costoTecn' => 'required|between:10,10000|numeric',
             'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
         $imagen2 = $request->file('imagenTecn');
@@ -111,7 +111,7 @@ class ServiceController extends Controller
         $request->validate([
             'servicioTalen' => 'required',
             'detallesTalen' => 'required|min:10',
-            'costoTalen' => 'required|between:1,10000',
+            'costoTalen' => 'required|between:10,10000|numeric',
             'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
