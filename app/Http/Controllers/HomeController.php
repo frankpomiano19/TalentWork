@@ -43,16 +43,12 @@ class HomeController extends Controller
         return view('profileServiceOccupation',compact('allServices'));
     }
     // Muestra retos - Pagos grupales
-    public function changeAllShow(){
+    public function  showRetoService(){
         $changeAllOcc = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',true)->paginate(20);
-        $changeAllTal = use_tal::orderBy('created_at','DESC')->where('use_tal_group_payment',true)->paginate(20);
-
-        return view('profileServiceChange',compact('changeAllOcc','changeAllTal'));
-
+        return view('profileServiceRetos',compact('changeAllOcc'));
     }
 
     public function TablonServicios(){
-
         $talentos = ServiceTalent::all();
         $ocupaciones = ServiceOccupation::all();
         $servicios = Tablon::all();
@@ -135,6 +131,13 @@ class HomeController extends Controller
             }
         }
         return view('servicioOccupation',compact('serviceProfile','chat','SerOcc','SerTal'));
+    }
+    public function showProfileServiceRetos($id){
+
+        $serviceProfile = use_occ::where('id',$id)->first();
+        $SerTal = use_tal::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $SerOcc = use_occ::orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        return view('servicioRetos',compact('serviceProfile','SerTal','SerOcc'));
     }
 
     public function nuevoRegistro(Request $request){

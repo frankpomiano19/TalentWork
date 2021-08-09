@@ -12,7 +12,7 @@
 @endsection
 
 @section('contenido_cSS')
-    
+
     <link rel="stylesheet" href="{{ asset('css/registro.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-RFZC58YeKApoNsIbBxf4z6JJXmh+geBSgkCQXFyh+4tiFSJmJBt+2FbjxW7Ar16M" crossorigin="anonymous"></script>
@@ -42,18 +42,24 @@
                               <button type="button" class="btn btn-secondary btn-lg">Talento</button>
                             </a>
                           </li>
+                          <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="reto-tab" data-toggle="tab" href="#reto" role="tab" aria-controls="reto" aria-selected="false">
+                              <button type="button" class="btn btn-info btn-lg">Reto</button>
+                            </a>
+                          </li>
                         </ul>
                     </div>
                     <div class="tab-content" id="myTabContent">
+                    {{-- Registro de Tecnico --}}
                       <div class="tab-pane fade show active" id="service" role="tabpanel" aria-labelledby="service-tab">
                         <form action=" {{route('servicio.tecnico')}} " method="POST" enctype="multipart/form-data">
                           @csrf
                           <div class="form-group">
                             <label for="servicioTecn">Seleccione su servicio técnico perteneciente</label>
                             <select class="form-control" id="servicioTecn" name="servicioTecn" required>
-                                  <option value= "">Seleccione su servicio correspondiente</option> 
+                                  <option value= "">Seleccione su servicio correspondiente</option>
                               @foreach ($serviciosTec as $item)
-                                  <option value= {{$item->id}}>{{$item->ser_occ_name}}</option> 
+                                  <option value= {{$item->id}}>{{$item->ser_occ_name}}</option>
                               @endforeach
                             </select>
                           </div>
@@ -96,6 +102,8 @@
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
                       </div>
+                      {{-- Registro de Talento --}}
+
                       <div class="tab-pane fade" id="talent" role="tabpanel" aria-labelledby="talent-tab">
                         <form action=" {{route('servicio.talento')}} " method="POST" enctype="multipart/form-data">
                           @csrf
@@ -145,7 +153,72 @@
                               <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
-                        </form>  
+                        </form>
+                      </div>
+                      {{-- Registro de Reto --}}
+                      <div class="tab-pane fade" id="reto" role="tabpanel" aria-labelledby="reto-tab">
+
+                        <form action="{{ route('servicio.reto') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <label for="" class="text-info">* Solo se puede tener un reto "activo" a la vez, si registras un reto entonces necesitas cumplir el reto para registrar otro</label>
+                            <div class="form-group">
+                              <label for="nombreReto">¿Qué reto desea asumir? (Nombre del reto)</label>
+                              <textarea class="form-control" id="nombreReto" name="nombreReto" rows="1" required></textarea>
+                            </div>
+
+                            @error('nombreReto')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>Atención.</strong> {{ $message }}.
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            @enderror
+
+
+                            <div class="form-group">
+                              <label for="detallesReto">Ingrese una breve descripción sobre su reto.</label>
+                              <textarea class="form-control" id="detallesReto" name="detallesReto" rows="3" required></textarea>
+                            </div>
+
+                            @error('detallesReto')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>Atención.</strong> {{ $message }}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            @enderror
+
+                            <div class="form-group">
+                              <label for="costoReto">¿Qué meta monetaria solicita para realizar el reto?</label>
+                              <input type="number" class="form-control" id="costoReto" name="costoReto" required>
+                            </div>
+
+                            @error('costoReto')
+                            <div class="alert alert-danger" role="alert">
+                              <strong>Atención.</strong> {{ $message }}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            @enderror
+
+
+                            <div class="form-group">
+                                <label for="imagenReto">Ingrese una imagen referente de su reto</label>
+                                <input type="file" class="form-control-file" id="imagenReto" name ="imagenReto" required>
+                              </div>
+                              @error('imagenReto')
+                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <small>Solo se acepta imagen con formato JPEG,BMP,JPG o PNG (máx 6MB) {{ $message }}</small>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              @enderror                              
+                            <button type="submit" class="btn btn-primary">Guardar Reto</button>
+                          </form>
                       </div>
                     </div>
                 </div>
@@ -156,35 +229,50 @@
 
 @endsection
 
-@section('contenidoJSabajo')
-    <!-- Colocar js abajo-->
-    <script src="{{ asset('js/producto.js') }}"></script>
-    <script src="/js/mapa.js"></script>
+@section('contenido_abajo_js')
+  {{-- Registro fallo --}}
+
+  @if(session('failedChangeActive'))
     <script>
-      $("#updateU").submit(function(e){
-        e.preventDefault();
-      
-        var datos = $(this).serialize();
-        $.ajax({
-            data: datos,
-            url: $(this).attr('action'),
-            type: 'POST',
-            beforeSend: function(){
-                $('#respuestas').html(''); //Reseteamos el contenido de respuestas.
-            },
-            success: function(res){
-                if(res){
-                    var resData = JSON.parse(res);
-      
-                    $('#usuario').val(resData[0]);
-                    $('#nombre').val(resData[1]);
-                    $("#contactoU").show();
-                } 
-                else $('#respuestas').html('Usuario no encontrado.');
-            }
+        Swal.fire({
+            title: "Error en el registro del reto",
+            html:  `
+            <br>
+            <br>
+            <p> {{ session('failedChangeActive') }}</p>
+            `,
+            icon: "error"
         });
+    </script>
+  @endif
+
+
+  @if ($errors->any())
+  <script>
+      Swal.fire({
+          title: "Error en el registro del servicio",
+          html:  `
+          <strong>Errores encontrados, vuelva a intentalo</strong> : 
+          <br>
+          <br>
+          <ul>
+              @foreach ($errors->all() as $errorRegister)
+                  <li>{{ $errorRegister }}</li>
+              @endforeach
+          </ul>`,
+          icon: "error"
       });
-      
-      
-      </script>
+  </script>
+  @endif  
+  {{-- Registro exitoso --}}
+  @if (session('serviceMessage'))
+  <script>
+      Swal.fire({
+          title: "Registro correctamente",
+          html:  `
+          {{session('serviceMessage')}}`,
+          icon: "success"
+      });
+  </script>
+  @endif
 @endsection

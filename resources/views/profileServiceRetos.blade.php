@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
               
-                @foreach($changeAllTal as $service)
+                @foreach($changeAllOcc as $service)
                     <div class="col-md-3 col-sm-6">
                         <div class="single-shop-product">
                             <div class="product-upper" style="height: 150px !important">
@@ -56,33 +56,23 @@
                             </div>
     
                             
-                            <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
+                            <h2><a href="{{ route('showProfileServiceRetos',$service->id) }}">{{ $service->IntermediateChange->cha_name }}</a></h2>
                             <div class="product-carousel-price">
-                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
+                                 <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                             </div>  
                             <div class="product-carousel-price">
                                 {{ $service->descripcion }}
                             </div>  
                             <div class="product-carousel-price">
-                                <ins>${{ $service->precio }}</ins> 
+                                <ins>${{ $service->precio_actual }} de ${{ $service->precio }}  contribuido</ins> 
                             </div>  
                             
                             <div class="product-option-shop">
-                                <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceTalent',$service->id) }}">Ver más</a>
+                                <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ route('showProfileServiceRetos',$service->id) }}">Ver más</a>
                             </div>                       
                         </div>
                     </div>                
                 @endforeach
-
-
-            </div>
-            <div class="row">
-                <div class="col-md-12 d-flex justify-content-center">
-                    {{ $changeAllTal->links() }}
-                </div>
-            </div>            
-        </div>
-    </div>
 
 @endsection
 

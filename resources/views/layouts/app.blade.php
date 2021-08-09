@@ -89,6 +89,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('showRetoService') }}">Retos</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                     </li>
                     @auth
