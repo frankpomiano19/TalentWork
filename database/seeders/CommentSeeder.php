@@ -16,29 +16,26 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Post_comments')->insert([
-            'comentario' => 'Comenten sus opiniones sobre mis diseños, en especial los momos',
-            // 'typeJobFromComment'=>'1',
-            'use_id' => '2',
-            'use_occ_id' => '2',
-        ]);
-        DB::table('Post_comments')->insert([
-            'comentario' => 'Recomiendo su servicio, +10/10',
-            // 'typeJobFromComment'=>'1',
-            'use_id' => '4',
-            'use_occ_id' => '2',
-        ]);
-        DB::table('Post_comments')->insert([
-            'comentario' => 'Dejen sus opiniones sobre mis cuentos, no olviden dejar sus ideas para incluirlas en mis proximas historias',
-            // 'typeJobFromComment'=>'2',
-            'use_id' => '2',
-            'use_tal_id' => '1',
-        ]);
-        DB::table('Post_comments')->insert([
-            'comentario' => 'Buenas historias, sobre todo la del pajaro y el arbol, 100% recomendado',
-            // 'typeJobFromComment'=>'2',
-            'use_id' => '7',
-            'use_tal_id' => '1',
-        ]);
+
+        $comentarios = array(0 => 'Comenten sus opiniones sobre mis diseños, en especial los momos',
+         1 => 'Recomiendo su servicio, +10/10',
+         2 => 'Dejen sus opiniones sobre mis cuentos, no olviden dejar sus ideas para incluirlas en mis proximas historias',
+         3 => 'Buenas historias, sobre todo la del pajaro y el arbol, 100% recomendado');
+
+        $idUsuarios = array(0 => '2', 1 => '4', 2 => '2', 3 => '7');
+
+        $idSO = array(0 => '2', 1 => '2', 2 => null, 3 => null);
+
+        $idST = array(0 => null, 1 => null, 2 => '1', 3 => '1');
+
+        for ($i=0; $i <4 ; $i++) { 
+            DB::table('Post_comments')->insert([
+                'comentario' => $comentarios[$i],
+                'use_id' => $idUsuarios[$i],
+                'use_occ_id' => $idSO[$i],
+                'use_tal_id' => $idST[$i]
+            ]);
+        }
+
     }
 }

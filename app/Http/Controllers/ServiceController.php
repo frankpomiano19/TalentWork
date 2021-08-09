@@ -43,14 +43,12 @@ class ServiceController extends Controller
             'costoReto' => 'required|between:100,10000|numeric',
             'imagenReto'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000',
         ]);
-        // Verificar si tiene activo algun reto
+        // Verifica si tiene activo algun reto
         if(count(auth()->user()->UseOccIntermediate->where('use_occ_group_payment',true))>0){
             foreach(auth()->user()->UseOccIntermediate as $changes){
-                if(isset($changes->IntermediateChange->cha_active)){
-                    if($changes->IntermediateChange->cha_active){
+                if(isset($changes->IntermediateChange->cha_active) && $changes->IntermediateChange->cha_active){
                         $existsActiveChange = true;
                         break;
-                    }
                 }
             }
         }
@@ -99,18 +97,8 @@ class ServiceController extends Controller
         $datosServicio->ser_occ_id = $request->servicioTecn;
         $datosServicio->descripcion = $request->detallesTecn;
         $datosServicio->precio = $request->costoTecn;
-        $image = $request->file('imagenTecn');
 
-        $name = $request->file('imagenTecn')->getClientOriginalName();
-
-        $image_name = $request->file('imagenTecn')->getRealPath();
-
-        Cloudder::upload($image_name, null);
-        list($width, $height) = getimagesize($image_name);
-        $image_url= Cloudder::show(Cloudder::getPublicId(), 
-        ["width" => $width, "height"=>$height]);
-
-        $image->move(public_path("uploads"), $name);
+        $image_url = $this->imageAddToCloud($request->file('imagenTecn'));
 
         $datosServicio->imagen = $image_url;
         $datosServicio->save();
@@ -132,19 +120,9 @@ class ServiceController extends Controller
         $datosServicio->ser_tal_id = $request->servicioTalen;
         $datosServicio->descripcion = $request->detallesTalen;
         $datosServicio->precio = $request->costoTalen;
-        $image = $request->file('imagenTalen');
 
-        $name = $request->file('imagenTalen')->getClientOriginalName();
-
-        $image_name = $request->file('imagenTalen')->getRealPath();
-
-        Cloudder::upload($image_name, null);
-        list($width, $height) = getimagesize($image_name);
-        $image_url= Cloudder::show(Cloudder::getPublicId(),
-         ["width" => $width, "height"=>$height]);
-
-        $image->move(public_path("uploads"), $name);
-
+        $image_url = $this->imageAddToCloud($request->file('imagenTalen'));
+        
         $datosServicio->imagen = $image_url;
         $datosServicio->save();
         return back();

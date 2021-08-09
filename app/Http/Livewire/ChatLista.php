@@ -57,7 +57,7 @@ class ChatLista extends Component
 
     public function enviarRespuesta(){
 
-        $validatedData = $this->validate();
+        $this->validate();
         $nuevo = new Mensajechat;
         $nuevo->cliente = $this->para;
         $nuevo->vendedor = $this->vendedor;
