@@ -37,9 +37,9 @@ class ContractRouteTest extends TestCase
     /** @test */
     public function routeProcessContractAutentication(){
         // Peticion post con autenticacion
-
-        $user = Auth::loginUsingId(1);
-        $response = $this->actingAs($user)->post(route('iPContract'));
+        $this->sessionAutenticacion(self::email,self::password);
+        // $user = Auth::loginUsingId(1);
+        $response = $this->actingAs(auth()->user())->post(route('iPContract'));
 
 
         $response->assertRedirect('/');
