@@ -64,7 +64,7 @@ class HomeController extends Controller
         $servicioNuevo = new App\Models\Tablon;
 
         $servicioNuevo->servicio = $request->nombre;
-        $servicioNuevo->descripcion = $request->descripcion;;
+        $servicioNuevo->descripcion = $request->descripcion;
         $servicioNuevo->precio = $request->precio;
         $servicioNuevo->tipo = $request->tipo;
         $servicioNuevo->use_id = auth()->id();

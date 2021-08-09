@@ -14,7 +14,7 @@ class TablonTest extends TestCase
     /**
      * A basic feature test example.
      *
-     * @return void
+     * @test
      */
     public function test_vista_tablon()
     {    
@@ -43,21 +43,17 @@ class TablonTest extends TestCase
     
     public function test_solicitar_servicio(){
 
-        $descripcion = 'Necesito un limpiador de casas por favor';
-
         $response = $this->post(route('login'), [
             'email' => 'pato@gmail.com',
             'password' => 'password'
         ]);
 
-        $response = $this->post(route('tablon.servicio'), [
+        $datosSolicitar = $this->post(route('tablon.servicio'), [
             'nombre' => 'Limpiador de casas',
-            'descripcion' => $descripcion,
+            'descripcion' => 'Necesito un limpiador de casas por favor',
             'precio' => '23.98',
             'tipo' => 'Talento',
-        ]);
-
-        $response->assertRedirect('/tablonServicios');
+        ])->assertRedirect('/');
     }
 
     public function test_solicitar_datos_invalidos(){

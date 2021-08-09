@@ -7,8 +7,6 @@
 <style>
 .bg-gradient {
     background: #C9D6FF;
-    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
-    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
     }
     ul li {
       margin-bottom:1.4rem;
@@ -98,12 +96,12 @@
         <div class="card-body bg-white mt-0 shadow">
           <ul class="list-unstyled mb-5 position-relative">
 
-            <li><strong>Registrar oficios sin límite</strong></li>
-            <li><strong>Registrar talentos sin límites</strong></li>
-            <li><strong>Publicar demanda de servicio sin límite</strong></li>
-            <li><strong>Comunicacón privada con el dueño de un servicio</strong></li>
+            <li><label>Registrar oficios sin límite</label></li>
+            <li><label>Registrar talentos sin límites</label></li>
+            <li><label>Publicar demanda de servicio sin límite</label></li>
+            <li><label>Comunicacón privada con el dueño de un servicio</label></li>
           </ul>
-          <button disabled type="button" class="btn btn-lg btn-block  btn-custom ">Suscribirse</button>
+          <button disabled type="button" class="btn btn-lg btn-block  btn-danger">Suscribirse</button>
         </div>
 
     </div>
@@ -137,7 +135,7 @@
             <li><strong>Comunicacón privada con el dueño de un servicio</strong></li>
             <li><strong>Destacar tu servicio sobre el resto</strong></li>
           </ul>
-          
+
           <!-- The Modal -->
           <div class="tab-pane" id="nav-stripe" role="tabpanel" aria-labelledby="nav-profile-tab">
             <br>
@@ -154,7 +152,7 @@
                 <script>
                     // Esconde el button por defecto
                     document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                    
+
                 </script>
                 @auth
                 @if (auth()->user()->premium == true)
@@ -164,7 +162,7 @@
                 @endif
                 @endauth
                 @guest
-                  <a href="{{ route('login') }}"><button type="button" class="btn btn-lg btn-block  btn-custom "aria-disabled="false">Suscribirse</button></a>    
+                  <a href="{{ route('login') }}"><button type="button" class="btn btn-lg btn-block  btn-danger"aria-disabled="false">Suscribirse</button></a>
                 @endguest
 
             </form>
