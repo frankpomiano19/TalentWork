@@ -91,14 +91,14 @@ class ServiceController extends Controller
             'costoTecn' => 'required|between:1,10000',
             'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
-
+        $imagen2 = $request->file('imagenTecn');
         $datosServicio = new use_occ;
         $datosServicio->use_id = auth()->id();
         $datosServicio->ser_occ_id = $request->servicioTecn;
         $datosServicio->descripcion = $request->detallesTecn;
         $datosServicio->precio = $request->costoTecn;
 
-        $image_url = $this->imageAddToCloud($request->file('imagenTecn'));
+        $image_url = $this->imageAddToCloud($imagen2);
 
         $datosServicio->imagen = $image_url;
         $datosServicio->save();
