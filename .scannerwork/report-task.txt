@@ -2,5 +2,5 @@ projectKey=talentwork
 serverUrl=http://localhost:9000
 serverVersion=9.0.0.45539
 dashboardUrl=http://localhost:9000/dashboard?id=talentwork
-ceTaskId=AXsp5MmVBFrjUsHPy6Mm
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXsp5MmVBFrjUsHPy6Mm
+ceTaskId=AXsrYq7qcLHMZFV6Oau_
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXsrYq7qcLHMZFV6Oau_

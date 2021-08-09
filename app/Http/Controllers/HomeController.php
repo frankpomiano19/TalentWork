@@ -64,15 +64,13 @@ class HomeController extends Controller
         $servicioNuevo = new App\Models\Tablon;
 
         $servicioNuevo->servicio = $request->nombre;
-        $servicioNuevo->descripcion = $request->descripcion;;
+        $servicioNuevo->descripcion = $request->descripcion;
         $servicioNuevo->precio = $request->precio;
         $servicioNuevo->tipo = $request->tipo;
         $servicioNuevo->use_id = auth()->id();
         $servicioNuevo -> save();
 
         $servicios = Tablon::all();
-
-        // return view('servicioTalent',compact('serviceProfile','chat','SerTal','SerOcc'));
         
         return back()->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios)->with('agregado','ok');
     }
