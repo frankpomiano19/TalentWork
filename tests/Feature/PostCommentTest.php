@@ -99,7 +99,7 @@ class PostCommentTest extends TestCase
                                                                 'typeJobFromComment'=>$value, 
                                                                 'serviceId'=>$allServices->id,
                                                                 'comentario'=>$comentario]
-                                )->assertRedirect('/profileServiceTalent/1');
+                                );
 
         $response = $this->assertDatabaseMissing('Post_comments', [
                                     'comentario' => $comentario

@@ -18,7 +18,7 @@ class PostCommentController extends Controller
 
     public function newComment(Request $request){
 
-        $validation = $request->validate([
+        $request->validate([
             'comentario'=>'required|string|max:400',
         ]);
 
