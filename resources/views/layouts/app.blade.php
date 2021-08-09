@@ -96,7 +96,7 @@
                         <a class="nav-link bi bi-table" href="{{ route('tablonservicios') }}"> Tablón</a>
                     @endauth
                 </ul>
-                <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <i class="fa d-inline fa-lg fa-stop-circle"></i><b> TalentWork</b></a> </p>
+                <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <em class="fa d-inline fa-lg fa-stop-circle"></em><strong> TalentWork</strong></a> </p>
                 <ul class="navbar-nav ml-auto">
 
 
