@@ -111,7 +111,7 @@
         <div class="col-2 my-2" style="margin:0px;">
             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Solicitar servicio nuevo</button>
         </div>
-        <form  action=" {{route('tablon.servicio')}} " method="POST" >
+        <form action="{{route('tablon.servicio')}}" method="POST" >
             @csrf
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
                 <div class="modal-dialog">
@@ -169,15 +169,26 @@
 
 
 @section('contenido_abajo_js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha256-5m8PEKx1fPywHlsheZsDTqNh+Hlm2D0/+uWH6lvwOwY=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha256-5m8PEKx1fPywHlsheZsDTqNh+Hlm2D0/+uWH6lvwOwY=" crossorigin="anonymous"></script>
 
 @if (session('eliminado') == 'ok')
     <script>
         Swal.fire(
             '¡Eliminado!',
-            'Tu solicitud ha sido quitado del tablón',
+            'La solicitud ha sido eliminada del tablón',
             'success'
             );
+    </script>
+@endif
+
+@if (session('agregado') == 'ok')
+    <script>
+        Swal.fire(
+            '¡Agregado!',
+            '¡Tu solicitud está en el tablón!',
+            'success'
+            );
+        console.log("agregado");
     </script>
 @endif
 
@@ -188,7 +199,7 @@
 
         Swal.fire({
         title: '¿Quieres eliminar tu solicitud?',
-        text: "Esta accion es irreversible",
+        text: "Esta acción es irreversible",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#0275d8',
@@ -201,6 +212,6 @@
         }
         })
 
-        }) 
+    })    
 </script>
 @endsection

@@ -68,7 +68,7 @@ class HomeController extends Controller
 
         $servicios = Tablon::all();
         
-        return redirect()->route('tablonservicios')->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+        return back()->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios)->with('agregado','ok');
     }
 
     public function eliminarServicio($id)

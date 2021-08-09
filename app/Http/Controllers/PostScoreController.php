@@ -82,8 +82,9 @@ class PostScoreController extends Controller
             }
 
         $score->save();
+        $message = "Solo puede calificar una vez";
+        return redirect()->back()->with("calificacionMessage",$message);
 
-        return redirect()->back();
         
     }
 }

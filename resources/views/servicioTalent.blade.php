@@ -171,19 +171,7 @@
                                 </div>
                                 <div class="card-body">
                                   <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-
-                                    <h5>Calificación por usuarios
-                                                <h4> 
-                                                    <ul class="list-inline">
-                                                    <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
-                                                    <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
-                                                    <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
-                                                    <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
-                                                    <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
-                                                    </ul>
-                                                </h4>
-                                    </h5>
-
+                                    
                                   <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                   <div class="d-flex">
 
@@ -243,6 +231,7 @@
 
 
     </div>
+    
 
     <div class="row">
     </div>
@@ -339,6 +328,8 @@
             <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
             <div class="card-body">
               <h5 class="card-title">Califica este servicio</h5>
+              <p>Tambien puede calificar como 0 estrellas, sin dar click a ninguna</p>
+        
               <!-- Calificacion estrellas-->
                 <form action="{{ route('registrarScore') }}" method="post">
                 {{ csrf_field() }}
@@ -695,6 +686,17 @@
         title: "Contrato correctamente",
         html:  `
         {{session('contractMessage')}}`,
+        icon: "success"
+    });
+</script>
+@endif
+
+@if (session('calificacionMessage'))
+<script>
+    Swal.fire({
+        title: "Calificación recibida",
+        html:  `
+        {{session('calificacionMessage')}}`,
         icon: "success"
     });
 </script>
