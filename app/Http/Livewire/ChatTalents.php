@@ -23,11 +23,14 @@ class ChatTalents extends Component
         'mensaje' => 'required|min:1'
     ];
 
-    public function actualizaMensaje(){
-
+    public function mount(){
+        
         $this->client = Auth::user()->id;
         $this->vendedo = $this->serviceProfile->use_id;
         $this->id_servici = $this->serviceProfile->ser_tal_id;
+    }
+
+    public function actualizaMensaje(){
 
         $this->datos = Mensajechat::where("vendedor","=",$this->vendedo)
         ->where("cliente","=",$this->client)
@@ -40,13 +43,13 @@ class ChatTalents extends Component
 
         $this->validate();
         $nuevo = new Mensajechat;
-        $nuevo->cliente = Auth::user()->id;
-        $nuevo->vendedor = $this->serviceProfile->use_id;
+        $nuevo->cliente = $this->client;
+        $nuevo->vendedor = $this->vendedo;
         $nuevo->mensaje = $this->mensaje;
-        $nuevo->envia = Auth::user()->id;
+        $nuevo->envia = $this->client;
         $nuevo->fecha = now();
         $nuevo->servicio = $this->serviceProfile->IntermediateTal->ser_tal_name;
-        $nuevo->id_servicio = $this->serviceProfile->ser_tal_id;
+        $nuevo->id_servicio = $this->id_servici;
         $nuevo->save();
 
         event(new \App\Events\MessageSent($this->vendedor,$this->respuesta));
@@ -58,10 +61,6 @@ class ChatTalents extends Component
     
     public function render()
     {
-        $this->vendedo = $this->serviceProfile->use_id;
-        $this->client = Auth::user()->id;
-        $this->id_servici = $this->serviceProfile->ser_tal_id;
-
         return view('livewire.chat-talents',[
             "datos" => Mensajechat::where("vendedor","=",$this->vendedo)
                 ->where("cliente","=",$this->client)

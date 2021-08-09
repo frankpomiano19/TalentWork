@@ -8,6 +8,7 @@ use App\Models\Contract;
 use App\Models\use_occ;
 use Livewire\Livewire;
 use App\Http\Livewire\ChatUsuario;
+use App\Http\Livewire\ChatTalents;
 use App\Http\Livewire\Filtroservicio;
 use App\Http\Livewire\ChatLista;
 use App\Models\Mensajechat;
@@ -67,9 +68,6 @@ class VistaBandejaTest extends TestCase
     //Chat usuario
     public function test_estado_chat_ocupacion(){
 
-        //Vemos que exista el contrato de prueba
-        // $this->assertTrue(Contract::whereCon_status("1")->exists());
-
         Contract::create([
             'con_contract_date'=>'2021-07-26',
             'con_hour'=>'15:10:12',
@@ -91,9 +89,6 @@ class VistaBandejaTest extends TestCase
 
         $response = $this->post('/login', $credentials);
 
-        // $contractCreate =  new ContractController();
-        // $requestContract =  $this->contractRequest(1,20.00);
-        // $response = $contractCreate->contractCreate($requestContract);
         //Logeamos al usuario
         //Comprobamos que puede ver el chat de su servicio contratado
         $this->get('/profileServiceOccupation/1')
@@ -102,9 +97,7 @@ class VistaBandejaTest extends TestCase
 
     // Chat talents
     public function test_estado_chat_talento(){
-        //Vemos que exista el contrato de prueba
-        // $this->assertTrue(Contract::whereCon_status("1")->exists());
-        
+
         Contract::create([
             'con_contract_date'=>'2021-07-26',
             'con_hour'=>'15:10:12',
