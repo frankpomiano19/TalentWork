@@ -160,7 +160,7 @@
                 @if (auth()->user()->premium == true)
                 <h4 style="color: rgb(4, 0, 255)" >Usted ya es usuario premium</h4>
                 @else
-                    <button type="submit button" class="btn btn-lg btn-block  btn-custom "aria-disabled="false">Suscribirse</button>    
+                    <button type="submit button" class="btn btn-lg btn-block  btn-danger "aria-disabled="false">Suscribirse</button>    
                 @endif
                 @endauth
                 @guest
