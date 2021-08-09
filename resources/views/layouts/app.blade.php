@@ -81,7 +81,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid"> 
+        <div class="container-fluid">
             <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
                 <p class="navbar-brand text-white mb-0"><span class="navbar-toggler-icon"></span></p>
             </button>
@@ -89,6 +89,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showOccupationService') }}">Oficio</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('showTalentService') }}">Talento</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('showRetoService') }}">Retos</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                     </li>
                     @auth
@@ -105,7 +106,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             </li>
                         @endif
-                        
+
                         @if (Route::has('registrouser'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('registrouser') }}">{{ __('Registro') }}</a>
@@ -155,33 +156,33 @@
                             <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio</p>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Navegación </h2>
                             <ul>
                                 <li><a href="">Mi perfil</a></li>
                                 <li><a href="">Mi historial</a></li>
-                            </ul>                        
+                            </ul>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Tipos de servicios</h2>
                             <ul>
                                 <li><a href="{{ route('showOccupationService') }}">Oficios</a></li>
                                 <li><a href="{{ route('showTalentService') }}">Talentos</a></li>
-                            </ul>                        
+                            </ul>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-newsletter">
                             <h2 class="footer-wid-title">Premium</h2>
                             <p>Subscribete a nuestra versión premium para acceder a mayores beneficios!</p>
                             <div class="newsletter-form">
-                                <input type="submit" value="Subscribete">
+                                <input type="submit" onclick="window.location.href='{{route('premium')}}'" value="Suscribete">
                             </div>
                         </div>
                     </div>
@@ -196,7 +197,7 @@
                            <p>&copy; 2021 TalentWork. Todos los derechos reservados. Grupo 5 - MPF - FISI - UNMSM </p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

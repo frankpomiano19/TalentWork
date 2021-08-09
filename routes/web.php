@@ -9,9 +9,12 @@ use App\Http\Controllers\PaymentController;
 use App\Events\Message;
 use App\Events\MessageSent;
 use App\Http\Controllers\PaymentStripeController;
+use App\Http\Controllers\PaymentPremiumController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\VideoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,14 +29,21 @@ use App\Http\Controllers\PostCommentController;
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
+Route::get('/retoService',[HomeController::class,'showRetoService'])->name('showRetoService');
+Route::get('/changeService',[HomeController::class,'changeAllShow'])->name('showChangeService');
 Route::get('/profileServiceTalent/{id}',[HomeController::class,'showProfileServiceTalent'])->name('showProfileServiceTalent');
 Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileServiceOccupation'])->name('showProfileServiceOccupation');
+Route::get('/profileServiceRetos/{id}',[HomeController::class,'showProfileServiceRetos'])->name('showProfileServiceRetos');
+
 Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
 Route::post('/score','PostScoreController@newScore')->name('registrarScore');
 
 Route::middleware(['auth'])->group(function () {
+    // Ruta para video
+    Route::post('/uploadVideo',[VideoController::class,'videoUpload'])->name('upload.video.25.percentaje');
+
     // Carrito
     Route::post('/checkout/serviceProccess',[ContractController::class,'validationFieldDescriptionContract'])->name('contractDetailsData');
     Route::delete('/cart/destroy/{idUser}',[ContractController::class,'clearCart'])->name('cart.destroy');
@@ -44,12 +54,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
     Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
 
-    // Pago con stripe 
+    // Pago con stripe
     Route::post('/stripe/process',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe');
+
+    //Pago stripe premium
+    Route::post('/stripe/premium',[PaymentPremiumController::class,'processPaymentPremiumStripe'])->name('proccessPaymentPremiumStripe');
+
+    Route::post('/stripe/process2',[ContractController::class,'processPaymentStripe'])->name('proccessPaymentStripe2');
     
     Route::post('/proccessContract',[ContractController::class,'contractProcess'])->name('iPContract');
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
+    Route::post('/registroServReto',[ServiceController::class,'registroReto'])->name('servicio.reto');
     Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
     Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
@@ -95,8 +111,8 @@ Route::get('informa',function(){
     return view('nada');
 });
 Route::get('serviciopremium',function(){
-    return view('serviciopremium');
-});
+    return view('premium');
+})->name('premium');
 
 Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
 
@@ -144,7 +160,7 @@ Route::post('/send-message',function(Request $request){
         new Message(
             $request->input('username'),
             $request->input('message')));
-    
+
     return ["success"=>true];
 });
 

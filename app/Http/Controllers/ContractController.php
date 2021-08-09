@@ -12,6 +12,8 @@ use App\Models\ServiceTalent;
 use App\Models\use_occ;
 use App\Models\use_tal;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Payer;
@@ -279,22 +281,59 @@ class ContractController extends Controller
 
 
     }    
+    // Pagos grupales
+    // Stripe
+
     // Pago con stripe
     public function processPaymentStripe(Request $request){
-        //  Se registra el contrato
         $algo = "";   
-        $algo = $this->getOneItemFromCart();      
-        $requestItems = $this->generateRequestFromArray($algo);       
-        $this->contractProcess($requestItems);
-        $this->clearAllCart();
-        $status = 'El pago fue ejecutado correctamente, y el contrato se realizo de manera satisfactoria';
-        // Fin de registro de contrato
-        if($requestItems->typeOfJob == 1){
-            return redirect(route('showProfileServiceOccupation',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
-        }
-        if($requestItems->typeOfJob == 2){
-            return redirect(route('showProfileServiceTalent',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
+        if(Route::currentRouteName() == 'proccessPaymentStripe2'){
+            $status = 'El pago fue ejecutado correctamente. ';
+            $requestItems = new Request([
+                'serviceOffer'=>$request->serviceOffer,                
+                'typeOfJob'=>3
+            ]);
+            $valorMaximo=  $request->cantidadMeta - $request->cantidadActual; 
+            $request->validate([
+                'serviceOffer' => 'required|numeric|min:0',
+                'cantidadDonacion' => 'required|lte:cantidadMeta|numeric|min:1|max:'.$valorMaximo.''
+            ]);
+    
+            // Actualiza reto
 
+            DB::transaction(function () use($request) {
+                $change = use_occ::find($request->serviceOffer);
+                $change->increment('precio_actual',$request->cantidadDonacion);
+                $change->IntermediateChange()->increment('cha_count',1);
+                //  Desctiva en caso de que llegue al tope 
+                $change2 = use_occ::find($request->serviceOffer);
+                if($change2->precio<=$change2->precio_actual){
+                    $change2->IntermediateChange->update([
+                            'cha_active'=>false
+                    ]);    
+                }
+    
+            });
+        }else{
+            //  Se registra el contrato
+            $algo = $this->getOneItemFromCart();      
+            $requestItems = $this->generateRequestFromArray($algo);       
+            $this->contractProcess($requestItems);
+            $this->clearAllCart();
+            $status = 'El pago fue ejecutado correctamente, y el contrato se realizo de manera satisfactoria';
+        }
+        // Fin de registro de contrato
+        switch ($requestItems->typeOfJob) {
+            case 1:
+                return redirect(route('showProfileServiceOccupation',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
+                break;
+            case 2:
+                return redirect(route('showProfileServiceTalent',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
+                break;
+                
+            default:
+                return redirect(route('showProfileServiceRetos',$requestItems->serviceOffer))->with('statusPaymentSuccess',$status);
+                break;
         }
     }
 
