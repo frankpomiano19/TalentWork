@@ -11,6 +11,7 @@
 @endsection
 
 @section('contenido_cSS')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             width: 100%;
             text-align: center;
         }
+        
     </style>
 
 @endsection
@@ -67,13 +69,17 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                        <div class="d-flex small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
+                                        <h5>Calificación por usuarios
+                                                    <h4> 
+                                                        <ul class="list-inline">
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                                        <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                                        </ul>
+                                                    </h4>
+                                        </h5> 
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -170,13 +176,19 @@
                                     </div>
                                     <div class="card-body">
                                     <h5 class="card-title">S/{{ $serviceProfile->precio }}</h5>
-                                        <div class="d-flex small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
+
+                                        <h5>Calificación por usuarios
+                                            <h4> 
+                                                <ul class="list-inline">
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 1 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 2 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 3 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 4 ? ' yellow': ''}}"></em></li>
+                                                <li class="list-inline-item"><em class="fa fa-star {{$serviceProfile->calificacionT >= 5 ? ' yellow': ''}}"></em></li>
+                                                </ul>
+                                            </h4>
+                                        </h5>
+
                                     <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                     <div class="d-flex">
                                         @php
@@ -305,12 +317,75 @@
             </div>
         </form>
 
+        @auth
+            @php
+                $receivedService =  false;
+                $unComment =  true;
+            @endphp
+
+            @foreach($serviceProfile->IntermediateOccContract as $contractScr)
+                @if($contractScr->use_receive == auth()->user()->id)
+                        @php
+                            $receivedService =  true;
+                        @endphp
+                @endif
+            @endforeach
+
+            @foreach($serviceProfile->UseOccPostScore as $ScrEtiq)
+                @if($ScrEtiq->use_id == auth()->user()->id){
+                    @if($ScrEtiq->etiqueta == 'comentado')
+                        @php
+                            $unComment =  false;
+                        @endphp
+                    @endif
+                }
+                @endif
+            @endforeach
+
+        @if($receivedService && $unComment)
+
+        <div class="card" style="margin-left: 23rem; margin-right: 4rem">
+            <h5 class="card-header">¿Qué tal te parecio este servicio?</h5>
+            <div class="card-body">
+              <h5 class="card-title">Califica este servicio</h5>
+              <p>Tambien puede calificar como 0 estrellas, sin dar click a ninguna</p>
+        
+
+                <form action="{{ route('registrarScore') }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
+                <input type="hidden" name="typeJobFromScore" value="1">
+                <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
+                    <div class="rating">
+                        <input id="star5" name="calificacion" type="radio" value="5" class="radio-btn hide" />
+                        <label for="star5">&#9733;</label>
+                        <input id="star4" name="calificacion" type="radio" value="4" class="radio-btn hide" />
+                        <label for="star4">&#9733;</label>
+                        <input id="star3" name="calificacion" type="radio" value="3" class="radio-btn hide" />
+                        <label for="star3">&#9733;</label>
+                        <input id="star2" name="calificacion" type="radio" value="2" class="radio-btn hide" />
+                        <label for="star2">&#9733;</label>
+                        <input id="star1" name="calificacion" type="radio" value="1" class="radio-btn hide" />
+                        <label for="star1">&#9733;</label>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn" style="background-color: rgba(10, 169, 190, 0.61)">Calificar</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+
+        @endif
+
+        @endauth
+
         {{-- comentario --}}
     <div class="px-4 px-lg-5 my-5">
         <div class="col-3">
             <h2 class="headertekst">Comentarios</h2>
         </div>
-
+        
         <div class="container-fluid my-5">
             <div class="row">
                 <div class="col-md-3">
@@ -693,6 +768,17 @@
     })
 </script>
 
+@endif
+
+@if (session('calificacionMessage'))
+<script>
+    Swal.fire({
+        title: "Calificación recibida",
+        html:  `
+        {{session('calificacionMessage')}}`,
+        icon: "success"
+    });
+</script>
 @endif
 
 @endsection
