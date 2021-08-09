@@ -24,8 +24,6 @@ class ServiceRegisterTest extends TestCase
      */
     function test_view_ServiceRegister_page()
     {
-        
-        
         $serviciosTec = ServiceOccupation::all();
         $serviciosTal = ServiceTalent::all();
         $this->get('registroServicio')

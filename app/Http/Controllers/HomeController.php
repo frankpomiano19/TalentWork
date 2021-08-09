@@ -71,6 +71,8 @@ class HomeController extends Controller
         $servicioNuevo -> save();
 
         $servicios = Tablon::all();
+
+        // return view('servicioTalent',compact('serviceProfile','chat','SerTal','SerOcc'));
         
         return back()->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios)->with('agregado','ok');
     }
