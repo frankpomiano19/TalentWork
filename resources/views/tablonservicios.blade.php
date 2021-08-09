@@ -181,6 +181,17 @@
     </script>
 @endif
 
+@if (session('agregado') == 'ok')
+    <script>
+        Swal.fire(
+            '¡Agregado!',
+            '¡Tu solicitud está en el tablón!',
+            'success'
+            );
+        console.log("agregado");
+    </script>
+@endif
+
 <script>
 
     $('.eliminar-servicio').submit(function(e){

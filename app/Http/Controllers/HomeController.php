@@ -48,7 +48,7 @@ class HomeController extends Controller
         $talentos = ServiceTalent::all();
         $ocupaciones = ServiceOccupation::all();
         $servicios = Tablon::all();
-        return view('tablonservicios')->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+       return view('tablonservicios',compact('talentos','ocupaciones','servicios'));
 
     }
 
@@ -68,14 +68,14 @@ class HomeController extends Controller
 
         $servicios = Tablon::all();
         
-        return redirect()->route('tablonservicios')->with('agregado', 1)->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
+        return redirect()->route('tablonservicios')->with('agregado', 'ok')->with('talentos', $talentos)->with('ocupaciones', $ocupaciones)->with('servicios', $servicios);
     }
 
     public function eliminarServicio($id)
     {
         $servicio = Tablon::find($id);
         $servicio->delete();
-        return back()->with('eliminado','ok');
+        return redirect()->route('tablonservicios')->with('eliminado','ok');
     }
 
     public function showProfileServiceTalent($id){
