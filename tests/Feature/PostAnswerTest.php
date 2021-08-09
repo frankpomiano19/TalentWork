@@ -53,7 +53,6 @@ class PostAnswerTest extends TestCase
 
     public function test_errorValidation_postCommentFailed_OCC()
     {
-        //$this->withoutExceptionHandling();
         $comentario = '';
         $ComId = '1';
 
@@ -66,24 +65,23 @@ class PostAnswerTest extends TestCase
         $id = '2';
         $allServices = use_occ::where('id',$id)->first();
 
-        $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
+        $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceOccupation/2')->post(route('registrarComentR'), [
+        $this->from('/profileServiceOccupation/2')->post(route('registrarComentR'), [
                                                                 'comentarioRespuesta'=>$comentario, 
                                                                 'usCom'=>auth()->user()->id,
                                                                 'ComId'=>$ComId
                                                                 ]
                                 )->assertRedirect('/profileServiceOccupation/2');
 
-        $response = $this->assertDatabaseMissing('answers', [
+        $this->assertDatabaseMissing('answers', [
                                     'comentario' => $comentario
                                 ]);
         
     }
-
-    public function test_errorValidation_postCommentFailed_TAL()
+    /** @test */          
+    public function errorValidation_postCommentFailed_TAL()
     {
-        //$this->withoutExceptionHandling();
         $comentario = '';
         $ComId = '3';
 
@@ -96,16 +94,16 @@ class PostAnswerTest extends TestCase
         $id = '1';
         $allServices = use_tal::where('id',$id)->first();
 
-        $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
+        $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
 
-        $response = $this->from('/profileServiceTalent/1')->post(route('registrarComentR'), [
+        $this->from('/profileServiceTalent/1')->post(route('registrarComentR'), [
                                                                 'comentarioRespuesta'=>$comentario, 
                                                                 'usCom'=>auth()->user()->id,
                                                                 'ComId'=>$ComId
                                                                         ]
                                 )->assertRedirect('/profileServiceTalent/1');
 
-        $response = $this->assertDatabaseMissing('answers', [
+        $this->assertDatabaseMissing('answers', [
                                     'comentario' => $comentario
                                 ]);
         
