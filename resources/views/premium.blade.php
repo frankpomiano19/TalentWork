@@ -141,7 +141,7 @@
             <br>
             <form action="{{ route('proccessPaymentPremiumStripe') }}" method="POST">
                 @csrf
-                <script src="https://checkout.stripe.com/checkout.js integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" class="stripe-button"
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="{{ config('services.stripe.key') }}"
                     data-amount="500"
                     data-name="Subscription premium"

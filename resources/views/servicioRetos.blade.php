@@ -146,7 +146,7 @@
                                     $ytendstring=end($ytendarray);
                                     $ytendarray=explode("&", $ytendstring);
                                     $ytcode=$ytendarray[0];
-                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title="Navigation menu" frameborder=\"0\" allowfullscreen></iframe>";
+                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title=\"Navigation menu\" frameborder=\"0\" allowfullscreen></iframe>";
                                 @endphp
                                 </div>
                                 <br>
@@ -292,7 +292,7 @@
 
 
                                                             <br>
-                                                            <script src="https://checkout.stripe.com/checkout.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" class="stripe-button"
+                                                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                                                 data-key="{{ config('services.stripe.key') }}"
                                                                 data-name="{{ $serviceProfile->IntermediateChange->cha_name }}"
                                                                 data-description="{{ $serviceProfile->description }}"
@@ -622,9 +622,9 @@
                                 <h5 class="card-title m-0">Oficios Disponibles</h5>
                                 <div class="list-group list-group-flush">
                                     @foreach($SerOcc as $so)
-                                    <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a>
+                                    {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a> --}}
                                     @endforeach
-                                    <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a>
+                                    {{-- <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                                 </div>
                             </div>
                         </div>

@@ -594,9 +594,9 @@
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerOcc as $so)
-                                <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a>
+                                {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a> --}}
                                 @endforeach
-                                <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a>
+                                {{-- <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
                         </div>
                     </div>
@@ -605,9 +605,9 @@
                             <h5 class="card-title m-0">Talentos</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerTal as $st)
-                                <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a>
+                                {{-- <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a> --}}
                                 @endforeach
-                                <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a>
+                                {{-- <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
                         </div>
                     </div>

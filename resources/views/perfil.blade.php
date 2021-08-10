@@ -445,7 +445,7 @@
                                         </div>
                                         <div class="col-8">
                                             <h2 class="fs-4"> No tienes ningún reto registrado</h2>
-                                            <a href="" class= "badge badge-light text-dark">Registre su reto aquí</a>
+                                            <a href="{{ route('offerMyService') }}" class= "badge badge-light text-dark">Registre su reto aquí</a>
                                         </div>
                                     </div>
                                 @else
