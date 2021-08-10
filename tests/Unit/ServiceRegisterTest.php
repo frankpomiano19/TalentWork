@@ -34,9 +34,6 @@ class ServiceRegisterTest extends TestCase
         //Comprobación de que exite un servicio de talento
         $view->assertSee('Abridor de cajas');
         
-
-
-
     }
 
     function test_post_ServiceRegister_Ocupation(){

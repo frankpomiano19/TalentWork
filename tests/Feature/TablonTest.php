@@ -8,6 +8,9 @@ use Tests\TestCase;
 use App\Models\Tablon;
 use App\Models\ServiceOccupation;
 use App\Models\ServiceTalent;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class TablonTest extends TestCase
 {
@@ -64,7 +67,6 @@ class TablonTest extends TestCase
         ]);
 
         $response = $this->post(route('tablon.servicio'), []);
-
         $response->assertRedirect('/');
         $response->assertSessionHasErrors(['nombre','descripcion','tipo','precio']);
     }
