@@ -6,7 +6,7 @@
     @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js" integrity="sha384-zvPTdTn0oNW7YuTZj1NueYOFJSJNDFJGdKwMMlWDtr3b4xarXd2ydDUajHfnszL7" crossorigin="anonymous"></script>
-    
+
 @endsection
 
 @section('contenido_cSS')
@@ -29,7 +29,7 @@
 
    }
   .hero__pic {
-  
+
     height: 391px;
     width:520px;
     display: -webkit-box;
@@ -43,13 +43,13 @@
     justify-content: center;
 
 
-  
+
   }
   .set-bg {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-    
+
   }
    *, ::after, ::before {
     box-sizing: border-box;
@@ -72,7 +72,7 @@
     font-family: 'Text Me One', sans-serif;
     font-weight: 900;
     margin: 0;
-    
+
     }
 </style>
 @endsection
@@ -93,7 +93,7 @@
             @csrf
 
         <div class="modal-body container">
-            
+
             <label for="">Insertar url del video de YOUTUBE : </label>
                 <input type="hidden" required class="form-control" name="idService" value="{{ $serviceProfile->id }}">
 
@@ -105,7 +105,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                @enderror                
+                @enderror
         </div>
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> --}}
@@ -136,7 +136,7 @@
 
                                 {{-- Video --}}
                                 <h4>Video</h4>
-                                
+
                                 <div class="hero__pic set-bg"  data-setbg="img/hero/hero-video.png" style="background-image: url(&quot;https://img.freepik.com/vector-gratis/fondo-negro-foco-luz_1017-27230.jpg?size=626&ext=jpg&quot;);">
 
                                 @php
@@ -146,15 +146,15 @@
                                     $ytendstring=end($ytendarray);
                                     $ytendarray=explode("&", $ytendstring);
                                     $ytcode=$ytendarray[0];
-                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" frameborder=\"0\" allowfullscreen></iframe>";                                
-                                @endphp                            
-                                </div>                                      
+                                    echo "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/$ytcode\" title="Navigation menu" frameborder=\"0\" allowfullscreen></iframe>";
+                                @endphp
+                                </div>
                                 <br>
 
                                 <a href="{{ $serviceProfile->IntermediateChange->cha_video }}">Link del video</a>
 
                             @endif
-    
+
 
                         </div>
                         <div class="col-md-6">
@@ -184,7 +184,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-body">
-                                
+
                                     <div class="d-flex small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
@@ -192,7 +192,7 @@
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
                                     </div>
-                                   
+
                                   <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                   <span class="ksr-green-700 inline-block bold type-16 type-28-md">
                                   <span class="ksr-green-500">S/{{ $serviceProfile->precio_actual }}</span>
@@ -200,7 +200,7 @@
                                   <p class="card-text">contribuido de <span class="money">{{ $serviceProfile->precio }} US$ </span></p>
                                   <div class="block type-16 type-28-md bold dark-grey-500"><span> {{ $serviceProfile->IntermediateChange->cha_count }} </span></div>
                                   <p class="card-text">patrocinadores</p>
-                                  
+
                                   <div class="">
 
                                     @php
@@ -214,7 +214,7 @@
                                                             <em class="bi-cart-fill me-1"></em>
                                                             Tu eres el del servicio
                                                         </button>
-    
+
                                                     </div>
 
                                             </div>
@@ -224,9 +224,9 @@
                                             <div class="row">
                                                 <div class="col-md-12 d-flex justify-content-center">
                                                     <div class="alert alert-danger" role="alert">
-                                                        * Los pagos fueron INHABILITADOS hasta que subas un video 
+                                                        * Los pagos fueron INHABILITADOS hasta que subas un video
                                                       </div>
-        
+
                                                 </div>
                                                 {{-- Subir video o enlace --}}
                                                 <div class="col-md-12 d-flex justify-content-center" data-toggle="modal" data-target="#modalInsertVideo">
@@ -234,7 +234,7 @@
                                                         <em class="fa fa-upload"></em>
                                                         Subir video
                                                     </button>
-            
+
                                                 </div>
 
 
@@ -252,15 +252,15 @@
                                                     </div>
                                                 </nav>
                                              </div>
-                                        
+
                                              @if ( $serviceProfile->precio_actual>=$serviceProfile->precio*0.25 && $serviceProfile->IntermediateChange->cha_25_percent_active==false)
                                                 {{-- Llega al 25% y no tiene video --}}
                                                 <button disabled class="btn btn-danger theme--create bttn-large flex mb3 ">
                                                     Estamos pidiendo un video de prueba al que ofrece el servicio
-                                                </button>       
+                                                </button>
                                                 <label class="text-danger" for="">
-                                                * Actualmente las donaciones estan inhabilitadas, hasta que el usuario coloque un video de prueba.Sea paciente                                                  
-                                                </label>   
+                                                * Actualmente las donaciones estan inhabilitadas, hasta que el usuario coloque un video de prueba.Sea paciente
+                                                </label>
                                              @else
                                              <div class="col-md-12">
                                                 <div class="tab-content" id="nav-tabContent">
@@ -271,7 +271,7 @@
                                                         @if($serviceProfile->precio <=$serviceProfile->precio_actual)
                                                             <button style="cursor: default !important" disabled class="bttn bttn-primary theme--create bttn-large flex mb3 ">
                                                                 !Alcanzo la meta¡
-                                                            </button>                                                            
+                                                            </button>
                                                         @else
 
                                                         <form action="{{ route('proccessPaymentStripe2') }}" method="POST">
@@ -288,14 +288,14 @@
                                                               </button>
                                                             </div>
                                                             @enderror
-                                
-                                
+
+
 
                                                             <br>
-                                                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                            <script src="https://checkout.stripe.com/checkout.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" class="stripe-button"
                                                                 data-key="{{ config('services.stripe.key') }}"
                                                                 data-name="{{ $serviceProfile->IntermediateChange->cha_name }}"
-                                                                data-description="{{ $serviceProfile->description }}" 
+                                                                data-description="{{ $serviceProfile->description }}"
                                                                 data-panel-label="Donar"
                                                                 data-image="https://logos-world.net/wp-content/uploads/2021/03/Stripe-Symbol.png"
                                                                 data-locale="es">
@@ -308,10 +308,10 @@
                                                                 Patrocina este proyecto (stripe)
                                                             </button>
                                                             <label class="text-info" for="">
-                                                                * Cuando llegue al 25% o mas la pagina exigirá un video sobre evidencia del servicio, asi que dona con precaución 
-                                                                (Si una donacion cubre todo el costo de todas maneras exigiremos el video)                                                   
-                                                            </label>   
-                                                                            
+                                                                * Cuando llegue al 25% o mas la pagina exigirá un video sobre evidencia del servicio, asi que dona con precaución
+                                                                (Si una donacion cubre todo el costo de todas maneras exigiremos el video)
+                                                            </label>
+
                                                         </form>
                                                         @endif
 
@@ -413,7 +413,7 @@
             <div class="col-3">
                 <h2 class="headertekst">Comentarios</h2>
             </div>
-    
+
             <div class="container-fluid my-5">
                 <div class="row">
                     <div class="col-md-3">
@@ -425,27 +425,27 @@
                                     <button type="button" class="btn btn-sm btn-primary" name="btnpregunta" data-toggle="modal" data-target="#Modalpregunta">Añadir Pregunta Frecuente</button>
                                     @endif
                                 @endauth
-    
+
                         </div>
                         </div>
-    
+
                         @foreach($serviceProfile->UseOccPostQuestion as $ques)
-    
+
                         <div class="card mt-4">
                             <div class="card-body p-3">
                                 <h6 class="card-subtitle mb-2 text-muted">{{$ques->pregunta}}</h6>
                                 <p class="card-text">{{$ques->respuesta}}</p>
                             </div>
                         </div>
-    
+
                         @endforeach
-    
+
                     </div>
                     <div class="col-md-6">
-    
+
                         <!--- Post Form Begins -->
                 @auth
-    
+
                 <section class="card">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -465,7 +465,7 @@
                                         <input type="hidden" name="usCom" value="{{ auth()->user()->id }}">
                                         <input type="hidden" name="typeJobFromComment" value="1">
                                         <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
-    
+
                                         <textarea class="form-control @error('comentario') is-invalid @enderror" id="message" rows="3" placeholder="Escriba lo que piensa..." name="comentario"></textarea>
                                         @error('comentario')
                                             <span class="invalid-feedback" role="alert">
@@ -481,10 +481,10 @@
                         </div>
                     </form>
                     </section>
-    
+
                 @endauth
                         <!--- Post Form Ends -->
-    
+
                         <!-- Post Begins -->
                         <section class="card mt-4">
                             @foreach( $serviceProfile->UseOccPostComment as $coment)
@@ -506,7 +506,7 @@
                                         </a>
                                         <p class="small text-secondary m-0 mt-1">Posteado el {{ $coment->created_at }}</p>
                                     </div>
-    
+
                                 </div>
                                 <!-- post body -->
                                 <div class="">
@@ -540,8 +540,8 @@
                                             </li>
                                         </ul>
                                     </div>
-    
-    
+
+
                                     <!-- collapsed comments begins -->
                                     <div class="collapse" id="id{{$coment->id}}">
                                         <div class="card border border-right-0 border-left-0 border-bottom-0 mt-1">
@@ -569,7 +569,7 @@
                                             <!-- comment card bgins -->
                                             <section>
                                             @foreach( $coment->UseComPostAnswer as $comentR)
-    
+
                                                 <div class="card p-2 mt-3" style="background-color: rgb(154, 231, 195)">
                                                     <!-- comment header -->
                                                     <div class="d-flex">
@@ -586,9 +586,9 @@
                                                             <a class="text-decoration-none text-capitalize h6 m-0" href="#">{{ $comentR->PostCommentUser->name }}</a><label class="text-muted small"> &nbsp; Respondiendo a {{ $coment->PostCommentUser->name }}</label>
                                                             <p class="small m-0 text-muted">Posteado el {{ $comentR->created_at }}</p>
                                                         </div>
-                                                        
+
                                                     </div>
-    
+
                                                     <!-- comment header -->
                                                     <!-- comment body -->
                                                     <div class="card-body p-0">
@@ -598,11 +598,11 @@
                                                         </a>
                                                     </div>
                                                 </div>
-    
+
                                             @endforeach
                                             </section>
                                             <!-- comment card ends -->
-    
+
                                         </div>
                                     </div>
                                     <!-- collapsed comments ends -->
@@ -611,7 +611,7 @@
                             </div>
                             <!---pt2 del comentariooooooooooooooooooooo >
                                 <!-- Post Begins -->
-    
+
                             @endforeach
                         </section>
                         <!-- Post Ends -->
@@ -646,30 +646,30 @@
         @livewireScripts
         {{-- Quitar div? --}}
             </div>
-    
-    
+
+
             <!-- The Modal -->
             <form action="{{ route('registrarPreg') }}" method="post" class="form-horizontal">
                 <div class="modal fade" id="Modalpregunta">
                     <div class="modal-dialog">
                     <div class="modal-content">
-    
+
                         <!-- Modal Header -->
                         <div class="modal-header">
                         <h4 class="modal-title">Añadir pregunta frecuente</h4>
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
-    
+
                         <!-- Modal body -->
-    
+
                         <div class="modal-corpo">
-    
+
                             {{ csrf_field() }}
                             <input type="hidden" name="typeJobFromQuestion" value="1">
                             <input type="hidden" name="serviceId" value="{{ $serviceProfile->id }}">
-    
+
                             <div class="form-row">
-    
+
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Escribir Pregunta Frecuente</label>
                                 <input type="text" name="pregunta" class="form-control @error('pregunta') is-invalid @enderror" id="inputPregunta" placeholder="Escriba la Pregunta Frecuente*" value="{{ old('pregunta')}}" />
@@ -680,9 +680,9 @@
                                 @enderror
                                 </div>
                             </div>
-    
+
                             <div class="form-row">
-    
+
                                 <div class="form-group col-md-12">
                                 <label for="inputEmail4">Responder Pregunta Frecuente</label>
                                 <input type="text" name="respuesta" class="form-control @error('respuesta') is-invalid @enderror" id="inputRespuesta" placeholder="Responda la Pregunta Frecuente*" value="{{ old('respuesta')}}" />
@@ -693,24 +693,24 @@
                                 @enderror
                                 </div>
                             </div>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
                         </div>
-    
+
                         <!-- Modal footer -->
                         <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-success">Publicar Pregunta
-    
+
                         </button>
-    
+
                         <button id="cerrarBtn" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-    
+
                         </div>
-    
+
                         </form>
                     </div>
 
@@ -728,7 +728,7 @@
         @livewireScripts
 
 
-            
+
 
 
 @endsection
@@ -745,7 +745,7 @@
         icon: "error"
     });
 </script>
-@enderror    
+@enderror
 
 
 @if (session('contractFailed'))

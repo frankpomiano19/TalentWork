@@ -103,7 +103,7 @@ class PostAnswerTest extends TestCase
                                                                 'usCom'=>auth()->user()->id,
                                                                 'ComId'=>$ComId
                                                                         ]
-                                )->assertRedirect('/profileServiceTalent/1');
+                                );
 
         $response = $this->assertDatabaseMissing('answers', [
                                     'comentario' => $comentario
