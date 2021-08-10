@@ -60,7 +60,6 @@ class ContractController extends Controller
     public function clearAllCart(){
         \Cart::session(auth()->user()->id)->clear();
         \Cart::session(auth()->user()->id)->clearCartConditions();
-
     }
 
     
