@@ -6,7 +6,7 @@
             <div class="" id="" wire:model="precioMin">
                 <input type="radio" id="cbox2" name="precio" value="10"> <label for="cbox2">Hasta 10</label>
                 <input type="radio" id="cbox2" name="precio" value="100"> <label for="cbox2">Hasta 100</label>
-                <input type="radio" id="cbox2" name="precio" value="1000"> <label for="cbox2">Hasta 1000</label>
+                <input type="radio" id="cbox2" name="precio" value="2000"> <label for="cbox2">Hasta 2000</label>
             </div>
             <h5>Ordenar por:</h5>
             <div wire:model="calificacion">

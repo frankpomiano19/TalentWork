@@ -47,9 +47,6 @@ class ContractController extends Controller
     public function clearCart($userId){
         \Cart::session(auth()->user()->id)->clearItemConditions($userId);
         \Cart::session(auth()->user()->id)->remove($userId);        
-        foreach (\Cart::session(auth()->user()->id)->getContent() as $itemD) {
-            \Cart::session(auth()->user()->id)->clearItemConditions($itemD->id);
-        }
         \Cart::session(auth()->user()->id)->clear();
         \Cart::session(auth()->user()->id)->clearCartConditions();
         return back();
@@ -65,7 +62,6 @@ class ContractController extends Controller
     
     public function validationFieldDescriptionContract(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
-
         if($validationConfirm->fails()){
             $errorRegisterFailed = self::ERRORREASON; 
             return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
@@ -100,10 +96,7 @@ class ContractController extends Controller
 
     public function contractProcess(Request $request){
         $validationConfirm = $this->validationRegisterContract($request);
-        if($validationConfirm->fails()){
-            $errorRegisterFailed = self::ERRORREASON; 
-            return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
-        }
+        $this->redirectInCaseErrorValidation($validationConfirm);
         // 1 : Para oficios
         // 2 : Para talentos
         $this->contractCreate($request);
@@ -172,7 +165,12 @@ class ContractController extends Controller
         return $validacion;        
     }
 
-
+    public function redirectInCaseErrorValidation($validation){
+        if($validation->fails()){
+            $errorRegisterFailed = self::ERRORREASON; 
+            return back()->withErrors($validation,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
+        }
+    }
 
     public function processPaymentServiceContract()
     {
@@ -185,10 +183,7 @@ class ContractController extends Controller
         $algo = $this->getOneItemFromCart();     
         $requestItems = $this->generateRequestFromArray($algo);       
         $validationConfirm = $this->validationRegisterContract($requestItems);
-        if($validationConfirm->fails()){
-            $errorRegisterFailed = self::ERRORREASON; 
-            return back()->withErrors($validationConfirm,'contractProccessForm')->with('contractFailed',$errorRegisterFailed)->withInput();
-        }
+        $this->redirectInCaseErrorValidation($validationConfirm);
         // Fin de validacion de contrato
         $payer = new Payer(); //Usuario que paga
         $payer->setPaymentMethod('paypal');
@@ -228,11 +223,7 @@ class ContractController extends Controller
         $this->constructPayment();
 
         // Validacion de datos
-        $requestItems = new Request([
-
-        ]);
-        $this->validationRegisterContract($requestItems);
-
+        $requestItems = new Request([]);
         $paymentId = $request->input('paymentId');
         $payerId = $request->input('PayerID');
         $token = $request->input('token');

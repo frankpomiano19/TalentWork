@@ -45,6 +45,7 @@ class Filtroservicio extends Component
             $this->tipo = "Ocupaciones";
             return view('livewire.filtroservicio',[
                 'datos' => use_occ::where("ser_occ_id","=", $this->ocupacion)
+                    ->where("use_occ_group_payment",false)
                     ->where("precio",">",0)
                     ->where("precio","<=", $this->precioMin)
                     //->orderBy('calificacion', $this->calificacion)

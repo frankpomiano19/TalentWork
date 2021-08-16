@@ -16,7 +16,7 @@ class ContractRouteTest extends TestCase
      */
 
     use DatabaseTransactions;
-    
+
     const email = "pato@gmail.com";
     const password = "password" ;
     
@@ -40,11 +40,9 @@ class ContractRouteTest extends TestCase
     public function routeProcessContractAutentication(){
         // Peticion post con autenticacion
         $this->sessionAutenticacion(self::email,self::password);
-        // $user = Auth::loginUsingId(1);
         $response = $this->actingAs(auth()->user())->post(route('iPContract'));
 
-
-        $response->assertRedirect('/');
+        $response->assertOk();
     }
 
     /** @test */    
@@ -157,6 +155,24 @@ class ContractRouteTest extends TestCase
         $instanceOfContract->validationFieldDescriptionContract($requestContract);
         $response = $instanceOfContract->clearCart(2);
         $this->assertContains(302,[$response->getStatusCode()]);
+    }
+
+    /** @test */        
+    public function errorValidationAddToCart(){
+        $instanceOfContract =  new ContractController();
+        $this->sessionAutenticacion(self::email,self::password);        
+        $requestContract = $this->contractRequest(1,-1.00);
+        $newResponse = $instanceOfContract->validationFieldDescriptionContract($requestContract);
+        $response = $instanceOfContract->clearCart(2);
+        $this->assertContains(302,[$response->getStatusCode()]);
+        $this->assertContains("No se pudo ejecutar el contrato por las siguientes razones : ",[$newResponse->getSession()->get('contractFailed')]);
+    }
+
+
+    /** @test */        
+    public function viewCheckoutPayment()
+    {
+        $this->call('GET',route('index.checkout'))->assertRedirect();
     }
 
     public function contractRequest($typeOfJobNow,$price){

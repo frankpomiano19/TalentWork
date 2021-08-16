@@ -75,17 +75,12 @@ class NuevoRegistroTest extends TestCase
         $email = 'sincamino@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
 
-        //$password = '959146547';
-        //$password_confirmation = '959146547';
-
-        $response = $this->assertDatabaseHas('users', [
+        $this->assertDatabaseHas('users', [
             'name'=>$name, 
             'lastname'=>$lastname, 
             'dni'=>$dni, 
             'email'=>$email, 
             'birthdate'=>$birthdate, 
-            //'password'=>bcrypt($password), 
-            //'password_confirmation'=>bcrypt($password)
         ]);
     }
 

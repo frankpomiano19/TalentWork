@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Pago con paypal
     Route::post('/paypal/payService', [ContractController::class,'processPaymentServiceContract'])->name('continuePaymentPaypal');
-    Route::get('/paypal/status', [ContractController::class,'payPalStatus']);
+    Route::get('/paypal/status', [ContractController::class,'payPalStatus'])->name('paypal.status.now');
     Route::get('/paypal/cancel',[ContractController::class,'cancelPaypal'])->name('cancelValue');
 
     // Pago con stripe
@@ -158,10 +158,6 @@ Route::post('/send-message',function(Request $request){
 
     return ["success"=>true];
 });
-
-Route::get('/chat', 'ChatsController@index');
-Route::get('messages', 'ChatsController@fetchMessages');
-Route::post('messages', 'ChatsController@sendMessage');
 
 Broadcast::channel('chat', function () {
     return Auth::check();

@@ -80,7 +80,6 @@ class PostScoreController extends Controller
                     break;
                 default :
                     return ("No se pudo procesar");
-                    break;
             }
 
         $score->save();
