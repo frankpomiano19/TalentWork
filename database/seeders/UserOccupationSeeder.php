@@ -29,9 +29,10 @@ class UserOccupationSeeder extends Seeder
             'use_id' => '2',
             'ser_occ_id' => '1',
             'descripcion' => 'Hago cualquier tipo de diseño grafico 2D o 3D, tambien hagos buenos momos, echate un OjitO por aqui',
-            'precio' => 20.00,
-            'imagen'=>'https://cdn.euroinnova.edu.es/img/subidasEditor/dise%C3%B1o%20grafico-1598602026.jpg'
-            
+            'precio' => 600.00,
+            'imagen'=>'https://cdn.euroinnova.edu.es/img/subidasEditor/dise%C3%B1o%20grafico-1598602026.jpg',
+            'use_occ_group_payment'=>true,
+            'precio_actual'=>10
         ]);
 
     }

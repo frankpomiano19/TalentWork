@@ -299,7 +299,6 @@ class ContractController extends Controller
             ]);
     
             // Actualiza reto
-
             DB::transaction(function () use($request) {
                 $change = use_occ::find($request->serviceOffer);
                 $change->increment('precio_actual',$request->cantidadDonacion);

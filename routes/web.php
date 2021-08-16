@@ -10,6 +10,7 @@ use App\Events\Message;
 use App\Events\MessageSent;
 use App\Http\Controllers\PaymentStripeController;
 use App\Http\Controllers\PaymentPremiumController;
+use App\Http\Controllers\PerfilController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\PostCommentController;
@@ -66,8 +67,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/registroServTecnico',[ServiceController::class,'registroTecnico'])->name('servicio.tecnico');
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
     Route::post('/registroServReto',[ServiceController::class,'registroReto'])->name('servicio.reto');
-    Route::get('/perfil/{id}', 'PerfilController@index')->name('perfil');
-    Route::patch('/perfil/{id}','PerfilController@update')->name('update.user');
+    Route::get('/perfil/{id}',[PerfilController::class,'index'])->name('perfil');
+    Route::patch('/perfil/{id}',[PerfilController::class,'update'])->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
     Route::post('/finalizarContr',[ContractController::class,'finishContract'])->name('end.contract');
@@ -126,16 +127,10 @@ Route::get('/categorias',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
-Route::get('perfil',function(){
-    return view('perfil');
-});
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 
 Route::get('/servicio',function(){
     return view('servicio');
-});
-Route::get('perfil',function(){
-    return view('perfil');
 });
 Route::get('registroServicio',[ServiceController::class, 'registro']);
 

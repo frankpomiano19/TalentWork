@@ -20,9 +20,6 @@ class PostAnswerTest extends TestCase
         $allServices = use_occ::where('id',$id)->first();
 
         $view = $this->get(route('showProfileServiceOccupation',$allServices->id))->assertStatus(200);
-
-        //$view = $this->view('perfil', compaq(auth()->user()->id));
-
         $view->assertSee('Estan chidos tus momos, eres un crack');
     }
 
@@ -32,9 +29,6 @@ class PostAnswerTest extends TestCase
         $allServices = use_tal::where('id',$id)->first();
 
         $view = $this->get(route('showProfileServiceTalent',$allServices->id))->assertStatus(200);
-
-        //$view = $this->view('perfil', compaq(auth()->user()->id));
-
         $view->assertSee('Tus historias son geniales, vale la pena cada centavo');
     }
 

@@ -7,6 +7,8 @@ use App\Models\Contract;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Auth;
 
 class StateContractTest extends TestCase
 {
@@ -15,6 +17,9 @@ class StateContractTest extends TestCase
      *
      * @test
      */
+    use DatabaseTransactions;
+
+    /** @test */  
     public function FinishContratTest()
     {
         $contrat = Contract::first();
@@ -33,5 +38,19 @@ class StateContractTest extends TestCase
         [$response->getSession()->get('serviceMessage')]);
     }
 
-    
+
+    /** @test */  
+    public function contractStateTalentTest(){
+        Auth::loginUsingId(7);
+        $view = $this->get(route('estadoContratoTal',2))->assertStatus(200);
+        $view->assertSee('Soy un buen narrador, cuento buenos chistes');
+    }
+
+    /** @test */  
+    public function contractStateOccTest(){
+        Auth::loginUsingId(7);
+        $view = $this->get(route('estadoContratoOcu',1))->assertStatus(200);
+        $view->assertSee('Hago cualquier tipo de diseño grafico 2D o 3D');
+    }
+
 }

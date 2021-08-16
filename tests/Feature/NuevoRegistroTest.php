@@ -12,6 +12,7 @@ class NuevoRegistroTest extends TestCase
      *
      * @return void
      */
+
     public function test_errorValidation_null()
     {
         //$this->withoutExceptionHandling();

@@ -5,7 +5,10 @@ use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 use App\Models\ServiceOccupation;
 use App\Models\ServiceTalent;
+use App\Models\Tablon;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceRegisterTest extends TestCase
 {
@@ -14,6 +17,9 @@ class ServiceRegisterTest extends TestCase
      *
      * @test
      */
+
+     use DatabaseTransactions;
+
     function test_view_ServiceRegister_page()
     {
         $serviciosTec = ServiceOccupation::all();
@@ -29,23 +35,24 @@ class ServiceRegisterTest extends TestCase
     }
 
     function test_post_ServiceRegister_Ocupation(){
-        $response = $this->post(route('login'), [
-            'email' => 'pato@gmail.com',
-            'password' => 'password'
-        ]);
+        Auth::loginUsingId(2);
+        $imagen = UploadedFile::fake()->image('avatar.jpg', '200', '200')->size(100);
+        $occupationDetails = 'bla bla bla';
+        $occupationPrice = 140;
 
-        $response = $this->post(route('servicio.tecnico'), [
-            'servicioTecn' => 'Gasfitero de madrigueras',
-            'detallesTecn' => 'bla bla bla',
-            'costoTecn' => '123',
-            'imagenTecn' => UploadedFile::fake()->image('avatar.jpg'),
+        $this->post(route('servicio.tecnico'), [
+            'servicioTecn' => 1,
+            'detallesTecn' => $occupationDetails,
+            'costoTecn' => $occupationPrice,
+            'imagenTecn' => $imagen,
         ]);
-
-        $response->assertRedirect('/');
+        $this->assertDatabaseHas('use_occs',[
+            'descripcion'=>$occupationDetails,
+            'precio'=>$occupationPrice
+        ]);
     }
 
     function test_post_ServiceRegister_Ocupation_without_login(){
-
         $response = $this->post(route('servicio.tecnico'), [
             'servicioTecn' => 'Gasfitero de madrigueras',
             'detallesTecn' => 'bla bla bla',
@@ -57,18 +64,21 @@ class ServiceRegisterTest extends TestCase
     }
 
     function test_post_ServiceRegister_Talent(){
-        $response = $this->post(route('login'), [
-            'email' => 'pato@gmail.com',
-            'password' => 'password'
-        ]);
 
+        Auth::loginUsingId(2);
+        $imagen = UploadedFile::fake()->image('avatar.jpg', '200', '200')->size(100);
+        $talentDetails = 'bla bla bla';
+        $talentPrice = 140;
         $response = $this->post(route('servicio.talento'), [
-            'servicioTecn' => 'Narrador de Audiolibros',
-            'detallesTecn' => 'bla bla bla',
-            'costoTecn' => '123',
-            'imagenTecn' => UploadedFile::fake()->image('avatar.jpg'),
+            'servicioTalen' => 1,
+            'detallesTalen' => $talentDetails,
+            'costoTalen' => $talentPrice,
+            'imagenTalen' => $imagen,
         ]);
-
+        $this->assertDatabaseHas('use_tals',[
+            'descripcion'=>$talentDetails,
+            'precio'=>$talentPrice
+        ]);
         $response->assertRedirect('/');
     }
 
@@ -84,15 +94,34 @@ class ServiceRegisterTest extends TestCase
         $response->assertRedirect('/login');
     }
 
-    public function contractHttp(){
-        $requestReception = new Request([
-            'servicioTecn' => '2',
-            'detallesTecn' => 'bla bla bla',
-            'costoTecn' => '123',
-            'imagenTecn' =>  new UploadedFile('C:\ProyectoLaravel\TalentWork\public\uploads\a.png','image_prueba'), //UploadedFile::fake()->image('avatar.jpg'),
-        ]);        
-        return $requestReception;
+
+    /** @test */    
+    public function showChangeService()
+    {
+        $view = $this->get(route('showRetoService'));
+        $view->assertStatus(200);
     }
-    
+
+    /** @test */    
+    public function showProfileServiceChange()
+    {
+        $view = $this->get(route('showProfileServiceRetos',2));
+        $view->assertStatus(200);
+        $view->assertSee('Reto de bailarin');
+    }
+
+    /** @test */
+    public function deleteBoard(){
+        Auth::loginUsingId(1);
+        $this->post(route('tablon.servicio'), [
+            'nombre' => 'Casa elegante de meneo',
+            'descripcion' => 'Simplemente limpiando la suciedad',
+            'precio' => '24.98',
+            'tipo' => 'Talento',
+        ]);
+        $view = $this->delete(route('servicio.destroy',1));
+        $view->assertStatus(302);
+        $this->assertContains('ok',[$view->getSession()->get('eliminado')]);
+    }    
 
 }

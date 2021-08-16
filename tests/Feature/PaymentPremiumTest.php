@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaymentPremiumController;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PaymentPremiumTest extends TestCase
 {
@@ -15,6 +16,8 @@ class PaymentPremiumTest extends TestCase
      *
      * @test
      */
+    use DatabaseTransactions;
+
     public function test_payment_premium()
     {
         $processPayment = new PaymentPremiumController();

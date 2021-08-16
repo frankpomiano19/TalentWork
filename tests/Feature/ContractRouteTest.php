@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ContractRouteTest extends TestCase
 {
@@ -15,6 +15,8 @@ class ContractRouteTest extends TestCase
      * @return void
      */
 
+    use DatabaseTransactions;
+    
     const email = "pato@gmail.com";
     const password = "password" ;
     

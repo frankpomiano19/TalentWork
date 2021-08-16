@@ -42,15 +42,6 @@ class ProcessContract extends Command
      */
     public function handle()
     {
-        $contracts = Contract::all();
-        if ($contracts->count() > 0) {
-            foreach ($contracts as $cont) {
-                $hoy = Carbon::now();
-                if ($cont->con_status == 1 && $hoy->diffInHours($cont->con_initial,false) < -24) {
-                    $cont->con_status = 2;
-                    $cont->save();
-                }
-            }
-        }
+
     }
 }

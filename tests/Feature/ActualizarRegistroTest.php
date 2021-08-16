@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ActualizarRegistroTest extends TestCase
 {
     /**
@@ -11,6 +11,7 @@ class ActualizarRegistroTest extends TestCase
      *
      * @return void
      */
+    use DatabaseTransactions;
     
     public function test_perfil_view()
     {
@@ -18,12 +19,9 @@ class ActualizarRegistroTest extends TestCase
             "email" => "alvarado4@unmsm.edu.pe",
             "password" => "perrovaca",
         ];
+        // ser_occ_name
         $this->post('login', $credentials);
-
         $view = $this->get(route('perfil',auth()->user()->id))->assertStatus(200);
-
-        //$view = $this->view('perfil', compaq(auth()->user()->id));
-
         $view->assertSee('Frank');
     }
 
@@ -126,12 +124,10 @@ class ActualizarRegistroTest extends TestCase
     {
         $name = 'Frank';
         $lastname = 'Alvarado Pardo';
-        $dni = '70900925';
+        $dni = '82731232';
         $email = 'alvarado4@unmsm.edu.pe';
         $birthdate = '2021-07-11 23:47:47';
         $password = 'perrovaca';
-        //$password = '959146547';
-        //$password_confirmation = '959146547';
 
         $response = $this->assertDatabaseHas('users', [
             'name'=>$name, 
@@ -139,8 +135,6 @@ class ActualizarRegistroTest extends TestCase
             'dni'=>$dni, 
             'email'=>$email, 
             'birthdate'=>$birthdate, 
-            //'password'=>bcrypt($password), 
-            //'password_confirmation'=>bcrypt($password)
         ]);
     }
 }

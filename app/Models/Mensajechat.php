@@ -15,6 +15,7 @@ class Mensajechat extends Model
         'mensaje',
         'id_servicio',
         'envia',
+        'fecha',
         'create_at'
     ];
 

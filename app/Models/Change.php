@@ -10,7 +10,7 @@ class Change extends Model
     use HasFactory;
     protected $table = 'changes';
     protected $fillable = [
-        'ser_occ_id',
+        'ser_occ_change',
         'cha_name',
         'cha_video',
         'cha_count',

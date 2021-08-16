@@ -21,7 +21,7 @@ class PerfilController extends Controller
 
     public function update(Request $request){
 
-        $usuarioLogeado = \Auth::user();
+        $usuarioLogeado = Auth::user();
 
         if($usuarioLogeado->DNI!=$request->dni){
             $request->validate([

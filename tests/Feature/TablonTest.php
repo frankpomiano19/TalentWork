@@ -44,12 +44,12 @@ class TablonTest extends TestCase
     
     public function test_solicitar_servicio(){
 
-        $response = $this->post(route('login'), [
+        $this->post(route('login'), [
             'email' => 'pato@gmail.com',
             'password' => 'password'
         ]);
 
-        $datosSolicitar = $this->post(route('tablon.servicio'), [
+        $this->post(route('tablon.servicio'), [
             'nombre' => 'Limpiador de casas',
             'descripcion' => 'Necesito un limpiador de casas por favor',
             'precio' => '23.98',
