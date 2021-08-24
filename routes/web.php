@@ -26,7 +26,7 @@ use App\Http\Controllers\VideoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/mandarina/{dni}',[HomeController::class,'mandarina'])->name("mandarina");
 Route::get('/',[HomeController::class,'showOccupationService'])->name('ServiciosOfrecidos');
 Route::get('/talentService',[HomeController::class,'showTalentService'])->name('showTalentService');
 Route::get('/occupationService',[HomeController::class,'showOccupationService'])->name('showOccupationService');
@@ -37,6 +37,9 @@ Route::get('/profileServiceOccupation/{id}',[HomeController::class,'showProfileS
 Route::get('/profileServiceRetos/{id}',[HomeController::class,'showProfileServiceRetos'])->name('showProfileServiceRetos');
 
 Route::post('/comment','PostCommentController@newComment')->name('registrarComent');
+Route::post('/commentLike',[PostCommentController::class,'proccessLikeComment'])->name('likeComment');
+Route::post('/commentDislike',[PostCommentController::class,'proccessDislikeComment'])->name('dislikeComment');
+
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
 Route::post('/score','PostScoreController@newScore')->name('registrarScore');

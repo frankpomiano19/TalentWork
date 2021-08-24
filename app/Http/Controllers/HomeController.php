@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\TablonRequest;
 
 use App;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -140,6 +141,17 @@ class HomeController extends Controller
     }
 
     public function nuevoRegistro(Request $request){
+        $dniApi = null;
+        $response = Http::get('https://consulta.api-peru.com/api/dni/'.$request->dni);
+        if($response!=null){
+            $dniApi = $response->json();
+        }
+        if($dniApi!=null && $dniApi["success"] == true){
+            // Insertar en caso de encontrar
+        }else{
+            return back()->withErrors("DNI invalido, no se pudo comprobar la existencia del DNI",'notfound')->withInput();
+        }
+
         $request->validate([
             'name'=>'required',
             'lastname'=>'required|string|max:100',

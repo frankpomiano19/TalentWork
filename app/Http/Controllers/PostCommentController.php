@@ -101,4 +101,36 @@ class PostCommentController extends Controller
 
         return redirect()->back();
     }
+
+
+    public function proccessLikeComment(Request $request){
+        $comment = Post_comment::where('id',$request->idPost)->firstOrFail();
+        $like = $comment->CommentIntermediate->where('use_id',auth()->user()->id);
+        if($like==null){
+            $like[0]->update([
+                'use_pos_like'=>true
+            ]);
+        }else{
+            $comment->CommentIntermediate()->create([
+                'use_id'=>$request->idUser,
+                'pos_id'=>$request->idPost,
+                'use_pos_like'=>true
+            ]);
+    
+        }
+        return back();
+    }
+
+    public function proccessDislikeComment(Request $request){
+        $comment = Post_comment::where('id',$request->idPost)->firstOrFail();
+        $unlike = $comment->CommentIntermediate->where('use_id',auth()->user()->id);
+        foreach ($unlike as $val) {
+            $val->update([
+                'use_pos_like'=>false
+            ]);
+            
+        }
+        return back();
+
+    }
 }
