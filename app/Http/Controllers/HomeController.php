@@ -141,6 +141,15 @@ class HomeController extends Controller
     }
 
     public function nuevoRegistro(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'lastname'=>'required|string|max:100',
+            'dni'=>'required|string|min:8|max:8|unique:users,dni|between:10000000,99999999',
+            'email'=>'required|email|unique:users,email',
+            'birthdate'=>'required',
+            'password'=>'required|string|max:25|confirmed',
+            'password_confirmation'=>'required|string|max:25',
+        ]);        
         $dniApi = null;
         $response = Http::get('https://consulta.api-peru.com/api/dni/'.$request->dni);
         if($response!=null){
@@ -152,15 +161,7 @@ class HomeController extends Controller
             return back()->withErrors("DNI invalido, no se pudo comprobar la existencia del DNI",'notfound')->withInput();
         }
 
-        $request->validate([
-            'name'=>'required',
-            'lastname'=>'required|string|max:100',
-            'dni'=>'required|string|min:8|max:8|unique:users,dni',
-            'email'=>'required|email|unique:users,email',
-            'birthdate'=>'required',
-            'password'=>'required|string|max:25|confirmed',
-            'password_confirmation'=>'required|string|max:25',
-        ]);
+
         $user = new User(array(
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),

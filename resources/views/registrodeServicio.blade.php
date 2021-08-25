@@ -97,7 +97,7 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTecn">Ingrese una imagen referente de su servicio</label>
-                              <input type="file" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
+                              <input type="file" accept="image/gif" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
