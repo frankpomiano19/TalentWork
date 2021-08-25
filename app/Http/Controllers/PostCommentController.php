@@ -112,7 +112,7 @@ class PostCommentController extends Controller
             ]);
         }else{
             $comment->CommentIntermediate()->create([
-                'use_id'=>$request->idUser,
+                'use_id'=>auth()->user()->id,
                 'pos_id'=>$request->idPost,
                 'use_pos_like'=>true
             ]);

@@ -496,6 +496,7 @@
                                 <div class="">
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
+                                            @auth
                                             @php
                                                 $likeUser = false;
                                             @endphp
@@ -530,6 +531,12 @@
                                                 </form>
 
                                             @endif
+                                            @else
+                                                <button class="small text-decoration-none" type="button" onclick="window.location.href='{{ route('registrouser') }}'" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
+                                                    <em class="far fa-thumbs-up"></em>  Me gusta
+                                                </button>    
+                                            @endauth
+
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
