@@ -22,6 +22,14 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
+        <style>
+            .description-service {
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }            
+        </style>
 @endsection
 
 
@@ -62,7 +70,7 @@
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                                 </div>
                                  
-                                <div class="product-carousel-price">
+                                <div class="product-carousel-price description-service">
                                     {{ $service->descripcion }}
                                 </div>
                                 <!-- Calificacion estrellas-->
@@ -109,7 +117,7 @@
                                 <div class="product-carousel-price">
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                                 </div>  
-                                <div class="product-carousel-price">
+                                <div class="product-carousel-price description-service">
                                     {{ $service->descripcion }}
                                 </div>
                                 <!-- Calificacion estrellas-->

@@ -476,18 +476,50 @@
                                 <div class="">
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
-                                            <a class="small text-decoration-none" href="#">
-                                                <em class="far fa-thumbs-up"></em>  Me gusta
-                                            </a>
+                                            @auth
+                                            @php
+                                                $likeUser = false;
+                                            @endphp
+                                            @foreach ($coment->CommentIntermediate as $item)
+                                                @if($item->use_id == auth()->user()->id && $item->use_pos_like==true)
+                                                    @php
+                                                        $likeUser = true;
+                                                        break;
+                                                    @endphp                                                    
+                                                @endif
+                                            @endforeach
+                                            @if($likeUser==true)
+
+                                            <form action="{{ route('dislikeComment') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="idUser" value="{{ auth()->user()->id }}">
+                                                <input type="hidden" name="idPost" value="{{ $coment->id }}">
+                                                <button class="small text-decoration-none" type="submit" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
+                                                    <em class="fa fa-thumbs-up"></em>  Me gusta
+                                                </button>    
+                                            </form>
+
+
+                                            @else
+                                                <form action="{{ route('likeComment') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="idUser" value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="idPost" value="{{ $coment->id }}">
+                                                    <button class="small text-decoration-none" type="submit" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
+                                                        <em class="far fa-thumbs-up"></em>  Me gusta
+                                                    </button>    
+                                                </form>
+
+                                            @endif
+                                            @else
+                                                <button class="small text-decoration-none" type="button" onclick="window.location.href='{{ route('registrouser') }}'" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
+                                                    <em class="far fa-thumbs-up"></em>  Me gusta
+                                                </button>    
+                                            @endauth
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <em class="fas fa-comment-alt"></em> {{ $coment->UseComPostAnswer->count() }} Comentario
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
-                                            <a class="small text-decoration-none" href="#">
-                                                <em class="fas fa-share"></em>  Compartir
                                             </a>
                                         </li>
                                     </ul>
@@ -545,9 +577,6 @@
                                                 <!-- comment body -->
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
-                                                    <a class="card-link small" href="#">
-                                                        <em class="far fa-thumbs-up"></em>  Me gusta
-                                                    </a>
                                                 </div>
                                             </div>
 

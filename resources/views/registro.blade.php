@@ -57,7 +57,17 @@
                                     
 
                                 <div class="form-group">
-                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni') }}"  />
+                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni') }}"  />                                    
+
+                                    @foreach ($errors->notfound->all() as $errorRegister)
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Invalido !</strong>{{ $errorRegister }}, puede consultar <a href="https://portaladminusuarios.reniec.gob.pe/validacionweb/index.html#no-back-button" target="_blank">ACA</a>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>                                        
+
+                                    @endforeach
                                     @if($errors->has('dni'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('dni') }}</strong>

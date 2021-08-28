@@ -23,4 +23,8 @@ class Post_comment extends Model
         return $this->hasMany(Answer::class,'use_com_id');
     }
 
+    public function CommentIntermediate(){
+        return $this->hasMany(UserPostComment::class,'pos_id');
+    }
+
 }
