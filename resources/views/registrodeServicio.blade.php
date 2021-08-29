@@ -97,7 +97,11 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTecn">Ingrese una imagen referente de su servicio</label>
-                              <input type="file" accept="image/gif" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
+                              <input type="file" accept="image/bmp,image/jpeg,image/jpg,image/png" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
+                              <p class="text-info">Minimo Tamaño : 256x256px
+                                <br>
+                                Maximo Tamaño : 2048x2048px
+                              </p>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
@@ -150,7 +154,11 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTalen">Ingrese una imagen referente de su talento</label>
-                              <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
+                              <input type="file" accept="image/bmp,image/jpeg,image/jpg,image/png" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
+                              <p class="text-info">Minimo Tamaño : 256x256px
+                                <br>
+                                Maximo Tamaño : 2048x2048px
+                              </p>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
@@ -207,7 +215,11 @@
 
                             <div class="form-group">
                                 <label for="imagenReto">Ingrese una imagen referente de su reto</label>
-                                <input type="file" class="form-control-file" id="imagenReto" name ="imagenReto" required>
+                                <input type="file" accept="image/bmp,image/jpeg,image/jpg,image/png" class="form-control-file" id="imagenReto" name ="imagenReto" required>
+                                <p class="text-info">Minimo Tamaño : 256x256px
+                                  <br>
+                                  Maximo Tamaño : 2048x2048px
+                                </p>  
                               </div>
                               @error('imagenReto')
                               <div class="alert alert-danger alert-dismissible fade show" role="alert">

@@ -38,8 +38,9 @@
             <div class="col-lg-8">
                 <section class="py-5">
                     <div class="px-4 px-lg-5 my-5">
+                        
                         <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
 
@@ -144,7 +145,7 @@
                 <section class="py-5">
                     <div class="px-4 px-lg-5 my-5">
                         <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" alt="..." /></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
 

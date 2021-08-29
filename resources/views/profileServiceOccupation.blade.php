@@ -59,7 +59,7 @@
                                 <div class="product-upper" style="height: 150px !important">
                                 @if($service->imagen!=null)
                                     
-                                <img src="{{ $service->imagen }}" alt="" style="height: 150px !important">
+                                <img src="{{ $service->imagen }}" alt="" style="height: 150px !important;">
                                 
                                 @else
                                     <img src="img/product-0.jpg" alt="">

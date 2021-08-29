@@ -41,7 +41,7 @@ class ServiceController extends Controller
             'nombreReto' => 'required|max:100|min:5',
             'detallesReto' => 'required|max:2000|min:10',
             'costoReto' => 'required|between:100,10000|numeric',
-            'imagenReto'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000',
+            'imagenReto'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000|dimensions:min_width=256,min_height=256,max_width=2048,max_height=2048',
         ]);
         // Verifica si tiene activo algun reto
         if(count(auth()->user()->UseOccIntermediate->where('use_occ_group_payment',true))>0){
@@ -89,7 +89,7 @@ class ServiceController extends Controller
             'servicioTecn' => 'required',
             'detallesTecn' => 'required|min:10',
             'costoTecn' => 'required|between:10,10000|numeric',
-            'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000|dimensions:min_width=256,min_height=256,max_width=2048,max_height=2048'
         ]);
         $imagen2 = $request->file('imagenTecn');
         $datosServicio = new use_occ;
@@ -112,7 +112,7 @@ class ServiceController extends Controller
             'servicioTalen' => 'required',
             'detallesTalen' => 'required|min:10',
             'costoTalen' => 'required|between:10,10000|numeric',
-            'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1,6000|dimensions:min_width=256,min_height=256,max_width=2048,max_height=2048',
         ]);
 
         $datosServicio = new use_tal;
