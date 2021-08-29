@@ -22,12 +22,6 @@ class PerfilController extends Controller
     public function update(Request $request){
 
         $usuarioLogeado = Auth::user();
-
-        if($usuarioLogeado->DNI!=$request->dni){
-            $request->validate([
-                'dni'=>'required|string|min:8|max:8|unique:users,dni',
-            ]);
-        }
         
         if($usuarioLogeado->email!=$request->email){
             $request->validate([
@@ -45,7 +39,6 @@ class PerfilController extends Controller
          
             if($request->name!=NULL){$usuarioLogeado->name=$request->name;}
             if($request->lastname!=NULL){$usuarioLogeado->lastname=$request->lastname;}
-            if($request->dni!=NULL){$usuarioLogeado->DNI=$request->dni;}
             if($request->email!=NULL){$usuarioLogeado->email=$request->email;}
             if($request->birthdate!=NULL){$usuarioLogeado->birthdate=$request->birthdate;}
             if($request->password!=NULL){
@@ -55,7 +48,6 @@ class PerfilController extends Controller
 
             $usuarioLogeado->name=$request->name;
             $usuarioLogeado->lastname=$request->lastname;
-            $usuarioLogeado->DNI=$request->dni;
             $usuarioLogeado->email=$request->email;
             $usuarioLogeado->birthdate=$request->birthdate;
             $usuarioLogeado->password=bcrypt($request->password);

@@ -160,6 +160,9 @@
                                         </div>
 
                                         <div class="form-row">
+                                            
+                                            <div class="form-group col-md-3">
+                                            </div>
 
                                             <div class="form-group col-md-6">
                                                 <label for="inputNaci">Fecha de Nacimiento</label>
@@ -171,14 +174,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group col-md-6">
-                                            <label for="inputDNI">DNI</label>
-                                            <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni',$user->DNI)}}"  />
-                                            @error('dni')
-                                            <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <div class="form-group col-md-3">
                                             </div>
 
                                         </div>
@@ -753,6 +749,15 @@
         console.log('diste click')
         $('#myModal').modal('hide')
     })
+</script>
+@endif
+
+@if (url()->current() == route('perfilH',Auth::user()->id))
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        $('#myTab a[href="#historia"]').tab('show');
+    })
+    console.log('hola');
 </script>
 @endif
 

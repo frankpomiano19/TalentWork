@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/registroServTalento',[ServiceController::class,'registroTalento'])->name('servicio.talento');
     Route::post('/registroServReto',[ServiceController::class,'registroReto'])->name('servicio.reto');
     Route::get('/perfil/{id}',[PerfilController::class,'index'])->name('perfil');
+    Route::get('/perfil/{id}/H',[PerfilController::class,'index'])->name('perfilH');
     Route::patch('/perfil/{id}',[PerfilController::class,'update'])->name('update.user');
     Route::get('/estadoContratoT-{id}', [ContractController::class,'contractStateTalent'])->name('estadoContratoTal');
     Route::get('/estadoContratoO-{id}', [ContractController::class,'contractStateOcupation'])->name('estadoContratoOcu');
