@@ -144,7 +144,7 @@ class HomeController extends Controller
         $request->validate([
             'name'=>'required',
             'lastname'=>'required|string|max:100',
-            'dni'=>'required|string|min:8|max:8|unique:users,dni|between:10000000,99999999',
+            'dni'=>'required|numeric|min:0|max:99999999|unique:users,dni|digits:8',
             'email'=>'required|email|unique:users,email',
             'birthdate'=>'required',
             'password'=>'required|string|max:25|confirmed',

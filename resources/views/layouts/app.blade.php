@@ -162,8 +162,14 @@
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Navegación </h2>
                             <ul>
+                                @guest
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('registrouser') }}">Registro</a></li>
+                                @endguest
+                                @auth
                                 <li><a href="">Mi perfil</a></li>
-                                <li><a href="">Mi historial</a></li>
+                                <li><a href="{{ route('perfilH',Auth::user()->id ) }}">Mi historial</a></li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
