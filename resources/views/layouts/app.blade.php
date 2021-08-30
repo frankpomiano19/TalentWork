@@ -31,8 +31,10 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }} ">
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha256-5m8PEKx1fPywHlsheZsDTqNh+Hlm2D0/+uWH6lvwOwY=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    <style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" ></script>
+    
+    <style>
 
     .body{
         background-color: #000000
@@ -162,8 +164,14 @@
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Navegación </h2>
                             <ul>
+                                @guest
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('registrouser') }}">Registro</a></li>
+                                @endguest
+                                @auth
                                 <li><a href="">Mi perfil</a></li>
-                                <li><a href="">Mi historial</a></li>
+                                <li><a href="{{ route('perfilH',Auth::user()->id ) }}">Mi historial</a></li>
+                                @endauth
                             </ul>
                         </div>
                     </div>

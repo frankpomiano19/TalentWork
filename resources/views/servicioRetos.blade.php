@@ -129,7 +129,7 @@
                     <div class="row gx-4 gx-lg-5 align-items-center">
 
                         <div class="col-md-6">
-                            <img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." />
+                            <img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" alt="..." />
 
 
                             @if($serviceProfile->IntermediateChange->cha_video!=null)
@@ -184,14 +184,6 @@
                                     </ul>
                                 </div>
                                 <div class="card-body">
-
-                                    <div class="d-flex small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
 
                                   <p class="card-text">{{ $serviceProfile->descripcion }}</p>
                                   <span class="ksr-green-700 inline-block bold type-16 type-28-md">

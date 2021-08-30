@@ -144,9 +144,9 @@ class HomeController extends Controller
         $request->validate([
             'name'=>'required',
             'lastname'=>'required|string|max:100',
-            'dni'=>'required|string|min:8|max:8|unique:users,dni|between:10000000,99999999',
+            'dni'=>'required|numeric|min:0|max:99999999|unique:users,dni|digits:8',
             'email'=>'required|email|unique:users,email',
-            'birthdate'=>'required',
+            'birthdate'=>'required|date|before_or_equal:'.\Carbon\Carbon::now()->subYears(18)->format('Y-m-d'),
             'password'=>'required|string|max:25|confirmed',
             'password_confirmation'=>'required|string|max:25',
         ]);        
