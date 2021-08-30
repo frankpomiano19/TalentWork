@@ -44,10 +44,10 @@
                                     </h5>
                                     <h6>
                                         @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)
-                                            {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}
+                                            {{ $user->UseOccIntermediate[0]->ser_occ_name }}
                                         @else
                                             @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)
-                                                {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}
+                                                {{ $user->UseTalIntermediate[0]->ser_tal_name }}
                                             @else
                                                 No registra ningun servicio
                                             @endif
@@ -212,10 +212,10 @@
                             @foreach ($user->UseContractReceive as $Contract)
                                 @if ($Contract->con_status != 3)
                                     @if ($Contract->use_tal_id !== null)
-                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}</a><br/>
+                                        <a href="{{ route('estadoContratoTal',$Contract->id) }}">{{$Contract->IntermediateUseTal->ser_tal_name}}</a><br/>
                                     @endif
                                     @if ($Contract->use_occ_id !== null)
-                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}</a><br/>
+                                        <a href="{{ route('estadoContratoOcu',$Contract->id) }}">{{$Contract->IntermediateUseOcc->ser_occ_name}}</a><br/>
                                     @endif
                                 @endif
                             @endforeach
@@ -274,10 +274,10 @@
                                             <div class="col-md-6">
 
                                             @if($user->UseOccIntermediate!=null && $user->UseOccIntermediate->count()>0)
-                                                <p> {{ $user->UseOccIntermediate[0]->IntermediateOcc->ser_occ_name }}</p>
+                                                <p> {{ $user->UseOccIntermediate[0]->ser_occ_name }}</p>
                                             @else
                                                 @if($user->UseTalIntermediate!=null && $user->UseTalIntermediate->count()>0)
-                                                  <p>  {{ $user->UseTalIntermediate[0]->IntermediateTal->ser_tal_name }}</p>
+                                                  <p>  {{ $user->UseTalIntermediate[0]->ser_tal_name }}</p>
                                                 @else
                                                     No registra ningun servicio
                                                 @endif
@@ -303,7 +303,7 @@
                                     <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="1">
                                     @if($serviceUsers->use_occ_group_payment)
                                     @else
-                                        <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->IntermediateOcc->ser_occ_name }}</a>
+                                        <a href="{{ route('showProfileServiceOccupation',$serviceUsers->id) }}">{{ $serviceUsers->ser_occ_name }}</a>
                                     @endif
 
 
@@ -383,7 +383,7 @@
                                         <input type="hidden" class="get-service-offer-input" name="serviceOffer" value="{{ $serviceTalUsers->id }}" required>
                                         <input type="hidden" class="get-type-offer-input" name="typeOfJob" value="2">
 
-                                        <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->IntermediateTal->ser_tal_name }}</a>
+                                        <a href="{{ route('showProfileServiceTalent',$serviceTalUsers->id) }}">{{ $serviceTalUsers->ser_tal_name }}</a>
 
                                     @php
                                         $receivedServiceNow = false;
@@ -691,14 +691,14 @@
                                             @if ($Contract->use_tal_id !== null)
                                                 <form action=" {{route('eject.contract')}} " method="POST">
                                                     @csrf
-                                                    {{$Contract->IntermediateUseTal->IntermediateTal->ser_tal_name}}
+                                                    {{$Contract->IntermediateUseTal->ser_tal_name}}
                                                     <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
                                                     <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>
                                             @elseif($Contract->use_occ_id !== null)
                                                 <form action=" {{route('eject.contract')}} " method="POST">
                                                     @csrf
-                                                    {{$Contract->IntermediateUseOcc->IntermediateOcc->ser_occ_name}}
+                                                    {{$Contract->IntermediateUseOcc->ser_occ_name}}
                                                     <input type="hidden" name="contractId" value="{{ $Contract->id }}" required>
                                                     <button type="submit" class="btn btn-secondary p-3">Ejecutar Servicio</button>
                                                 </form>

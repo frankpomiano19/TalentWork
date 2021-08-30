@@ -63,6 +63,18 @@
                               @endforeach
                             </select>
                           </div>
+                          @error('nombreTecn')
+                          <div class="alert alert-danger" role="alert">
+                            <strong>Atención.</strong> El nombre de su servicio debe tener un mínimo de 10 letras y un máximo de 45.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          @enderror
+                          <div class="form-group">
+                            <label for="nombreTecn">Ingrese el nombre de su servicio</label>
+                            <input class="form-control" id="nombreTecn" name="nombreTecn" type="text" required>
+                          </div>
                           @error('detallesTecn')
                             <div class="alert alert-danger" role="alert">
                               <strong>Atención.</strong> La descripción del servicio debe tener un mínimo de 10 letras.
@@ -97,7 +109,7 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTecn">Ingrese una imagen referente de su servicio</label>
-                              <input type="file" accept="image/gif" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
+                              <input type="file" accept="image/png,image/jpeg,image/jpg,image/bmp" class="form-control-file" id="imagenTecn" name="imagenTecn" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
@@ -115,6 +127,18 @@
                                   <option value={{$item->id}}>{{$item->ser_tal_name}}</option>
                               @endforeach
                             </select>
+                          </div>
+                          @error('nombreTalen')
+                          <div class="alert alert-danger" role="alert">
+                            <strong>Atención.</strong> El nombre de su talento debe tener un mínimo de 10 letras  y un máximo de 45.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          @enderror
+                          <div class="form-group">
+                            <label for="nombreTalen">Ingrese el nombre de su talento</label>
+                            <input class="form-control" id="nombreTalen" name="nombreTalen" type="text" required>
                           </div>
                           @error('detallesTalen')
                           <div class="alert alert-danger" role="alert">
@@ -150,7 +174,7 @@
                           @enderror
                           <div class="form-group">
                               <label for="imagenTalen">Ingrese una imagen referente de su talento</label>
-                              <input type="file" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
+                              <input type="file" accept="image/png,image/jpeg,image/jpg,image/bmp" class="form-control-file" id="imagenTalen" name ="imagenTalen" required>
                             </div>
                           <button type="submit" class="btn btn-primary">Guardar servicio</button>
                         </form>
@@ -207,7 +231,7 @@
 
                             <div class="form-group">
                                 <label for="imagenReto">Ingrese una imagen referente de su reto</label>
-                                <input type="file" class="form-control-file" id="imagenReto" name ="imagenReto" required>
+                                <input type="file" accept="image/png,image/jpeg,image/jpg,image/bmp" class="form-control-file" id="imagenReto" name ="imagenReto" required>
                               </div>
                               @error('imagenReto')
                               <div class="alert alert-danger alert-dismissible fade show" role="alert">

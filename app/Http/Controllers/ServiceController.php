@@ -87,6 +87,7 @@ class ServiceController extends Controller
     public function registroTecnico(Request $request){
         $request->validate([
             'servicioTecn' => 'required',
+            'nombreTecn'=> 'required|min:10|max:45',
             'detallesTecn' => 'required|min:10',
             'costoTecn' => 'required|between:10,10000|numeric',
             'imagenTecn'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
@@ -95,6 +96,7 @@ class ServiceController extends Controller
         $datosServicio = new use_occ;
         $datosServicio->use_id = auth()->id();
         $datosServicio->ser_occ_id = $request->servicioTecn;
+        $datosServicio->ser_occ_name = $request->nombreTecn;
         $datosServicio->descripcion = $request->detallesTecn;
         $datosServicio->precio = $request->costoTecn;
 
@@ -110,6 +112,7 @@ class ServiceController extends Controller
     public function registroTalento(Request $request){
         $request->validate([
             'servicioTalen' => 'required',
+            'nombreTalen'=> 'required|min:10|max:45',
             'detallesTalen' => 'required|min:10',
             'costoTalen' => 'required|between:10,10000|numeric',
             'imagenTalen'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
@@ -118,6 +121,7 @@ class ServiceController extends Controller
         $datosServicio = new use_tal;
         $datosServicio->use_id = auth()->id();
         $datosServicio->ser_tal_id = $request->servicioTalen;
+        $datosServicio->ser_tal_name = $request->nombreTalen;
         $datosServicio->descripcion = $request->detallesTalen;
         $datosServicio->precio = $request->costoTalen;
 
