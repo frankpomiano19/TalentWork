@@ -30,5 +30,7 @@ return [
     'string' => 'El campo :attribute debe ser una cadena de caracteres.',
     'unique' => 'El :attribute ya ha sido registrado antes en el sistema',
     'numeric' => 'El :attribute ya ha sido registrado antes en el sistema',
-    'dimensions' => 'El :attribute no tiene dimensiones validas.'
+    'dimensions' => 'El :attribute no tiene dimensiones validas.',
+    'after_or_equal' => 'El :attribute debe ser una fecha despues o igual a :date .',
+
 ];

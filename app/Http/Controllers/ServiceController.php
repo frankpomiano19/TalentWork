@@ -129,6 +129,9 @@ class ServiceController extends Controller
         
         $datosServicio->imagen = $image_url;
         $datosServicio->save();
-        return back();
+
+        $message = "Talento registrado exitosamente";
+
+        return back()->with('serviceMessage',$message);
     }
 }

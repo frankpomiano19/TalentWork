@@ -169,7 +169,8 @@
                                 <li><a href="{{ route('registrouser') }}">Registro</a></li>
                                 @endguest
                                 @auth
-                                <li><a href="">Mi perfil</a></li>
+                                
+                                <li><a href="{{ route('perfil',Auth::user()->id ) }}">Mi perfil</a></li>
                                 <li><a href="{{ route('perfilH',Auth::user()->id ) }}">Mi historial</a></li>
                                 @endauth
                             </ul>

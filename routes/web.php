@@ -121,9 +121,6 @@ Route::get('serviciopremium',function(){
 
 Route::post('/registrar',[HomeController::class,'nuevoRegistro'])->name('registrarUsuario');
 
-Route::get('registroServicio',[ServiceController::class, 'registro']);
-
-
 Route::get('/categorias',function(){
     return view('categoria/filtroServicio');
 })->name('categorias');
@@ -131,15 +128,12 @@ Route::get('/categorias',function(){
 Route::get('/servicio',function(){
     return view('servicio');
 });
-Route::get('registroServicio',[ServiceController::class, 'registro']);
 
 Route::get('/servicio',function(){
     return view('servicio');
 });
-Route::get('registroServicio',[ServiceController::class, 'registro']);
-
-
 Route::get('registroServicio',[ServiceController::class, 'registro'])->name('offerMyService');
+Route::get('registroServicioUs',[ServiceController::class, 'registro'])->name('offerMyServiceChange');
 
 Route::get('/talento',function(){
     return view('talento');

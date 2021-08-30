@@ -144,10 +144,13 @@ class ContractController extends Controller
     }
 
     public function validationRegisterContract(Request $request){
+        $dateNow = Carbon::now();
+        $dateLimit = Carbon::now()->addMonth(1); 
+        // dd($request->all());
         $fieldCreate= [
             'userOffer'=>'required|integer|min:0',
             'priceOffer'=>'required|numeric|between:0,9999.99',
-            'dateForm'=>'required|date',
+            'dateForm'=>'required|date|after_or_equal:'.$dateNow.'|before:'.$dateLimit,
             'hourForm'=>'required',
             'addressForm'=>'required|string',
             'descriptionForm'=>'required|string',
@@ -159,7 +162,8 @@ class ContractController extends Controller
             'between:0,9999.99'=>'":attribute" Fuera del rango',
             'numeric'=>'":attribute" Debe ser numerico',
             'min:0'=>'":attribute" Minimo es 0',
-            'string'=>'":attribute" Debe ser texto'
+            'string'=>'":attribute" Debe ser texto',
+            'before'=>'":attribute" debe ser anterior a :date'
         ];
         $validacion = Validator::make($request->all(),$fieldCreate,$messageError);
         return $validacion;        

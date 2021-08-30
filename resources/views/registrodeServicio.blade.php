@@ -32,8 +32,13 @@
                     <div class="form-group">
                         <label for="servicio">Seleccione el tipo de servicio que quiere brindar</label> <br>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          
+
+
+
+
                           <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="service-tab" data-toggle="tab" href="#service" role="tab" aria-controls="service" aria-selected="true">
+                            <a class="nav-link @if (Route::currentRouteName() != 'offerMyServiceChange') active @endif" id="service-tab" data-toggle="tab" href="#service" role="tab" aria-controls="service" aria-selected="true">
                               <button type="button" class="btn btn-primary btn-lg">Servicio Técnico</button>
                             </a>
                           </li>
@@ -43,15 +48,17 @@
                             </a>
                           </li>
                           <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="reto-tab" data-toggle="tab" href="#reto" role="tab" aria-controls="reto" aria-selected="false">
+                            <a class="nav-link @if (Route::currentRouteName() == 'offerMyServiceChange') active @endif" id="reto-tab" data-toggle="tab" href="#reto" role="tab" aria-controls="reto" aria-selected="false">
                               <button type="button" class="btn btn-info btn-lg">Reto</button>
                             </a>
-                          </li>
+                          </li>                          
+
+
                         </ul>
                     </div>
                     <div class="tab-content" id="myTabContent">
                     {{-- Registro de Tecnico --}}
-                      <div class="tab-pane fade show active" id="service" role="tabpanel" aria-labelledby="service-tab">
+                      <div class="tab-pane fade @if (Route::currentRouteName() != 'offerMyServiceChange') show active @endif" id="service" role="tabpanel" aria-labelledby="service-tab">
                         <form action=" {{route('servicio.tecnico')}} " method="POST" enctype="multipart/form-data">
                           @csrf
                           <div class="form-group">
@@ -188,7 +195,7 @@
                         </form>
                       </div>
                       {{-- Registro de Reto --}}
-                      <div class="tab-pane fade" id="reto" role="tabpanel" aria-labelledby="reto-tab">
+                      <div class="tab-pane fade @if (Route::currentRouteName() == 'offerMyServiceChange') show active @endif" id="reto" role="tabpanel" aria-labelledby="reto-tab">
 
                         <form action="{{ route('servicio.reto') }}" method="POST" enctype="multipart/form-data">
                             @csrf
