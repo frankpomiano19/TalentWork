@@ -3,10 +3,11 @@
         <div style="text-align: center">
 
             <br><h5>Precio S/</h5>
-            <div class="" id="" wire:model="precioMin">
-                <input type="radio" id="cbox2" name="precio" value="10"> <label for="cbox2">Hasta 10</label>
-                <input type="radio" id="cbox2" name="precio" value="100"> <label for="cbox2">Hasta 100</label>
-                <input type="radio" id="cbox2" name="precio" value="2000"> <label for="cbox2">Hasta 2000</label>
+            <div>
+                @error('precio')
+                    <span class="badge badge-danger">{{ $message }}</span>
+                @enderror
+                <div class=""><input type="text" class="" name="precio" wire:model="precio"></div>
             </div>
             <h5>Ordenar por:</h5>
             <div wire:model="calificacion">

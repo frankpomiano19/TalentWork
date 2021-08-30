@@ -14,11 +14,27 @@ class Filtroservicio extends Component
 
     public $ocupacion;
     public $talento;
-    public $precioMin = 100000;
+    public $precio = 0;
     public $calificacion;
     public $talentoS = false;
     public $ocupacionS = false;
     public $tipo = "";
+
+    protected $rules = [
+        'precio' => 'required|numeric|regex:/^[\d]{1,3}(\.[\d]{1,2})?$/'
+    ];
+
+    protected $messages = [
+        'precio.required' => 'Ingrese precio máximo',
+        'precio.numeric' => 'Solo carácteres numéricos',
+        'precio.regex' => 'Máximo 99999.99 S/',
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+        $validatedData = $this->validate();
+    }
 
     public function talentoM()
     {
@@ -37,7 +53,7 @@ class Filtroservicio extends Component
             $this->tipo = "Talentos";
             return view('livewire.filtroservicio',[
                 'datos' => use_tal::where("ser_tal_id","=", $this->talento)
-                    ->where("precio","<=", $this->precioMin)
+                    ->where("precio","<=", $this->precio)
                     ->where("precio",">",0)
                     //->orderBy('calificacion', $this->calificacion)
                     ->get()],['tipo' => $this->tipo]);
@@ -47,7 +63,7 @@ class Filtroservicio extends Component
                 'datos' => use_occ::where("ser_occ_id","=", $this->ocupacion)
                     ->where("use_occ_group_payment",false)
                     ->where("precio",">",0)
-                    ->where("precio","<=", $this->precioMin)
+                    ->where("precio","<=", $this->precio)
                     //->orderBy('calificacion', $this->calificacion)
                     ->get()],['tipo' => $this->tipo]);
         }
