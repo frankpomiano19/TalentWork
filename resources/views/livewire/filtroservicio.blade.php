@@ -9,11 +9,6 @@
                 @enderror
                 <div class=""><input type="text" class="" name="precio" wire:model="precio"></div>
             </div>
-            <h5>Ordenar por:</h5>
-            <div wire:model="calificacion">
-                <input type="radio" id="cbox2" name="calificacion" value="asc"> <label for="cbox2">Mayor calificacion</label>
-                <input type="radio" id="cbox2" name="calificacion" value="desc"> <label for="cbox2">Menor calificacion</label>
-            </div>
             <div class="mb-3">
                 <p>Ocupaciones:</p>
                 <select class="desplegable" wire:model="ocupacion" wire:click="ocupacionM">
