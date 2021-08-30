@@ -21,7 +21,7 @@ class Filtroservicio extends Component
     public $tipo = "";
 
     protected $rules = [
-        'precio' => 'required|numeric|regex:/^[\d]{1,3}(\.[\d]{1,2})?$/'
+        'precio' => 'required|numeric|min:1|regex:/^[\d]{1,3}(\.[\d]{1,2})?$/'
     ];
 
     protected $messages = [
