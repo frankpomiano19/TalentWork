@@ -27,7 +27,8 @@ class Filtroservicio extends Component
     protected $messages = [
         'precio.required' => 'Ingrese precio máximo',
         'precio.numeric' => 'Solo carácteres numéricos',
-        'precio.regex' => 'Máximo 99999.99 S/',
+        'precio.regex' => 'Máximo 99999.99 S/'
+        'precio.min' => 'Precio minimo no permitido',
     ];
 
     public function updated($propertyName)
