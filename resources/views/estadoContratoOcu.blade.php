@@ -26,7 +26,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">{{$contr->con_initial}}</li>
             <li class="list-group-item">{{$userOff->name, $userOff->lastname}}</li>
-            <li class="list-group-item">{{$servOcupp->ser_occ_name}}</li>
+            <li class="list-group-item">{{$dataOcup->ser_occ_name}}</li>
         </ul>
     </div>
     </div>

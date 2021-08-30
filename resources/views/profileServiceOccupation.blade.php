@@ -65,7 +65,7 @@
                                     <img src="img/product-0.jpg" alt="">
                                 @endif
                                 </div>
-                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
+                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->ser_occ_name }}</a></h2>
                                 <div class="product-carousel-price">
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                                 </div>
@@ -113,7 +113,7 @@
                                     <img src="img/product-0.jpg" alt="">
                                 @endif
                                 </div>
-                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->IntermediateOcc->ser_occ_name }}</a></h2>
+                                <h2><a href="{{ route('showProfileServiceOccupation',$service->id) }}">{{ $service->ser_occ_name }}</a></h2>
                                 <div class="product-carousel-price">
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseOcc->name }}</a> 
                                 </div>  

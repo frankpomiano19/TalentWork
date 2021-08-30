@@ -64,7 +64,7 @@
                                 </div>
 
                                 
-                                <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
+                                <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->ser_tal_name }}</a></h2>
                                 <div class="product-carousel-price">
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
                                 </div>  
@@ -109,7 +109,7 @@
                                 </div>
 
                                 
-                                <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->IntermediateTal->ser_tal_name }}</a></h2>
+                                <h2><a href="{{ route('showProfileServiceTalent',$service->id) }}">{{ $service->ser_tal_name }}</a></h2>
                                 <div class="product-carousel-price">
                                     <a href="{{ route('perfil',$service->use_id) }}">{{ $service->IntermediateUseTal->name }}</a> 
                                 </div>  

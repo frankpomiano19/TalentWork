@@ -63,6 +63,18 @@
                               @endforeach
                             </select>
                           </div>
+                          @error('nombreTecn')
+                          <div class="alert alert-danger" role="alert">
+                            <strong>Atención.</strong> El nombre de su servicio debe tener un mínimo de 10 letras y un máximo de 45.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          @enderror
+                          <div class="form-group">
+                            <label for="nombreTecn">Ingrese el nombre de su servicio</label>
+                            <input class="form-control" id="nombreTecn" name="nombreTecn" type="text" required>
+                          </div>
                           @error('detallesTecn')
                             <div class="alert alert-danger" role="alert">
                               <strong>Atención.</strong> La descripción del servicio debe tener un mínimo de 10 letras.
@@ -119,6 +131,18 @@
                                   <option value={{$item->id}}>{{$item->ser_tal_name}}</option>
                               @endforeach
                             </select>
+                          </div>
+                          @error('nombreTalen')
+                          <div class="alert alert-danger" role="alert">
+                            <strong>Atención.</strong> El nombre de su talento debe tener un mínimo de 10 letras  y un máximo de 45.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          @enderror
+                          <div class="form-group">
+                            <label for="nombreTalen">Ingrese el nombre de su talento</label>
+                            <input class="form-control" id="nombreTalen" name="nombreTalen" type="text" required>
                           </div>
                           @error('detallesTalen')
                           <div class="alert alert-danger" role="alert">

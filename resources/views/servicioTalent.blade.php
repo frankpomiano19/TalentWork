@@ -39,7 +39,7 @@
                         <div class="row gx-4 gx-lg-5 align-items-center">
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" alt="..." /></div>
                             <div class="col-md-6">
-                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
+                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->ser_tal_name }}</h1>
                                 <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
                                 <br>
                                 <label><strong>Email : &nbsp;</strong> </label> {{ $serviceProfile->IntermediateUseTal->email }} <label></label>
@@ -144,7 +144,7 @@
                     <div class="row gx-4 gx-lg-5 align-items-center">
                         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" alt="..." /></div>
                         <div class="col-md-6">
-                            <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateTal->ser_tal_name }}</h1>
+                            <h1 class="display-5 fw-bolder">{{ $serviceProfile->ser_tal_name }}</h1>
 
                             <a href="{{ route('perfil',$serviceProfile->IntermediateUseTal->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseTal->name." ".$serviceProfile->IntermediateUseTal->lastname }}</a>
                             <br>
@@ -252,7 +252,7 @@
             <input type="hidden" class="set-status-offer-input" name="statusInitial" value="1" required>
 
             {{-- Datos que no se procesan, solo para mejorar el estilo --}}
-            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateTal->ser_tal_name }}" required>
+            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->ser_tal_name }}" required>
             <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseTal->name.$serviceProfile->IntermediateUseTal->lastname}}" required>
             {{-- Fin datos que no se procesas --}}
 
@@ -601,7 +601,7 @@
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerOcc as $so)
-                                {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a> --}}
+                                {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->ser_occ_name }}</a> --}}
                                 @endforeach
                                 {{-- <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
@@ -612,7 +612,7 @@
                             <h5 class="card-title m-0">Talentos</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerTal as $st)
-                                {{-- <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a> --}}
+                                {{-- <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->ser_tal_name }}</a> --}}
                                 @endforeach
                                 {{-- <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
