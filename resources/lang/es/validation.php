@@ -29,6 +29,6 @@ return [
     'confirmed' => 'Error en la confirmacion del campo :attribute.',
     'string' => 'El campo :attribute debe ser una cadena de caracteres.',
     'unique' => 'El :attribute ya ha sido registrado antes en el sistema',
-    'numeric' => 'El :attribute ya ha sido registrado antes en el sistema'
-    
+    'numeric' => 'El :attribute ya ha sido registrado antes en el sistema',
+    'dimensions' => 'El :attribute no tiene dimensiones validas.'
 ];
