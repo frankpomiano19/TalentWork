@@ -21,13 +21,14 @@ class Filtroservicio extends Component
     public $tipo = "";
 
     protected $rules = [
-        'precio' => 'required|numeric|regex:/^[\d]{1,3}(\.[\d]{1,2})?$/'
+        'precio' => 'required|numeric|min:1|regex:/^[\d]{1,3}(\.[\d]{1,2})?$/'
     ];
 
     protected $messages = [
         'precio.required' => 'Ingrese precio máximo',
         'precio.numeric' => 'Solo carácteres numéricos',
         'precio.regex' => 'Máximo 99999.99 S/',
+        'precio.min' => 'Precio minimo no permitido',
     ];
 
     public function updated($propertyName)
