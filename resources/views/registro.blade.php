@@ -1,3 +1,4 @@
+ 
 @extends('layouts.app')
 
 @section('contenido_js')
@@ -12,7 +13,7 @@
 
 @section('content')
 
-
+ 
 <div class="content-main-layout">
 
 <div class="container register">
@@ -57,17 +58,7 @@
                                     
 
                                 <div class="form-group">
-                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni') }}"  />                                    
-
-                                    @foreach ($errors->notfound->all() as $errorRegister)
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Invalido !</strong>{{ $errorRegister }}, puede consultar <a href="https://portaladminusuarios.reniec.gob.pe/validacionweb/index.html#no-back-button" target="_blank">ACA</a>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>                                        
-
-                                    @endforeach
+                                    <input type="number" minlength="10" maxlength="10" name="dni" class="form-control @error('dni') is-invalid @enderror" placeholder="Escriba su DNI *" value="{{ old('dni') }}"  />
                                     @if($errors->has('dni'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('dni') }}</strong>
@@ -90,9 +81,19 @@
                             </div>
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <input class="form-control @error('birthdate') is-invalid @enderror"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('birthdate') }}" />
+                                <div class="form-group">    
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                                <?php $fcha = date("Y-m-d");?>
+
+
+                               
+                                    <input class="form-control @error('birthdate') is-invalid @enderror"  type="text" name="birthdate" placeholder="Fecha de Nacimiento" onclick="ocultarError();" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('birthdate') }}" name="birthdate" 
+                            
+                
+                                    max= "<?php echo $fcha;?>" required />
+                              
                                     @error('birthdate')
+                                 
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

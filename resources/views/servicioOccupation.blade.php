@@ -38,11 +38,10 @@
             <div class="col-lg-8">
                 <section class="py-5">
                     <div class="px-4 px-lg-5 my-5">
-                        
                         <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" /></div>
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
-                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->ser_occ_name }}</h1>
+                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
 
                                 <a href="{{ route('perfil',$serviceProfile->IntermediateUseOcc->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseOcc->name." ".$serviceProfile->IntermediateUseOcc->lastname }}</a>
                                 <br>
@@ -145,9 +144,9 @@
                 <section class="py-5">
                     <div class="px-4 px-lg-5 my-5">
                         <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" style="width:512px !important;" alt="..." /></div>
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{  $serviceProfile->imagen  }}" alt="..." /></div>
                             <div class="col-md-6">
-                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->ser_occ_name }}</h1>
+                                <h1 class="display-5 fw-bolder">{{ $serviceProfile->IntermediateOcc->ser_occ_name }}</h1>
 
                                 <a href="{{ route('perfil',$serviceProfile->IntermediateUseOcc->id) }}" class="h5 fw-bolder">{{ $serviceProfile->IntermediateUseOcc->name." ".$serviceProfile->IntermediateUseOcc->lastname }}</a>
                                 <br>
@@ -274,7 +273,7 @@
 
 
             {{-- Datos que no se procesan, solo para mejorar el estilo --}}
-            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->ser_occ_name }}" required>
+            <input type="hidden" class="set-service-name-input" name="serviceName" value="{{ $serviceProfile->IntermediateOcc->ser_occ_name }}" required>
             <input type="hidden" class="set-user-offer-name-input" name="userNameProvider" value="{{ $serviceProfile->IntermediateUseOcc->name.$serviceProfile->IntermediateUseOcc->lastname}}" required>
             {{-- Fin datos que no se procesas --}}
 
@@ -292,7 +291,8 @@
                                 <label>Hora: </label><br>
                                 <input type="time" class="form-control" value="{{ old('hourForm') }}" name="hourForm">
                                 <label class="m-1">Fecha: </label>
-                                <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="2020-11-02" id="fechaContrato" required>
+                                <?php $fcha = date("Y-m-d");?>
+                                <input type="date" class="form-control" value="{{ old('dateForm') }}" name="dateForm" min="<?php echo $fcha;?>" id="fechaContrato" required>
 
                                 <label class="m-1" for="">Lugar</label>
                                 <input type="text" class="form-control" name="addressForm" value="{{ old('addressForm') }}" placeholder="Lugar">
@@ -497,51 +497,18 @@
                                 <div class="">
                                     <ul class="list-group list-group-horizontal">
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-0">
-                                            @auth
-                                            @php
-                                                $likeUser = false;
-                                            @endphp
-                                            @foreach ($coment->CommentIntermediate as $item)
-                                                @if($item->use_id == auth()->user()->id && $item->use_pos_like==true)
-                                                    @php
-                                                        $likeUser = true;
-                                                        break;
-                                                    @endphp                                                    
-                                                @endif
-                                            @endforeach
-                                            @if($likeUser==true)
-
-                                            <form action="{{ route('dislikeComment') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="idUser" value="{{ auth()->user()->id }}">
-                                                <input type="hidden" name="idPost" value="{{ $coment->id }}">
-                                                <button class="small text-decoration-none" type="submit" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
-                                                    <em class="fa fa-thumbs-up"></em>  Me gusta
-                                                </button>    
-                                            </form>
-
-
-                                            @else
-                                                <form action="{{ route('likeComment') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="idUser" value="{{ auth()->user()->id }}">
-                                                    <input type="hidden" name="idPost" value="{{ $coment->id }}">
-                                                    <button class="small text-decoration-none" type="submit" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
-                                                        <em class="far fa-thumbs-up"></em>  Me gusta
-                                                    </button>    
-                                                </form>
-
-                                            @endif
-                                            @else
-                                                <button class="small text-decoration-none" type="button" onclick="window.location.href='{{ route('registrouser') }}'" style="border: none;background-color:transparent; color:#007bff !important;text-transform:none !important;padding:0px">
-                                                    <em class="far fa-thumbs-up"></em>  Me gusta
-                                                </button>    
-                                            @endauth
-
+                                            <a class="small text-decoration-none" href="#">
+                                                <em class="far fa-thumbs-up"></em>  Me gusta
+                                            </a>
                                         </li>
                                         <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0">
                                             <a class="small text-decoration-none" data-toggle="collapse" href="#id{{$coment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <em class="fas fa-comment-alt"></em> {{ $coment->UseComPostAnswer->count() }} Comentario
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item flex-fill text-center p-0 px-lg-2 border border-right-0 border-top-0 border-bottom-0 ">
+                                            <a class="small text-decoration-none" href="#">
+                                                <em class="fas fa-share"></em>  Compartir
                                             </a>
                                         </li>
                                     </ul>
@@ -599,6 +566,9 @@
                                                 <!-- comment body -->
                                                 <div class="card-body p-0">
                                                     <p class="card-text h7 mb-1">{{ $comentR->comentario }}</p>
+                                                    <a class="card-link small" href="#">
+                                                        <em class="far fa-thumbs-up"></em>  Me gusta
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -625,7 +595,7 @@
                             <h5 class="card-title m-0">Oficios Disponibles</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerOcc as $so)
-                                {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->ser_occ_name }}</a> --}}
+                                {{-- <a href="{{ route('showProfileServiceOccupation',$so->id) }}" class="list-group-item list-group-item-action text-primary">{{ $so->IntermediateOcc->ser_occ_name }}</a> --}}
                                 @endforeach
                                 {{-- <a href="{{ route('showOccupationService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
@@ -636,7 +606,7 @@
                             <h5 class="card-title m-0">Talentos</h5>
                             <div class="list-group list-group-flush">
                                 @foreach($SerTal as $st)
-                                {{-- <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->ser_tal_name }}</a> --}}
+                                {{-- <a href="{{ route('showProfileServiceTalent',$st->id) }}" class="list-group-item list-group-item-action text-primary">{{ $st->IntermediateTal->ser_tal_name }}</a> --}}
                                 @endforeach
                                 {{-- <a href="{{ route('showTalentService') }}" class="btn btn-sm btn-primary">Ver más</a> --}}
                             </div>
