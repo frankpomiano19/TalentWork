@@ -387,7 +387,7 @@ class ContractController extends Controller
 
     public function finishContract(Request $request){
         $request->validate([
-            'contractId' => 'required'
+            'contractId' => 'required|integer'
         ]);
         $contr = Contract::findOrFail($request->contractId);
         $contr->con_status = 3;

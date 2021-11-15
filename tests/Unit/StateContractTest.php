@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ContractController;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class StateContractTest extends TestCase
 {
@@ -38,6 +39,50 @@ class StateContractTest extends TestCase
         [$response->getSession()->get('serviceMessage')]);
     }
 
+    /** @test */  
+    public function FinishContratTestRequiredContract()
+    {
+        $contrat = Contract::first();
+        $ContrContract =  new ContractController();
+        $credentials = [
+            "email" => "pato@gmail.com",
+            "password" => "password",
+        ];
+        Storage::fake('avatars');
+        $this->post('login', $credentials);
+        $requestService = new Request([
+        ]);
+
+        try{
+            $ContrContract->finishContract($requestService);
+        }catch(ValidationException $e){
+            $error = $e->errors();
+            $this->assertArrayHasKey('contractId',$error);
+        }   
+    }
+
+        /** @test */  
+        public function FinishContratTestNotNumericContract()
+        {
+            $contrat = Contract::first();
+            $ContrContract =  new ContractController();
+            $credentials = [
+                "email" => "pato@gmail.com",
+                "password" => "password",
+            ];
+            Storage::fake('avatars');
+            $this->post('login', $credentials);
+            $requestService = new Request([
+                'contractId' => "adawdawdawd",
+            ]);
+    
+            try{
+                $ContrContract->finishContract($requestService);
+            }catch(ValidationException $e){
+                $error = $e->errors();
+                $this->assertArrayHasKey('contractId',$error);
+            }   
+        }
 
     /** @test */  
     public function contractStateTalentTest(){

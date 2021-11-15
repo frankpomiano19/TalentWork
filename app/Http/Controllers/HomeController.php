@@ -34,19 +34,25 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     // Perfiles de talento
-    public function showTalentService(){
+    public function showTalentService($randNumber = null){
         $allServices = use_tal::orderBy('created_at','DESC')->where('use_tal_group_payment',false)->paginate(20);
         return view('profileServiceTalent',compact('allServices'));
     }   
     // Perfiles de oficios
-    public function showOccupationService(){
+    public function showOccupationService($randNumber = null){
         $allServices = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',false)->paginate(20);
         return view('profileServiceOccupation',compact('allServices'));
     }
     // Muestra retos - Pagos grupales
-    public function  showRetoService(){
+    public function  showRetoService($randNumber = null){
         $changeAllOcc = use_occ::orderBy('created_at','DESC')->where('use_occ_group_payment',true)->paginate(20);
         return view('profileServiceRetos',compact('changeAllOcc'));
+    }
+    // Aleatorio
+    public function showServicesRandom(){
+        $changeAllOcc = use_occ::select('id');
+        $identityChange=mt_rand(1,$changeAllOcc->count());        
+        return redirect()->route('showProfileServiceRetos',$identityChange);
     }
 
     public function TablonServicios(){

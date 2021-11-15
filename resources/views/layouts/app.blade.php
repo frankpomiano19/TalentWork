@@ -101,8 +101,6 @@
                 </ul>
                 <p><a class="d-none d-md-block lead mb-0 text-white" href="{{ route('ServiciosOfrecidos') }}"> <em class="fa d-inline fa-lg fa-stop-circle"></em><strong> TalentWork</strong></a> </p>
                 <ul class="navbar-nav ml-auto">
-
-
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -157,6 +155,10 @@
                         <div class="footer-about-us">
                             <h2>Talent<span>Work</span></h2>
                             <p>Pagina dedicada a publicar servicios de todo tipo, ya sea tecnico o algun oficio</p>
+                            <div class="text-center">
+                                <a class="btn btn-success" href="{{ route('aleatorio') }}">Aleatorio</a>
+
+                            </div>
                         </div>
                     </div>
 
@@ -194,6 +196,7 @@
                             <div class="newsletter-form">
                                 <input type="submit" onclick="window.location.href='{{route('premium')}}'" value="Suscribete">
                             </div>
+                            
                         </div>
                     </div>
                 </div>

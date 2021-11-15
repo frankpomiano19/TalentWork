@@ -43,6 +43,10 @@ Route::post('/commentDislike',[PostCommentController::class,'proccessDislikeComm
 Route::post('/question','PostCommentController@newQuestion')->name('registrarPreg');
 Route::post('/answer','PostCommentController@newAnswer')->name('registrarComentR');
 Route::post('/score','PostScoreController@newScore')->name('registrarScore');
+// Aleatorio
+
+Route::get('/random',[HomeController::class,'showServicesRandom'])->name('aleatorio');
+
 
 Route::middleware(['auth'])->group(function () {
     // Ruta para video
