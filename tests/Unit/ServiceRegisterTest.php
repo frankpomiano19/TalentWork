@@ -50,6 +50,7 @@ class ServiceRegisterTest extends TestCase
             'descripcion'=>$occupationDetails,
             'precio'=>$occupationPrice
         ]);
+
     }
 
     function test_post_ServiceRegister_Ocupation_without_login(){

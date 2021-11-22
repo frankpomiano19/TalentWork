@@ -30,7 +30,7 @@ class VideoTest extends TestCase
 
     /** @test */    
     public function uploadLinkVideo(){
-        Auth::loginUsingId(2);        
+        Auth::loginUsingId(2);                
         $instanceVideo =  new VideoController();
         $request = new Request([
             'urlVideo' => 'https://www.youtube.com/watch?v=HzTc6u9P4WE',

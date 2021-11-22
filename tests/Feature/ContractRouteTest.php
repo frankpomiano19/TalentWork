@@ -59,6 +59,7 @@ class ContractRouteTest extends TestCase
 
         // $this->assertContains('Contratado el oficio correctamente',[$response->getSession()->get('contractMessage')]);
         // $this->assertContains(302,[$response->getStatusCode()]);
+        
     }
 
     /** @test */        
@@ -128,8 +129,6 @@ class ContractRouteTest extends TestCase
         // Obtiene un elemento
         $elementCart = $controllerContract->getOneItemFromCart();
         $this->assertContains(2,[$elementCart->id]);
-        
-
     }
 
 
